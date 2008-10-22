@@ -1,0 +1,37 @@
+<gconfschemafile>
+  <schemalist>
+    <schema>
+      <key>/schemas/apps/emerillion/ui/toolbar</key>
+      <applyto>/apps/emerillion/ui/toolbar</applyto>
+      <owner>emerillion</owner>
+      <type>bool</type>
+      <default>1</default>
+      <locale name="C">
+        <short>Show/hide the window toolbar.</short>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/emerillion/ui/statusbar</key>
+      <applyto>/apps/emerillion/ui/statusbar</applyto>
+      <owner>emerillion</owner>
+      <type>bool</type>
+      <default>1</default>
+      <locale name="C">
+        <short>Show/hide the window statusbar.</short>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/emerillion/ui/sidebar</key>
+      <applyto>/apps/emerillion/ui/sidebar</applyto>
+      <owner>emerillion</owner>
+      <type>bool</type>
+      <default>1</default>
+      <locale name="C">
+        <short>Show/hide the window side pane.</short>
+      </locale>
+    </schema>
+
+  </schemalist>
+</gconfschemafile>

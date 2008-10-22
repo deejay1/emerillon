@@ -1,0 +1,23 @@
+<ui>
+  <menubar name="MainMenu">
+    <menu action="File">
+      <menuitem action="FileQuit"/>
+    </menu>
+    <menu action="View">
+      <menuitem name="ToolbarToggle" action="ViewToolbar"/>
+      <menuitem name="StatusbarToggle" action="ViewStatusbar"/>
+      <menuitem name="SidebarToggle" action="ViewSidebar"/>
+      <separator/>
+      <menuitem action="ViewZoomIn"/>
+      <menuitem action="ViewZoomOut"/>
+    </menu>
+    <menu action="Help">
+      <menuitem action="HelpManual"/>
+      <menuitem action="HelpAbout"/>
+    </menu>
+  </menubar>
+  <toolbar name="Toolbar">
+    <toolitem action="ViewZoomIn"/>
+    <toolitem action="ViewZoomOut"/>
+  </toolbar>
+</ui>

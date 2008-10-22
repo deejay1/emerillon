@@ -17,12 +17,13 @@ emerillion_LDADD = $(EMERILLION_LIBS)
 
 BUILT_SOURCES =
 
-emerillion_SOURCES =		\
-	emerillion.c		\
+emerillion_SOURCES =	\
+	main.c		\
+	window.c	\
+	window.h	\
+	sidebar.c	\
+	sidebar.h	\
 	$(BUILT_SOURCES)
-
-uidir = $(datadir)/emerillion-2/ui/
-ui_DATA =
 
 CLEANFILES = $(BUILT_SOURCES)
 

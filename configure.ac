@@ -6,7 +6,7 @@ m4_define(emerillion_micro_version, 0)
 m4_define(emerillion_version, emerillion_major_version.emerillion_minor_version.emerillion_micro_version)
 
 AC_INIT(emerillion, emerillion_version)
-AC_CONFIG_SRCDIR(emerillion/emerillion.c)
+AC_CONFIG_SRCDIR(emerillion/main.c)
 
 AC_DEFINE(EMERILLION_MAJOR_VERSION, emerillion_major_version, [Emerillion major version])
 AC_SUBST(EMERILLION_MAJOR_VERSION, emerillion_major_version)
@@ -33,8 +33,22 @@ AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 
+###############
+# GLib tools. #
+###############
 AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
 AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
+
+##########
+# GConf. #
+##########
+AM_GCONF_SOURCE_2
+
+AC_PATH_PROG([GCONFTOOL], [gconftool-2], [no])
+
+if test "$GCONFTOOL" = "no"; then
+    AC_MSG_ERROR([gconftool-2 not found])
+fi
 
 ################
 # Translations #
@@ -51,16 +65,18 @@ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package])
 ################
 GLIB_REQUIRED=2.12.0
 GTK_REQUIRED=2.12.0
-CHAMPLAIN_REQUIRED=0.2.2
-CHAMPLAIN_GTK_REQUIRED=0.2.2
+GCONF_REQUIRED=2.5.90
+CHAMPLAIN_REQUIRED=0.2.6
+CHAMPLAIN_GTK_REQUIRED=0.2.6
 GEOCLUE_REQUIRED=0.11.1
 
 PKG_CHECK_MODULES(EMERILLION, [
-	glib-2.0 >= $GLIB_REQUIRED
-	gtk+-2.0 >= $GTK_REQUIRED
-	champlain-1.0 >= $CHAMPLAIN_REQUIRED
-	champlain-gtk-1.0 >= $CHAMPLAIN_GTK_REQUIRED
-	geoclue >= $GEOCLUE_REQUIRED
+    glib-2.0 >= $GLIB_REQUIRED
+    gtk+-2.0 >= $GTK_REQUIRED
+    gconf-2.0 >= $GCONF_REQUIRED \
+    champlain-0.2 >= $CHAMPLAIN_REQUIRED
+    champlain-gtk-0.2 >= $CHAMPLAIN_GTK_REQUIRED
+    geoclue >= $GEOCLUE_REQUIRED
 ])
 AC_SUBST(EMERILLION_CFLAGS)
 AC_SUBST(EMERILLION_LIBS)
@@ -89,6 +105,7 @@ fi
 AC_CONFIG_FILES([
 Makefile
 emerillion/Makefile
+data/Makefile
 po/Makefile.in
 ])
 
