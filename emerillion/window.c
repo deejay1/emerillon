@@ -23,13 +23,13 @@
 
 #include "window.h"
 
-#include <glib.h>
-#include <glib-object.h>
-#include <glib/gi18n.h>
-#include <gtk/gtk.h>
-#include <gconf/gconf-client.h>
 #include <champlain/champlain.h>
 #include <champlain-gtk/champlain-gtk.h>
+#include <gconf/gconf-client.h>
+#include <geoclue/geoclue-master.h>
+#include <geoclue/geoclue-position.h>
+#include <glib/gi18n.h>
+#include <gtk/gtk.h>
 
 #include "config-keys.h"
 #include "sidebar.h"
@@ -61,9 +61,72 @@ struct _EmerillionWindowPrivate
 static void     build_ui        (EmerillionWindow *self);
 
 static void
+position_changed_cb (GeocluePosition *position,
+                     GeocluePositionFields fields,
+                     int timestamp,
+                     double latitude,
+                     double longitude,
+                     double altitude,
+                     GeoclueAccuracy *accuracy,
+                     GError *error,
+                     EmerillionWindow *self)
+{
+  if (error)
+    {
+      g_printerr ("Error retrieving the current position: %s\n", error->message);
+      g_error_free (error);
+      g_object_unref (position);
+      return;
+    }
+  else if (fields & GEOCLUE_POSITION_FIELDS_LATITUDE &&
+           fields & GEOCLUE_POSITION_FIELDS_LONGITUDE)
+    {
+      GeoclueAccuracyLevel accuracy_level;
+      gint zoom_level;
+
+      geoclue_accuracy_get_details (accuracy, &accuracy_level, NULL, NULL);
+      switch (accuracy_level)
+        {
+          case GEOCLUE_ACCURACY_LEVEL_COUNTRY:
+            zoom_level = 4;
+            break;
+          case GEOCLUE_ACCURACY_LEVEL_REGION:
+            zoom_level = 7;
+            break;
+          case GEOCLUE_ACCURACY_LEVEL_LOCALITY:
+            zoom_level = 9;
+            break;
+          case GEOCLUE_ACCURACY_LEVEL_POSTALCODE:
+            zoom_level = 10;
+            break;
+          case GEOCLUE_ACCURACY_LEVEL_STREET:
+            zoom_level = 14;
+            break;
+          case GEOCLUE_ACCURACY_LEVEL_DETAILED:
+            zoom_level = 16;
+            break;
+          default:
+            zoom_level = -1;
+        }
+
+      if (zoom_level >= 0)
+        {
+          champlain_view_center_on (self->priv->view, latitude, longitude);
+          g_object_set (self->priv->view, "zoom-level", zoom_level, NULL);
+        }
+    }
+
+  g_object_unref (g_object_get_data (G_OBJECT (position), "client"));
+  g_object_unref (position);
+}
+
+static void
 emerillion_window_init (EmerillionWindow *self)
 {
   GdkGeometry geometry;
+  GeoclueMaster *master;
+  GeoclueMasterClient *client;
+  GeocluePosition *position;
 
   self->priv = EMERILLION_WINDOW_GET_PRIVATE (self);
 
@@ -80,6 +143,26 @@ emerillion_window_init (EmerillionWindow *self)
       &geometry,GDK_HINT_MIN_SIZE);
 
   gtk_window_set_default_size (GTK_WINDOW (self), 640, 450);
+
+  /* Current position. */
+  master = geoclue_master_get_default ();
+  client = geoclue_master_create_client (master, NULL, NULL);
+  g_object_unref (master);
+
+  geoclue_master_client_set_requirements (client,
+      GEOCLUE_ACCURACY_LEVEL_COUNTRY, 0, FALSE, GEOCLUE_RESOURCE_ALL, NULL);
+  position = geoclue_master_client_create_position (client, NULL);
+  if (position)
+    {
+      g_object_set_data (G_OBJECT (position), "client", client);
+      geoclue_position_get_position_async (position,
+          (GeocluePositionCallback)position_changed_cb, self);
+    }
+  else
+    {
+      g_object_unref (client);
+      g_object_unref (position);
+    }
 }
 
 static void
