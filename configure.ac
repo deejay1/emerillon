@@ -78,6 +78,10 @@ PKG_CHECK_MODULES(EMERILLION, [
     champlain-gtk-0.2 >= $CHAMPLAIN_GTK_REQUIRED
     geoclue >= $GEOCLUE_REQUIRED
 ])
+
+# Workaround a bug in geoclue.
+EMERILLION_CFLAGS=`echo $EMERILLION_CFLAGS | sed s,/geoclue,,`
+
 AC_SUBST(EMERILLION_CFLAGS)
 AC_SUBST(EMERILLION_LIBS)
 
