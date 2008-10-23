@@ -23,6 +23,7 @@
 
 #include <glib.h>
 #include <glib/gi18n.h>
+#include <clutter-gtk/gtk-clutter-embed.h>
 
 #include "window.h"
 
