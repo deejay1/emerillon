@@ -19,6 +19,8 @@ BUILT_SOURCES =
 
 emerillion_SOURCES =	\
 	main.c		\
+	address.c	\
+	address.h	\
 	window.c	\
 	window.h	\
 	sidebar.c	\

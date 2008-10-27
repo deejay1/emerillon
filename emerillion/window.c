@@ -31,6 +31,7 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
+#include "address.h"
 #include "config-keys.h"
 #include "sidebar.h"
 
@@ -48,6 +49,8 @@ struct _EmerillionWindowPrivate
   GtkWidget *toolbar;
   GtkWidget *statusbar;
   GtkWidget *sidebar;
+  GtkWidget *search_entry;
+  GtkWidget *search_page;
 
   ChamplainView *view;
 
@@ -59,6 +62,44 @@ struct _EmerillionWindowPrivate
 };
 
 static void     build_ui        (EmerillionWindow *self);
+
+static gboolean
+set_zoom_for_accuracy (EmerillionWindow *self,
+                       GeoclueAccuracy *accuracy)
+{
+  GeoclueAccuracyLevel accuracy_level;
+  gint zoom_level;
+
+  geoclue_accuracy_get_details (accuracy, &accuracy_level, NULL, NULL);
+
+  switch (accuracy_level)
+    {
+      case GEOCLUE_ACCURACY_LEVEL_COUNTRY:
+        zoom_level = 4;
+        break;
+      case GEOCLUE_ACCURACY_LEVEL_REGION:
+        zoom_level = 7;
+        break;
+      case GEOCLUE_ACCURACY_LEVEL_LOCALITY:
+        zoom_level = 9;
+        break;
+      case GEOCLUE_ACCURACY_LEVEL_POSTALCODE:
+        zoom_level = 10;
+        break;
+      case GEOCLUE_ACCURACY_LEVEL_STREET:
+        zoom_level = 14;
+        break;
+      case GEOCLUE_ACCURACY_LEVEL_DETAILED:
+        zoom_level = 16;
+        break;
+      default:
+        return FALSE;
+    }
+
+  g_object_set (self->priv->view, "zoom-level", zoom_level, NULL);
+
+  return TRUE;
+}
 
 static void
 position_changed_cb (GeocluePosition *position,
@@ -81,39 +122,10 @@ position_changed_cb (GeocluePosition *position,
   else if (fields & GEOCLUE_POSITION_FIELDS_LATITUDE &&
            fields & GEOCLUE_POSITION_FIELDS_LONGITUDE)
     {
-      GeoclueAccuracyLevel accuracy_level;
-      gint zoom_level;
-
-      geoclue_accuracy_get_details (accuracy, &accuracy_level, NULL, NULL);
-      switch (accuracy_level)
-        {
-          case GEOCLUE_ACCURACY_LEVEL_COUNTRY:
-            zoom_level = 4;
-            break;
-          case GEOCLUE_ACCURACY_LEVEL_REGION:
-            zoom_level = 7;
-            break;
-          case GEOCLUE_ACCURACY_LEVEL_LOCALITY:
-            zoom_level = 9;
-            break;
-          case GEOCLUE_ACCURACY_LEVEL_POSTALCODE:
-            zoom_level = 10;
-            break;
-          case GEOCLUE_ACCURACY_LEVEL_STREET:
-            zoom_level = 14;
-            break;
-          case GEOCLUE_ACCURACY_LEVEL_DETAILED:
-            zoom_level = 16;
-            break;
-          default:
-            zoom_level = -1;
-        }
-
-      if (zoom_level >= 0)
-        {
-          champlain_view_center_on (self->priv->view, latitude, longitude);
-          g_object_set (self->priv->view, "zoom-level", zoom_level, NULL);
-        }
+      /* FIXME: if the next calls are inverted then the wrong position is
+       * shown (libchamplain bug). */
+      set_zoom_for_accuracy (self, accuracy);
+      champlain_view_center_on (self->priv->view, latitude, longitude);
     }
 
   g_object_unref (g_object_get_data (G_OBJECT (position), "client"));
@@ -225,6 +237,78 @@ emerillion_window_new (void)
   return g_object_new (EMERILLION_TYPE_WINDOW, 
       "type", GTK_WINDOW_TOPLEVEL,
       NULL);
+}
+
+static void
+address_get_cb (gdouble latitude,
+                gdouble longitude,
+                GHashTable *details,
+                GeoclueAccuracy *accuracy,
+                gpointer userdata)
+{
+  static const gchar *address_elements[] = {
+      "address",
+      "city",
+      "zip",
+      "state",
+      "country"};
+
+  EmerillionWindow *self = userdata;
+  GeoclueAccuracyLevel accuracy_level;
+  GString *text;
+  gint i;
+
+  geoclue_accuracy_get_details (accuracy, &accuracy_level, NULL, NULL);
+
+  if (accuracy_level == GEOCLUE_ACCURACY_LEVEL_NONE)
+    {
+      gtk_label_set_text (GTK_LABEL (self->priv->search_page),
+          _("Sorry, address not found\n"));
+
+      emerillion_sidebar_set_page (EMERILLION_SIDEBAR (self->priv->sidebar),
+          self->priv->search_page);
+
+      return;
+    }
+
+  text = g_string_new ("");
+
+  for (i = 0; i < G_N_ELEMENTS (address_elements); i++)
+    {
+      gchar *value;
+
+      value = g_hash_table_lookup (details, address_elements[i]);
+      if (value)
+        {
+          g_string_append (text, value);
+          g_string_append (text, "\n");
+        }
+    }
+
+  if (text->len > 0)
+    /* Remove the last '\n'. */
+    g_string_truncate (text, text->len - 1);
+  else
+    g_string_append (text, "No details available");
+
+  gtk_label_set_text (GTK_LABEL (self->priv->search_page), text->str);
+
+  emerillion_sidebar_set_page (EMERILLION_SIDEBAR (self->priv->sidebar),
+      self->priv->search_page);
+
+  champlain_view_center_on (self->priv->view, latitude, longitude);
+  set_zoom_for_accuracy (self, accuracy);
+
+  g_string_free (text, TRUE);
+}
+
+static void
+search_address (EmerillionWindow *self)
+{
+  const gchar *text;
+
+  text = gtk_entry_get_text (GTK_ENTRY (self->priv->search_entry));
+  emerillion_address_get (text, address_get_cb, self);
 }
 
 static void
@@ -403,6 +487,20 @@ cmd_zoom_out (GtkAction *action,
 }
 
 static void
+cmd_search (GtkAction *action,
+            EmerillionWindow *self)
+{
+  search_address (self);
+}
+
+static void
+search_activate_cb (GtkEntry *entry,
+                    EmerillionWindow *self)
+{
+  search_address (self);
+}
+
+static void
 menu_item_select_cb (GtkMenuItem *proxy,
                      EmerillionWindow *self)
 {
@@ -498,7 +596,10 @@ static const GtkActionEntry action_entries[] = {
         G_CALLBACK (cmd_help) },
       { "HelpAbout", GTK_STOCK_ABOUT, N_("_About"), NULL, 
         N_("About this application"),
-        G_CALLBACK (cmd_about) }
+        G_CALLBACK (cmd_about) },
+      { "Search", GTK_STOCK_FIND, N_("_Search"), NULL, 
+        N_("Search"), 
+        G_CALLBACK (cmd_search) }
 };
 
 static const GtkToggleActionEntry toggle_entries[] = {
@@ -519,6 +620,9 @@ build_ui (EmerillionWindow *self)
   GtkAction *action;
   GtkWidget *vbox;
   GtkWidget *menubar;
+  GtkToolItem *search_item;
+  GtkWidget *search_button;
+  gint search_button_pos;
   GtkWidget *viewport;
   GtkWidget *hpaned;
   GtkWidget *sidebar_content;
@@ -581,6 +685,24 @@ build_ui (EmerillionWindow *self)
   /* Toolbar. */
   self->priv->toolbar = gtk_ui_manager_get_widget (self->priv->ui_manager,
       "/Toolbar");
+
+  self->priv->search_entry = gtk_entry_new ();
+  g_signal_connect (self->priv->search_entry, "activate",
+      G_CALLBACK (search_activate_cb), self);
+
+  search_item = gtk_tool_item_new ();
+  gtk_tool_item_set_expand (GTK_TOOL_ITEM (search_item), TRUE);
+  gtk_container_add (GTK_CONTAINER (search_item), self->priv->search_entry);
+  gtk_widget_show (GTK_WIDGET (self->priv->search_entry));
+
+  search_button = gtk_ui_manager_get_widget (self->priv->ui_manager,
+      "/Toolbar/Search");
+  search_button_pos = gtk_toolbar_get_item_index (
+      GTK_TOOLBAR (self->priv->toolbar), GTK_TOOL_ITEM (search_button));
+  gtk_toolbar_insert (GTK_TOOLBAR (self->priv->toolbar), search_item,
+      search_button_pos);
+  gtk_widget_show (GTK_WIDGET (search_item));
+
   gtk_box_pack_start (GTK_BOX (vbox), self->priv->toolbar,
       FALSE, FALSE, 0);
   gtk_widget_show (self->priv->toolbar);
@@ -624,6 +746,17 @@ build_ui (EmerillionWindow *self)
   emerillion_sidebar_add_page (EMERILLION_SIDEBAR (self->priv->sidebar),
       "Test page", sidebar_content);
   gtk_widget_show (sidebar_content);
+
+  /* Search result sidebar page. */
+  self->priv->search_page = gtk_label_new (_("Type an address and press the search button."));
+  gtk_label_set_line_wrap (GTK_LABEL (self->priv->search_page), TRUE);
+  gtk_label_set_single_line_mode (GTK_LABEL (self->priv->search_page), FALSE);
+  /* FIXME: set this based on the sidebar size. */
+  gtk_widget_set_size_request (self->priv->search_page, 200, -1);
+
+  emerillion_sidebar_add_page (EMERILLION_SIDEBAR (self->priv->sidebar),
+      _("Search results"), self->priv->search_page);
+  gtk_widget_show (self->priv->search_page);
 
   /* Horizontal pane. */
   hpaned = gtk_hpaned_new ();
