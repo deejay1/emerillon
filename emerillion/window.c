@@ -320,6 +320,15 @@ zoom_changed_cb (GtkWidget *widget,
   GtkAction *zoom_in_action;
   GtkAction *zoom_out_action;
   gint zoom_level;
+  guint min_zoom_level = 0;
+  guint max_zoom_level = 18;
+  ChamplainMapSource *source = NULL;
+
+  source = champlain_view_get_map_source (self->priv->view);
+  g_object_get (G_OBJECT (source),
+      "min-zoom-level", &min_zoom_level,
+      "max-zoom-level", &max_zoom_level,
+      NULL);
 
   zoom_in_action = gtk_action_group_get_action (self->priv->main_actions,
         "ViewZoomIn");
@@ -328,8 +337,8 @@ zoom_changed_cb (GtkWidget *widget,
 
   g_object_get (self->priv->view, "zoom-level", &zoom_level, NULL);
 
-  gtk_action_set_sensitive (zoom_in_action, zoom_level < 17);
-  gtk_action_set_sensitive (zoom_out_action, zoom_level > 0);
+  gtk_action_set_sensitive (zoom_in_action, zoom_level < max_zoom_level);
+  gtk_action_set_sensitive (zoom_out_action, zoom_level > min_zoom_level);
 }
 
 static void
