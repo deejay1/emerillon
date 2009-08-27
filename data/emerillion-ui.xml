@@ -20,7 +20,6 @@
     <toolitem action="ViewZoomIn"/>
     <toolitem action="ViewZoomOut"/>
     <separator/>
-    <toolitem action="Search"/>
     <separator/>
   </toolbar>
 </ui>

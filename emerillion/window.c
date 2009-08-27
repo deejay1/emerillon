@@ -513,6 +513,15 @@ search_activate_cb (GtkEntry *entry,
 }
 
 static void
+search_icon_activate_cb (GtkEntry *entry,
+                         GtkEntryIconPosition position,
+                         GdkEvent *event,
+                         EmerillionWindow *self)
+{
+  search_address (self);
+}
+
+static void
 menu_item_select_cb (GtkMenuItem *proxy,
                      EmerillionWindow *self)
 {
@@ -701,19 +710,29 @@ build_ui (EmerillionWindow *self)
   self->priv->search_entry = gtk_entry_new ();
   g_signal_connect (self->priv->search_entry, "activate",
       G_CALLBACK (search_activate_cb), self);
+  gtk_entry_set_icon_from_stock (GTK_ENTRY (self->priv->search_entry),
+      GTK_ENTRY_ICON_SECONDARY, "gtk-find");
+  gtk_entry_set_icon_activatable (GTK_ENTRY (self->priv->search_entry),
+      GTK_ENTRY_ICON_SECONDARY, TRUE);
+  g_signal_connect (self->priv->search_entry, "icon-press",
+      G_CALLBACK (search_icon_activate_cb), self);
 
   search_item = gtk_tool_item_new ();
   gtk_tool_item_set_expand (GTK_TOOL_ITEM (search_item), TRUE);
   gtk_container_add (GTK_CONTAINER (search_item), self->priv->search_entry);
   gtk_widget_show (GTK_WIDGET (self->priv->search_entry));
+  gtk_widget_show (GTK_WIDGET (search_item));
 
+  gtk_toolbar_insert (GTK_TOOLBAR (self->priv->toolbar), search_item,
+      -1);
+  /*
   search_button = gtk_ui_manager_get_widget (self->priv->ui_manager,
       "/Toolbar/Search");
   search_button_pos = gtk_toolbar_get_item_index (
       GTK_TOOLBAR (self->priv->toolbar), GTK_TOOL_ITEM (search_button));
   gtk_toolbar_insert (GTK_TOOLBAR (self->priv->toolbar), search_item,
       search_button_pos);
-  gtk_widget_show (GTK_WIDGET (search_item));
+  */
 
   gtk_box_pack_start (GTK_BOX (vbox), self->priv->toolbar,
       FALSE, FALSE, 0);
