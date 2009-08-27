@@ -729,8 +729,7 @@ build_ui (EmerillionWindow *self)
       GTK_STATUSBAR (self->priv->statusbar), "tooltip-message");
 
   /* Viewport. */
-  viewport = gtk_viewport_new (NULL, NULL);
-  gtk_viewport_set_shadow_type (GTK_VIEWPORT (viewport), GTK_SHADOW_IN);
+  viewport = gtk_frame_new (NULL);
 
   /* Map. */
 
