@@ -795,11 +795,6 @@ build_ui (EmerillionWindow *self)
   g_signal_connect_after (self->priv->sidebar, "hide",
       G_CALLBACK (sidebar_visibility_changed_cb), self);
 
-  sidebar_content = gtk_label_new ("Sidebar test");
-  emerillion_sidebar_add_page (EMERILLION_SIDEBAR (self->priv->sidebar),
-      "Test page", sidebar_content);
-  gtk_widget_show (sidebar_content);
-
   /* Search result sidebar page. */
   self->priv->search_page = gtk_label_new (_("Type an address and press the search button."));
   gtk_misc_set_padding (GTK_MISC (self->priv->search_page), 10, 10);
