@@ -460,6 +460,43 @@ cmd_about (GtkAction *action,
 }
 
 static void
+cmd_map_change_map (GtkRadioAction *action,
+                    GtkRadioAction *current,
+                    EmerillionWindow *self)
+{
+  gint value;
+  ChamplainMapSourceFactory *factory;
+  ChamplainMapSource *source;
+
+  factory = champlain_map_source_factory_dup_default ();
+  value = gtk_radio_action_get_current_value (current);
+
+  switch (value)
+    {
+      default:
+      case 0:
+        source = champlain_map_source_factory_create (factory,
+            CHAMPLAIN_MAP_SOURCE_OSM_MAPNIK);
+        break;
+      case 1:
+        source = champlain_map_source_factory_create (factory,
+            CHAMPLAIN_MAP_SOURCE_OSM_CYCLE_MAP);
+        break;
+      case 2:
+        source = champlain_map_source_factory_create (factory,
+            CHAMPLAIN_MAP_SOURCE_OSM_TRANSPORT_MAP);
+        break;
+      case 3:
+        source = champlain_map_source_factory_create (factory,
+            CHAMPLAIN_MAP_SOURCE_MFF_RELIEF);
+        break;
+
+    }
+  champlain_view_set_map_source (self->priv->view, source);
+  g_object_unref (factory);
+}
+
+static void
 cmd_show_hide_bar (GtkAction *action,
                    EmerillionWindow *self)
 {
@@ -512,13 +549,6 @@ cmd_zoom_out (GtkAction *action,
               EmerillionWindow *self)
 {
   champlain_view_zoom_out (self->priv->view);
-}
-
-static void
-cmd_search (GtkAction *action,
-            EmerillionWindow *self)
-{
-  search_address (self);
 }
 
 static void
@@ -613,42 +643,50 @@ sidebar_visibility_changed_cb (GtkWidget *widget,
 }
 
 static const GtkActionEntry action_entries[] = {
-      { "File",  NULL, N_("_File") },
+      { "Map",   NULL, N_("_Map") },
       { "Edit",  NULL, N_("_Edit") },
       { "View",  NULL, N_("_View") },
       { "Tools", NULL, N_("_Tools") },
       { "Help",  NULL, N_("_Help") },
 
-      { "FileQuit", GTK_STOCK_QUIT, N_("_Quit"), "<control>Q",
+      { "MapQuit", GTK_STOCK_QUIT, N_("_Quit"), "<control>Q",
         N_("Quit the program"),
         G_CALLBACK (cmd_quit) },
-      { "ViewZoomIn", GTK_STOCK_ZOOM_IN, N_("_Zoom In"), "<control>plus", 
-        N_("Enlarge the image"), 
+      { "ViewZoomIn", GTK_STOCK_ZOOM_IN, N_("_Zoom In"), "<control>plus",
+        N_("Enlarge the image"),
         G_CALLBACK (cmd_zoom_in) },
-      { "ViewZoomOut", GTK_STOCK_ZOOM_OUT, N_("Zoom _Out"), "<control>minus", 
-        N_("Shrink the image"), 
+      { "ViewZoomOut", GTK_STOCK_ZOOM_OUT, N_("Zoom _Out"), "<control>minus",
+        N_("Shrink the image"),
         G_CALLBACK (cmd_zoom_out) },
-      { "HelpManual", GTK_STOCK_HELP, N_("_Contents"), "F1", 
+      { "HelpManual", GTK_STOCK_HELP, N_("_Contents"), "F1",
         N_("Help on this application"),
         G_CALLBACK (cmd_help) },
-      { "HelpAbout", GTK_STOCK_ABOUT, N_("_About"), NULL, 
+      { "HelpAbout", GTK_STOCK_ABOUT, N_("_About"), NULL,
         N_("About this application"),
         G_CALLBACK (cmd_about) },
-      { "Search", GTK_STOCK_FIND, N_("_Search"), NULL, 
-        N_("Search"), 
-        G_CALLBACK (cmd_search) }
 };
 
 static const GtkToggleActionEntry toggle_entries[] = {
-      { "ViewToolbar", NULL, N_("_Toolbar"), NULL, 
+      { "ViewToolbar", NULL, N_("_Toolbar"), NULL,
         N_("Show or hide the toolbar in the current self"),
         G_CALLBACK (cmd_show_hide_bar), TRUE },
-      { "ViewStatusbar", NULL, N_("_Statusbar"), NULL, 
-        N_("Show or hide the statusbar in the current self"), 
+      { "ViewStatusbar", NULL, N_("_Statusbar"), NULL,
+        N_("Show or hide the statusbar in the current self"),
         G_CALLBACK (cmd_show_hide_bar), TRUE },
       { "ViewSidebar", NULL, N_("Side _Pane"), "F9",
-        N_("Show or hide the side pane in the current self"), 
+        N_("Show or hide the side pane in the current self"),
         G_CALLBACK (cmd_show_hide_bar), TRUE },
+};
+
+static const GtkRadioActionEntry radio_entries[] = {
+      { "MapMapnik", NULL, N_("_Street"), "<alt>1",
+        N_("View the street map based on OpenStreetMap"), 0 },
+      { "MapCycle", NULL, N_("_Cycling"), "<alt>2",
+        N_("View the cycling map based on OpenCycleMap"), 1 },
+      { "MapTransport", NULL, N_("_Public Transportation"), "<alt>3",
+        N_("View the cycling map based on Öpnvkarte"), 2 },
+      { "MapTerrain", NULL, N_("_Terrain"), "<alt>4",
+        N_("View the cycling map based on mapsforfree.com Relief"), 3 },
 };
 
 static void 
@@ -661,13 +699,12 @@ build_ui (EmerillionWindow *self)
   GtkToolItem *throbber;
   GtkWidget *viewport;
   GtkWidget *hpaned;
-  GtkWidget *sidebar_content;
   GtkWidget *embed_view;
   GError *error = NULL;
 
   /* Action entries. */
   self->priv->main_actions = gtk_action_group_new ("MenuActionsWindow");
-  gtk_action_group_set_translation_domain (self->priv->main_actions, 
+  gtk_action_group_set_translation_domain (self->priv->main_actions,
       GETTEXT_PACKAGE);
 
   gtk_action_group_add_actions (self->priv->main_actions, action_entries,
@@ -677,8 +714,13 @@ build_ui (EmerillionWindow *self)
   gtk_action_group_add_toggle_actions (self->priv->main_actions,
       toggle_entries, G_N_ELEMENTS (toggle_entries), self);
 
+  /* Radio entries. */
+  gtk_action_group_add_radio_actions (self->priv->main_actions,
+      radio_entries, G_N_ELEMENTS (radio_entries), 0,
+      G_CALLBACK (cmd_map_change_map), self);
+
   /* Short labels. */
-  action = gtk_action_group_get_action (self->priv->main_actions, 
+  action = gtk_action_group_get_action (self->priv->main_actions,
       "ViewZoomIn");
   g_object_set (action, "short_label", _("In"), NULL);
 
@@ -691,7 +733,7 @@ build_ui (EmerillionWindow *self)
   gtk_ui_manager_insert_action_group (self->priv->ui_manager,
       self->priv->main_actions, 0);
 
-  if (!gtk_ui_manager_add_ui_from_file (self->priv->ui_manager, 
+  if (!gtk_ui_manager_add_ui_from_file (self->priv->ui_manager,
         EMERILLION_DATADIR "/emerillion-ui.xml", &error))
     {
       g_warning ("building menus failed: %s", error->message);

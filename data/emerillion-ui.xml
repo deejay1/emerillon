@@ -1,7 +1,12 @@
 <ui>
   <menubar name="MainMenu">
-    <menu action="File">
-      <menuitem action="FileQuit"/>
+    <menu action="Map">
+      <menuitem action="MapMapnik"/>
+      <menuitem action="MapCycle"/>
+      <menuitem action="MapTransport"/>
+      <menuitem action="MapTerrain"/>
+      <separator/>
+      <menuitem action="MapQuit"/>
     </menu>
     <menu action="View">
       <menuitem name="ToolbarToggle" action="ViewToolbar"/>
@@ -13,6 +18,7 @@
     </menu>
     <menu action="Help">
       <menuitem action="HelpManual"/>
+      <separator/>
       <menuitem action="HelpAbout"/>
     </menu>
   </menubar>
