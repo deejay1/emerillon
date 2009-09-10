@@ -34,6 +34,7 @@
 
 #include "address.h"
 #include "config-keys.h"
+#include "ephy-spinner.h"
 #include "sidebar.h"
 
 #define EMERILLION_WINDOW_GET_PRIVATE(object) \
@@ -52,6 +53,7 @@ struct _EmerillionWindowPrivate
   GtkWidget *sidebar;
   GtkWidget *search_entry;
   GtkWidget *search_page;
+  GtkWidget *throbber;
 
   ChamplainView *view;
 
@@ -310,6 +312,20 @@ search_address (EmerillionWindow *self)
 
   text = gtk_entry_get_text (GTK_ENTRY (self->priv->search_entry));
   emerillion_address_get (text, address_get_cb, self);
+}
+
+static void
+state_changed_cb (GtkWidget *widget,
+                  GParamSpec *pspec,
+                  EmerillionWindow *self)
+{
+  ChamplainState state;
+
+  g_object_get (self->priv->view, "state", &state, NULL);
+  if (state == CHAMPLAIN_STATE_LOADING)
+    ephy_spinner_start (EPHY_SPINNER (self->priv->throbber));
+  else
+    ephy_spinner_stop (EPHY_SPINNER (self->priv->throbber));
 }
 
 static void
@@ -642,8 +658,7 @@ build_ui (EmerillionWindow *self)
   GtkWidget *vbox;
   GtkWidget *menubar;
   GtkToolItem *search_item;
-  GtkWidget *search_button;
-  gint search_button_pos;
+  GtkToolItem *throbber;
   GtkWidget *viewport;
   GtkWidget *hpaned;
   GtkWidget *sidebar_content;
@@ -725,14 +740,18 @@ build_ui (EmerillionWindow *self)
 
   gtk_toolbar_insert (GTK_TOOLBAR (self->priv->toolbar), search_item,
       -1);
-  /*
-  search_button = gtk_ui_manager_get_widget (self->priv->ui_manager,
-      "/Toolbar/Search");
-  search_button_pos = gtk_toolbar_get_item_index (
-      GTK_TOOLBAR (self->priv->toolbar), GTK_TOOL_ITEM (search_button));
-  gtk_toolbar_insert (GTK_TOOLBAR (self->priv->toolbar), search_item,
-      search_button_pos);
-  */
+
+  self->priv->throbber = ephy_spinner_new ();
+  ephy_spinner_set_size (EPHY_SPINNER (self->priv->throbber),
+      GTK_ICON_SIZE_LARGE_TOOLBAR);
+
+
+  throbber = gtk_tool_item_new ();
+  gtk_container_add (GTK_CONTAINER (throbber), self->priv->throbber);
+  gtk_widget_show (GTK_WIDGET (self->priv->throbber));
+  gtk_widget_show (GTK_WIDGET (throbber));
+  gtk_toolbar_insert (GTK_TOOLBAR (self->priv->toolbar), throbber,
+      -1);
 
   gtk_box_pack_start (GTK_BOX (vbox), self->priv->toolbar,
       FALSE, FALSE, 0);
@@ -760,6 +779,8 @@ build_ui (EmerillionWindow *self)
   self->priv->view = gtk_champlain_embed_get_view (GTK_CHAMPLAIN_EMBED (embed_view));
   g_signal_connect (self->priv->view, "notify::zoom-level",
       G_CALLBACK (zoom_changed_cb), self);
+  g_signal_connect (self->priv->view, "notify::state",
+      G_CALLBACK (state_changed_cb), self);
   g_object_set (self->priv->view, "zoom-level", 1,
       "scroll-mode", CHAMPLAIN_SCROLL_MODE_KINETIC,
       NULL);
@@ -781,6 +802,7 @@ build_ui (EmerillionWindow *self)
 
   /* Search result sidebar page. */
   self->priv->search_page = gtk_label_new (_("Type an address and press the search button."));
+  gtk_misc_set_padding (GTK_MISC (self->priv->search_page), 10, 10);
   gtk_label_set_line_wrap (GTK_LABEL (self->priv->search_page), TRUE);
   gtk_label_set_single_line_mode (GTK_LABEL (self->priv->search_page), FALSE);
   /* FIXME: set this based on the sidebar size. */

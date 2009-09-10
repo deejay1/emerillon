@@ -25,6 +25,8 @@ emerillion_SOURCES =	\
 	window.h	\
 	sidebar.c	\
 	sidebar.h	\
+	ephy-spinner.h	\
+	ephy-spinner.c	\
 	$(BUILT_SOURCES)
 
 CLEANFILES = $(BUILT_SOURCES)
