@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008 Marco Barisione <marco@barisione.org>
+ * Copyright (C) 2009 Novopia Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -389,6 +390,7 @@ cmd_about (GtkAction *action,
 {
   static const char *authors[] = {
       "Marco Barisione <marco@barisione.org>",
+      "Pierre-Luc Beaudoin <pierre-luc.beaudoin@novopia.com>",
       NULL
   };
   static const char *documenters[] = {
@@ -417,7 +419,8 @@ cmd_about (GtkAction *action,
   gtk_show_about_dialog (GTK_WINDOW (self),
       "program-name", _("Emerillion"),
       "version", VERSION,
-      "copyright", "Copyright \xc2\xa9 2008 Marco Barisione",
+      "copyright", "Copyright \xc2\xa9 2008 Marco Barisione\n"
+                   "Copyright \xc2\xa9 2009 Novopia Inc.",
       "comments",_("A map viewer for the GNOME desktop"),
       "authors", authors,
       "documenters", documenters,
@@ -721,17 +724,17 @@ build_ui (EmerillionWindow *self)
   gtk_viewport_set_shadow_type (GTK_VIEWPORT (viewport), GTK_SHADOW_IN);
 
   /* Map. */
-  self->priv->view = CHAMPLAIN_VIEW (
-      champlain_view_new (CHAMPLAIN_VIEW_MODE_KINETIC));
+
+  embed_view = gtk_champlain_embed_new ();
+  gtk_container_add (GTK_CONTAINER (viewport), embed_view);
+  /* FIXME: workaround for a champlain-gtk bug, replace with _show(). */
+  gtk_widget_show_all (embed_view);
+
+  self->priv->view = gtk_champlain_embed_get_view (GTK_CHAMPLAIN_EMBED (embed_view));
   g_signal_connect (self->priv->view, "notify::zoom-level",
       G_CALLBACK (zoom_changed_cb), self);
   g_object_set (self->priv->view, "zoom-level", 1, NULL);
   champlain_view_center_on (self->priv->view, 40, 0);
-
-  embed_view = champlain_view_embed_new (self->priv->view);
-  gtk_container_add (GTK_CONTAINER (viewport), embed_view);
-  /* FIXME: workaround for a champlain-gtk bug, replace with _show(). */
-  gtk_widget_show_all (embed_view);
 
   /* Sidebar. */
   self->priv->sidebar = emerillion_sidebar_new ();

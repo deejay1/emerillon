@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2008 Marco Barisione <marco@barisione.org>
+ * Copyright (C) 2009 Novopia Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -23,7 +24,7 @@
 
 #include <glib.h>
 #include <glib/gi18n.h>
-#include <clutter-gtk/gtk-clutter-embed.h>
+#include <clutter-gtk/clutter-gtk.h>
 
 #include "window.h"
 
