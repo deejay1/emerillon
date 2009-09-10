@@ -733,7 +733,9 @@ build_ui (EmerillionWindow *self)
   self->priv->view = gtk_champlain_embed_get_view (GTK_CHAMPLAIN_EMBED (embed_view));
   g_signal_connect (self->priv->view, "notify::zoom-level",
       G_CALLBACK (zoom_changed_cb), self);
-  g_object_set (self->priv->view, "zoom-level", 1, NULL);
+  g_object_set (self->priv->view, "zoom-level", 1,
+      "scroll-mode", CHAMPLAIN_SCROLL_MODE_KINETIC,
+      NULL);
   champlain_view_center_on (self->priv->view, 40, 0);
 
   /* Sidebar. */
