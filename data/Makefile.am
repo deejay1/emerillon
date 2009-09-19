@@ -8,6 +8,9 @@ uidir = $(datadir)/emerillon
 UI_FILES = emerillon-ui.xml
 ui_DATA = $(UI_FILES)
 
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = emerillon.pc
+
 install-data-local:
 if GCONF_SCHEMAS_INSTALL
 	if test -z "$(DESTDIR)" ; then \

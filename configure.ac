@@ -5,6 +5,8 @@ m4_define(emerillon_minor_version, 1)
 m4_define(emerillon_micro_version, 0)
 m4_define(emerillon_version, emerillon_major_version.emerillon_minor_version.emerillon_micro_version)
 
+m4_define([emerillon_api_version],
+          [emerillon_major_version.emerillon_minor_version])
 AC_INIT(emerillon, emerillon_version)
 AC_CONFIG_SRCDIR(emerillon/main.c)
 
@@ -14,6 +16,9 @@ AC_DEFINE(EMERILLON_MINOR_VERSION, emerillon_minor_version, [Emerillon minor ver
 AC_SUBST(EMERILLON_MINOR_VERSION, emerillon_minor_version)
 AC_DEFINE(EMERILLON_MICRO_VERSION, emerillon_micro_version, [Emerillon micro version])
 AC_SUBST(EMERILLON_MICRO_VERSION, emerillon_micro_version)
+
+EMERILLON_API_VERSION=emerillon_api_version
+AC_SUBST(EMERILLON_API_VERSION)
 
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 no-dist-gzip -Wno-portability])
 
@@ -113,6 +118,7 @@ Makefile
 emerillon/Makefile
 cut-paste/Makefile
 data/Makefile
+data/emerillon.pc
 po/Makefile.in
 ])
 

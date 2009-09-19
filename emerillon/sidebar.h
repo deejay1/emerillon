@@ -24,6 +24,10 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
+#if !defined (__EMERILLON_H_INSIDE__) && !defined (EMERILLON_COMPILATION)
+#error "Only <emerillon/emerillon.h> can be included directly."
+#endif
+
 #ifndef __EMERILLON_SIDEBAR_H__
 #define __EMERILLON_SIDEBAR_H__
 

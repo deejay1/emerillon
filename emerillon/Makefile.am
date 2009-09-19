@@ -6,6 +6,7 @@ INCLUDES =								\
 	$(EMERILLON_CFLAGS)						\
 	$(WARN_CFLAGS)							\
 	$(DISABLE_DEPRECATED_CFLAGS)					\
+	-DEMERILLON_COMPILATION						\
 	-DDATADIR=\""$(datadir)"\"					\
 	-DEMERILLON_DATADIR=\""$(datadir)/emerillon"\"		\
 	-DEMERILLON_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
@@ -30,6 +31,15 @@ emerillon_SOURCES =	\
 	$(BUILT_SOURCES)
 
 CLEANFILES = $(BUILT_SOURCES)
+
+headerdir = $(prefix)/include/emerillon-@EMERILLON_API_VERSION@/emerillon
+header_DATA = $(API_H_FILES)
+
+API_H_FILES =			\
+	emerillon.h			\
+	window.h			\
+	sidebar.h
+
 
 dist-hook:
 	cd $(distdir); rm -f $(BUILT_SOURCES)

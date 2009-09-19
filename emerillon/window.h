@@ -17,13 +17,17 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#if !defined (__EMERILLON_H_INSIDE__) && !defined (EMERILLON_COMPILATION)
+#error "Only <emerillon/emerillon.h> can be included directly."
+#endif
+
 #ifndef __EMERILLON_WINDOW_H__
 #define __EMERILLON_WINDOW_H__
 
 #include <gtk/gtk.h>
 #include <champlain/champlain.h>
 
-G_BEGIN_DECLS 
+G_BEGIN_DECLS
 
 typedef struct _EmerillonWindow EmerillonWindow;
 typedef struct _EmerillonWindowClass EmerillonWindowClass;
