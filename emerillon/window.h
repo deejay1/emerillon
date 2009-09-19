@@ -21,6 +21,7 @@
 #define __EMERILLON_WINDOW_H__
 
 #include <gtk/gtk.h>
+#include <champlain/champlain.h>
 
 G_BEGIN_DECLS 
 
@@ -51,6 +52,10 @@ struct _EmerillonWindowClass
 GType         emerillon_window_get_type        (void) G_GNUC_CONST;
 
 GtkWidget *   emerillon_window_new             (void);
+
+ChamplainView * emerillon_window_get_map_view  (EmerillonWindow *window);
+
+GtkUIManager * emerillon_window_get_ui_manager (EmerillonWindow *window);
 
 G_END_DECLS
 

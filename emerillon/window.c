@@ -862,3 +862,18 @@ build_ui (EmerillonWindow *self)
   update_ui_visibility (self);
 }
 
+ChamplainView *
+emerillon_window_get_map_view  (EmerillonWindow *window)
+{
+  g_return_val_if_fail (EMERILLON_IS_WINDOW (window), NULL);
+
+  return window->priv->view;
+}
+
+GtkUIManager *
+emerillon_window_get_ui_manager (EmerillonWindow *window)
+{
+  g_return_val_if_fail (EMERILLON_IS_WINDOW (window), NULL);
+
+  return window->priv->ui_manager;
+}
