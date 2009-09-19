@@ -4,9 +4,9 @@
 srcdir=`dirname $0`
 test -z "$srcdir" && srcdir=.
 
-PKG_NAME="emerillion"
+PKG_NAME="emerillon"
 
-(test -f $srcdir/emerillion/main.c) || {
+(test -f $srcdir/emerillon/main.c) || {
     echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"
     echo " top-level $PKG_NAME directory"
     exit 1

@@ -34,7 +34,7 @@
 typedef struct
 {
   gchar *text;
-  EmerillionAddressFunc callback;
+  EmerillonAddressFunc callback;
   gpointer userdata;
 } SearchData;
 
@@ -173,8 +173,8 @@ address_get_thread (gpointer data)
 }
 
 void
-emerillion_address_get (const gchar *text,
-                        EmerillionAddressFunc callback,
+emerillon_address_get (const gchar *text,
+                        EmerillonAddressFunc callback,
                         gpointer userdata)
 {
   SearchData *data;

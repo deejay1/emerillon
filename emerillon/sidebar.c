@@ -58,7 +58,7 @@ enum
 
 static gint signals[SIGNAL_LAST];
 
-struct _EmerillionSidebarPrivate
+struct _EmerillonSidebarPrivate
 {
     GtkWidget *notebook;
     GtkWidget *select_button;
@@ -69,15 +69,15 @@ struct _EmerillionSidebarPrivate
     GtkTreeModel *page_model;
 };
 
-G_DEFINE_TYPE (EmerillionSidebar, emerillion_sidebar, GTK_TYPE_VBOX)
+G_DEFINE_TYPE (EmerillonSidebar, emerillon_sidebar, GTK_TYPE_VBOX)
 
-#define EMERILLION_SIDEBAR_GET_PRIVATE(object) \
-    (G_TYPE_INSTANCE_GET_PRIVATE ((object), EMERILLION_TYPE_SIDEBAR, EmerillionSidebarPrivate))
+#define EMERILLON_SIDEBAR_GET_PRIVATE(object) \
+    (G_TYPE_INSTANCE_GET_PRIVATE ((object), EMERILLON_TYPE_SIDEBAR, EmerillonSidebarPrivate))
 
 static void
-emerillion_sidebar_destroy (GtkObject *object)
+emerillon_sidebar_destroy (GtkObject *object)
 {
-  EmerillionSidebar *sidebar = EMERILLION_SIDEBAR (object);
+  EmerillonSidebar *sidebar = EMERILLON_SIDEBAR (object);
 
   if (sidebar->priv->menu)
     {
@@ -91,11 +91,11 @@ emerillion_sidebar_destroy (GtkObject *object)
       sidebar->priv->page_model = NULL;
     }
 
-  (* GTK_OBJECT_CLASS (emerillion_sidebar_parent_class)->destroy) (object);
+  (* GTK_OBJECT_CLASS (emerillon_sidebar_parent_class)->destroy) (object);
 }
 
 static void
-emerillion_sidebar_select_page (EmerillionSidebar *sidebar,
+emerillon_sidebar_select_page (EmerillonSidebar *sidebar,
                                 GtkTreeIter *iter)
 {
   gchar *title;
@@ -113,7 +113,7 @@ emerillion_sidebar_select_page (EmerillionSidebar *sidebar,
 }
 
 void
-emerillion_sidebar_set_page (EmerillionSidebar *sidebar,
+emerillon_sidebar_set_page (EmerillonSidebar *sidebar,
                              GtkWidget *main_widget)
 {
   GtkTreeIter iter;
@@ -131,7 +131,7 @@ emerillion_sidebar_set_page (EmerillionSidebar *sidebar,
 
       if (widget == main_widget)
         {
-          emerillion_sidebar_select_page (sidebar, &iter);
+          emerillon_sidebar_select_page (sidebar, &iter);
           valid = FALSE;
         }
       else
@@ -146,7 +146,7 @@ emerillion_sidebar_set_page (EmerillionSidebar *sidebar,
 }
 
 static GtkWidget *
-emerillion_sidebar_get_current_page (EmerillionSidebar *sidebar)
+emerillon_sidebar_get_current_page (EmerillonSidebar *sidebar)
 {
   GtkNotebook *notebook = GTK_NOTEBOOK (sidebar->priv->notebook);
 
@@ -155,17 +155,17 @@ emerillion_sidebar_get_current_page (EmerillionSidebar *sidebar)
 }
 
 static void
-emerillion_sidebar_set_property (GObject *object,
+emerillon_sidebar_set_property (GObject *object,
                                  guint prop_id,
                                  const GValue *value,
                                  GParamSpec *pspec)
 {
-  EmerillionSidebar *sidebar = EMERILLION_SIDEBAR (object);
+  EmerillonSidebar *sidebar = EMERILLON_SIDEBAR (object);
 
   switch (prop_id)
     {
       case PROP_CURRENT_PAGE:
-        emerillion_sidebar_set_page (sidebar, g_value_get_object (value));	
+        emerillon_sidebar_set_page (sidebar, g_value_get_object (value));	
         break;
       default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -173,18 +173,18 @@ emerillion_sidebar_set_property (GObject *object,
 }
 
 static void
-emerillion_sidebar_get_property (GObject *object,
+emerillon_sidebar_get_property (GObject *object,
                                  guint prop_id,
                                  GValue *value,
                                  GParamSpec *pspec)
 {
-  EmerillionSidebar *sidebar = EMERILLION_SIDEBAR (object);
+  EmerillonSidebar *sidebar = EMERILLON_SIDEBAR (object);
 
   switch (prop_id)
     {
       case PROP_CURRENT_PAGE:
         g_value_set_object (value,
-            emerillion_sidebar_get_current_page (sidebar));
+            emerillon_sidebar_get_current_page (sidebar));
         break;
       default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -192,21 +192,21 @@ emerillion_sidebar_get_property (GObject *object,
 }
 
 static void
-emerillion_sidebar_class_init (EmerillionSidebarClass *emerillion_sidebar_class)
+emerillon_sidebar_class_init (EmerillonSidebarClass *emerillon_sidebar_class)
 {
   GObjectClass *g_object_class;
   GtkWidgetClass *widget_class;
   GtkObjectClass *gtk_object_klass;
 
-  g_object_class = G_OBJECT_CLASS (emerillion_sidebar_class);
-  widget_class = GTK_WIDGET_CLASS (emerillion_sidebar_class);
-  gtk_object_klass = GTK_OBJECT_CLASS (emerillion_sidebar_class);
+  g_object_class = G_OBJECT_CLASS (emerillon_sidebar_class);
+  widget_class = GTK_WIDGET_CLASS (emerillon_sidebar_class);
+  gtk_object_klass = GTK_OBJECT_CLASS (emerillon_sidebar_class);
 
-  g_type_class_add_private (g_object_class, sizeof (EmerillionSidebarPrivate));
+  g_type_class_add_private (g_object_class, sizeof (EmerillonSidebarPrivate));
 
-  gtk_object_klass->destroy = emerillion_sidebar_destroy;
-  g_object_class->get_property = emerillion_sidebar_get_property;
-  g_object_class->set_property = emerillion_sidebar_set_property;
+  gtk_object_klass->destroy = emerillon_sidebar_destroy;
+  g_object_class->get_property = emerillon_sidebar_get_property;
+  g_object_class->set_property = emerillon_sidebar_set_property;
 
   g_object_class_install_property (g_object_class,
       PROP_CURRENT_PAGE,
@@ -217,20 +217,20 @@ emerillion_sidebar_class_init (EmerillionSidebarClass *emerillion_sidebar_class)
           G_PARAM_READWRITE));
 
   signals[SIGNAL_PAGE_ADDED] = g_signal_new ("page-added",
-      EMERILLION_TYPE_SIDEBAR, G_SIGNAL_RUN_FIRST,
-      G_STRUCT_OFFSET (EmerillionSidebarClass, page_added),
+      EMERILLON_TYPE_SIDEBAR, G_SIGNAL_RUN_FIRST,
+      G_STRUCT_OFFSET (EmerillonSidebarClass, page_added),
       NULL, NULL, g_cclosure_marshal_VOID__OBJECT,
       G_TYPE_NONE, 1, GTK_TYPE_WIDGET);
 
   signals[SIGNAL_PAGE_REMOVED] = g_signal_new ("page-removed",
-      EMERILLION_TYPE_SIDEBAR, G_SIGNAL_RUN_FIRST,
-      G_STRUCT_OFFSET (EmerillionSidebarClass, page_removed),
+      EMERILLON_TYPE_SIDEBAR, G_SIGNAL_RUN_FIRST,
+      G_STRUCT_OFFSET (EmerillonSidebarClass, page_removed),
       NULL, NULL, g_cclosure_marshal_VOID__OBJECT,
       G_TYPE_NONE, 1, GTK_TYPE_WIDGET);
 }
 
 static void
-emerillion_sidebar_menu_position_under (GtkMenu *menu,
+emerillon_sidebar_menu_position_under (GtkMenu *menu,
                                          gint *x,
                                          gint *y,
                                          gboolean *push_in,
@@ -252,11 +252,11 @@ emerillion_sidebar_menu_position_under (GtkMenu *menu,
 }
 
 static gboolean
-emerillion_sidebar_select_button_press_cb (GtkWidget *widget,
+emerillon_sidebar_select_button_press_cb (GtkWidget *widget,
                                            GdkEventButton *event,
                                            gpointer user_data)
 {
-  EmerillionSidebar *sidebar = EMERILLION_SIDEBAR (user_data);
+  EmerillonSidebar *sidebar = EMERILLON_SIDEBAR (user_data);
 
   if (event->button == 1)
     {
@@ -275,7 +275,7 @@ emerillion_sidebar_select_button_press_cb (GtkWidget *widget,
       gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), TRUE);
 
       gtk_menu_popup (GTK_MENU (sidebar->priv->menu),
-          NULL, NULL, emerillion_sidebar_menu_position_under, widget,
+          NULL, NULL, emerillon_sidebar_menu_position_under, widget,
           event->button, event->time);
 
       return TRUE;
@@ -285,11 +285,11 @@ emerillion_sidebar_select_button_press_cb (GtkWidget *widget,
 }
 
 static gboolean
-emerillion_sidebar_select_button_key_press_cb (GtkWidget *widget,
+emerillon_sidebar_select_button_key_press_cb (GtkWidget *widget,
                                                GdkEventKey *event,
                                                gpointer user_data)
 {
-  EmerillionSidebar *sidebar = EMERILLION_SIDEBAR (user_data);
+  EmerillonSidebar *sidebar = EMERILLON_SIDEBAR (user_data);
 
   if (event->keyval == GDK_space ||
       event->keyval == GDK_KP_Space ||
@@ -299,7 +299,7 @@ emerillion_sidebar_select_button_key_press_cb (GtkWidget *widget,
       gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), TRUE);
 
       gtk_menu_popup (GTK_MENU (sidebar->priv->menu),
-          NULL, NULL, emerillion_sidebar_menu_position_under, widget,
+          NULL, NULL, emerillon_sidebar_menu_position_under, widget,
           1, event->time);
 
       return TRUE;
@@ -309,16 +309,16 @@ emerillion_sidebar_select_button_key_press_cb (GtkWidget *widget,
 }
 
 static void
-emerillion_sidebar_close_clicked_cb (GtkWidget *widget,
+emerillon_sidebar_close_clicked_cb (GtkWidget *widget,
                                      gpointer user_data)
 {
-  EmerillionSidebar *sidebar = EMERILLION_SIDEBAR (user_data);
+  EmerillonSidebar *sidebar = EMERILLON_SIDEBAR (user_data);
 
   gtk_widget_hide (GTK_WIDGET (sidebar));
 }
 
 static void
-emerillion_sidebar_menu_deactivate_cb (GtkWidget *widget,
+emerillon_sidebar_menu_deactivate_cb (GtkWidget *widget,
                                        gpointer user_data)
 {
   GtkWidget *menu_button;
@@ -329,19 +329,19 @@ emerillion_sidebar_menu_deactivate_cb (GtkWidget *widget,
 }
 
 static void
-emerillion_sidebar_menu_detach_cb (GtkWidget *widget,
+emerillon_sidebar_menu_detach_cb (GtkWidget *widget,
                                    GtkMenu *menu)
 {
-  EmerillionSidebar *sidebar = EMERILLION_SIDEBAR (widget);
+  EmerillonSidebar *sidebar = EMERILLON_SIDEBAR (widget);
 
   sidebar->priv->menu = NULL;
 }
 
 static void
-emerillion_sidebar_menu_item_activate_cb (GtkWidget *widget,
+emerillon_sidebar_menu_item_activate_cb (GtkWidget *widget,
                                           gpointer user_data)
 {
-  EmerillionSidebar *sidebar = EMERILLION_SIDEBAR (user_data);
+  EmerillonSidebar *sidebar = EMERILLON_SIDEBAR (user_data);
   GtkTreeIter iter;
   GtkWidget *menu_item, *item;
   gboolean valid;
@@ -357,7 +357,7 @@ emerillion_sidebar_menu_item_activate_cb (GtkWidget *widget,
 
       if (item == menu_item)
         {
-          emerillion_sidebar_select_page (sidebar, &iter);
+          emerillon_sidebar_select_page (sidebar, &iter);
           valid = FALSE;
         }
       else
@@ -372,7 +372,7 @@ emerillion_sidebar_menu_item_activate_cb (GtkWidget *widget,
 }
 
 static void
-emerillion_sidebar_init (EmerillionSidebar *sidebar)
+emerillon_sidebar_init (EmerillonSidebar *sidebar)
 {
   GtkWidget *hbox;
   GtkWidget *close_button;
@@ -380,7 +380,7 @@ emerillion_sidebar_init (EmerillionSidebar *sidebar)
   GtkWidget *arrow;
   GtkWidget *image;
 
-  sidebar->priv = EMERILLION_SIDEBAR_GET_PRIVATE (sidebar);
+  sidebar->priv = EMERILLON_SIDEBAR_GET_PRIVATE (sidebar);
 
   /* data model */
   sidebar->priv->page_model = (GtkTreeModel *) gtk_list_store_new (
@@ -401,11 +401,11 @@ emerillion_sidebar_init (EmerillionSidebar *sidebar)
       GTK_RELIEF_NONE);
 
   g_signal_connect (sidebar->priv->select_button, "button_press_event",
-      G_CALLBACK (emerillion_sidebar_select_button_press_cb),
+      G_CALLBACK (emerillon_sidebar_select_button_press_cb),
       sidebar);
 
   g_signal_connect (sidebar->priv->select_button, "key_press_event",
-      G_CALLBACK (emerillion_sidebar_select_button_key_press_cb),
+      G_CALLBACK (emerillon_sidebar_select_button_key_press_cb),
       sidebar);
 
   select_hbox = gtk_hbox_new (FALSE, 0);
@@ -433,7 +433,7 @@ emerillion_sidebar_init (EmerillionSidebar *sidebar)
   gtk_button_set_relief (GTK_BUTTON (close_button), GTK_RELIEF_NONE);
 
   g_signal_connect (close_button, "clicked",
-      G_CALLBACK (emerillion_sidebar_close_clicked_cb),
+      G_CALLBACK (emerillon_sidebar_close_clicked_cb),
       sidebar);
 
   image = gtk_image_new_from_stock (GTK_STOCK_CLOSE,
@@ -447,12 +447,12 @@ emerillion_sidebar_init (EmerillionSidebar *sidebar)
   sidebar->priv->menu = gtk_menu_new ();
 
   g_signal_connect (sidebar->priv->menu, "deactivate",
-      G_CALLBACK (emerillion_sidebar_menu_deactivate_cb),
+      G_CALLBACK (emerillon_sidebar_menu_deactivate_cb),
       sidebar->priv->select_button);
 
   gtk_menu_attach_to_widget (GTK_MENU (sidebar->priv->menu),
       GTK_WIDGET (sidebar),
-      emerillion_sidebar_menu_detach_cb);
+      emerillon_sidebar_menu_detach_cb);
 
   gtk_widget_show (sidebar->priv->menu);
 
@@ -468,17 +468,17 @@ emerillion_sidebar_init (EmerillionSidebar *sidebar)
 }
 
 GtkWidget *
-emerillion_sidebar_new (void)
+emerillon_sidebar_new (void)
 {
   GtkWidget *sidebar;
 
-  sidebar = g_object_new (EMERILLION_TYPE_SIDEBAR, NULL);
+  sidebar = g_object_new (EMERILLON_TYPE_SIDEBAR, NULL);
 
   return sidebar;
 }
 
 void
-emerillion_sidebar_add_page (EmerillionSidebar *sidebar,
+emerillon_sidebar_add_page (EmerillonSidebar *sidebar,
                              const gchar *title,
                              GtkWidget *main_widget)
 {
@@ -487,7 +487,7 @@ emerillion_sidebar_add_page (EmerillionSidebar *sidebar,
   gchar *label_title;
   gint index;
 
-  g_return_if_fail (EMERILLION_IS_SIDEBAR (sidebar));
+  g_return_if_fail (EMERILLON_IS_SIDEBAR (sidebar));
   g_return_if_fail (GTK_IS_WIDGET (main_widget));
 
   index = gtk_notebook_append_page (GTK_NOTEBOOK (sidebar->priv->notebook),
@@ -496,7 +496,7 @@ emerillion_sidebar_add_page (EmerillionSidebar *sidebar,
   menu_item = gtk_image_menu_item_new_with_label (title);
 
   g_signal_connect (menu_item, "activate",
-      G_CALLBACK (emerillion_sidebar_menu_item_activate_cb),
+      G_CALLBACK (emerillon_sidebar_menu_item_activate_cb),
       sidebar);
 
   gtk_widget_show (menu_item);
@@ -539,7 +539,7 @@ emerillion_sidebar_add_page (EmerillionSidebar *sidebar,
 }
 
 void
-emerillion_sidebar_remove_page (EmerillionSidebar *sidebar,
+emerillon_sidebar_remove_page (EmerillonSidebar *sidebar,
                                 GtkWidget *main_widget)
 {
   GtkTreeIter iter;
@@ -547,7 +547,7 @@ emerillion_sidebar_remove_page (EmerillionSidebar *sidebar,
   gboolean valid;
   gint index;
 
-  g_return_if_fail (EMERILLION_IS_SIDEBAR (sidebar));
+  g_return_if_fail (EMERILLON_IS_SIDEBAR (sidebar));
   g_return_if_fail (GTK_IS_WIDGET (main_widget));
 
   valid = gtk_tree_model_get_iter_first (sidebar->priv->page_model, &iter);
@@ -585,18 +585,18 @@ emerillion_sidebar_remove_page (EmerillionSidebar *sidebar,
 }
 
 gint
-emerillion_sidebar_get_n_pages (EmerillionSidebar *sidebar)
+emerillon_sidebar_get_n_pages (EmerillonSidebar *sidebar)
 {
-  g_return_val_if_fail (EMERILLION_IS_SIDEBAR (sidebar), TRUE);
+  g_return_val_if_fail (EMERILLON_IS_SIDEBAR (sidebar), TRUE);
 
   return gtk_tree_model_iter_n_children (
       GTK_TREE_MODEL (sidebar->priv->page_model), NULL);
 }
 
 gboolean
-emerillion_sidebar_is_empty (EmerillionSidebar *sidebar)
+emerillon_sidebar_is_empty (EmerillonSidebar *sidebar)
 {
-  g_return_val_if_fail (EMERILLION_IS_SIDEBAR (sidebar), TRUE);
+  g_return_val_if_fail (EMERILLON_IS_SIDEBAR (sidebar), TRUE);
 
   return gtk_tree_model_iter_n_children (
       GTK_TREE_MODEL (sidebar->priv->page_model), NULL) == 0;

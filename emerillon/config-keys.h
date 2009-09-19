@@ -16,13 +16,13 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
 
-#ifndef __EMERILLION_CONFIG_KEYS_H__
-#define __EMERILLION_CONFIG_KEYS_H__
+#ifndef __EMERILLON_CONFIG_KEYS_H__
+#define __EMERILLON_CONFIG_KEYS_H__
 
-#define EMERILLION_CONF_DIR                     "/apps/emerillion"
+#define EMERILLON_CONF_DIR                     "/apps/emerillon"
 
-#define EMERILLION_CONF_UI_TOOLBAR              "/apps/emerillion/ui/toolbar"
-#define EMERILLION_CONF_UI_STATUSBAR            "/apps/emerillion/ui/statusbar"
-#define EMERILLION_CONF_UI_SIDEBAR              "/apps/emerillion/ui/sidebar"
+#define EMERILLON_CONF_UI_TOOLBAR              "/apps/emerillon/ui/toolbar"
+#define EMERILLON_CONF_UI_STATUSBAR            "/apps/emerillon/ui/statusbar"
+#define EMERILLON_CONF_UI_SIDEBAR              "/apps/emerillon/ui/sidebar"
 
-#endif /* __EMERILLION_CONFIG_KEYS_H__ */
+#endif /* __EMERILLON_CONFIG_KEYS_H__ */

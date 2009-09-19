@@ -1,11 +1,11 @@
 @INTLTOOL_SCHEMAS_RULE@
 
-schemas_in_files = emerillion.schemas.in
+schemas_in_files = emerillon.schemas.in
 schemasdir = $(GCONF_SCHEMA_FILE_DIR)
 schemas_DATA = $(schemas_in_files:.schemas.in=.schemas)
 
-uidir = $(datadir)/emerillion
-UI_FILES = emerillion-ui.xml
+uidir = $(datadir)/emerillon
+UI_FILES = emerillon-ui.xml
 ui_DATA = $(UI_FILES)
 
 install-data-local:

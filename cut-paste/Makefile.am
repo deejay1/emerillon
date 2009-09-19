@@ -6,5 +6,5 @@ libephyspinner_la_SOURCES = \
 
 libephyspinner_la_CFLAGS = \
 	-I$(top_srcdir)/src	\
-	$(EMERILLION_CFLAGS)		\
+	$(EMERILLON_CFLAGS)		\
 	$(WARN_CFLAGS)

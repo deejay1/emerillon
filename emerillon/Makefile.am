@@ -3,23 +3,23 @@ SUBDIRS =
 INCLUDES =								\
 	-I$(top_srcdir)							\
 	-I$(srcdir)							\
-	$(EMERILLION_CFLAGS)						\
+	$(EMERILLON_CFLAGS)						\
 	$(WARN_CFLAGS)							\
 	$(DISABLE_DEPRECATED_CFLAGS)					\
 	-DDATADIR=\""$(datadir)"\"					\
-	-DEMERILLION_DATADIR=\""$(datadir)/emerillion"\"		\
-	-DEMERILLION_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
-	-DEMERILLION_UIDIR=\""$(datadir)/emerillion/ui/"\"
+	-DEMERILLON_DATADIR=\""$(datadir)/emerillon"\"		\
+	-DEMERILLON_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
+	-DEMERILLON_UIDIR=\""$(datadir)/emerillon/ui/"\"
 
-bin_PROGRAMS = emerillion
+bin_PROGRAMS = emerillon
 
-emerillion_LDADD = \
-	$(EMERILLION_LIBS) \
+emerillon_LDADD = \
+	$(EMERILLON_LIBS) \
 	$(top_builddir)/cut-paste/libephyspinner.la
 
 BUILT_SOURCES =
 
-emerillion_SOURCES =	\
+emerillon_SOURCES =	\
 	main.c		\
 	address.c	\
 	address.h	\

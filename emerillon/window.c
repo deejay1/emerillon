@@ -37,14 +37,14 @@
 #include "../cut-paste/ephy-spinner.h"
 #include "sidebar.h"
 
-#define EMERILLION_WINDOW_GET_PRIVATE(object) \
+#define EMERILLON_WINDOW_GET_PRIVATE(object) \
     (G_TYPE_INSTANCE_GET_PRIVATE ((object), \
-        EMERILLION_TYPE_WINDOW, \
-        EmerillionWindowPrivate))
+        EMERILLON_TYPE_WINDOW, \
+        EmerillonWindowPrivate))
 
-G_DEFINE_TYPE (EmerillionWindow, emerillion_window, GTK_TYPE_WINDOW);
+G_DEFINE_TYPE (EmerillonWindow, emerillon_window, GTK_TYPE_WINDOW);
 
-struct _EmerillionWindowPrivate
+struct _EmerillonWindowPrivate
 {
   GtkUIManager *ui_manager;
 
@@ -64,10 +64,10 @@ struct _EmerillionWindowPrivate
   guint tooltip_messase_context_id;
 };
 
-static void     build_ui        (EmerillionWindow *self);
+static void     build_ui        (EmerillonWindow *self);
 
 static gboolean
-set_zoom_for_accuracy (EmerillionWindow *self,
+set_zoom_for_accuracy (EmerillonWindow *self,
                        GeoclueAccuracy *accuracy)
 {
   GeoclueAccuracyLevel accuracy_level;
@@ -113,7 +113,7 @@ position_changed_cb (GeocluePosition *position,
                      double altitude,
                      GeoclueAccuracy *accuracy,
                      GError *error,
-                     EmerillionWindow *self)
+                     EmerillonWindow *self)
 {
   if (error)
     {
@@ -136,19 +136,19 @@ position_changed_cb (GeocluePosition *position,
 }
 
 static void
-emerillion_window_init (EmerillionWindow *self)
+emerillon_window_init (EmerillonWindow *self)
 {
   GdkGeometry geometry;
   GeoclueMaster *master;
   GeoclueMasterClient *client;
   GeocluePosition *position;
 
-  self->priv = EMERILLION_WINDOW_GET_PRIVATE (self);
+  self->priv = EMERILLON_WINDOW_GET_PRIVATE (self);
 
   /* GConf. */
   self->priv->client = gconf_client_get_default ();
 
-  gconf_client_add_dir (self->priv->client, EMERILLION_CONF_DIR,
+  gconf_client_add_dir (self->priv->client, EMERILLON_CONF_DIR,
       GCONF_CLIENT_PRELOAD_RECURSIVE, NULL);
 
   /* Window setup. */
@@ -181,9 +181,9 @@ emerillion_window_init (EmerillionWindow *self)
 }
 
 static void
-emerillion_window_dispose (GObject *object)
+emerillon_window_dispose (GObject *object)
 {
-  EmerillionWindow *self = EMERILLION_WINDOW (object);
+  EmerillonWindow *self = EMERILLON_WINDOW (object);
 
   if (self->priv->main_actions != NULL)
     {
@@ -193,51 +193,51 @@ emerillion_window_dispose (GObject *object)
 
   if (self->priv->client)
     {
-      gconf_client_remove_dir (self->priv->client, EMERILLION_CONF_DIR, NULL);
+      gconf_client_remove_dir (self->priv->client, EMERILLON_CONF_DIR, NULL);
       g_object_unref (self->priv->client);
       self->priv->client = NULL;
     }
 
-  G_OBJECT_CLASS (emerillion_window_parent_class)->dispose (object);
+  G_OBJECT_CLASS (emerillon_window_parent_class)->dispose (object);
 }
 
 static void
-emerillion_window_finalize (GObject *object)
+emerillon_window_finalize (GObject *object)
 {
-  G_OBJECT_CLASS (emerillion_window_parent_class)->finalize (object);
+  G_OBJECT_CLASS (emerillon_window_parent_class)->finalize (object);
 }
 
 static GObject *
-emerillion_window_constructor (GType type,
+emerillon_window_constructor (GType type,
                                guint n_construct_properties,
                                GObjectConstructParam *construct_params)
 {
   GObject *object;
 
-  object = G_OBJECT_CLASS (emerillion_window_parent_class)->constructor (
+  object = G_OBJECT_CLASS (emerillon_window_parent_class)->constructor (
       type, n_construct_properties, construct_params);
 
-  build_ui (EMERILLION_WINDOW (object));
+  build_ui (EMERILLON_WINDOW (object));
 
   return object;
 }
 
 static void
-emerillion_window_class_init (EmerillionWindowClass *klass)
+emerillon_window_class_init (EmerillonWindowClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->constructor = emerillion_window_constructor;
-  object_class->dispose = emerillion_window_dispose;
-  object_class->finalize = emerillion_window_finalize;
+  object_class->constructor = emerillon_window_constructor;
+  object_class->dispose = emerillon_window_dispose;
+  object_class->finalize = emerillon_window_finalize;
 
-  g_type_class_add_private (object_class, sizeof (EmerillionWindowPrivate));
+  g_type_class_add_private (object_class, sizeof (EmerillonWindowPrivate));
 }
 
 GtkWidget *
-emerillion_window_new (void)
+emerillon_window_new (void)
 {
-  return g_object_new (EMERILLION_TYPE_WINDOW, 
+  return g_object_new (EMERILLON_TYPE_WINDOW, 
       "type", GTK_WINDOW_TOPLEVEL,
       NULL);
 }
@@ -256,7 +256,7 @@ address_get_cb (gdouble latitude,
       "state",
       "country"};
 
-  EmerillionWindow *self = userdata;
+  EmerillonWindow *self = userdata;
   GeoclueAccuracyLevel accuracy_level;
   GString *text;
   gint i;
@@ -268,7 +268,7 @@ address_get_cb (gdouble latitude,
       gtk_label_set_text (GTK_LABEL (self->priv->search_page),
           _("Sorry, address not found\n"));
 
-      emerillion_sidebar_set_page (EMERILLION_SIDEBAR (self->priv->sidebar),
+      emerillon_sidebar_set_page (EMERILLON_SIDEBAR (self->priv->sidebar),
           self->priv->search_page);
 
       return;
@@ -296,7 +296,7 @@ address_get_cb (gdouble latitude,
 
   gtk_label_set_text (GTK_LABEL (self->priv->search_page), text->str);
 
-  emerillion_sidebar_set_page (EMERILLION_SIDEBAR (self->priv->sidebar),
+  emerillon_sidebar_set_page (EMERILLON_SIDEBAR (self->priv->sidebar),
       self->priv->search_page);
 
   champlain_view_center_on (self->priv->view, latitude, longitude);
@@ -306,18 +306,18 @@ address_get_cb (gdouble latitude,
 }
 
 static void
-search_address (EmerillionWindow *self)
+search_address (EmerillonWindow *self)
 {
   const gchar *text;
 
   text = gtk_entry_get_text (GTK_ENTRY (self->priv->search_entry));
-  emerillion_address_get (text, address_get_cb, self);
+  emerillon_address_get (text, address_get_cb, self);
 }
 
 static void
 state_changed_cb (GtkWidget *widget,
                   GParamSpec *pspec,
-                  EmerillionWindow *self)
+                  EmerillonWindow *self)
 {
   ChamplainState state;
 
@@ -331,7 +331,7 @@ state_changed_cb (GtkWidget *widget,
 static void
 zoom_changed_cb (GtkWidget *widget,
                  GParamSpec *pspec,
-                 EmerillionWindow *self)
+                 EmerillonWindow *self)
 {
   GtkAction *zoom_in_action;
   GtkAction *zoom_out_action;
@@ -358,14 +358,14 @@ zoom_changed_cb (GtkWidget *widget,
 }
 
 static void
-update_ui_visibility (EmerillionWindow *self)
+update_ui_visibility (EmerillonWindow *self)
 {
   gboolean visible;
   GtkAction *action;
 
   /* Toolbar. */
   visible = gconf_client_get_bool (self->priv->client,
-      EMERILLION_CONF_UI_TOOLBAR, NULL);
+      EMERILLON_CONF_UI_TOOLBAR, NULL);
   action = gtk_ui_manager_get_action (self->priv->ui_manager,
       "/MainMenu/View/ToolbarToggle");
   g_assert (action != NULL);
@@ -374,7 +374,7 @@ update_ui_visibility (EmerillionWindow *self)
 
   /* Statusbar. */
   visible = gconf_client_get_bool (self->priv->client,
-      EMERILLION_CONF_UI_STATUSBAR, NULL);
+      EMERILLON_CONF_UI_STATUSBAR, NULL);
   action = gtk_ui_manager_get_action (self->priv->ui_manager,
       "/MainMenu/View/StatusbarToggle");
   g_assert (action != NULL);
@@ -383,7 +383,7 @@ update_ui_visibility (EmerillionWindow *self)
 
   /* Sidebar. */
   visible = gconf_client_get_bool (self->priv->client,
-      EMERILLION_CONF_UI_SIDEBAR, NULL);
+      EMERILLON_CONF_UI_SIDEBAR, NULL);
   action = gtk_ui_manager_get_action (self->priv->ui_manager,
       "/MainMenu/View/SidebarToggle");
   g_assert (action != NULL);
@@ -396,7 +396,7 @@ update_ui_visibility (EmerillionWindow *self)
 
 static void
 cmd_quit (GtkAction *action,
-          EmerillionWindow *self)
+          EmerillonWindow *self)
 {
   gtk_widget_destroy (GTK_WIDGET (self));
   gtk_main_quit ();
@@ -404,14 +404,14 @@ cmd_quit (GtkAction *action,
 
 static void
 cmd_help (GtkAction *action,
-          EmerillionWindow *self)
+          EmerillonWindow *self)
 {
   g_printerr ("Sorry, help not available\n");
 }
 
 static void
 cmd_about (GtkAction *action,
-           EmerillionWindow *self)
+           EmerillonWindow *self)
 {
   static const char *authors[] = {
       "Marco Barisione <marco@barisione.org>",
@@ -442,7 +442,7 @@ cmd_about (GtkAction *action,
       _(license[2]), "\n", NULL);
 
   gtk_show_about_dialog (GTK_WINDOW (self),
-      "program-name", _("Emerillion"),
+      "program-name", _("Emerillon"),
       "version", VERSION,
       "copyright", "Copyright \xc2\xa9 2008 Marco Barisione\n"
                    "Copyright \xc2\xa9 2009 Novopia Inc.",
@@ -451,7 +451,7 @@ cmd_about (GtkAction *action,
       "documenters", documenters,
       "translator-credits", translators,
       //"website", "http://www.example.com/",
-      //"logo-icon-name", "emerillion",
+      //"logo-icon-name", "emerillon",
       "license", license_translated,
       "wrap-license", TRUE,
       NULL);
@@ -462,7 +462,7 @@ cmd_about (GtkAction *action,
 static void
 cmd_map_change_map (GtkRadioAction *action,
                     GtkRadioAction *current,
-                    EmerillionWindow *self)
+                    EmerillonWindow *self)
 {
   gint value;
   ChamplainMapSourceFactory *factory;
@@ -498,7 +498,7 @@ cmd_map_change_map (GtkRadioAction *action,
 
 static void
 cmd_show_hide_bar (GtkAction *action,
-                   EmerillionWindow *self)
+                   EmerillonWindow *self)
 {
   gboolean visible;
   const gchar *action_name;
@@ -511,17 +511,17 @@ cmd_show_hide_bar (GtkAction *action,
   if (g_ascii_strcasecmp (action_name, "ViewToolbar") == 0)
     {
       target_widget = self->priv->toolbar;
-      target_conf_key = EMERILLION_CONF_UI_TOOLBAR;
+      target_conf_key = EMERILLON_CONF_UI_TOOLBAR;
     }
   else if (g_ascii_strcasecmp (action_name, "ViewStatusbar") == 0)
     {
       target_widget = self->priv->statusbar;
-      target_conf_key = EMERILLION_CONF_UI_STATUSBAR;
+      target_conf_key = EMERILLON_CONF_UI_STATUSBAR;
     }
   else if (g_ascii_strcasecmp (action_name, "ViewSidebar") == 0)
     {
       target_widget = self->priv->sidebar;
-      target_conf_key = EMERILLION_CONF_UI_SIDEBAR;
+      target_conf_key = EMERILLON_CONF_UI_SIDEBAR;
     }
   else
     {
@@ -539,21 +539,21 @@ cmd_show_hide_bar (GtkAction *action,
 
 static void
 cmd_zoom_in (GtkAction *action,
-             EmerillionWindow *self)
+             EmerillonWindow *self)
 {
   champlain_view_zoom_in (self->priv->view);
 }
 
 static void
 cmd_zoom_out (GtkAction *action,
-              EmerillionWindow *self)
+              EmerillonWindow *self)
 {
   champlain_view_zoom_out (self->priv->view);
 }
 
 static void
 search_activate_cb (GtkEntry *entry,
-                    EmerillionWindow *self)
+                    EmerillonWindow *self)
 {
   search_address (self);
 }
@@ -562,14 +562,14 @@ static void
 search_icon_activate_cb (GtkEntry *entry,
                          GtkEntryIconPosition position,
                          GdkEvent *event,
-                         EmerillionWindow *self)
+                         EmerillonWindow *self)
 {
   search_address (self);
 }
 
 static void
 menu_item_select_cb (GtkMenuItem *proxy,
-                     EmerillionWindow *self)
+                     EmerillonWindow *self)
 {
   GtkAction *action;
   char *tooltip;
@@ -588,7 +588,7 @@ menu_item_select_cb (GtkMenuItem *proxy,
 
 static void
 menu_item_deselect_cb (GtkMenuItem *proxy,
-                       EmerillionWindow *self)
+                       EmerillonWindow *self)
 {
   gtk_statusbar_pop (GTK_STATUSBAR (self->priv->statusbar),
       self->priv->tooltip_messase_context_id);
@@ -598,7 +598,7 @@ static void
 connect_proxy_cb (GtkUIManager *manager,
                   GtkAction *action,
                   GtkWidget *proxy,
-                  EmerillionWindow *self)
+                  EmerillonWindow *self)
 {
   if (GTK_IS_MENU_ITEM (proxy))
     {
@@ -613,7 +613,7 @@ static void
 disconnect_proxy_cb (GtkUIManager *manager,
                      GtkAction *action,
                      GtkWidget *proxy,
-                     EmerillionWindow *self)
+                     EmerillonWindow *self)
 {
   if (GTK_IS_MENU_ITEM (proxy))
     {
@@ -626,14 +626,14 @@ disconnect_proxy_cb (GtkUIManager *manager,
 
 static void
 sidebar_visibility_changed_cb (GtkWidget *widget,
-                               EmerillionWindow *self)
+                               EmerillonWindow *self)
 {
   GtkAction *action;
   gboolean visible;
 
   visible = GTK_WIDGET_VISIBLE (self->priv->sidebar);
 
-  gconf_client_set_bool (self->priv->client, EMERILLION_CONF_UI_SIDEBAR,
+  gconf_client_set_bool (self->priv->client, EMERILLON_CONF_UI_SIDEBAR,
       visible, NULL);
 
   action = gtk_action_group_get_action (self->priv->main_actions,
@@ -690,7 +690,7 @@ static const GtkRadioActionEntry radio_entries[] = {
 };
 
 static void 
-build_ui (EmerillionWindow *self)
+build_ui (EmerillonWindow *self)
 {
   GtkAction *action;
   GtkWidget *vbox;
@@ -734,7 +734,7 @@ build_ui (EmerillionWindow *self)
       self->priv->main_actions, 0);
 
   if (!gtk_ui_manager_add_ui_from_file (self->priv->ui_manager,
-        EMERILLION_DATADIR "/emerillion-ui.xml", &error))
+        EMERILLON_DATADIR "/emerillon-ui.xml", &error))
     {
       g_warning ("building menus failed: %s", error->message);
       g_error_free (error);
@@ -829,7 +829,7 @@ build_ui (EmerillionWindow *self)
   champlain_view_center_on (self->priv->view, 40, 0);
 
   /* Sidebar. */
-  self->priv->sidebar = emerillion_sidebar_new ();
+  self->priv->sidebar = emerillon_sidebar_new ();
   gtk_widget_set_size_request (self->priv->sidebar, 200, -1);
 
   g_signal_connect_after (self->priv->sidebar, "show",
@@ -845,7 +845,7 @@ build_ui (EmerillionWindow *self)
   /* FIXME: set this based on the sidebar size. */
   gtk_widget_set_size_request (self->priv->search_page, 200, -1);
 
-  emerillion_sidebar_add_page (EMERILLION_SIDEBAR (self->priv->sidebar),
+  emerillon_sidebar_add_page (EMERILLON_SIDEBAR (self->priv->sidebar),
       _("Search results"), self->priv->search_page);
   gtk_widget_show (self->priv->search_page);
 

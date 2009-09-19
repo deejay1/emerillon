@@ -1,19 +1,19 @@
 AC_PREREQ(2.59)
 
-m4_define(emerillion_major_version, 0)
-m4_define(emerillion_minor_version, 1)
-m4_define(emerillion_micro_version, 0)
-m4_define(emerillion_version, emerillion_major_version.emerillion_minor_version.emerillion_micro_version)
+m4_define(emerillon_major_version, 0)
+m4_define(emerillon_minor_version, 1)
+m4_define(emerillon_micro_version, 0)
+m4_define(emerillon_version, emerillon_major_version.emerillon_minor_version.emerillon_micro_version)
 
-AC_INIT(emerillion, emerillion_version)
-AC_CONFIG_SRCDIR(emerillion/main.c)
+AC_INIT(emerillon, emerillon_version)
+AC_CONFIG_SRCDIR(emerillon/main.c)
 
-AC_DEFINE(EMERILLION_MAJOR_VERSION, emerillion_major_version, [Emerillion major version])
-AC_SUBST(EMERILLION_MAJOR_VERSION, emerillion_major_version)
-AC_DEFINE(EMERILLION_MINOR_VERSION, emerillion_minor_version, [Emerillion minor version])
-AC_SUBST(EMERILLION_MINOR_VERSION, emerillion_minor_version)
-AC_DEFINE(EMERILLION_MICRO_VERSION, emerillion_micro_version, [Emerillion micro version])
-AC_SUBST(EMERILLION_MICRO_VERSION, emerillion_micro_version)
+AC_DEFINE(EMERILLON_MAJOR_VERSION, emerillon_major_version, [Emerillon major version])
+AC_SUBST(EMERILLON_MAJOR_VERSION, emerillon_major_version)
+AC_DEFINE(EMERILLON_MINOR_VERSION, emerillon_minor_version, [Emerillon minor version])
+AC_SUBST(EMERILLON_MINOR_VERSION, emerillon_minor_version)
+AC_DEFINE(EMERILLON_MICRO_VERSION, emerillon_micro_version, [Emerillon micro version])
+AC_SUBST(EMERILLON_MICRO_VERSION, emerillon_micro_version)
 
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 no-dist-gzip -Wno-portability])
 
@@ -71,7 +71,7 @@ CHAMPLAIN_REQUIRED=0.4
 CHAMPLAIN_GTK_REQUIRED=0.4
 GEOCLUE_REQUIRED=0.11.1
 
-PKG_CHECK_MODULES(EMERILLION, [
+PKG_CHECK_MODULES(EMERILLON, [
     glib-2.0 >= $GLIB_REQUIRED
     gthread-2.0 >= $GTHREAD_REQUIRED
     gtk+-2.0 >= $GTK_REQUIRED
@@ -82,10 +82,10 @@ PKG_CHECK_MODULES(EMERILLION, [
 ])
 
 # Workaround a bug in geoclue.
-EMERILLION_CFLAGS=`echo $EMERILLION_CFLAGS | sed s,/geoclue,,`
+EMERILLON_CFLAGS=`echo $EMERILLON_CFLAGS | sed s,/geoclue,,`
 
-AC_SUBST(EMERILLION_CFLAGS)
-AC_SUBST(EMERILLION_LIBS)
+AC_SUBST(EMERILLON_CFLAGS)
+AC_SUBST(EMERILLON_LIBS)
 
 ###############
 # Depecations #
@@ -110,7 +110,7 @@ fi
 ################
 AC_CONFIG_FILES([
 Makefile
-emerillion/Makefile
+emerillon/Makefile
 cut-paste/Makefile
 data/Makefile
 po/Makefile.in

@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2008 Marco Barisione <marco@barisione.org>
- * Copyright (C) 2009 Novopia Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -18,37 +17,25 @@
  * Boston, MA 02110-1301, USA.
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
+#ifndef __EMERILLON_ADDRESS_H__
+#define __EMERILLON_ADDRESS_H__
 
 #include <glib.h>
-#include <glib/gi18n.h>
-#include <clutter-gtk/clutter-gtk.h>
+#include <geoclue/geoclue-types.h>
+#include <geoclue/geoclue-accuracy.h>
 
-#include "window.h"
+G_BEGIN_DECLS 
 
-int
-main (int argc,
-      char **argv)
-{
-  GtkWidget *window;
+typedef void (*EmerillonAddressFunc) (gdouble latitude,
+                                       gdouble longitude,
+                                       GHashTable *details,
+                                       GeoclueAccuracy *accuracy,
+                                       gpointer userdata);
 
-  bindtextdomain (PACKAGE, EMERILLION_LOCALEDIR);
-  bind_textdomain_codeset (PACKAGE, "UTF-8");
-  textdomain (PACKAGE);
+void   emerillon_address_get    (const gchar *text,
+                                  EmerillonAddressFunc callback,
+                                  gpointer userdata);
 
-  g_thread_init (NULL);
-  gtk_init (&argc, &argv);
-  gtk_clutter_init (&argc, &argv);
+G_END_DECLS
 
-  g_set_application_name (_("Emerillion Map Viewer"));
-
-  window = emerillion_window_new ();
-  g_signal_connect (window, "delete-event", gtk_main_quit, NULL);
-  gtk_widget_show (window);
-
-  gtk_main ();
-
-  return 0;
-}
+#endif
