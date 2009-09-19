@@ -13,7 +13,9 @@ INCLUDES =								\
 
 bin_PROGRAMS = emerillion
 
-emerillion_LDADD = $(EMERILLION_LIBS)
+emerillion_LDADD = \
+	$(EMERILLION_LIBS) \
+	$(top_builddir)/cut-paste/libephyspinner.la
 
 BUILT_SOURCES =
 
@@ -25,8 +27,6 @@ emerillion_SOURCES =	\
 	window.h	\
 	sidebar.c	\
 	sidebar.h	\
-	ephy-spinner.h	\
-	ephy-spinner.c	\
 	$(BUILT_SOURCES)
 
 CLEANFILES = $(BUILT_SOURCES)

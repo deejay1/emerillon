@@ -34,7 +34,7 @@
 
 #include "address.h"
 #include "config-keys.h"
-#include "ephy-spinner.h"
+#include "../cut-paste/ephy-spinner.h"
 #include "sidebar.h"
 
 #define EMERILLION_WINDOW_GET_PRIVATE(object) \

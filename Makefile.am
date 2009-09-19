@@ -1,4 +1,4 @@
-SUBDIRS = emerillion data po
+SUBDIRS = cut-paste emerillion data po
 
 EXTRA_DIST = 			\
 	autogen.sh		\

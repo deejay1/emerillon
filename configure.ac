@@ -111,6 +111,7 @@ fi
 AC_CONFIG_FILES([
 Makefile
 emerillion/Makefile
+cut-paste/Makefile
 data/Makefile
 po/Makefile.in
 ])
