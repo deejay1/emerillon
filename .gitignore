@@ -6,6 +6,8 @@
 .deps
 
 *.la
+*.lai
+*.so
 *.a
 *.lo
 *.pc
@@ -43,3 +45,5 @@ data/emerillon.schemas
 data/emerillon.desktop
 data/emerillon.desktop.in
 emerillon/emerillon
+
+*.emerillon-plugin

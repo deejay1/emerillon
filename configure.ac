@@ -124,6 +124,7 @@ cut-paste/Makefile
 data/Makefile
 data/emerillon.pc
 data/emerillon.desktop.in
+plugins/Makefile
 po/Makefile.in
 ])
 
