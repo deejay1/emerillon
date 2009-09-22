@@ -49,7 +49,7 @@ main (int argc,
 
   g_set_application_name (_("Emerillon Map Viewer"));
 
-  window = emerillon_window_new ();
+  window = emerillon_window_dup_default ();
   g_signal_connect (window, "delete-event", gtk_main_quit, NULL);
   gtk_widget_show (window);
 

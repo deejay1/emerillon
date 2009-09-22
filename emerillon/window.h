@@ -55,7 +55,7 @@ struct _EmerillonWindowClass
 
 GType         emerillon_window_get_type        (void) G_GNUC_CONST;
 
-GtkWidget *   emerillon_window_new             (void);
+GtkWidget *   emerillon_window_dup_default     (void);
 
 ChamplainView * emerillon_window_get_map_view  (EmerillonWindow *window);
 

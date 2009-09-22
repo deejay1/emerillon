@@ -37,6 +37,8 @@
 #include "../cut-paste/ephy-spinner.h"
 #include "sidebar.h"
 
+static GtkWidget *default_window = NULL;
+
 #define EMERILLON_WINDOW_GET_PRIVATE(object) \
     (G_TYPE_INSTANCE_GET_PRIVATE ((object), \
         EMERILLON_TYPE_WINDOW, \
@@ -214,10 +216,20 @@ emerillon_window_constructor (GType type,
 {
   GObject *object;
 
-  object = G_OBJECT_CLASS (emerillon_window_parent_class)->constructor (
+  if (default_window == NULL)
+    {
+      object = G_OBJECT_CLASS (emerillon_window_parent_class)->constructor (
       type, n_construct_properties, construct_params);
 
-  build_ui (EMERILLON_WINDOW (object));
+      build_ui (EMERILLON_WINDOW (object));
+
+      default_window = GTK_WIDGET (object);
+      g_object_add_weak_pointer (object, (gpointer) &default_window);
+    }
+  else
+    {
+      object = g_object_ref (default_window);
+    }
 
   return object;
 }
@@ -235,9 +247,9 @@ emerillon_window_class_init (EmerillonWindowClass *klass)
 }
 
 GtkWidget *
-emerillon_window_new (void)
+emerillon_window_dup_default (void)
 {
-  return g_object_new (EMERILLON_TYPE_WINDOW, 
+  return g_object_new (EMERILLON_TYPE_WINDOW,
       "type", GTK_WINDOW_TOPLEVEL,
       NULL);
 }
