@@ -29,11 +29,25 @@
 
 G_DEFINE_TYPE (SearchPlugin, search_plugin, ETHOS_TYPE_PLUGIN)
 
+enum {
+  COL_ORDER,
+  COL_SYMBOL,
+  COL_NAME,
+  COL_DISPLAY_NAME,
+  COL_MARKER,
+  COL_LAT,
+  COL_LON,
+  COL_COUNT
+};
+
 struct _SearchPluginPrivate
 {
   GtkWidget *search_entry;
   GtkWidget *search_page;
+  GtkWidget *treeview;
+  GtkTreeModel *model;
   GtkToolItem *search_item;
+
   RestProxy *proxy;
   RestProxyCall *call;
 };
@@ -45,9 +59,14 @@ result_cb (RestProxyCall *call,
            SearchPlugin *plugin)
 {
   const gchar *answer;
+  gchar *symbol, *display_name;
   gint len;
+  gfloat flon, flat;
+  guint i;
   RestXmlParser *parser;
-  RestXmlNode *root, *n, *name;
+  RestXmlNode *root, *n, *name, *country, *lon, *lat;
+  GtkTreeIter iter;
+  SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   answer = rest_proxy_call_get_payload (call);
   len = rest_proxy_call_get_payload_length (call);
@@ -55,12 +74,58 @@ result_cb (RestProxyCall *call,
 
   root = rest_xml_parser_parse_from_data (parser, answer, len);
   n = rest_xml_node_find (root, "geoname");
+  i = 1;
+
   while (n)
     {
       name = rest_xml_node_find (n, "name");
-      if (name)
-        g_print ("City: %s\n", name->content);
+      if (!name)
+        {
+          n = n->next;
+          continue;
+        }
+
+      country = rest_xml_node_find (n, "countryName");
+      if (!country)
+        {
+          n = n->next;
+          continue;
+        }
+
+      lon = rest_xml_node_find (n, "lng");
+      if (!lon)
+        {
+          n = n->next;
+          continue;
+        }
+
+      lat = rest_xml_node_find (n, "lat");
+      if (!lon)
+        {
+          n = n->next;
+          continue;
+        }
+
+      symbol = g_strdup_printf ("%d", i);
+      if (country->content)
+        display_name = g_strdup_printf ("%s\n<small>%s</small>", name->content, country->content);
+      else
+        display_name = g_strdup_printf ("%s\n", name->content);
+
+      gtk_list_store_append (GTK_LIST_STORE (priv->model), &iter);
+      gtk_list_store_set (GTK_LIST_STORE (priv->model), &iter,
+                          COL_ORDER, i,
+                          COL_SYMBOL, symbol,
+                          COL_NAME, name->content,
+                          COL_DISPLAY_NAME, display_name,
+                          COL_LAT, flat,
+                          COL_LON, flon,
+                          -1);
+      g_free (symbol);
+      g_free (display_name);
+
       n = n->next;
+      i++;
     }
 
   rest_xml_node_unref (root);
@@ -78,6 +143,8 @@ search_address (SearchPlugin *plugin)
   query = gtk_entry_get_text (GTK_ENTRY (plugin->priv->search_entry));
   locale = setlocale (LC_MESSAGES, NULL);
   g_utf8_strncpy (lang, locale, 2);
+
+  gtk_list_store_clear (GTK_LIST_STORE (priv->model));
 
   g_print("Searching for %s in %s\n", query, lang);
 
@@ -130,8 +197,11 @@ search_icon_activate_cb (GtkEntry *entry,
 static void
 activated (EthosPlugin *plugin)
 {
-  GtkWidget *window, *toolbar, *sidebar;
+  GtkWidget *window, *toolbar, *sidebar, *scrolled;
   gint count = 0;
+  GtkListStore *store;
+  GtkCellRenderer *cell;
+  GtkTreeViewColumn *column;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   priv->proxy = NULL;
@@ -162,13 +232,64 @@ activated (EthosPlugin *plugin)
       count - 1);
 
   /* Search result sidebar page. */
-  priv->search_page = gtk_label_new (_("Type an address and press the search button."));
+  /*priv->search_page = gtk_label_new (_("Type an address and press the search button."));
   gtk_misc_set_padding (GTK_MISC (priv->search_page), 10, 10);
   gtk_label_set_line_wrap (GTK_LABEL (priv->search_page), TRUE);
   gtk_label_set_single_line_mode (GTK_LABEL (priv->search_page), FALSE);
+  */
+  priv->search_page = gtk_vbox_new (FALSE, 10);
 
   /* FIXME: set this based on the sidebar size. */
   gtk_widget_set_size_request (priv->search_page, 200, -1);
+
+  /* Setup result treeview */
+  store = gtk_list_store_new (COL_COUNT,
+                              G_TYPE_INT,          /* Order */
+                              G_TYPE_STRING,       /* Symbol */
+                              G_TYPE_STRING,       /* Name */
+                              G_TYPE_STRING,       /* Display name */
+                              G_TYPE_POINTER,      /* Marker pointer */
+                              G_TYPE_FLOAT,        /* Latitude */
+                              G_TYPE_FLOAT);       /* Longitude */
+  priv->model = GTK_TREE_MODEL (store);
+
+  priv->treeview = gtk_tree_view_new ();
+  gtk_tree_view_set_model (GTK_TREE_VIEW (priv->treeview), priv->model);
+  gtk_tree_view_set_search_column (GTK_TREE_VIEW (priv->treeview), COL_NAME);
+
+  scrolled = gtk_scrolled_window_new (NULL, NULL);
+  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled),
+      GTK_POLICY_AUTOMATIC,
+      GTK_POLICY_AUTOMATIC);
+  gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled),
+      GTK_SHADOW_IN);
+  gtk_container_add (GTK_CONTAINER (scrolled), priv->treeview);
+  gtk_box_pack_start_defaults (GTK_BOX (priv->search_page), scrolled);
+  gtk_widget_show_all (scrolled);
+
+  cell = gtk_cell_renderer_text_new ();
+  g_object_set (cell,
+                "ellipsize", PANGO_ELLIPSIZE_END,
+                "ellipsize", PANGO_ELLIPSIZE_END,
+                NULL);
+
+  column = gtk_tree_view_column_new_with_attributes (_("No"),
+                                                     cell,
+                                                     "text", COL_SYMBOL,
+                                                     NULL);
+
+  gtk_tree_view_column_set_sort_column_id (column, COL_ORDER);
+  gtk_tree_view_column_set_expand (column, FALSE);
+  gtk_tree_view_append_column (GTK_TREE_VIEW (priv->treeview), column);
+
+  column = gtk_tree_view_column_new_with_attributes (_("Name"),
+                                                     cell,
+                                                     "markup", COL_DISPLAY_NAME,
+                                                     NULL);
+
+  gtk_tree_view_column_set_sort_column_id (column, COL_NAME);
+  gtk_tree_view_column_set_expand (column, FALSE);
+  gtk_tree_view_append_column (GTK_TREE_VIEW (priv->treeview), column);
 
   emerillon_sidebar_add_page (EMERILLON_SIDEBAR (sidebar),
       _("Search results"), priv->search_page);
