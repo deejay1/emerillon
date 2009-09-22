@@ -243,6 +243,26 @@ search_icon_activate_cb (GtkEntry *entry,
 }
 
 static void
+row_selected_cb (GtkTreeSelection *selection,
+                 SearchPlugin *plugin)
+{
+  GtkTreeIter iter;
+  GValue value = {0};
+  ChamplainBaseMarker *marker;
+  SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
+
+  if (!gtk_tree_selection_get_selected (selection, &priv->model, &iter))
+      return;
+
+  gtk_tree_model_get_value (priv->model, &iter, COL_MARKER, &value);
+  marker = g_value_get_object (&value);
+  g_value_unset (&value);
+
+  champlain_selection_layer_select (CHAMPLAIN_SELECTION_LAYER (priv->layer),
+        marker);
+
+}
+static void
 row_activated_cb (GtkTreeView *tree_view,
                   GtkTreePath *path,
                   GtkTreeViewColumn *column,
@@ -276,6 +296,7 @@ activated (EthosPlugin *plugin)
   GtkListStore *store;
   GtkCellRenderer *cell;
   GtkTreeViewColumn *column;
+  GtkTreeSelection *selection;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   priv->proxy = NULL;
@@ -332,6 +353,10 @@ activated (EthosPlugin *plugin)
   g_signal_connect (priv->treeview, "row-activated",
       G_CALLBACK (row_activated_cb),
       plugin);
+  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (priv->treeview));
+  g_signal_connect (selection, "changed",
+      G_CALLBACK (row_selected_cb),
+      plugin);
   gtk_tree_view_set_model (GTK_TREE_VIEW (priv->treeview), priv->model);
   gtk_tree_view_set_search_column (GTK_TREE_VIEW (priv->treeview), COL_NAME);
 
@@ -373,9 +398,11 @@ activated (EthosPlugin *plugin)
   gtk_widget_show (priv->search_page);
 
   /* Setup result layer */
-  priv->layer = champlain_layer_new();
+  priv->layer = champlain_selection_layer_new();
   champlain_view_add_layer (priv->map_view,
       priv->layer);
+  /* FIXME: when ChamplainSelectionLayer grows a selection-changed
+   * signal, connect to it */
   clutter_actor_show (CLUTTER_ACTOR (priv->layer));
 
   g_object_unref (window);
