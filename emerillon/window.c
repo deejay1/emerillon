@@ -32,7 +32,6 @@
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
-#include "address.h"
 #include "config-keys.h"
 #include "../cut-paste/ephy-spinner.h"
 #include "sidebar.h"
@@ -53,8 +52,6 @@ struct _EmerillonWindowPrivate
   GtkWidget *toolbar;
   GtkWidget *statusbar;
   GtkWidget *sidebar;
-  GtkWidget *search_entry;
-  GtkWidget *search_page;
   GtkWidget *throbber;
 
   ChamplainView *view;
@@ -252,78 +249,6 @@ emerillon_window_dup_default (void)
   return g_object_new (EMERILLON_TYPE_WINDOW,
       "type", GTK_WINDOW_TOPLEVEL,
       NULL);
-}
-
-static void
-address_get_cb (gdouble latitude,
-                gdouble longitude,
-                GHashTable *details,
-                GeoclueAccuracy *accuracy,
-                gpointer userdata)
-{
-  static const gchar *address_elements[] = {
-      "address",
-      "city",
-      "zip",
-      "state",
-      "country"};
-
-  EmerillonWindow *self = userdata;
-  GeoclueAccuracyLevel accuracy_level;
-  GString *text;
-  gint i;
-
-  geoclue_accuracy_get_details (accuracy, &accuracy_level, NULL, NULL);
-
-  if (accuracy_level == GEOCLUE_ACCURACY_LEVEL_NONE)
-    {
-      gtk_label_set_text (GTK_LABEL (self->priv->search_page),
-          _("Sorry, address not found\n"));
-
-      emerillon_sidebar_set_page (EMERILLON_SIDEBAR (self->priv->sidebar),
-          self->priv->search_page);
-
-      return;
-    }
-
-  text = g_string_new ("");
-
-  for (i = 0; i < G_N_ELEMENTS (address_elements); i++)
-    {
-      gchar *value;
-
-      value = g_hash_table_lookup (details, address_elements[i]);
-      if (value)
-        {
-          g_string_append (text, value);
-          g_string_append (text, "\n");
-        }
-    }
-
-  if (text->len > 0)
-    /* Remove the last '\n'. */
-    g_string_truncate (text, text->len - 1);
-  else
-    g_string_append (text, "No details available");
-
-  gtk_label_set_text (GTK_LABEL (self->priv->search_page), text->str);
-
-  emerillon_sidebar_set_page (EMERILLON_SIDEBAR (self->priv->sidebar),
-      self->priv->search_page);
-
-  champlain_view_center_on (self->priv->view, latitude, longitude);
-  set_zoom_for_accuracy (self, accuracy);
-
-  g_string_free (text, TRUE);
-}
-
-static void
-search_address (EmerillonWindow *self)
-{
-  const gchar *text;
-
-  text = gtk_entry_get_text (GTK_ENTRY (self->priv->search_entry));
-  emerillon_address_get (text, address_get_cb, self);
 }
 
 static void
@@ -564,22 +489,6 @@ cmd_zoom_out (GtkAction *action,
 }
 
 static void
-search_activate_cb (GtkEntry *entry,
-                    EmerillonWindow *self)
-{
-  search_address (self);
-}
-
-static void
-search_icon_activate_cb (GtkEntry *entry,
-                         GtkEntryIconPosition position,
-                         GdkEvent *event,
-                         EmerillonWindow *self)
-{
-  search_address (self);
-}
-
-static void
 menu_item_select_cb (GtkMenuItem *proxy,
                      EmerillonWindow *self)
 {
@@ -707,7 +616,6 @@ build_ui (EmerillonWindow *self)
   GtkAction *action;
   GtkWidget *vbox;
   GtkWidget *menubar;
-  GtkToolItem *search_item;
   GtkToolItem *throbber;
   GtkWidget *viewport;
   GtkWidget *hpaned;
@@ -776,29 +684,9 @@ build_ui (EmerillonWindow *self)
   self->priv->toolbar = gtk_ui_manager_get_widget (self->priv->ui_manager,
       "/Toolbar");
 
-  self->priv->search_entry = gtk_entry_new ();
-  g_signal_connect (self->priv->search_entry, "activate",
-      G_CALLBACK (search_activate_cb), self);
-  gtk_entry_set_icon_from_stock (GTK_ENTRY (self->priv->search_entry),
-      GTK_ENTRY_ICON_SECONDARY, "gtk-find");
-  gtk_entry_set_icon_activatable (GTK_ENTRY (self->priv->search_entry),
-      GTK_ENTRY_ICON_SECONDARY, TRUE);
-  g_signal_connect (self->priv->search_entry, "icon-press",
-      G_CALLBACK (search_icon_activate_cb), self);
-
-  search_item = gtk_tool_item_new ();
-  gtk_tool_item_set_expand (GTK_TOOL_ITEM (search_item), TRUE);
-  gtk_container_add (GTK_CONTAINER (search_item), self->priv->search_entry);
-  gtk_widget_show (GTK_WIDGET (self->priv->search_entry));
-  gtk_widget_show (GTK_WIDGET (search_item));
-
-  gtk_toolbar_insert (GTK_TOOLBAR (self->priv->toolbar), search_item,
-      -1);
-
   self->priv->throbber = ephy_spinner_new ();
   ephy_spinner_set_size (EPHY_SPINNER (self->priv->throbber),
       GTK_ICON_SIZE_LARGE_TOOLBAR);
-
 
   throbber = gtk_tool_item_new ();
   gtk_container_add (GTK_CONTAINER (throbber), self->priv->throbber);
@@ -848,18 +736,6 @@ build_ui (EmerillonWindow *self)
       G_CALLBACK (sidebar_visibility_changed_cb), self);
   g_signal_connect_after (self->priv->sidebar, "hide",
       G_CALLBACK (sidebar_visibility_changed_cb), self);
-
-  /* Search result sidebar page. */
-  self->priv->search_page = gtk_label_new (_("Type an address and press the search button."));
-  gtk_misc_set_padding (GTK_MISC (self->priv->search_page), 10, 10);
-  gtk_label_set_line_wrap (GTK_LABEL (self->priv->search_page), TRUE);
-  gtk_label_set_single_line_mode (GTK_LABEL (self->priv->search_page), FALSE);
-  /* FIXME: set this based on the sidebar size. */
-  gtk_widget_set_size_request (self->priv->search_page, 200, -1);
-
-  emerillon_sidebar_add_page (EMERILLON_SIDEBAR (self->priv->sidebar),
-      _("Search results"), self->priv->search_page);
-  gtk_widget_show (self->priv->search_page);
 
   /* Horizontal pane. */
   hpaned = gtk_hpaned_new ();

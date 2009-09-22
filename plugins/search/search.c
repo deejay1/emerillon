@@ -17,26 +17,163 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#include "config.h"
 #include "search.h"
 #include "emerillon/emerillon.h"
+
+
+#include <glib/gi18n.h>
+#include <rest/rest-proxy.h>
+#include <rest/rest-proxy-call.h>
+#include <rest/rest-xml-parser.h>
 
 G_DEFINE_TYPE (SearchPlugin, search_plugin, ETHOS_TYPE_PLUGIN)
 
 struct _SearchPluginPrivate
 {
-  GtkWidget *search;
+  GtkWidget *search_entry;
+  GtkWidget *search_page;
+  GtkToolItem *search_item;
 };
+
+static void
+search_address (SearchPlugin *plugin)
+{
+  const gchar *query, *answer;
+  RestProxy *proxy;
+  RestProxyCall *call;
+  RestXmlParser *parser;
+  RestXmlNode *root, *n, *name;
+  gint len;
+  gchar *locale;
+  gchar lang[2];
+  GError *error = NULL;
+
+  query = gtk_entry_get_text (GTK_ENTRY (plugin->priv->search_entry));
+  locale = setlocale (LC_MESSAGES, NULL);
+  g_utf8_strncpy (lang, locale, 2);
+  g_free (locale);
+
+  g_print("Searching for %s in %s\n", query, lang);
+
+  proxy = rest_proxy_new ("http://ws.geonames.org/", FALSE);
+  call = rest_proxy_new_call (proxy);
+
+  rest_proxy_set_user_agent (proxy, "Emerillon/"VERSION);
+
+  rest_proxy_call_set_function (call, "search");
+  rest_proxy_call_set_method (call, "GET");
+  rest_proxy_call_add_params (call,
+      "q", query,
+      "maxRows", "10",
+      "lang", lang,
+      NULL);
+
+
+  if (!rest_proxy_call_sync (call, &error))
+  {
+    g_error ("Cannot make call: %s", error->message);
+    g_object_unref (call);
+    g_object_unref (proxy);
+    return;
+  }
+
+  answer = rest_proxy_call_get_payload (call);
+  len = rest_proxy_call_get_payload_length (call);
+  parser = rest_xml_parser_new ();
+
+  root = rest_xml_parser_parse_from_data (parser, answer, len);
+  n = rest_xml_node_find (root, "geoname");
+  while (n)
+    {
+      name = rest_xml_node_find (n, "name");
+      if (name)
+        g_print ("City: %s\n", name->content);
+      n = n->next;
+    }
+
+  rest_xml_node_unref (root);
+  g_object_unref (call);
+  g_object_unref (proxy);
+}
+
+static void
+search_activate_cb (GtkEntry *entry,
+                    SearchPlugin *plugin)
+{
+  search_address (plugin);
+}
+
+static void
+search_icon_activate_cb (GtkEntry *entry,
+                         GtkEntryIconPosition position,
+                         GdkEvent *event,
+                         SearchPlugin *plugin)
+{
+  search_address (plugin);
+}
 
 static void
 activated (EthosPlugin *plugin)
 {
-  g_print("Activated!\n");
+  GtkWidget *window, *toolbar, *sidebar;
+  gint count = 0;
+  SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
+
+  window = emerillon_window_dup_default ();
+  toolbar = emerillon_window_get_toolbar (EMERILLON_WINDOW (window));
+  sidebar = emerillon_window_get_sidebar (EMERILLON_WINDOW (window));
+
+  /* Setup toolbar */
+  priv->search_entry = gtk_entry_new ();
+  g_signal_connect (priv->search_entry, "activate",
+      G_CALLBACK (search_activate_cb), plugin);
+  gtk_entry_set_icon_from_stock (GTK_ENTRY (priv->search_entry),
+      GTK_ENTRY_ICON_SECONDARY, "gtk-find");
+  gtk_entry_set_icon_activatable (GTK_ENTRY (priv->search_entry),
+      GTK_ENTRY_ICON_SECONDARY, TRUE);
+  g_signal_connect (priv->search_entry, "icon-press",
+      G_CALLBACK (search_icon_activate_cb), plugin);
+
+  priv->search_item = gtk_tool_item_new ();
+  gtk_tool_item_set_expand (GTK_TOOL_ITEM (priv->search_item), TRUE);
+  gtk_container_add (GTK_CONTAINER (priv->search_item), priv->search_entry);
+  gtk_widget_show (GTK_WIDGET (priv->search_entry));
+  gtk_widget_show (GTK_WIDGET (priv->search_item));
+
+  count = gtk_toolbar_get_n_items (GTK_TOOLBAR (toolbar));
+  gtk_toolbar_insert (GTK_TOOLBAR (toolbar), priv->search_item,
+      count - 1);
+
+  /* Search result sidebar page. */
+  priv->search_page = gtk_label_new (_("Type an address and press the search button."));
+  gtk_misc_set_padding (GTK_MISC (priv->search_page), 10, 10);
+  gtk_label_set_line_wrap (GTK_LABEL (priv->search_page), TRUE);
+  gtk_label_set_single_line_mode (GTK_LABEL (priv->search_page), FALSE);
+
+  /* FIXME: set this based on the sidebar size. */
+  gtk_widget_set_size_request (priv->search_page, 200, -1);
+
+  emerillon_sidebar_add_page (EMERILLON_SIDEBAR (sidebar),
+      _("Search results"), priv->search_page);
+  gtk_widget_show (priv->search_page);
+
+  g_object_unref (window);
 }
 
 static void
 deactivated (EthosPlugin *plugin)
 {
-  g_print("Deactivated!\n");
+  GtkWidget *window, *toolbar, *sidebar;
+  SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
+
+  window = emerillon_window_dup_default ();
+  toolbar = emerillon_window_get_toolbar (EMERILLON_WINDOW (window));
+  sidebar = emerillon_window_get_sidebar (EMERILLON_WINDOW (window));
+
+  gtk_container_remove (GTK_CONTAINER (toolbar), GTK_WIDGET (priv->search_item));
+  emerillon_sidebar_remove_page (EMERILLON_SIDEBAR (sidebar), priv->search_page);
+  g_object_unref (window);
 }
 
 static void

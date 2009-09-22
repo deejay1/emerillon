@@ -14,31 +14,31 @@ INCLUDES = \
 AM_LDFLAGS = -avoid-version -module
 
 plugins_LTLIBRARIES = \
-	placemarks/placemarks.la
+	placemarks/libplacemarks.la
 
 plugins_in_files = \
 	placemarks/placemarks.emerillon-plugin.in
 
 # Placemarks plugin
-placemarks_placemarks_la_SOURCES = \
+placemarks_libplacemarks_la_SOURCES = \
 	placemarks/placemarks.h  \
 	placemarks/placemarks.c
 
-placemarks_placemarks_la_LIBADD = $(EMERILLON_LIBS)
+placemarks_libplacemarks_la_LIBADD = $(EMERILLON_LIBS)
 
 # Search plugin
 if ENABLE_SEARCH
 plugins_LTLIBRARIES += \
-	search/search.la
+	search/libsearch.la
 
 plugins_in_files += \
 	search/search.emerillon-plugin.in
 
-search_search_la_SOURCES = \
+search_libsearch_la_SOURCES = \
 	search/search.h  \
 	search/search.c
 
-search_search_la_LIBADD = \
+search_libsearch_la_LIBADD = \
 	$(EMERILLON_LIBS) \
 	$(SEARCH_DEPS_LIBS)
 endif
