@@ -50,6 +50,9 @@ struct _SearchPluginPrivate
 
   RestProxy *proxy;
   RestProxyCall *call;
+
+  ChamplainView *map_view;
+  ChamplainLayer *layer;
 };
 
 static void
@@ -59,13 +62,11 @@ result_cb (RestProxyCall *call,
            SearchPlugin *plugin)
 {
   const gchar *answer;
-  gchar *symbol, *display_name;
   gint len;
-  gfloat flon, flat;
   guint i;
   RestXmlParser *parser;
-  RestXmlNode *root, *n, *name, *country, *lon, *lat;
-  GtkTreeIter iter;
+  RestXmlNode *root, *n;
+  gfloat min_lat, max_lat, min_lon, max_lon;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   answer = rest_proxy_call_get_payload (call);
@@ -76,8 +77,19 @@ result_cb (RestProxyCall *call,
   n = rest_xml_node_find (root, "geoname");
   i = 1;
 
+  min_lat = CHAMPLAIN_MAX_LAT;
+  max_lat = CHAMPLAIN_MIN_LAT;
+  min_lon = CHAMPLAIN_MAX_LONG;
+  max_lon = CHAMPLAIN_MIN_LONG;
+
   while (n)
     {
+      RestXmlNode *name, *country, *lon, *lat;
+      GtkTreeIter iter;
+      ChamplainMarker *marker;
+      gchar *symbol, *display_name;
+      gfloat flon, flat;
+
       name = rest_xml_node_find (n, "name");
       if (!name)
         {
@@ -112,21 +124,50 @@ result_cb (RestProxyCall *call,
       else
         display_name = g_strdup_printf ("%s\n", name->content);
 
+      flon = g_strtod (lon->content, NULL);
+      flat = g_strtod (lat->content, NULL);
+      if (flat > max_lat)
+        max_lat = flat;
+      if (flat < min_lat)
+        min_lat = flat;
+      if (flon > max_lon)
+        max_lon = flon;
+      if (flon < min_lon)
+        min_lon = flon;
+
+      /* Create the marker */
+      marker = CHAMPLAIN_MARKER (champlain_marker_new ());
+      champlain_marker_set_text (marker, symbol);
+      champlain_base_marker_set_position (CHAMPLAIN_BASE_MARKER (marker),
+          flat,
+          flon);
+      clutter_container_add_actor (CLUTTER_CONTAINER (priv->layer),
+          CLUTTER_ACTOR (marker));
+      clutter_actor_show (CLUTTER_ACTOR (marker));
+
+      /* Create the row item */
       gtk_list_store_append (GTK_LIST_STORE (priv->model), &iter);
       gtk_list_store_set (GTK_LIST_STORE (priv->model), &iter,
                           COL_ORDER, i,
                           COL_SYMBOL, symbol,
                           COL_NAME, name->content,
                           COL_DISPLAY_NAME, display_name,
+                          COL_MARKER, marker,
                           COL_LAT, flat,
                           COL_LON, flon,
                           -1);
+
       g_free (symbol);
       g_free (display_name);
 
       n = n->next;
       i++;
     }
+
+  champlain_view_ensure_visible (priv->map_view,
+      min_lat, min_lon,
+      max_lat, max_lon,
+      TRUE);
 
   rest_xml_node_unref (root);
 }
@@ -138,6 +179,7 @@ search_address (SearchPlugin *plugin)
   gchar *locale;
   gchar lang[2];
   GError *error = NULL;
+  GList *children, *l;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   query = gtk_entry_get_text (GTK_ENTRY (plugin->priv->search_entry));
@@ -146,7 +188,13 @@ search_address (SearchPlugin *plugin)
 
   gtk_list_store_clear (GTK_LIST_STORE (priv->model));
 
-  g_print("Searching for %s in %s\n", query, lang);
+  /* Remove markers */
+  children = clutter_container_get_children (CLUTTER_CONTAINER (priv->layer));
+  for (l = children; l != NULL; l = l->next)
+    {
+      champlain_layer_remove_marker (priv->layer, CHAMPLAIN_BASE_MARKER (l->data));
+    }
+  g_list_free (children);
 
   if (priv->proxy == NULL)
     priv->proxy = rest_proxy_new ("http://ws.geonames.org/", FALSE);
@@ -209,6 +257,7 @@ activated (EthosPlugin *plugin)
   window = emerillon_window_dup_default ();
   toolbar = emerillon_window_get_toolbar (EMERILLON_WINDOW (window));
   sidebar = emerillon_window_get_sidebar (EMERILLON_WINDOW (window));
+  priv->map_view = emerillon_window_get_map_view (EMERILLON_WINDOW (window));
 
   /* Setup toolbar */
   priv->search_entry = gtk_entry_new ();
@@ -248,7 +297,7 @@ activated (EthosPlugin *plugin)
                               G_TYPE_STRING,       /* Symbol */
                               G_TYPE_STRING,       /* Name */
                               G_TYPE_STRING,       /* Display name */
-                              G_TYPE_POINTER,      /* Marker pointer */
+                              G_TYPE_OBJECT,       /* Marker pointer */
                               G_TYPE_FLOAT,        /* Latitude */
                               G_TYPE_FLOAT);       /* Longitude */
   priv->model = GTK_TREE_MODEL (store);
@@ -269,7 +318,6 @@ activated (EthosPlugin *plugin)
 
   cell = gtk_cell_renderer_text_new ();
   g_object_set (cell,
-                "ellipsize", PANGO_ELLIPSIZE_END,
                 "ellipsize", PANGO_ELLIPSIZE_END,
                 NULL);
 
@@ -294,6 +342,12 @@ activated (EthosPlugin *plugin)
   emerillon_sidebar_add_page (EMERILLON_SIDEBAR (sidebar),
       _("Search results"), priv->search_page);
   gtk_widget_show (priv->search_page);
+
+  /* Setup result layer */
+  priv->layer = champlain_layer_new();
+  champlain_view_add_layer (priv->map_view,
+      priv->layer);
+  clutter_actor_show (CLUTTER_ACTOR (priv->layer));
 
   g_object_unref (window);
 }
