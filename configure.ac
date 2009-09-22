@@ -123,6 +123,7 @@ emerillon/Makefile
 cut-paste/Makefile
 data/Makefile
 data/emerillon.pc
+data/emerillon.desktop.in
 po/Makefile.in
 ])
 

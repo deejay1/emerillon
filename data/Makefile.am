@@ -20,9 +20,19 @@ if GCONF_SCHEMAS_INSTALL
 	fi
 endif
 
+@INTLTOOL_DESKTOP_RULE@
+
+DESKTOP_IN_FILES= emerillon.desktop.in.in
+DESKTOP_FILES= $(DESKTOP_IN_FILES:.desktop.in.in=.desktop)
+
+desktopdir = $(datadir)/applications
+desktop_DATA = $(DESKTOP_FILES)
+
 EXTRA_DIST =			\
+        $(DESKTOP_IN_FILES)	\
         $(schemas_in_files)	\
-	$(UI_FILES)
+        $(UI_FILES)
 
 DISTCLEANFILES = 		\
-        $(schemas_DATA)	
+        $(schemas_DATA)		\
+        $(DESKTOP_IN_FILES)

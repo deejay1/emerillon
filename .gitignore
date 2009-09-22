@@ -40,4 +40,6 @@ po/POTFILES
 po/stamp-it
 
 data/emerillon.schemas
+data/emerillon.desktop
+data/emerillon.desktop.in
 emerillon/emerillon

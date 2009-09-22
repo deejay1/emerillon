@@ -1,0 +1,10 @@
+[Desktop Entry]
+_Name=Map Viewer
+_Comment=Browse maps
+TryExec=emerillon
+Exec=emerillon %U
+Icon=emerillon
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Utility;Viewer;DataVisualization
