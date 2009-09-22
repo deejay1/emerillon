@@ -243,6 +243,32 @@ search_icon_activate_cb (GtkEntry *entry,
 }
 
 static void
+row_activated_cb (GtkTreeView *tree_view,
+                  GtkTreePath *path,
+                  GtkTreeViewColumn *column,
+                  SearchPlugin *plugin)
+{
+  GtkTreeIter iter;
+  GValue value = {0};
+  gfloat lat, lon;
+  SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
+
+  if (!gtk_tree_model_get_iter (priv->model, &iter, path))
+      return;
+
+  gtk_tree_model_get_value (priv->model, &iter, COL_LAT, &value);
+  lat = g_value_get_float (&value);
+  g_value_unset (&value);
+
+  gtk_tree_model_get_value (priv->model, &iter, COL_LON, &value);
+  lon = g_value_get_float (&value);
+  g_value_unset (&value);
+
+  champlain_view_set_zoom_level (priv->map_view, 12);
+  champlain_view_center_on (priv->map_view, lat, lon);
+}
+
+static void
 activated (EthosPlugin *plugin)
 {
   GtkWidget *window, *toolbar, *sidebar, *scrolled;
@@ -303,6 +329,9 @@ activated (EthosPlugin *plugin)
   priv->model = GTK_TREE_MODEL (store);
 
   priv->treeview = gtk_tree_view_new ();
+  g_signal_connect (priv->treeview, "row-activated",
+      G_CALLBACK (row_activated_cb),
+      plugin);
   gtk_tree_view_set_model (GTK_TREE_VIEW (priv->treeview), priv->model);
   gtk_tree_view_set_search_column (GTK_TREE_VIEW (priv->treeview), COL_NAME);
 
