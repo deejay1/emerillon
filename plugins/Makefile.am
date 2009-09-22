@@ -5,6 +5,7 @@ pluginsdir = $(libdir)/emerillon/plugins
 INCLUDES = \
 	-I$(top_srcdir) 				\
 	$(EMERILLON_CFLAGS) 				\
+	$(SEARCH_DEPS_CFLAGS) 				\
 	$(WARN_CFLAGS)					\
 	-DEMERILLON_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	-DEMERILLON_UIDIR=\""$(datadir)/emerillon/ui/"\" \
@@ -13,17 +14,34 @@ INCLUDES = \
 AM_LDFLAGS = -avoid-version -module
 
 plugins_LTLIBRARIES = \
-	placemarks/libplacemarks.la
+	placemarks/placemarks.la
 
 plugins_in_files = \
 	placemarks/placemarks.emerillon-plugin.in
 
 # Placemarks plugin
-placemarks_libplacemarks_la_SOURCES = \
+placemarks_placemarks_la_SOURCES = \
 	placemarks/placemarks.h  \
 	placemarks/placemarks.c
 
-placemarks_libplacemarks_la_LIBADD = $(EMERILLON_LIBS)
+placemarks_placemarks_la_LIBADD = $(EMERILLON_LIBS)
+
+# Search plugin
+if ENABLE_SEARCH
+plugins_LTLIBRARIES += \
+	search/search.la
+
+plugins_in_files += \
+	search/search.emerillon-plugin.in
+
+search_search_la_SOURCES = \
+	search/search.h  \
+	search/search.c
+
+search_search_la_LIBADD = \
+	$(EMERILLON_LIBS) \
+	$(SEARCH_DEPS_LIBS)
+endif
 
 # Generate plugin info files
 

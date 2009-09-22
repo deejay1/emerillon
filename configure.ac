@@ -90,6 +90,29 @@ PKG_CHECK_MODULES(EMERILLON, [
     ethos-ui-1.0 >= $ETHOS_UI_REQUIRED
 ])
 
+# -----------------------------------------------------------
+# Search plugins dependencies
+# -----------------------------------------------------------
+
+AC_ARG_ENABLE(search,
+  AC_HELP_STRING([--disable-search],[Do not compile the search plugin]),
+    enable_search=$enableval, enable_search=yes )
+
+if test x$enable_search = xyes; then
+  AC_SUBST(SEARCH_DEPS_CFLAGS)
+  AC_SUBST(SEARCH_DEPS_LIBS)
+  PKG_CHECK_MODULES(SEARCH_DEPS,
+    [
+      rest >= 0.6
+    ]
+  )
+
+  AC_DEFINE(ENABLE_SEARCH, [], [Enable search plugin code])
+fi
+
+AM_CONDITIONAL(ENABLE_SEARCH, test "x$enable_search" = "xyes")
+# -----------------------------------------------------------
+
 # Workaround a bug in geoclue.
 EMERILLON_CFLAGS=`echo $EMERILLON_CFLAGS | sed s,/geoclue,,`
 
