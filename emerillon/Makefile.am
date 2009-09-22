@@ -19,6 +19,10 @@ emerillon_LDADD = \
 	$(EMERILLON_LIBS) \
 	$(top_builddir)/cut-paste/libephyspinner.la
 
+emerillon_LDFLAGS = \
+	-export-dynamic		\
+	-Wl
+
 BUILT_SOURCES =
 
 emerillon_SOURCES =	\
@@ -42,7 +46,6 @@ API_H_FILES =			\
 	emerillon.h			\
 	window.h			\
 	sidebar.h
-
 
 dist-hook:
 	cd $(distdir); rm -f $(BUILT_SOURCES)
