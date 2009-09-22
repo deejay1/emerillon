@@ -5,6 +5,11 @@
 *.o
 .deps
 
+*.la
+*.a
+*.lo
+*.pc
+
 Makefile
 Makefile.in
 
@@ -34,5 +39,5 @@ po/.intltool-merge-cache
 po/POTFILES
 po/stamp-it
 
-data/emerillion.schemas
-emerillion/emerillion
+data/emerillon.schemas
+emerillon/emerillon
