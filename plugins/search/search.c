@@ -167,7 +167,7 @@ result_cb (RestProxyCall *call,
   champlain_view_ensure_visible (priv->map_view,
       min_lat, min_lon,
       max_lat, max_lon,
-      TRUE);
+      FALSE);
 
   rest_xml_node_unref (root);
 }
