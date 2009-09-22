@@ -889,3 +889,19 @@ emerillon_window_get_ui_manager (EmerillonWindow *window)
 
   return window->priv->ui_manager;
 }
+
+GtkWidget *
+emerillon_window_get_toolbar (EmerillonWindow *window)
+{
+  g_return_val_if_fail (EMERILLON_IS_WINDOW (window), NULL);
+
+  return window->priv->toolbar;
+}
+
+GtkWidget *
+emerillon_window_get_sidebar (EmerillonWindow *window)
+{
+  g_return_val_if_fail (EMERILLON_IS_WINDOW (window), NULL);
+
+  return window->priv->sidebar;
+}

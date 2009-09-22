@@ -61,6 +61,10 @@ ChamplainView * emerillon_window_get_map_view  (EmerillonWindow *window);
 
 GtkUIManager * emerillon_window_get_ui_manager (EmerillonWindow *window);
 
+GtkWidget *    emerillon_window_get_toolbar    (EmerillonWindow *window);
+
+GtkWidget *    emerillon_window_get_sidebar    (EmerillonWindow *window);
+
 G_END_DECLS
 
 #endif
