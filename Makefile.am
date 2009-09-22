@@ -16,7 +16,7 @@ DISTCHECK_CONFIGURE_FLAGS =		\
 
 .PHONY: ChangeLog
 ChangeLog: Makefile.am
-	git-log --pretty=short > ChangeLog
+	git log --pretty=short > ChangeLog
 
 dist: ChangeLog
 

@@ -3,7 +3,7 @@ AUTOMAKE_OPTIONS = subdir-objects
 pluginsdir = $(libdir)/emerillon/plugins
 
 INCLUDES = \
-	-I$(top_srcdir)/src 				\
+	-I$(top_srcdir) 				\
 	$(EMERILLON_CFLAGS) 				\
 	$(WARN_CFLAGS)					\
 	-DEMERILLON_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \

@@ -4,3 +4,5 @@
 emerillon/main.c
 emerillon/sidebar.c
 emerillon/window.c
+data/emerillon.schemas.in
+data/emerillon.desktop.in.in

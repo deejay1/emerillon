@@ -29,6 +29,8 @@ emerillon_SOURCES =	\
 	window.h	\
 	sidebar.c	\
 	sidebar.h	\
+	config-keys.h	\
+	emerillon.h	\
 	$(BUILT_SOURCES)
 
 CLEANFILES = $(BUILT_SOURCES)
