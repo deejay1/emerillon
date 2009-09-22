@@ -34,49 +34,20 @@ struct _SearchPluginPrivate
   GtkWidget *search_entry;
   GtkWidget *search_page;
   GtkToolItem *search_item;
+  RestProxy *proxy;
+  RestProxyCall *call;
 };
 
 static void
-search_address (SearchPlugin *plugin)
+result_cb (RestProxyCall *call,
+           GError *error,
+           GObject *weak_object,
+           SearchPlugin *plugin)
 {
-  const gchar *query, *answer;
-  RestProxy *proxy;
-  RestProxyCall *call;
+  const gchar *answer;
+  gint len;
   RestXmlParser *parser;
   RestXmlNode *root, *n, *name;
-  gint len;
-  gchar *locale;
-  gchar lang[2];
-  GError *error = NULL;
-
-  query = gtk_entry_get_text (GTK_ENTRY (plugin->priv->search_entry));
-  locale = setlocale (LC_MESSAGES, NULL);
-  g_utf8_strncpy (lang, locale, 2);
-  g_free (locale);
-
-  g_print("Searching for %s in %s\n", query, lang);
-
-  proxy = rest_proxy_new ("http://ws.geonames.org/", FALSE);
-  call = rest_proxy_new_call (proxy);
-
-  rest_proxy_set_user_agent (proxy, "Emerillon/"VERSION);
-
-  rest_proxy_call_set_function (call, "search");
-  rest_proxy_call_set_method (call, "GET");
-  rest_proxy_call_add_params (call,
-      "q", query,
-      "maxRows", "10",
-      "lang", lang,
-      NULL);
-
-
-  if (!rest_proxy_call_sync (call, &error))
-  {
-    g_error ("Cannot make call: %s", error->message);
-    g_object_unref (call);
-    g_object_unref (proxy);
-    return;
-  }
 
   answer = rest_proxy_call_get_payload (call);
   len = rest_proxy_call_get_payload_length (call);
@@ -93,8 +64,51 @@ search_address (SearchPlugin *plugin)
     }
 
   rest_xml_node_unref (root);
-  g_object_unref (call);
-  g_object_unref (proxy);
+}
+
+static void
+search_address (SearchPlugin *plugin)
+{
+  const gchar *query;
+  gchar *locale;
+  gchar lang[2];
+  GError *error = NULL;
+  SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
+
+  query = gtk_entry_get_text (GTK_ENTRY (plugin->priv->search_entry));
+  locale = setlocale (LC_MESSAGES, NULL);
+  g_utf8_strncpy (lang, locale, 2);
+
+  g_print("Searching for %s in %s\n", query, lang);
+
+  if (priv->proxy == NULL)
+    priv->proxy = rest_proxy_new ("http://ws.geonames.org/", FALSE);
+
+  /* Cancel previous call */
+  if (priv->call)
+    g_object_unref (priv->call);
+  priv->call = rest_proxy_new_call (priv->proxy);
+
+  rest_proxy_set_user_agent (priv->proxy, "Emerillon/"VERSION);
+
+  rest_proxy_call_set_function (priv->call, "search");
+  rest_proxy_call_set_method (priv->call, "GET");
+  rest_proxy_call_add_params (priv->call,
+      "q", query,
+      "maxRows", "10",
+      "lang", lang,
+      NULL);
+
+
+  if (!rest_proxy_call_async (priv->call,
+        (RestProxyCallAsyncCallback) result_cb,
+        G_OBJECT (priv->proxy),
+        plugin,
+        &error))
+    {
+      g_error ("Cannot make call: %s", error->message);
+      g_error_free (error);
+    }
 }
 
 static void
@@ -120,6 +134,8 @@ activated (EthosPlugin *plugin)
   gint count = 0;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
+  priv->proxy = NULL;
+  priv->call = NULL;
   window = emerillon_window_dup_default ();
   toolbar = emerillon_window_get_toolbar (EMERILLON_WINDOW (window));
   sidebar = emerillon_window_get_sidebar (EMERILLON_WINDOW (window));
@@ -166,6 +182,18 @@ deactivated (EthosPlugin *plugin)
 {
   GtkWidget *window, *toolbar, *sidebar;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
+
+  if (priv->proxy)
+    {
+      g_object_unref (priv->proxy);
+      priv->proxy = NULL;
+    }
+
+  if (priv->call)
+    {
+      g_object_unref (priv->call);
+      priv->call = NULL;
+    }
 
   window = emerillon_window_dup_default ();
   toolbar = emerillon_window_get_toolbar (EMERILLON_WINDOW (window));
