@@ -8,7 +8,8 @@ INCLUDES =								\
 	$(DISABLE_DEPRECATED_CFLAGS)					\
 	-DEMERILLON_COMPILATION						\
 	-DDATADIR=\""$(datadir)"\"					\
-	-DEMERILLON_DATADIR=\""$(datadir)/emerillon"\"		\
+	-DEMERILLON_DATADIR=\""$(datadir)/emerillon"\"			\
+	-DEMERILLON_PLUGINDIR=\""$(libdir)/emerillon/plugins"\"		\
 	-DEMERILLON_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
 	-DEMERILLON_UIDIR=\""$(datadir)/emerillon/ui/"\"
 

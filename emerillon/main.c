@@ -25,6 +25,7 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <clutter-gtk/clutter-gtk.h>
+#include <ethos/ethos.h>
 
 #include "window.h"
 
@@ -33,6 +34,10 @@ main (int argc,
       char **argv)
 {
   GtkWidget *window;
+  EthosManager *manager;
+  gchar *plugin_dirs[3] = {"~/.local/emerillon/plugins",
+                           EMERILLON_PLUGINDIR,
+                           NULL };
 
   bindtextdomain (PACKAGE, EMERILLON_LOCALEDIR);
   bind_textdomain_codeset (PACKAGE, "UTF-8");
@@ -47,6 +52,13 @@ main (int argc,
   window = emerillon_window_new ();
   g_signal_connect (window, "delete-event", gtk_main_quit, NULL);
   gtk_widget_show (window);
+
+  /* Setup the plugin infrastructure */
+  manager = ethos_manager_new ();
+  ethos_manager_set_app_name (manager, "Emerillon");
+  ethos_manager_set_plugin_dirs (manager, (gchar **)plugin_dirs);
+
+  ethos_manager_initialize (manager);
 
   gtk_main ();
 
