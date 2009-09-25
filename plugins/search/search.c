@@ -320,7 +320,9 @@ row_activated_cb (GtkTreeView *tree_view,
   lon = g_value_get_float (&value);
   g_value_unset (&value);
 
-  champlain_view_set_zoom_level (priv->map_view, 12);
+  if (champlain_view_get_zoom_level (priv->map_view) < 12)
+    champlain_view_set_zoom_level (priv->map_view, 12);
+
   champlain_view_center_on (priv->map_view, lat, lon);
 }
 
