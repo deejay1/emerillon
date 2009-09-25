@@ -111,7 +111,7 @@ result_cb (RestProxyCall *call,
       RestXmlNode *name, *country, *lon, *lat;
       GtkTreeIter iter;
       ChamplainMarker *marker;
-      gchar *symbol, *display_name;
+      gchar *symbol, *display_name, *escaped_name;
       gfloat flon, flat;
 
       name = rest_xml_node_find (n, "name");
@@ -143,10 +143,11 @@ result_cb (RestProxyCall *call,
         }
 
       symbol = g_strdup_printf ("%d", i);
+      escaped_name = g_markup_escape_text (name->content, -1);
       if (country->content)
-        display_name = g_strdup_printf ("%s\n<small>%s</small>", name->content, country->content);
+        display_name = g_strdup_printf ("%s\n<small>%s</small>", escaped_name, country->content);
       else
-        display_name = g_strdup_printf ("%s\n", name->content);
+        display_name = g_strdup_printf ("%s\n", escaped_name);
 
       flon = g_strtod (lon->content, NULL);
       flat = g_strtod (lat->content, NULL);
