@@ -15,6 +15,8 @@
       <separator/>
       <menuitem action="ViewZoomIn"/>
       <menuitem action="ViewZoomOut"/>
+      <separator/>
+      <menuitem action="ViewPreferences"/>
     </menu>
     <menu action="Help">
       <menuitem action="HelpManual"/>

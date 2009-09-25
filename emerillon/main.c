@@ -28,13 +28,15 @@
 #include <ethos/ethos.h>
 
 #include "window.h"
+#include "private.h"
+
+static EthosManager *manager;
 
 int
 main (int argc,
       char **argv)
 {
   GtkWidget *window;
-  EthosManager *manager;
   gchar *plugin_dirs[3] = {"~/.local/emerillon/plugins",
                            EMERILLON_PLUGINDIR,
                            NULL };
@@ -63,4 +65,10 @@ main (int argc,
   gtk_main ();
 
   return 0;
+}
+
+EthosManager *
+emerillon_get_manager ()
+{
+  return manager;
 }

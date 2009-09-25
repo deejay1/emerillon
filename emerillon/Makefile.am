@@ -27,6 +27,9 @@ BUILT_SOURCES =
 
 emerillon_SOURCES =	\
 	main.c		\
+	preferences.h	\
+	preferences.c	\
+	private.h	\
 	window.c	\
 	window.h	\
 	sidebar.c	\

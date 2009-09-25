@@ -23,6 +23,7 @@
 #endif
 
 #include "window.h"
+#include "preferences.h"
 
 #include <champlain/champlain.h>
 #include <champlain-gtk/champlain-gtk.h>
@@ -489,6 +490,24 @@ cmd_zoom_out (GtkAction *action,
 }
 
 static void
+cmd_preferences (GtkAction *action,
+                 EmerillonWindow *self)
+{
+  GtkWidget *dialog;
+
+  dialog = emerillon_preferences_dup_default ();
+
+  gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (self));
+
+  g_signal_connect_swapped (dialog,
+      "response",
+      G_CALLBACK (gtk_widget_destroy),
+      dialog);
+
+  gtk_widget_show_all (dialog);
+}
+
+static void
 menu_item_select_cb (GtkMenuItem *proxy,
                      EmerillonWindow *self)
 {
@@ -579,6 +598,9 @@ static const GtkActionEntry action_entries[] = {
       { "ViewZoomOut", GTK_STOCK_ZOOM_OUT, N_("Zoom _Out"), "<control>minus",
         N_("Shrink the image"),
         G_CALLBACK (cmd_zoom_out) },
+      { "ViewPreferences", GTK_STOCK_PREFERENCES, N_("_Preferences"), "<control>p",
+        N_("Edit the preferences"),
+        G_CALLBACK (cmd_preferences) },
       { "HelpManual", GTK_STOCK_HELP, N_("_Contents"), "F1",
         N_("Help on this application"),
         G_CALLBACK (cmd_help) },
