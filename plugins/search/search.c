@@ -63,6 +63,7 @@ result_cb (RestProxyCall *call,
 {
   const gchar *answer;
   gint len;
+  gint count = 0;
   guint i;
   RestXmlParser *parser;
   RestXmlNode *root, *n;
@@ -74,6 +75,29 @@ result_cb (RestProxyCall *call,
   parser = rest_xml_parser_new ();
 
   root = rest_xml_parser_parse_from_data (parser, answer, len);
+
+  /* Extract the result count */
+  n = rest_xml_node_find (root, "totalResultsCount");
+  if (n)
+    count = g_strtod (n->content, NULL);
+
+  if (count == 0)
+    {
+      GtkTreeIter iter;
+
+      gtk_list_store_append (GTK_LIST_STORE (priv->model), &iter);
+      gtk_list_store_set (GTK_LIST_STORE (priv->model), &iter,
+                          COL_ORDER, 0,
+                          COL_SYMBOL, "",
+                          COL_NAME, _("No result found"),
+                          COL_DISPLAY_NAME, _("No result found"),
+                          COL_MARKER, NULL,
+                          -1);
+
+      rest_xml_node_unref (root);
+      return;
+    }
+
   n = rest_xml_node_find (root, "geoname");
   i = 1;
 
@@ -252,16 +276,19 @@ row_selected_cb (GtkTreeSelection *selection,
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   if (!gtk_tree_selection_get_selected (selection, &priv->model, &iter))
-      return;
+    return;
 
   gtk_tree_model_get_value (priv->model, &iter, COL_MARKER, &value);
   marker = g_value_get_object (&value);
   g_value_unset (&value);
 
+  if (!marker)
+    return;
+
   champlain_selection_layer_select (CHAMPLAIN_SELECTION_LAYER (priv->layer),
         marker);
-
 }
+
 static void
 row_activated_cb (GtkTreeView *tree_view,
                   GtkTreePath *path,
@@ -271,10 +298,18 @@ row_activated_cb (GtkTreeView *tree_view,
   GtkTreeIter iter;
   GValue value = {0};
   gfloat lat, lon;
+  ChamplainMarker *marker;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   if (!gtk_tree_model_get_iter (priv->model, &iter, path))
-      return;
+    return;
+
+  gtk_tree_model_get_value (priv->model, &iter, COL_MARKER, &value);
+  marker = g_value_get_object (&value);
+  g_value_unset (&value);
+
+  if (!marker)
+    return;
 
   gtk_tree_model_get_value (priv->model, &iter, COL_LAT, &value);
   lat = g_value_get_float (&value);
@@ -286,6 +321,31 @@ row_activated_cb (GtkTreeView *tree_view,
 
   champlain_view_set_zoom_level (priv->map_view, 12);
   champlain_view_center_on (priv->map_view, lat, lon);
+}
+
+static gboolean
+select_function_cb (GtkTreeSelection *selection,
+                    GtkTreeModel *model,
+                    GtkTreePath *path,
+                    gboolean path_currently_selected,
+                    SearchPlugin *plugin)
+{
+  GtkTreeIter iter;
+  GValue value = {0};
+  ChamplainBaseMarker *marker;
+  SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
+
+  if (path_currently_selected)
+    return TRUE;
+
+  if (!gtk_tree_model_get_iter (priv->model, &iter, path))
+    return FALSE;
+
+  gtk_tree_model_get_value (priv->model, &iter, COL_MARKER, &value);
+  marker = g_value_get_object (&value);
+  g_value_unset (&value);
+
+  return marker != NULL;
 }
 
 static void
@@ -354,6 +414,8 @@ activated (EthosPlugin *plugin)
       G_CALLBACK (row_activated_cb),
       plugin);
   selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (priv->treeview));
+  gtk_tree_selection_set_select_function (selection,
+      (GtkTreeSelectionFunc) select_function_cb, plugin, NULL);
   g_signal_connect (selection, "changed",
       G_CALLBACK (row_selected_cb),
       plugin);
