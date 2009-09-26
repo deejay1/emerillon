@@ -598,7 +598,7 @@ static const GtkActionEntry action_entries[] = {
       { "ViewZoomOut", GTK_STOCK_ZOOM_OUT, N_("Zoom _Out"), "<control>minus",
         N_("Shrink the image"),
         G_CALLBACK (cmd_zoom_out) },
-      { "ViewPreferences", GTK_STOCK_PREFERENCES, N_("_Preferences"), "<control>p",
+      { "EditPreferences", GTK_STOCK_PREFERENCES, N_("_Preferences"), "<control>p",
         N_("Edit the preferences"),
         G_CALLBACK (cmd_preferences) },
       { "HelpManual", GTK_STOCK_HELP, N_("_Contents"), "F1",
@@ -632,7 +632,7 @@ static const GtkRadioActionEntry radio_entries[] = {
         N_("View the cycling map based on mapsforfree.com Relief"), 3 },
 };
 
-static void 
+static void
 build_ui (EmerillonWindow *self)
 {
   GtkAction *action;

@@ -8,6 +8,9 @@
       <separator/>
       <menuitem action="MapQuit"/>
     </menu>
+    <menu action="Edit">
+      <menuitem action="EditPreferences"/>
+    </menu>
     <menu action="View">
       <menuitem name="ToolbarToggle" action="ViewToolbar"/>
       <menuitem name="StatusbarToggle" action="ViewStatusbar"/>
@@ -15,8 +18,6 @@
       <separator/>
       <menuitem action="ViewZoomIn"/>
       <menuitem action="ViewZoomOut"/>
-      <separator/>
-      <menuitem action="ViewPreferences"/>
     </menu>
     <menu action="Help">
       <menuitem action="HelpManual"/>
