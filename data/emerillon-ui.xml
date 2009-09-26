@@ -19,6 +19,7 @@
       <menuitem action="ViewZoomIn"/>
       <menuitem action="ViewZoomOut"/>
     </menu>
+    <placeholder name="PluginsMenu" />
     <menu action="Help">
       <menuitem action="HelpManual"/>
       <separator/>

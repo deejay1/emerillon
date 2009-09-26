@@ -17,26 +17,115 @@
  * Boston, MA 02110-1301, USA.
  */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include "placemarks.h"
+
+#include <glib/gi18n.h>
 #include "emerillon/emerillon.h"
 
 G_DEFINE_TYPE (PlacemarksPlugin, placemarks_plugin, ETHOS_TYPE_PLUGIN)
 
+static void
+add_cb (GtkAction *action,
+        PlacemarksPlugin *plugin)
+{
+
+}
+
+static void
+manage_cb (GtkAction *action,
+           PlacemarksPlugin *plugin)
+{
+
+}
+
+static const gchar * const ui_definition =
+    "<ui>"
+      "<menubar name=\"MainMenu\">"
+        "<placeholder name=\"PluginsMenu\">"
+          "<menu name=\"Placemarks\" action=\"PlacemarksMenu\">"
+            "<menuitem name=\"PlacemarksAddMenu\" action=\"PlacemarksAdd\"/>"
+            "<menuitem name=\"PlacemarksManageMenu\" action=\"PlacemarksManage\"/>"
+            "<separator/>"
+          "</menu>"
+        "</placeholder>"
+      "</menubar>"
+    "</ui>";
+
+static const GtkActionEntry action_entries[] =
+{
+  { "PlacemarksMenu",   NULL, N_("_Placemarks") },
+  { "PlacemarksAdd",
+    GTK_STOCK_ADD,
+    N_("Placemark this location"),
+    NULL,
+    N_("Add current location to your placemarks"),
+    G_CALLBACK (add_cb) },
+  { "PlacemarksManage",
+    GTK_STOCK_EDIT,
+    N_("Organize placemarks..."),
+    NULL,
+    N_("Edit and delete existing placemarks"),
+    G_CALLBACK (manage_cb) }
+};
+
 struct _PlacemarksPluginPrivate
 {
-  GtkWidget *placemarks;
+  EmerillonWindow *window;
+  ChamplainView *map_view;
+
+  GtkActionGroup *action_group;
+  guint ui_id;
 };
 
 static void
 activated (EthosPlugin *plugin)
 {
-  g_print("Activated!\n");
+  PlacemarksPluginPrivate *priv;
+  GtkUIManager *manager;
+  GList *action_groups;
+
+  priv = PLACEMARKS_PLUGIN (plugin)->priv;
+  priv->window = EMERILLON_WINDOW (emerillon_window_dup_default ());
+  priv->map_view = emerillon_window_get_map_view (priv->window);
+
+  manager = emerillon_window_get_ui_manager (priv->window);
+  action_groups = gtk_ui_manager_get_action_groups (manager);
+
+  priv->action_group = gtk_action_group_new ("PlacemarksActions");
+  gtk_action_group_set_translation_domain (priv->action_group,
+                                           GETTEXT_PACKAGE);
+  gtk_action_group_add_actions (priv->action_group,
+                                action_entries,
+                                G_N_ELEMENTS (action_entries),
+                                plugin);
+  gtk_ui_manager_insert_action_group (manager,
+                                      priv->action_group,
+                                      -1);
+
+  priv->ui_id = gtk_ui_manager_add_ui_from_string (manager,
+                                                   ui_definition,
+                                                   -1, NULL);
+  g_warn_if_fail (priv->ui_id != 0);
 }
 
 static void
 deactivated (EthosPlugin *plugin)
 {
-  g_print("Deactivated!\n");
+  GtkUIManager *manager;
+  PlacemarksPluginPrivate *priv;
+
+  priv = PLACEMARKS_PLUGIN (plugin)->priv;
+  manager = emerillon_window_get_ui_manager (priv->window);
+
+  gtk_ui_manager_remove_ui (manager,
+                            priv->ui_id);
+
+  gtk_ui_manager_remove_action_group (manager,
+                                      priv->action_group);
 }
 
 static void
