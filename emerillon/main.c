@@ -27,15 +27,14 @@
 #include <clutter-gtk/clutter-gtk.h>
 #include <ethos/ethos.h>
 
+#include "manager.h"
 #include "window.h"
-#include "private.h"
-
-static EthosManager *manager;
 
 int
 main (int argc,
       char **argv)
 {
+  EthosManager *manager;
   GtkWidget *window;
   gchar *plugin_dirs[3] = {"~/.local/emerillon/plugins",
                            EMERILLON_PLUGINDIR,
@@ -56,7 +55,7 @@ main (int argc,
   gtk_widget_show (window);
 
   /* Setup the plugin infrastructure */
-  manager = ethos_manager_new ();
+  manager = emerillon_manager_dup_default ();
   ethos_manager_set_app_name (manager, "Emerillon");
   ethos_manager_set_plugin_dirs (manager, (gchar **)plugin_dirs);
 
@@ -65,10 +64,4 @@ main (int argc,
   gtk_main ();
 
   return 0;
-}
-
-EthosManager *
-emerillon_get_manager ()
-{
-  return manager;
 }

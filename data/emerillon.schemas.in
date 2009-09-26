@@ -33,5 +33,18 @@
       </locale>
     </schema>
 
+    <schema>
+      <key>/schemas/apps/emerillion/plugins/active-plugins</key>
+      <applyto>/apps/emerillion/plugins/active-plugins</applyto>
+      <owner>emerillion</owner>
+      <type>list</type>
+      <list_type>string</list_type>
+      <default>[search,placemarks]</default>
+      <locale name="C">
+        <short>Active plugins</short>
+        <long>List of active plugins.</long>
+      </locale>
+    </schema>
+
   </schemalist>
 </gconfschemafile>
