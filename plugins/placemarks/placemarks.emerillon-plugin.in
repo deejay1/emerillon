@@ -1,7 +1,7 @@
 [Emerillon Plugin]
 Name=Placemarks
 Module=placemarks
-Description=Helps managing your personal markers
+Description=Remembers your favorite view points
 IAge=1
 Authors=Pierre-Luc Beaudoin <pierre-luc.beaudoin@novopia.com>
 Copyright=Copyright © 2009 Novopia Inc.
