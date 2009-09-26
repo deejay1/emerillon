@@ -24,14 +24,131 @@
 #include "placemarks.h"
 
 #include <glib/gi18n.h>
+#include <gtk/gtk.h>
+
 #include "emerillon/emerillon.h"
 
 G_DEFINE_TYPE (PlacemarksPlugin, placemarks_plugin, ETHOS_TYPE_PLUGIN)
+
+enum {
+  COL_NAME,
+  COL_LAT,
+  COL_LON,
+  COL_ZOOM,
+  COL_COUNT
+};
+
+struct _PlacemarksPluginPrivate
+{
+  EmerillonWindow *window;
+  ChamplainView *map_view;
+
+  GtkActionGroup *action_group;
+  guint ui_id;
+
+  GtkTreeModel *model;
+};
+
+static void
+load_placemarks (PlacemarksPlugin *plugin)
+{
+  gchar *filename = NULL;
+  GKeyFile *file;
+  GError *error = NULL;
+  gchar **groups = NULL;
+  guint i;
+  gsize group_count;
+  PlacemarksPluginPrivate *priv;
+
+  priv = PLACEMARKS_PLUGIN (plugin)->priv;
+  filename = g_build_filename (g_get_user_data_dir (),
+                               "emerillon",
+                               "placemarks.ini",
+                               NULL);
+  g_print ("filename: %s\n", filename);
+
+  file = g_key_file_new ();
+  if (!g_key_file_load_from_file (file,
+                                 filename,
+                                 G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS,
+                                 &error))
+    {
+      g_error ("Error loading %s: %s", filename, error->message);
+      g_error_free (error);
+      g_key_file_free (file);
+      return;
+    }
+  g_free (filename);
+
+  groups = g_key_file_get_groups (file, &group_count);
+  g_print ("Retrieved %d placemarks\n", (gint) group_count);
+
+  for (i = 0; i < group_count; i++)
+    {
+      GtkTreeIter iter;
+      gchar *name;
+      gfloat lat, lon;
+      gint zoom;
+
+      g_print ("Group %s\n", groups[i]);
+
+      name = g_key_file_get_string (file, groups[i], "name", &error);
+      if (error)
+        {
+          g_error ("Error loading name key of group %s: %s", groups[i], error->message);
+          g_error_free (error);
+          error = NULL;
+          name = g_strdup ("A placemark");
+        }
+
+      lat = g_key_file_get_double (file, groups[i], "latitude", &error);
+      if (error)
+        {
+          g_error ("Error loading latitude key of group %s: %s", groups[i], error->message);
+          g_error_free (error);
+          error = NULL;
+          lat = 0.0;
+        }
+
+      lon = g_key_file_get_double (file, groups[i], "longitude", &error);
+      if (error)
+        {
+          g_error ("Error loading longitude key of group %s: %s", groups[i], error->message);
+          g_error_free (error);
+          error = NULL;
+          lon = 0.0;
+        }
+
+      zoom = g_key_file_get_integer (file, groups[i], "zoom", &error);
+      if (error)
+        {
+          g_error ("Error loading longitude key of group %s: %s", groups[i], error->message);
+          g_error_free (error);
+          error = NULL;
+          zoom = 0;
+        }
+
+      gtk_list_store_append (GTK_LIST_STORE (priv->model), &iter);
+      gtk_list_store_set (GTK_LIST_STORE (priv->model), &iter,
+                          COL_NAME, name,
+                          COL_LAT, lat,
+                          COL_LON, lon,
+                          COL_ZOOM, zoom,
+                          -1);
+
+      g_free (name);
+    }
+
+  g_strfreev (groups);
+}
 
 static void
 add_cb (GtkAction *action,
         PlacemarksPlugin *plugin)
 {
+  PlacemarksPluginPrivate *priv;
+
+  priv = PLACEMARKS_PLUGIN (plugin)->priv;
 
 }
 
@@ -39,6 +156,9 @@ static void
 manage_cb (GtkAction *action,
            PlacemarksPlugin *plugin)
 {
+  PlacemarksPluginPrivate *priv;
+
+  priv = PLACEMARKS_PLUGIN (plugin)->priv;
 
 }
 
@@ -58,6 +178,7 @@ static const gchar * const ui_definition =
 static const GtkActionEntry action_entries[] =
 {
   { "PlacemarksMenu",   NULL, N_("_Placemarks") },
+
   { "PlacemarksAdd",
     GTK_STOCK_ADD,
     N_("Placemark this location"),
@@ -72,21 +193,13 @@ static const GtkActionEntry action_entries[] =
     G_CALLBACK (manage_cb) }
 };
 
-struct _PlacemarksPluginPrivate
-{
-  EmerillonWindow *window;
-  ChamplainView *map_view;
-
-  GtkActionGroup *action_group;
-  guint ui_id;
-};
-
 static void
 activated (EthosPlugin *plugin)
 {
   PlacemarksPluginPrivate *priv;
   GtkUIManager *manager;
   GList *action_groups;
+  GtkListStore *store;
 
   priv = PLACEMARKS_PLUGIN (plugin)->priv;
   priv->window = EMERILLON_WINDOW (emerillon_window_dup_default ());
@@ -110,6 +223,15 @@ activated (EthosPlugin *plugin)
                                                    ui_definition,
                                                    -1, NULL);
   g_warn_if_fail (priv->ui_id != 0);
+
+  store = gtk_list_store_new (COL_COUNT,
+                              G_TYPE_STRING,       /* Name */
+                              G_TYPE_FLOAT,        /* Latitude */
+                              G_TYPE_FLOAT,        /* Longitude */
+                              G_TYPE_INT);         /* Zoom level */
+  priv->model = GTK_TREE_MODEL (store);
+
+  load_placemarks (PLACEMARKS_PLUGIN (plugin));
 }
 
 static void
