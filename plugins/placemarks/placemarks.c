@@ -154,12 +154,77 @@ append_menu_item (PlacemarksPlugin *plugin,
                                                    -1, &error);
   if (ui_id == 0)
     {
-      g_error ("Error adding UI %s", error->message);
+      g_warning ("Error adding UI %s", error->message);
       g_error_free (error);
     }
 
   g_free (item_ui_definition);
   return ui_id;
+}
+
+static void
+save_placemarks (PlacemarksPlugin *plugin)
+{
+  PlacemarksPluginPrivate *priv;
+  GKeyFile *file;
+  GtkTreeIter iter;
+  gchar *data, *filename;
+  GError *error = NULL;
+
+  priv = PLACEMARKS_PLUGIN (plugin)->priv;
+  file = g_key_file_new ();
+
+  gtk_tree_model_get_iter_first (priv->model, &iter);
+
+  do
+    {
+      gchar *id;
+      const gchar *name;
+      gfloat lat, lon;
+      gint zoom;
+      GValue value = {0};
+
+      gtk_tree_model_get_value (priv->model, &iter, COL_ID, &value);
+      id = g_value_dup_string (&value);
+      g_value_unset (&value);
+
+      gtk_tree_model_get_value (priv->model, &iter, COL_NAME, &value);
+      name = g_value_get_string (&value);
+      g_key_file_set_string (file, id, "name", name);
+      g_value_unset (&value);
+
+      gtk_tree_model_get_value (priv->model, &iter, COL_LAT, &value);
+      lat = g_value_get_float (&value);
+      g_key_file_set_double (file, id, "latitude", lat);
+      g_value_unset (&value);
+
+      gtk_tree_model_get_value (priv->model, &iter, COL_LON, &value);
+      lon = g_value_get_float (&value);
+      g_key_file_set_double (file, id, "longitude", lon);
+      g_value_unset (&value);
+
+      gtk_tree_model_get_value (priv->model, &iter, COL_ZOOM, &value);
+      zoom = g_value_get_int (&value);
+      g_key_file_set_integer (file, id, "zoom", zoom);
+      g_value_unset (&value);
+
+      g_free (id);
+    }
+  while (gtk_tree_model_iter_next (priv->model, &iter));
+
+  data = g_key_file_to_data (file, NULL, NULL);
+  filename = g_build_filename (g_get_user_data_dir (),
+                               "emerillon",
+                               "placemarks.ini",
+                               NULL);
+
+  if (!g_file_set_contents (filename, data, -1, &error))
+    {
+      g_warning ("Error writing %s: %s", filename, error->message);
+      g_error_free (error);
+    }
+
+  g_key_file_free (file);
 }
 
 static void
@@ -186,6 +251,8 @@ add_placemark (PlacemarksPlugin *plugin,
                       COL_ZOOM, zoom,
                       COL_UI_ID, ui_id,
                       -1);
+
+  priv->placemark_count++;
 }
 
 static void
@@ -211,9 +278,9 @@ load_placemarks (PlacemarksPlugin *plugin)
                                  G_KEY_FILE_KEEP_COMMENTS | G_KEY_FILE_KEEP_TRANSLATIONS,
                                  &error))
     {
-      g_error ("Error loading %s: %s", filename, error->message);
+      g_warning ("Error loading %s: %s", filename, error->message);
       g_error_free (error);
-      g_key_file_free (file);
+      //g_key_file_free (file);
       return;
     }
   g_free (filename);
@@ -230,7 +297,7 @@ load_placemarks (PlacemarksPlugin *plugin)
       name = g_key_file_get_string (file, groups[i], "name", &error);
       if (error)
         {
-          g_error ("Error loading name key of group %s: %s", groups[i], error->message);
+          g_warning ("Error loading name key of group %s: %s", groups[i], error->message);
           g_error_free (error);
           error = NULL;
           name = g_strdup ("A placemark");
@@ -239,7 +306,7 @@ load_placemarks (PlacemarksPlugin *plugin)
       lat = g_key_file_get_double (file, groups[i], "latitude", &error);
       if (error)
         {
-          g_error ("Error loading latitude key of group %s: %s", groups[i], error->message);
+          g_warning ("Error loading latitude key of group %s: %s", groups[i], error->message);
           g_error_free (error);
           error = NULL;
           lat = 0.0;
@@ -248,7 +315,7 @@ load_placemarks (PlacemarksPlugin *plugin)
       lon = g_key_file_get_double (file, groups[i], "longitude", &error);
       if (error)
         {
-          g_error ("Error loading longitude key of group %s: %s", groups[i], error->message);
+          g_warning ("Error loading longitude key of group %s: %s", groups[i], error->message);
           g_error_free (error);
           error = NULL;
           lon = 0.0;
@@ -257,7 +324,7 @@ load_placemarks (PlacemarksPlugin *plugin)
       zoom = g_key_file_get_integer (file, groups[i], "zoom", &error);
       if (error)
         {
-          g_error ("Error loading longitude key of group %s: %s", groups[i], error->message);
+          g_warning ("Error loading longitude key of group %s: %s", groups[i], error->message);
           g_error_free (error);
           error = NULL;
           zoom = 0;
@@ -299,12 +366,13 @@ add_cb (GtkAction *action,
                 "zoom-level", &zoom,
                 NULL);
 
-  id = g_strdup_printf ("Placemark%d", priv->placemark_count + 1),
+  id = g_strdup_printf ("Placemark%d", priv->placemark_count),
 
   add_placemark (plugin, id, name, lat, lon, zoom);
 
   g_free (id);
-  //SAVE
+
+  save_placemarks (plugin);
 }
 
 static void
@@ -446,6 +514,7 @@ placemarks_plugin_init (PlacemarksPlugin *plugin)
   plugin->priv = G_TYPE_INSTANCE_GET_PRIVATE (plugin,
                                               PLACEMARKS_TYPE_PLUGIN,
                                               PlacemarksPluginPrivate);
+  plugin->priv->placemark_count = 0;
 }
 
 EthosPlugin*
