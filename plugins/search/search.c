@@ -491,6 +491,12 @@ deactivated (EthosPlugin *plugin)
       priv->call = NULL;
     }
 
+  if (priv->model)
+    {
+      g_object_unref (priv->model);
+      priv->model = NULL;
+    }
+
   window = emerillon_window_dup_default ();
   toolbar = emerillon_window_get_toolbar (EMERILLON_WINDOW (window));
   sidebar = emerillon_window_get_sidebar (EMERILLON_WINDOW (window));
