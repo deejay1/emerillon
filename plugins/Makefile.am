@@ -21,6 +21,8 @@ plugins_in_files = \
 
 # Placemarks plugin
 placemarks_libplacemarks_la_SOURCES = \
+	placemarks/add-dialog.h  \
+	placemarks/add-dialog.c  \
 	placemarks/placemarks.h  \
 	placemarks/placemarks.c
 
