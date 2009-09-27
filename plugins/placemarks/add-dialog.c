@@ -95,6 +95,20 @@ add_dialog_new (void)
 }
 
 static void
+text_length_cb (GObject *gobject,
+                GParamSpec *pspec,
+                AddDialog *self)
+{
+  guint length;
+
+  g_object_get (gobject, "text-length", &length, NULL);
+
+  gtk_dialog_set_response_sensitive (GTK_DIALOG (self),
+                                     GTK_RESPONSE_OK,
+                                     length > 0);
+}
+
+static void
 build_ui (AddDialog *self)
 {
   GtkWidget *area, *hbox, *label;
@@ -117,6 +131,14 @@ build_ui (AddDialog *self)
   self->priv->entry = gtk_entry_new ();
   gtk_container_add (GTK_CONTAINER (hbox), self->priv->entry);
   gtk_widget_grab_focus (self->priv->entry);
+  gtk_entry_set_activates_default (GTK_ENTRY (self->priv->entry), TRUE);
+  g_signal_connect (self->priv->entry,
+                    "notify::text-length",
+                    G_CALLBACK (text_length_cb),
+                    self);
+  gtk_dialog_set_response_sensitive (GTK_DIALOG (self),
+                                     GTK_RESPONSE_OK,
+                                     FALSE);
   gtk_widget_show_all (hbox);
 
   gtk_container_add (GTK_CONTAINER (area), hbox);
