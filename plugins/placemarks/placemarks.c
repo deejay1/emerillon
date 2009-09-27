@@ -29,18 +29,10 @@
 #include "emerillon/emerillon.h"
 
 #include "add-dialog.h"
+#include "manage-dialog.h"
+#include "placemarks-model.h"
 
 G_DEFINE_TYPE (PlacemarksPlugin, placemarks_plugin, ETHOS_TYPE_PLUGIN)
-
-enum {
-  COL_ID,
-  COL_NAME,
-  COL_LAT,
-  COL_LON,
-  COL_ZOOM,
-  COL_UI_ID,
-  COL_COUNT
-};
 
 struct _PlacemarksPluginPrivate
 {
@@ -48,11 +40,14 @@ struct _PlacemarksPluginPrivate
   ChamplainView *map_view;
 
   GtkActionGroup *action_group;
+  GtkActionGroup *menu_action_group;
   guint ui_id;
   guint placemark_count;
 
   GtkTreeModel *model;
   GtkWidget *menu;
+
+  guint deleted_cb_id;
 };
 
 static void
@@ -144,14 +139,14 @@ append_menu_item (PlacemarksPlugin *plugin,
     "</ui>", NULL);
 
 
-  gtk_action_group_add_actions (priv->action_group,
+  gtk_action_group_add_actions (priv->menu_action_group,
                                 actions,
                                 G_N_ELEMENTS (actions),
                                 plugin);
 
   ui_id = gtk_ui_manager_add_ui_from_string (manager,
-                                                   item_ui_definition,
-                                                   -1, &error);
+                                             item_ui_definition,
+                                             -1, &error);
   if (ui_id == 0)
     {
       g_warning ("Error adding UI %s", error->message);
@@ -162,7 +157,7 @@ append_menu_item (PlacemarksPlugin *plugin,
   return ui_id;
 }
 
-static void
+static gboolean
 save_placemarks (PlacemarksPlugin *plugin)
 {
   PlacemarksPluginPrivate *priv;
@@ -174,43 +169,44 @@ save_placemarks (PlacemarksPlugin *plugin)
   priv = PLACEMARKS_PLUGIN (plugin)->priv;
   file = g_key_file_new ();
 
-  gtk_tree_model_get_iter_first (priv->model, &iter);
-
-  do
+  if (gtk_tree_model_get_iter_first (priv->model, &iter))
     {
-      gchar *id;
-      const gchar *name;
-      gfloat lat, lon;
-      gint zoom;
-      GValue value = {0};
+      do
+        {
+          gchar *id;
+          const gchar *name;
+          gfloat lat, lon;
+          gint zoom;
+          GValue value = {0};
 
-      gtk_tree_model_get_value (priv->model, &iter, COL_ID, &value);
-      id = g_value_dup_string (&value);
-      g_value_unset (&value);
+          gtk_tree_model_get_value (priv->model, &iter, COL_ID, &value);
+          id = g_value_dup_string (&value);
+          g_value_unset (&value);
 
-      gtk_tree_model_get_value (priv->model, &iter, COL_NAME, &value);
-      name = g_value_get_string (&value);
-      g_key_file_set_string (file, id, "name", name);
-      g_value_unset (&value);
+          gtk_tree_model_get_value (priv->model, &iter, COL_NAME, &value);
+          name = g_value_get_string (&value);
+          g_key_file_set_string (file, id, "name", name);
+          g_value_unset (&value);
 
-      gtk_tree_model_get_value (priv->model, &iter, COL_LAT, &value);
-      lat = g_value_get_float (&value);
-      g_key_file_set_double (file, id, "latitude", lat);
-      g_value_unset (&value);
+          gtk_tree_model_get_value (priv->model, &iter, COL_LAT, &value);
+          lat = g_value_get_float (&value);
+          g_key_file_set_double (file, id, "latitude", lat);
+          g_value_unset (&value);
 
-      gtk_tree_model_get_value (priv->model, &iter, COL_LON, &value);
-      lon = g_value_get_float (&value);
-      g_key_file_set_double (file, id, "longitude", lon);
-      g_value_unset (&value);
+          gtk_tree_model_get_value (priv->model, &iter, COL_LON, &value);
+          lon = g_value_get_float (&value);
+          g_key_file_set_double (file, id, "longitude", lon);
+          g_value_unset (&value);
 
-      gtk_tree_model_get_value (priv->model, &iter, COL_ZOOM, &value);
-      zoom = g_value_get_int (&value);
-      g_key_file_set_integer (file, id, "zoom", zoom);
-      g_value_unset (&value);
+          gtk_tree_model_get_value (priv->model, &iter, COL_ZOOM, &value);
+          zoom = g_value_get_int (&value);
+          g_key_file_set_integer (file, id, "zoom", zoom);
+          g_value_unset (&value);
 
-      g_free (id);
+          g_free (id);
+        }
+      while (gtk_tree_model_iter_next (priv->model, &iter));
     }
-  while (gtk_tree_model_iter_next (priv->model, &iter));
 
   data = g_key_file_to_data (file, NULL, NULL);
   filename = g_build_filename (g_get_user_data_dir (),
@@ -225,9 +221,28 @@ save_placemarks (PlacemarksPlugin *plugin)
     }
 
   g_key_file_free (file);
+  return FALSE;
 }
 
 static void
+add_menu (PlacemarksPlugin *plugin,
+          const gchar *id,
+          const gchar *name,
+          GtkTreeIter *iter)
+{
+  gint ui_id;
+  PlacemarksPluginPrivate *priv;
+
+  priv = PLACEMARKS_PLUGIN (plugin)->priv;
+  ui_id = append_menu_item (plugin, id, name);
+
+  gtk_list_store_set (GTK_LIST_STORE (priv->model), iter,
+                      COL_UI_ID, ui_id,
+                      -1);
+
+}
+
+static GtkTreeIter
 add_placemark (PlacemarksPlugin *plugin,
                const gchar *id,
                const gchar *name,
@@ -235,24 +250,104 @@ add_placemark (PlacemarksPlugin *plugin,
                gfloat lon,
                gint zoom)
 {
-  gint ui_id;
+  gchar *lat_str, *lon_str, *zoom_str;
   GtkTreeIter iter;
   PlacemarksPluginPrivate *priv;
 
   priv = PLACEMARKS_PLUGIN (plugin)->priv;
-  ui_id = append_menu_item (plugin, id, name);
+
+  lat_str = g_strdup_printf ("%f", lat);
+  lon_str = g_strdup_printf ("%f", lon);
+  zoom_str = g_strdup_printf ("%d", zoom);
 
   gtk_list_store_append (GTK_LIST_STORE (priv->model), &iter);
   gtk_list_store_set (GTK_LIST_STORE (priv->model), &iter,
                       COL_ID, id,
                       COL_NAME, name,
                       COL_LAT, lat,
+                      COL_LAT_STR, lat_str,
                       COL_LON, lon,
+                      COL_LON_STR, lon_str,
                       COL_ZOOM, zoom,
-                      COL_UI_ID, ui_id,
+                      COL_ZOOM_STR, zoom_str,
                       -1);
 
+  g_free (lat_str);
+  g_free (lon_str);
+  g_free (zoom_str);
+
   priv->placemark_count++;
+  return iter;
+}
+
+static gboolean
+clear_menus (PlacemarksPlugin *plugin)
+{
+  GtkUIManager *manager;
+  PlacemarksPluginPrivate *priv;
+  GtkTreeIter iter;
+
+  priv = PLACEMARKS_PLUGIN (plugin)->priv;
+  manager = emerillon_window_get_ui_manager (priv->window);
+
+  if (gtk_tree_model_get_iter_first (priv->model, &iter))
+    {
+      do
+        {
+          guint ui_id;
+          GValue value = {0};
+
+          gtk_tree_model_get_value (priv->model, &iter, COL_UI_ID, &value);
+          ui_id = g_value_get_uint (&value);
+          gtk_ui_manager_remove_ui (manager, ui_id);
+          g_value_unset (&value);
+        }
+      while (gtk_tree_model_iter_next (priv->model, &iter));
+    }
+
+  gtk_ui_manager_remove_action_group (manager,
+                                      priv->menu_action_group);
+
+  return FALSE;
+}
+
+static gboolean
+load_menus (PlacemarksPlugin *plugin)
+{
+  GtkUIManager *manager;
+  PlacemarksPluginPrivate *priv;
+  GtkTreeIter iter;
+
+  priv = PLACEMARKS_PLUGIN (plugin)->priv;
+  manager = emerillon_window_get_ui_manager (priv->window);
+
+  priv->menu_action_group = gtk_action_group_new ("PlacemarksGoActions");
+  gtk_action_group_set_translation_domain (priv->menu_action_group,
+                                           GETTEXT_PACKAGE);
+  gtk_ui_manager_insert_action_group (manager,
+                                      priv->menu_action_group,
+                                      -1);
+
+  if (gtk_tree_model_get_iter_first (priv->model, &iter))
+    {
+      do
+        {
+          gchar *name;
+          gchar *id;
+
+          gtk_tree_model_get (priv->model, &iter,
+                              COL_ID, &id,
+                              COL_NAME, &name,
+                              -1 );
+
+          add_menu (plugin, id, name, &iter);
+
+          g_free (id);
+          g_free (name);
+        }
+      while (gtk_tree_model_iter_next (priv->model, &iter));
+    }
+  return FALSE;
 }
 
 static void
@@ -349,9 +444,11 @@ add_cb (GtkAction *action,
   const gchar *name;
   gchar *id;
   gint response;
+  GtkTreeIter iter;
 
   priv = PLACEMARKS_PLUGIN (plugin)->priv;
   dialog = add_dialog_new ();
+  gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (priv->window));
 
   response = gtk_dialog_run (GTK_DIALOG (dialog));
   name = add_dialog_get_name (ADD_DIALOG (dialog));
@@ -368,11 +465,12 @@ add_cb (GtkAction *action,
 
   id = g_strdup_printf ("Placemark%d", priv->placemark_count),
 
-  add_placemark (plugin, id, name, lat, lon, zoom);
-
-  g_free (id);
+  iter = add_placemark (plugin, id, name, lat, lon, zoom);
+  add_menu (plugin, id, name, &iter);
 
   save_placemarks (plugin);
+
+  g_free (id);
 }
 
 static void
@@ -380,9 +478,17 @@ manage_cb (GtkAction *action,
            PlacemarksPlugin *plugin)
 {
   PlacemarksPluginPrivate *priv;
+  GtkWidget *dialog;
 
   priv = PLACEMARKS_PLUGIN (plugin)->priv;
+  dialog = manage_dialog_new (priv->model);
 
+  g_signal_connect_swapped (dialog,
+                            "response",
+                            G_CALLBACK (gtk_widget_destroy),
+                            dialog);
+
+  gtk_widget_show (dialog);
 }
 
 static const gchar * const ui_definition =
@@ -416,6 +522,16 @@ static const GtkActionEntry action_entries[] =
     N_("Edit and delete existing placemarks"),
     G_CALLBACK (manage_cb) }
 };
+
+static void
+row_deleted_cb (GtkTreeModel *tree_model,
+                GtkTreePath *path,
+                PlacemarksPlugin *plugin)
+{
+  g_idle_add ((GSourceFunc) save_placemarks, plugin);
+  g_idle_add ((GSourceFunc) clear_menus, plugin);
+  g_idle_add ((GSourceFunc) load_menus, plugin);
+}
 
 static void
 activated (EthosPlugin *plugin)
@@ -455,12 +571,20 @@ activated (EthosPlugin *plugin)
                               G_TYPE_STRING,       /* ID */
                               G_TYPE_STRING,       /* Name */
                               G_TYPE_FLOAT,        /* Latitude */
+                              G_TYPE_STRING,       /* Latitude as a string */
                               G_TYPE_FLOAT,        /* Longitude */
+                              G_TYPE_STRING,       /* Longitude as a string */
                               G_TYPE_INT,          /* Zoom level */
+                              G_TYPE_STRING,       /* Zoom level as a string */
                               G_TYPE_UINT);        /* UI ID */
   priv->model = GTK_TREE_MODEL (store);
+  priv->deleted_cb_id  =  g_signal_connect (priv->model,
+                                            "row-deleted",
+                                            G_CALLBACK (row_deleted_cb),
+                                            plugin);
 
   load_placemarks (PLACEMARKS_PLUGIN (plugin));
+  load_menus (PLACEMARKS_PLUGIN (plugin));
 }
 
 static void
@@ -468,28 +592,13 @@ deactivated (EthosPlugin *plugin)
 {
   GtkUIManager *manager;
   PlacemarksPluginPrivate *priv;
-  GtkTreeIter iter;
 
   priv = PLACEMARKS_PLUGIN (plugin)->priv;
   manager = emerillon_window_get_ui_manager (priv->window);
 
-  gtk_ui_manager_remove_ui (manager,
-                            priv->ui_id);
+  clear_menus (PLACEMARKS_PLUGIN (plugin));
 
-  gtk_tree_model_get_iter_first (priv->model, &iter);
-
-  do
-    {
-      guint ui_id;
-      GValue value = {0};
-
-      gtk_tree_model_get_value (priv->model, &iter, COL_UI_ID, &value);
-      ui_id = g_value_get_uint (&value);
-      gtk_ui_manager_remove_ui (manager, ui_id);
-      g_value_unset (&value);
-    }
-  while (gtk_tree_model_iter_next (priv->model, &iter));
-
+  gtk_ui_manager_remove_ui (manager, priv->ui_id);
   gtk_ui_manager_remove_action_group (manager,
                                       priv->action_group);
 
@@ -515,6 +624,7 @@ placemarks_plugin_init (PlacemarksPlugin *plugin)
                                               PLACEMARKS_TYPE_PLUGIN,
                                               PlacemarksPluginPrivate);
   plugin->priv->placemark_count = 0;
+  plugin->priv->deleted_cb_id = 0;
 }
 
 EthosPlugin*

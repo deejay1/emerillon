@@ -114,12 +114,14 @@ build_ui (AddDialog *self)
   GtkWidget *area, *hbox, *label;
   GtkDialog *dialog = GTK_DIALOG (self);
 
-  gtk_window_set_title (GTK_WINDOW (self), _("New placemark"));
+  gtk_window_set_title (GTK_WINDOW (self), _("New Placemark"));
 
   gtk_dialog_set_has_separator (dialog, FALSE);
   gtk_dialog_add_button (dialog, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
   gtk_dialog_add_button (dialog, GTK_STOCK_ADD, GTK_RESPONSE_OK);
   gtk_dialog_set_default_response (dialog, GTK_RESPONSE_OK);
+  gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+  gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
   area = gtk_dialog_get_content_area (dialog);
   hbox = gtk_hbox_new (FALSE, 10);

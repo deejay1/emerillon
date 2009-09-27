@@ -23,10 +23,15 @@ plugins_in_files = \
 placemarks_libplacemarks_la_SOURCES = \
 	placemarks/add-dialog.h  \
 	placemarks/add-dialog.c  \
+	placemarks/manage-dialog.h  \
+	placemarks/manage-dialog.c  \
+	placemarks/placemarks-model.h  \
 	placemarks/placemarks.h  \
 	placemarks/placemarks.c
 
-placemarks_libplacemarks_la_LIBADD = $(EMERILLON_LIBS)
+placemarks_libplacemarks_la_LIBADD = \
+	$(EMERILLON_LIBS) \
+	$(top_builddir)/cut-paste/libempathycell.la
 
 # Search plugin
 if ENABLE_SEARCH
