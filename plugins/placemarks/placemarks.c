@@ -31,10 +31,12 @@
 G_DEFINE_TYPE (PlacemarksPlugin, placemarks_plugin, ETHOS_TYPE_PLUGIN)
 
 enum {
+  COL_ID,
   COL_NAME,
   COL_LAT,
   COL_LON,
   COL_ZOOM,
+  COL_UI_ID,
   COL_COUNT
 };
 
@@ -47,7 +49,113 @@ struct _PlacemarksPluginPrivate
   guint ui_id;
 
   GtkTreeModel *model;
+  GtkWidget *menu;
 };
+
+static void
+go_cb (GtkAction *action,
+       PlacemarksPlugin *plugin)
+{
+  GtkTreeIter iter;
+  PlacemarksPluginPrivate *priv;
+  const gchar *id;
+  gboolean found = FALSE;
+  GtkTreeIter found_iter;
+  GValue value = {0};
+  gfloat lat, lon;
+  gint zoom;
+
+  priv = PLACEMARKS_PLUGIN (plugin)->priv;
+  id = gtk_action_get_name (action);
+
+  gtk_tree_model_get_iter_first (priv->model, &iter);
+
+  do {
+    const gchar *vid;
+
+    gtk_tree_model_get_value (priv->model, &iter, COL_ID, &value);
+    vid = g_value_get_string (&value);
+    if (strcmp (id, vid) == 0)
+      {
+        found = TRUE;
+        found_iter = iter;
+      }
+
+    g_value_unset (&value);
+  } while (gtk_tree_model_iter_next (priv->model, &iter) && !found);
+
+  if (!found)
+    return;
+
+  gtk_tree_model_get_value (priv->model, &found_iter, COL_LAT, &value);
+  lat = g_value_get_float (&value);
+  g_value_unset (&value);
+
+  gtk_tree_model_get_value (priv->model, &found_iter, COL_LON, &value);
+  lon = g_value_get_float (&value);
+  g_value_unset (&value);
+
+  gtk_tree_model_get_value (priv->model, &found_iter, COL_ZOOM, &value);
+  zoom = g_value_get_int (&value);
+  g_value_unset (&value);
+
+  champlain_view_set_zoom_level (priv->map_view, zoom);
+  champlain_view_center_on (priv->map_view, lat, lon);
+}
+
+static guint
+append_menu_item (PlacemarksPlugin *plugin,
+                  const gchar *id,
+                  const gchar *name)
+{
+  PlacemarksPluginPrivate *priv;
+  GtkUIManager *manager;
+  GError *error = NULL;
+  gchar * item_ui_definition;
+  GtkActionEntry actions[] = {
+    { id,
+      NULL,
+      name,
+      NULL,
+      N_("Go to this placemark"),
+      G_CALLBACK (go_cb) }
+  };
+  guint ui_id;
+
+  priv = PLACEMARKS_PLUGIN (plugin)->priv;
+  manager = emerillon_window_get_ui_manager (priv->window);
+
+  item_ui_definition = g_strconcat (
+    "<ui>"
+      "<menubar name=\"MainMenu\">"
+        "<placeholder name=\"PluginsMenu\">"
+          "<menu name=\"Placemarks\" action=\"PlacemarksMenu\">"
+            "<placeholder name=\"PlacemarksGoItems\" action=\"PlacemarksGoItems\">"
+              "<menuitem action=\"", id, "\"/>"
+            "</placeholder>"
+          "</menu>"
+        "</placeholder>"
+      "</menubar>"
+    "</ui>", NULL);
+
+
+  gtk_action_group_add_actions (priv->action_group,
+                                actions,
+                                G_N_ELEMENTS (actions),
+                                plugin);
+
+  ui_id = gtk_ui_manager_add_ui_from_string (manager,
+                                                   item_ui_definition,
+                                                   -1, &error);
+  if (ui_id == 0)
+    {
+      g_error ("Error adding UI %s", error->message);
+      g_error_free (error);
+    }
+
+  g_free (item_ui_definition);
+  return ui_id;
+}
 
 static void
 load_placemarks (PlacemarksPlugin *plugin)
@@ -65,7 +173,6 @@ load_placemarks (PlacemarksPlugin *plugin)
                                "emerillon",
                                "placemarks.ini",
                                NULL);
-  g_print ("filename: %s\n", filename);
 
   file = g_key_file_new ();
   if (!g_key_file_load_from_file (file,
@@ -81,7 +188,6 @@ load_placemarks (PlacemarksPlugin *plugin)
   g_free (filename);
 
   groups = g_key_file_get_groups (file, &group_count);
-  g_print ("Retrieved %d placemarks\n", (gint) group_count);
 
   for (i = 0; i < group_count; i++)
     {
@@ -89,8 +195,7 @@ load_placemarks (PlacemarksPlugin *plugin)
       gchar *name;
       gfloat lat, lon;
       gint zoom;
-
-      g_print ("Group %s\n", groups[i]);
+      guint ui_id;
 
       name = g_key_file_get_string (file, groups[i], "name", &error);
       if (error)
@@ -128,12 +233,16 @@ load_placemarks (PlacemarksPlugin *plugin)
           zoom = 0;
         }
 
+      ui_id = append_menu_item (plugin, groups[i], name);
+
       gtk_list_store_append (GTK_LIST_STORE (priv->model), &iter);
       gtk_list_store_set (GTK_LIST_STORE (priv->model), &iter,
+                          COL_ID, groups[i],
                           COL_NAME, name,
                           COL_LAT, lat,
                           COL_LON, lon,
                           COL_ZOOM, zoom,
+                          COL_UI_ID, ui_id,
                           -1);
 
       g_free (name);
@@ -170,6 +279,7 @@ static const gchar * const ui_definition =
             "<menuitem name=\"PlacemarksAddMenu\" action=\"PlacemarksAdd\"/>"
             "<menuitem name=\"PlacemarksManageMenu\" action=\"PlacemarksManage\"/>"
             "<separator/>"
+            "<placeholder name=\"PlacemarksGoItems\" action=\"PlacemarksGoItems\"/>"
           "</menu>"
         "</placeholder>"
       "</menubar>"
@@ -198,15 +308,14 @@ activated (EthosPlugin *plugin)
 {
   PlacemarksPluginPrivate *priv;
   GtkUIManager *manager;
-  GList *action_groups;
   GtkListStore *store;
+  GtkWidget *menu_item;
 
   priv = PLACEMARKS_PLUGIN (plugin)->priv;
   priv->window = EMERILLON_WINDOW (emerillon_window_dup_default ());
   priv->map_view = emerillon_window_get_map_view (priv->window);
 
   manager = emerillon_window_get_ui_manager (priv->window);
-  action_groups = gtk_ui_manager_get_action_groups (manager);
 
   priv->action_group = gtk_action_group_new ("PlacemarksActions");
   gtk_action_group_set_translation_domain (priv->action_group,
@@ -224,7 +333,13 @@ activated (EthosPlugin *plugin)
                                                    -1, NULL);
   g_warn_if_fail (priv->ui_id != 0);
 
+  menu_item = gtk_ui_manager_get_widget (manager,
+                                         "/MainMenu/PluginsMenu/Placemarks");
+  priv->menu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (menu_item));
+
   store = gtk_list_store_new (COL_COUNT,
+                              G_TYPE_STRING,       /* ID */
+                              G_TYPE_UINT,         /* UI ID */
                               G_TYPE_STRING,       /* Name */
                               G_TYPE_FLOAT,        /* Latitude */
                               G_TYPE_FLOAT,        /* Longitude */
