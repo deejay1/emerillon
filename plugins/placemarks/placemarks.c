@@ -339,11 +339,11 @@ activated (EthosPlugin *plugin)
 
   store = gtk_list_store_new (COL_COUNT,
                               G_TYPE_STRING,       /* ID */
-                              G_TYPE_UINT,         /* UI ID */
                               G_TYPE_STRING,       /* Name */
                               G_TYPE_FLOAT,        /* Latitude */
                               G_TYPE_FLOAT,        /* Longitude */
-                              G_TYPE_INT);         /* Zoom level */
+                              G_TYPE_INT,          /* Zoom level */
+                              G_TYPE_UINT);        /* UI ID */
   priv->model = GTK_TREE_MODEL (store);
 
   load_placemarks (PLACEMARKS_PLUGIN (plugin));
@@ -354,12 +354,25 @@ deactivated (EthosPlugin *plugin)
 {
   GtkUIManager *manager;
   PlacemarksPluginPrivate *priv;
+  GtkTreeIter iter;
 
   priv = PLACEMARKS_PLUGIN (plugin)->priv;
   manager = emerillon_window_get_ui_manager (priv->window);
 
   gtk_ui_manager_remove_ui (manager,
                             priv->ui_id);
+
+  gtk_tree_model_get_iter_first (priv->model, &iter);
+
+  do {
+    guint ui_id;
+    GValue value = {0};
+
+    gtk_tree_model_get_value (priv->model, &iter, COL_UI_ID, &value);
+    ui_id = g_value_get_uint (&value);
+    gtk_ui_manager_remove_ui (manager, ui_id);
+    g_value_unset (&value);
+  } while (gtk_tree_model_iter_next (priv->model, &iter));
 
   gtk_ui_manager_remove_action_group (manager,
                                       priv->action_group);
