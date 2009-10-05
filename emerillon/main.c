@@ -36,7 +36,7 @@ main (int argc,
 {
   EthosManager *manager;
   GtkWidget *window;
-  gchar *plugin_dirs[3] = {"~/.local/emerillon/plugins",
+  gchar *plugin_dirs[3] = {"~/.local/share/emerillon/plugins",
                            EMERILLON_PLUGINDIR,
                            NULL };
 
