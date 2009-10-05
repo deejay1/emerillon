@@ -157,6 +157,7 @@ save_placemarks (PlacemarksPlugin *plugin)
   GtkTreeIter iter;
   gchar *data, *filename;
   GError *error = NULL;
+  gint i = 0;
 
   priv = PLACEMARKS_PLUGIN (plugin)->priv;
   file = g_key_file_new ();
@@ -170,8 +171,9 @@ save_placemarks (PlacemarksPlugin *plugin)
           gfloat lat, lon;
           gint zoom;
 
+          id = g_strdup_printf ("Placemark%d", i++),
+
           gtk_tree_model_get (priv->model, &iter,
-              COL_ID, &id,
               COL_NAME, &name,
               COL_LAT, &lat,
               COL_LON, &lon,
