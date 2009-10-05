@@ -59,7 +59,6 @@ go_cb (GtkAction *action,
   const gchar *id;
   gboolean found = FALSE;
   GtkTreeIter found_iter;
-  GValue value = {0};
   gfloat lat, lon;
   gint zoom;
 
@@ -70,34 +69,27 @@ go_cb (GtkAction *action,
 
   do
     {
-      const gchar *vid;
+      gchar *vid;
 
-      gtk_tree_model_get_value (priv->model, &iter, COL_ID, &value);
-      vid = g_value_get_string (&value);
+      gtk_tree_model_get (priv->model, &iter, COL_ID, &vid, -1);
       if (strcmp (id, vid) == 0)
         {
           found = TRUE;
           found_iter = iter;
         }
 
-      g_value_unset (&value);
+      g_free (vid);
     }
   while (gtk_tree_model_iter_next (priv->model, &iter) && !found);
 
   if (!found)
     return;
 
-  gtk_tree_model_get_value (priv->model, &found_iter, COL_LAT, &value);
-  lat = g_value_get_float (&value);
-  g_value_unset (&value);
-
-  gtk_tree_model_get_value (priv->model, &found_iter, COL_LON, &value);
-  lon = g_value_get_float (&value);
-  g_value_unset (&value);
-
-  gtk_tree_model_get_value (priv->model, &found_iter, COL_ZOOM, &value);
-  zoom = g_value_get_int (&value);
-  g_value_unset (&value);
+  gtk_tree_model_get (priv->model, &found_iter,
+      COL_LAT, &lat,
+      COL_LON, &lon,
+      COL_ZOOM, &zoom,
+      -1);
 
   champlain_view_set_zoom_level (priv->map_view, zoom);
   champlain_view_center_on (priv->map_view, lat, lon);
@@ -174,36 +166,25 @@ save_placemarks (PlacemarksPlugin *plugin)
       do
         {
           gchar *id;
-          const gchar *name;
+          gchar *name;
           gfloat lat, lon;
           gint zoom;
-          GValue value = {0};
 
-          gtk_tree_model_get_value (priv->model, &iter, COL_ID, &value);
-          id = g_value_dup_string (&value);
-          g_value_unset (&value);
+          gtk_tree_model_get (priv->model, &iter,
+              COL_ID, &id,
+              COL_NAME, &name,
+              COL_LAT, &lat,
+              COL_LON, &lon,
+              COL_ZOOM, &zoom,
+              -1);
 
-          gtk_tree_model_get_value (priv->model, &iter, COL_NAME, &value);
-          name = g_value_get_string (&value);
           g_key_file_set_string (file, id, "name", name);
-          g_value_unset (&value);
-
-          gtk_tree_model_get_value (priv->model, &iter, COL_LAT, &value);
-          lat = g_value_get_float (&value);
           g_key_file_set_double (file, id, "latitude", lat);
-          g_value_unset (&value);
-
-          gtk_tree_model_get_value (priv->model, &iter, COL_LON, &value);
-          lon = g_value_get_float (&value);
           g_key_file_set_double (file, id, "longitude", lon);
-          g_value_unset (&value);
-
-          gtk_tree_model_get_value (priv->model, &iter, COL_ZOOM, &value);
-          zoom = g_value_get_int (&value);
           g_key_file_set_integer (file, id, "zoom", zoom);
-          g_value_unset (&value);
 
           g_free (id);
+          g_free (name);
         }
       while (gtk_tree_model_iter_next (priv->model, &iter));
     }
@@ -295,12 +276,9 @@ clear_menus (PlacemarksPlugin *plugin)
       do
         {
           guint ui_id;
-          GValue value = {0};
 
-          gtk_tree_model_get_value (priv->model, &iter, COL_UI_ID, &value);
-          ui_id = g_value_get_uint (&value);
+          gtk_tree_model_get (priv->model, &iter, COL_UI_ID, &ui_id, -1);
           gtk_ui_manager_remove_ui (manager, ui_id);
-          g_value_unset (&value);
         }
       while (gtk_tree_model_iter_next (priv->model, &iter));
     }
