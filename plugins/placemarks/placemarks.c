@@ -155,7 +155,7 @@ save_placemarks (PlacemarksPlugin *plugin)
   PlacemarksPluginPrivate *priv;
   GKeyFile *file;
   GtkTreeIter iter;
-  gchar *data, *filename;
+  gchar *data, *filename, *path;
   GError *error = NULL;
   gint i = 0;
 
@@ -196,6 +196,11 @@ save_placemarks (PlacemarksPlugin *plugin)
                                "emerillon",
                                "placemarks.ini",
                                NULL);
+
+  path = g_path_get_dirname (filename);
+  if (g_mkdir_with_parents (path, 0700) != 0)
+    g_error ("Error creating %s directory", path);
+  g_free (path);
 
   if (!g_file_set_contents (filename, data, -1, &error))
     {
