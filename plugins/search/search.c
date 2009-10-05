@@ -477,6 +477,7 @@ static void
 deactivated (EthosPlugin *plugin)
 {
   GtkWidget *window, *toolbar, *sidebar;
+  /* ChamplainView *view; */
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   if (priv->proxy)
@@ -500,6 +501,10 @@ deactivated (EthosPlugin *plugin)
   window = emerillon_window_dup_default ();
   toolbar = emerillon_window_get_toolbar (EMERILLON_WINDOW (window));
   sidebar = emerillon_window_get_sidebar (EMERILLON_WINDOW (window));
+  /* view = emerillon_window_get_map_view (EMERILLON_WINDOW (window));
+   * FIXME: when libchamplain grows a remove_layer, use it!
+   */
+
 
   gtk_container_remove (GTK_CONTAINER (toolbar), GTK_WIDGET (priv->search_item));
   emerillon_sidebar_remove_page (EMERILLON_SIDEBAR (sidebar), priv->search_page);
