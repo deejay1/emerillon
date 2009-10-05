@@ -29,6 +29,5 @@
   <toolbar name="Toolbar">
     <toolitem action="ViewZoomIn"/>
     <toolitem action="ViewZoomOut"/>
-    <separator/>
   </toolbar>
 </ui>

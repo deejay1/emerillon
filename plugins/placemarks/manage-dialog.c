@@ -204,6 +204,7 @@ build_ui (ManageDialog *self)
   gtk_dialog_add_button (dialog, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
   gtk_dialog_set_default_response (dialog, GTK_RESPONSE_CLOSE);
   gtk_widget_set_size_request (GTK_WIDGET (dialog), 400, 300);
+  gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
 
   area = gtk_dialog_get_content_area (dialog);
 
