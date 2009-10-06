@@ -21,7 +21,7 @@
 #include "search.h"
 #include "emerillon/emerillon.h"
 
-
+#include <locale.h>
 #include <glib/gi18n.h>
 #include <rest/rest-proxy.h>
 #include <rest/rest-proxy-call.h>
@@ -432,7 +432,7 @@ activated (EthosPlugin *plugin)
   gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled),
       GTK_SHADOW_IN);
   gtk_container_add (GTK_CONTAINER (scrolled), priv->treeview);
-  gtk_box_pack_start_defaults (GTK_BOX (priv->search_page), scrolled);
+  gtk_box_pack_start (GTK_BOX (priv->search_page), scrolled, TRUE, TRUE, 0);
   gtk_widget_show_all (scrolled);
 
   cell = gtk_cell_renderer_text_new ();
