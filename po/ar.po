@@ -1,0 +1,328 @@
+# Arabic translation for emerillon.
+# Copyright (C) 2009 Khaled Hosny
+# This file is distributed under the same license as the emerillon package.
+#
+# Khaled Hosny <khaledhosny@eglug.org>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: emerillon master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-07 23:41+0200\n"
+"PO-Revision-Date: 2009-10-07 23:39+0300\n"
+"Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
+"Language-Team: Arabic <doc@arabeyes.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Virtaal 0.4.0\n"
+
+#: ../emerillon/main.c:51
+msgid "Emerillon Map Viewer"
+msgstr "عارض الخرائط إميرِلّون"
+
+#: ../emerillon/window.c:363
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version.\n"
+msgstr ""
+"هذا البرنامج حر؛ بإمكانك إعادة توزيعه و/أو تعديله تحت شروط الرخصة العمومية "
+"العامة لجنو والتي نشرتها منظمة البرمجيات الحرة؛ سواء الإصدارة 2 من الرخصة أو "
+"أي إصدارة بعدها حسب رغبتك.\n"
+
+#: ../emerillon/window.c:367
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details.\n"
+msgstr ""
+"يوزّع هذا البرنامج على أمل أن يكون مفيدًا لمن يستخدمه دون أدنى مسؤولية؛ ولا "
+"حتى أي ضمان يضمن صلاحية العرض في السوق أو توافقه مع أي استخدام محدد. يمكنك "
+"مراجعة الرخصة العمومية العامة لجنو لمزيد من التفاصيل.\n"
+
+#: ../emerillon/window.c:371
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr ""
+"من المفترض أن تكون قد استلمت نسخة من رخصة جنو العامة مع البرنامج؛ في حال عدم "
+"استلامك لذلك، يمكنك مكاتبة:\n"
+"Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA "
+"02111-1307, USA."
+
+#: ../emerillon/window.c:376
+msgid "translator-credits"
+msgstr ""
+"فريق عربآيز للترجمة http://www.arabeyes.org:\n"
+"خالد حسني\t<khaledhosny@eglug.org>"
+
+#: ../emerillon/window.c:383
+msgid "Emerillon"
+msgstr "إميرِلّون"
+
+#: ../emerillon/window.c:387
+msgid "A map viewer for the GNOME desktop"
+msgstr "عارض خرائط لسطح المكتب جنوم"
+
+#: ../emerillon/window.c:586
+msgid "_Map"
+msgstr "_خريطة"
+
+#: ../emerillon/window.c:587
+msgid "_Edit"
+msgstr "_تحرير"
+
+#: ../emerillon/window.c:588
+msgid "_View"
+msgstr "_عرض"
+
+#: ../emerillon/window.c:589
+msgid "_Tools"
+msgstr "أ_دوات"
+
+#: ../emerillon/window.c:590
+msgid "_Help"
+msgstr "_مساعدة"
+
+#: ../emerillon/window.c:592
+msgid "_Quit"
+msgstr "أ_نهِ"
+
+#: ../emerillon/window.c:593
+msgid "Quit the program"
+msgstr "أنهِ البرنامج"
+
+#: ../emerillon/window.c:595
+msgid "_Zoom In"
+msgstr "_قرّب"
+
+#: ../emerillon/window.c:596
+msgid "Enlarge the image"
+msgstr "كبّر الصورة"
+
+#: ../emerillon/window.c:598
+msgid "Zoom _Out"
+msgstr "ب_عّد"
+
+#: ../emerillon/window.c:599
+msgid "Shrink the image"
+msgstr "صغّر الصورة"
+
+#: ../emerillon/window.c:601
+msgid "_Preferences"
+msgstr "ال_تفضيلات"
+
+#: ../emerillon/window.c:602
+msgid "Edit the preferences"
+msgstr "حرّر التفضيلات"
+
+#: ../emerillon/window.c:604
+msgid "_Contents"
+msgstr "الم_حتويات"
+
+#: ../emerillon/window.c:605
+msgid "Help on this application"
+msgstr "مساعدة حول هذا التّطبيق"
+
+#: ../emerillon/window.c:607
+msgid "_About"
+msgstr "_عن"
+
+#: ../emerillon/window.c:608
+msgid "About this application"
+msgstr "عن هذا التطبيق"
+
+#: ../emerillon/window.c:613
+msgid "_Toolbar"
+msgstr "_شريط الأدوات"
+
+#: ../emerillon/window.c:614
+msgid "Show or hide the toolbar in the current window"
+msgstr "أظهر أو أخف شريط الأدوات في النافذة الحالية"
+
+#: ../emerillon/window.c:616
+msgid "_Statusbar"
+msgstr "شريط ال_حالة"
+
+#: ../emerillon/window.c:617
+msgid "Show or hide the statusbar in the current window"
+msgstr "أظهر أو أخف شريط الحالة في النافذة الحالية"
+
+#: ../emerillon/window.c:619
+msgid "Side _Pane"
+msgstr "اللوح ال_جانبي"
+
+#: ../emerillon/window.c:620
+msgid "Show or hide the side pane in the current window"
+msgstr "أظهر أو أخف اللوح الجانبي في النافذة الحالية "
+
+#: ../emerillon/window.c:625
+msgid "_Street"
+msgstr "_شوارع"
+
+#: ../emerillon/window.c:626
+msgid "View the street map based on OpenStreetMap"
+msgstr "أظهر خريطة الشوارع بناء على OpenStreetMap"
+
+#: ../emerillon/window.c:627
+msgid "_Cycling"
+msgstr "درا_جات"
+
+#: ../emerillon/window.c:628
+msgid "View the cycling map based on OpenCycleMap"
+msgstr "أظهر خريطة الدراجات بناء على OpenCycleMap"
+
+#: ../emerillon/window.c:629
+msgid "_Public Transportation"
+msgstr "ال_نقل العام"
+
+#: ../emerillon/window.c:630
+msgid "View the public transportation map based on Öpnvkarte"
+msgstr "أظهر خريطة وسائل النقل العام بناء على Öpnvkarte"
+
+#: ../emerillon/window.c:631
+msgid "_Terrain"
+msgstr "_تضاريس"
+
+#: ../emerillon/window.c:632
+msgid "View the terrain map based on mapsforfree.com Relief"
+msgstr "أظهر خريطة التضاريس بناء على mapsforfree.com"
+
+#: ../emerillon/window.c:667
+msgid "In"
+msgstr "داخل"
+
+#: ../emerillon/window.c:671
+msgid "Out"
+msgstr "خارج"
+
+#: ../emerillon/preferences.c:118
+msgid "Plugins"
+msgstr "الملحقات"
+
+#: ../emerillon/preferences.c:137
+msgid "Emerillon Preferences"
+msgstr "تفضيلات إميرِلّون"
+
+#: ../plugins/placemarks/placemarks.c:112
+msgid "Go to this placemark"
+msgstr "اذهب إلى هذه العلامة"
+
+#: ../plugins/placemarks/placemarks.c:495
+msgid "_Placemarks"
+msgstr "ال_علامات"
+
+#: ../plugins/placemarks/placemarks.c:499
+msgid "Placemark this location"
+msgstr "علّم هذا المكان"
+
+#: ../plugins/placemarks/placemarks.c:501
+msgid "Add current location to your placemarks"
+msgstr "أضِف المكان الحالي إلى العلامات"
+
+#: ../plugins/placemarks/placemarks.c:505
+msgid "Organize placemarks..."
+msgstr "نظّم العلامات..."
+
+#: ../plugins/placemarks/placemarks.c:507
+msgid "Edit and delete existing placemarks"
+msgstr "حرر واحذف العلامات الموجودة"
+
+#: ../plugins/placemarks/add-dialog.c:117
+msgid "New Placemark"
+msgstr "علامة جديدة"
+
+#: ../plugins/placemarks/add-dialog.c:130
+msgid "Name:"
+msgstr "الاسم:"
+
+#: ../plugins/placemarks/manage-dialog.c:167
+#, c-format
+msgid ""
+"You are about to remove the %s placemark!\n"
+"Are you sure you want to proceed?"
+msgstr ""
+"إنك علة وشك إزالة العلامة %s!\n"
+"أمُتأكد أنك ترغب في المواصلة؟"
+
+#: ../plugins/placemarks/manage-dialog.c:201
+msgid "Organize Placemarks"
+msgstr "نظّم العلامات"
+
+#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:452
+msgid "Name"
+msgstr "الاسم"
+
+#: ../plugins/placemarks/manage-dialog.c:252
+msgid "Latitude"
+msgstr "دائرة العرض"
+
+#: ../plugins/placemarks/manage-dialog.c:260
+msgid "Longitude"
+msgstr "خط الطول"
+
+#: ../plugins/placemarks/manage-dialog.c:268
+msgid "Zoom"
+msgstr "قرّب"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
+msgid "Placemarks"
+msgstr "العلامات"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:2
+msgid "Remembers your favorite view points"
+msgstr "تذكر نقاط المشاهدة المفضلة"
+
+#: ../plugins/search/search.c:92 ../plugins/search/search.c:93
+msgid "No result found"
+msgstr "لا نتائج"
+
+#: ../plugins/search/search.c:443
+msgid "No"
+msgstr "لا"
+
+#: ../plugins/search/search.c:462
+msgid "Search results"
+msgstr "نتائج البحث"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:1
+msgid "Allows searching GeoNames database"
+msgstr "اسم بالبحث في قادة بيانات الأسماء الجغرافية (GeoNames)"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:2
+msgid "Search"
+msgstr "ابحث"
+
+#: ../data/emerillon.schemas.in.h:1
+msgid "Active plugins"
+msgstr "الملحقات النشِطة"
+
+#: ../data/emerillon.schemas.in.h:2
+msgid "List of active plugins."
+msgstr "قائمة الملحقات النشطة"
+
+#: ../data/emerillon.schemas.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "أظهر\\أخفِ لوح النافذة الجانبي."
+
+#: ../data/emerillon.schemas.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "أظهر\\أخفِ شريط حالة النّافذة."
+
+#: ../data/emerillon.schemas.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "أظهر\\أخفِ شريط أدوات النّافذة."
+
+#: ../data/emerillon.desktop.in.in.h:1
+msgid "Browse maps"
+msgstr "تصفّح الخرائط"
+
+#: ../data/emerillon.desktop.in.in.h:2
+msgid "Map Viewer"
+msgstr "عارض الخرائط"
