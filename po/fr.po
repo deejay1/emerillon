@@ -272,7 +272,7 @@ msgstr "Zoom"
 
 #: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
 msgid "Placemarks"
-msgstr "Re_pères"
+msgstr "Repères"
 
 #: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:2
 msgid "Remembers your favorite view points"
