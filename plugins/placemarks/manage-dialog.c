@@ -230,7 +230,7 @@ build_ui (ManageDialog *self)
                 "ellipsize", PANGO_ELLIPSIZE_END,
                 NULL);
 
-  column = gtk_tree_view_column_new_with_attributes (_("Nom"),
+  column = gtk_tree_view_column_new_with_attributes (_("Name"),
                                                      cell,
                                                      "text", COL_NAME,
                                                      NULL);

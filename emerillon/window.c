@@ -611,13 +611,13 @@ static const GtkActionEntry action_entries[] = {
 
 static const GtkToggleActionEntry toggle_entries[] = {
       { "ViewToolbar", NULL, N_("_Toolbar"), NULL,
-        N_("Show or hide the toolbar in the current self"),
+        N_("Show or hide the toolbar in the current window"),
         G_CALLBACK (cmd_show_hide_bar), TRUE },
       { "ViewStatusbar", NULL, N_("_Statusbar"), NULL,
-        N_("Show or hide the statusbar in the current self"),
+        N_("Show or hide the statusbar in the current window"),
         G_CALLBACK (cmd_show_hide_bar), TRUE },
       { "ViewSidebar", NULL, N_("Side _Pane"), "F9",
-        N_("Show or hide the side pane in the current self"),
+        N_("Show or hide the side pane in the current window"),
         G_CALLBACK (cmd_show_hide_bar), TRUE },
 };
 
