@@ -627,7 +627,7 @@ static const GtkRadioActionEntry radio_entries[] = {
       { "MapCycle", NULL, N_("_Cycling"), "<alt>2",
         N_("View the cycling map based on OpenCycleMap"), 1 },
       { "MapTransport", NULL, N_("_Public Transportation"), "<alt>3",
-        N_("View the public transporation map based on Öpnvkarte"), 2 },
+        N_("View the public transportation map based on Öpnvkarte"), 2 },
       { "MapTerrain", NULL, N_("_Terrain"), "<alt>4",
         N_("View the terrain map based on mapsforfree.com Relief"), 3 },
 };
