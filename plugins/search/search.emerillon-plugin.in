@@ -1,6 +1,6 @@
 [Emerillon Plugin]
-Name=Search
-Module=search
+_Name=Search
+_Module=search
 Description=Allows searching GeoNames database
 IAge=1
 Authors=Pierre-Luc Beaudoin <pierre-luc.beaudoin@novopia.com>

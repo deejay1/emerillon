@@ -8,6 +8,8 @@ emerillon/preferences.c
 plugins/placemarks/placemarks.c
 plugins/placemarks/add-dialog.c
 plugins/placemarks/manage-dialog.c
+plugins/placemarks/placemarks.emerillon-plugin.in
 plugins/search/search.c
+plugins/search/search.emerillon-plugin.in
 data/emerillon.schemas.in
 data/emerillon.desktop.in.in
