@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-07 18:20+0200\n"
+"POT-Creation-Date: 2009-10-07 13:27-0400\n"
 "PO-Revision-Date: 2009-10-07 18:03+0200\n"
 "Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -270,6 +270,14 @@ msgstr "Longitude"
 msgid "Zoom"
 msgstr "Zoom"
 
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
+msgid "Placemarks"
+msgstr "Re_pères"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:2
+msgid "Remembers your favorite view points"
+msgstr "Enregistre vos repères"
+
 #: ../plugins/search/search.c:92 ../plugins/search/search.c:93
 msgid "No result found"
 msgstr "Aucun résultat trouvé"
@@ -281,6 +289,14 @@ msgstr "N°"
 #: ../plugins/search/search.c:462
 msgid "Search results"
 msgstr "Résultats de recherche"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:1
+msgid "Allows searching GeoNames database"
+msgstr "Permet la recherche dans la base de données GeoNames"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:2
+msgid "Search"
+msgstr "Recherche"
 
 #: ../data/emerillon.schemas.in.h:1
 msgid "Active plugins"
