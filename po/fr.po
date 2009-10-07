@@ -1,0 +1,311 @@
+# French translation for emerillon.
+# Copyright (C) 2009 Novopia Solutions Inc
+# This file is distributed under the same license as the emerillon package.
+#
+# Pierre-Luc Beaudoin <pierre-luc.beaudoin@novopia.com>, 2009
+# Claude Paroz <claude@2xlibre.net>, 2009
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: emerillon master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-07 18:20+0200\n"
+"PO-Revision-Date: 2009-10-07 18:03+0200\n"
+"Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
+"Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ../emerillon/main.c:51
+msgid "Emerillon Map Viewer"
+msgstr "Visionneur de cartes Emerillon"
+
+#: ../emerillon/window.c:363
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version.\n"
+msgstr ""
+"Ce programme est un logiciel libre ; vous pouvez le redistribuer et/ou le "
+"modifier sous les termes de la Licence Publique Générale GNU telle que "
+"publiée par la Free Software Foundation ; soit la version 2 de la licence, "
+"ou (à votre discrétion) toute version ultérieure.\n"
+
+#: ../emerillon/window.c:367
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details.\n"
+msgstr ""
+"Ce programme est distribué dans l'espoir qu'il puisse être utile, mais SANS "
+"AUCUNE GARANTIE ; sans même la garantie implicite de VALEUR COMMERCIALE ou "
+"D'ADÉQUATION A UN BESOIN PARTICULIER. Consultez la Licence Publique Générale "
+"GNU pour plus de détails.\n"
+
+#: ../emerillon/window.c:371
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr ""
+"Vous devriez avoir reçu une copie de la Licence Publique Générale GNU avec "
+"ce programme ; si ce n'est pas le cas, écrivez à la Free Software "
+"Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+
+#: ../emerillon/window.c:376
+msgid "translator-credits"
+msgstr "Pierre-Luc Beaudoin <pierre-luc.beaudoin@novopia.com>"
+
+#: ../emerillon/window.c:383
+msgid "Emerillon"
+msgstr "Emerillon"
+
+#: ../emerillon/window.c:387
+msgid "A map viewer for the GNOME desktop"
+msgstr "Un visionneur de cartes pour le bureau GNOME"
+
+#: ../emerillon/window.c:586
+msgid "_Map"
+msgstr "_Carte"
+
+#: ../emerillon/window.c:587
+msgid "_Edit"
+msgstr "É_dition"
+
+#: ../emerillon/window.c:588
+msgid "_View"
+msgstr "_Affichage"
+
+#: ../emerillon/window.c:589
+msgid "_Tools"
+msgstr "_Outils"
+
+#: ../emerillon/window.c:590
+msgid "_Help"
+msgstr "Aid_e"
+
+#: ../emerillon/window.c:592
+msgid "_Quit"
+msgstr "_Quitter"
+
+#: ../emerillon/window.c:593
+msgid "Quit the program"
+msgstr "Quitte le programme"
+
+#: ../emerillon/window.c:595
+msgid "_Zoom In"
+msgstr "_Zoom avant"
+
+#: ../emerillon/window.c:596
+msgid "Enlarge the image"
+msgstr "Agrandit la carte"
+
+#: ../emerillon/window.c:598
+msgid "Zoom _Out"
+msgstr "Zoom _arrière"
+
+#: ../emerillon/window.c:599
+msgid "Shrink the image"
+msgstr "Réduit la carte"
+
+#: ../emerillon/window.c:601
+msgid "_Preferences"
+msgstr "_Préférences"
+
+#: ../emerillon/window.c:602
+msgid "Edit the preferences"
+msgstr "Modifie les préférences"
+
+#: ../emerillon/window.c:604
+msgid "_Contents"
+msgstr "_Sommaire"
+
+#: ../emerillon/window.c:605
+msgid "Help on this application"
+msgstr "Aide pour cette application"
+
+#: ../emerillon/window.c:607
+msgid "_About"
+msgstr "À _propos"
+
+#: ../emerillon/window.c:608
+msgid "About this application"
+msgstr "À propos de cette application"
+
+#: ../emerillon/window.c:613
+msgid "_Toolbar"
+msgstr "Barre d'ou_tils"
+
+#: ../emerillon/window.c:614
+msgid "Show or hide the toolbar in the current window"
+msgstr "Affiche ou masque la barre d'outils"
+
+#: ../emerillon/window.c:616
+msgid "_Statusbar"
+msgstr "_Barre d'état"
+
+#: ../emerillon/window.c:617
+msgid "Show or hide the statusbar in the current window"
+msgstr "Affiche ou masque la barre d'état"
+
+#: ../emerillon/window.c:619
+msgid "Side _Pane"
+msgstr "_Panneau latéral"
+
+#: ../emerillon/window.c:620
+msgid "Show or hide the side pane in the current window"
+msgstr "Affiche ou masque le panneau latéral"
+
+#: ../emerillon/window.c:625
+msgid "_Street"
+msgstr "_Rues"
+
+#: ../emerillon/window.c:626
+msgid "View the street map based on OpenStreetMap"
+msgstr "Affiche la carte des rues basée sur OpenStreetMap"
+
+#: ../emerillon/window.c:627
+msgid "_Cycling"
+msgstr "_Vélo"
+
+#: ../emerillon/window.c:628
+msgid "View the cycling map based on OpenCycleMap"
+msgstr "Affiche la carte cycliste basée sur OpenCycleMap"
+
+#: ../emerillon/window.c:629
+msgid "_Public Transportation"
+msgstr "Trans_ports en commun"
+
+#: ../emerillon/window.c:630
+msgid "View the public transportation map based on Öpnvkarte"
+msgstr "Affiche la carte des transports en commun basée sur Öpnvkarte"
+
+#: ../emerillon/window.c:631
+msgid "_Terrain"
+msgstr "_Terrain"
+
+#: ../emerillon/window.c:632
+msgid "View the terrain map based on mapsforfree.com Relief"
+msgstr ""
+"Affiche la carte terrain basée sur la carte en relief de mapsforfree.com"
+
+#: ../emerillon/window.c:667
+msgid "In"
+msgstr "Avant"
+
+#: ../emerillon/window.c:671
+msgid "Out"
+msgstr "Arrière"
+
+#: ../emerillon/preferences.c:118
+msgid "Plugins"
+msgstr "Greffons"
+
+#: ../emerillon/preferences.c:137
+msgid "Emerillon Preferences"
+msgstr "Préférences d'Emerillon"
+
+#: ../plugins/placemarks/placemarks.c:112
+msgid "Go to this placemark"
+msgstr "Aller à ce repère"
+
+#: ../plugins/placemarks/placemarks.c:495
+msgid "_Placemarks"
+msgstr "Re_pères"
+
+#: ../plugins/placemarks/placemarks.c:499
+msgid "Placemark this location"
+msgstr "Ajouter un repère à cette position"
+
+#: ../plugins/placemarks/placemarks.c:501
+msgid "Add current location to your placemarks"
+msgstr "Ajoute la position actuelle à vos repères"
+
+#: ../plugins/placemarks/placemarks.c:505
+msgid "Organize placemarks..."
+msgstr "Organiser les repères..."
+
+#: ../plugins/placemarks/placemarks.c:507
+msgid "Edit and delete existing placemarks"
+msgstr "Modifie et supprime des repères"
+
+#: ../plugins/placemarks/add-dialog.c:117
+msgid "New Placemark"
+msgstr "Nouveau repère"
+
+#: ../plugins/placemarks/add-dialog.c:130
+msgid "Name:"
+msgstr "Nom :"
+
+#: ../plugins/placemarks/manage-dialog.c:167
+#, c-format
+msgid ""
+"You are about to remove the %s placemark!\n"
+"Are you sure you want to proceed?"
+msgstr ""
+"Vous êtes sur le point d'effacer le repère %s.\n"
+"Voulez-vous vraiment faire cela ?"
+
+#: ../plugins/placemarks/manage-dialog.c:201
+msgid "Organize Placemarks"
+msgstr "Organiser les repères"
+
+#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:452
+msgid "Name"
+msgstr "Nom"
+
+#: ../plugins/placemarks/manage-dialog.c:252
+msgid "Latitude"
+msgstr "Latitude"
+
+#: ../plugins/placemarks/manage-dialog.c:260
+msgid "Longitude"
+msgstr "Longitude"
+
+#: ../plugins/placemarks/manage-dialog.c:268
+msgid "Zoom"
+msgstr "Zoom"
+
+#: ../plugins/search/search.c:92 ../plugins/search/search.c:93
+msgid "No result found"
+msgstr "Aucun résultat trouvé"
+
+#: ../plugins/search/search.c:443
+msgid "No"
+msgstr "N°"
+
+#: ../plugins/search/search.c:462
+msgid "Search results"
+msgstr "Résultats de recherche"
+
+#: ../data/emerillon.schemas.in.h:1
+msgid "Active plugins"
+msgstr "Greffons actifs"
+
+#: ../data/emerillon.schemas.in.h:2
+msgid "List of active plugins."
+msgstr "Liste des greffons actifs."
+
+#: ../data/emerillon.schemas.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "Afficher ou masquer le panneau latéral."
+
+#: ../data/emerillon.schemas.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "Afficher ou masquer la barre d'état."
+
+#: ../data/emerillon.schemas.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "Afficher ou masquer la barre d'outils."
+
+#: ../data/emerillon.desktop.in.in.h:1
+msgid "Browse maps"
+msgstr "Afficher des cartes géographiques"
+
+#: ../data/emerillon.desktop.in.in.h:2
+msgid "Map Viewer"
+msgstr "Visionneur de carte"
