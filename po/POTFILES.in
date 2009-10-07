@@ -4,5 +4,10 @@
 emerillon/main.c
 emerillon/sidebar.c
 emerillon/window.c
+emerillon/preferences.c
+plugins/placemarks/placemarks.c
+plugins/placemarks/add-dialog.c
+plugins/placemarks/manage-dialog.c
+plugins/search/search.c
 data/emerillon.schemas.in
 data/emerillon.desktop.in.in
