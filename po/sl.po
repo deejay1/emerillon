@@ -1,0 +1,309 @@
+# Slovenian translation for emerillon.
+# Copyright (C) 2009 Novopia Solutions Inc
+# This file is distributed under the same license as the emerillon package.
+#
+# Matej Urbančič <mateju@svn.gnome.org>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: accerciser\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=accerciser&component=general\n"
+"POT-Creation-Date: 2009-10-07 13:27-0400\n"
+"PO-Revision-Date: 2009-10-08 13:20+0100\n"
+"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
+"Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
+"X-Poedit-Language: Slovenian\n"
+"X-Poedit-Country: SLOVENIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: ../emerillon/main.c:51
+msgid "Emerillon Map Viewer"
+msgstr "Emerillon pregledovalnik zemljevidov"
+
+#: ../emerillon/window.c:363
+msgid "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.\n"
+msgstr "Ta program spada med prosto programsko opremo; lahko ga razširjate in/ali spreminjate pod pogoji Splošnega dovoljenja GNU (GNU General Public License), kot ga je objavila ustanova Free Software Foundation; bodisi različice 2 ali (po vaši izbiri) katerekoli poznejše različice.\n"
+
+#: ../emerillon/window.c:367
+msgid "This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n"
+msgstr "Ta program se razširja v upanju, da bo uporaben, vendar BREZ VSAKRŠNEGA JAMSTVA; tudi brez posredne zagotovitve CENOVNE VREDNOSTI ali PRIMERNOSTI ZA DOLOČEN NAMEN.  Za podrobnosti glejte besedilo GNU General Public License.\n"
+
+#: ../emerillon/window.c:371
+msgid "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr "S tem programom bi morali dobiti tudi kopijo Splošne javne licence (GNU General Public License); če je niste, prosimo stopite v stik s Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+
+#: ../emerillon/window.c:376
+msgid "translator-credits"
+msgstr "Matej Urbančič <mateju@svn.gnome.org>"
+
+#: ../emerillon/window.c:383
+msgid "Emerillon"
+msgstr "Emerillon"
+
+#: ../emerillon/window.c:387
+msgid "A map viewer for the GNOME desktop"
+msgstr "Pregledovalnik zemljevidov za namizje GNOME"
+
+#: ../emerillon/window.c:586
+msgid "_Map"
+msgstr "_Zemljevid"
+
+#: ../emerillon/window.c:587
+msgid "_Edit"
+msgstr "_Uredi"
+
+#: ../emerillon/window.c:588
+msgid "_View"
+msgstr "_Pogled"
+
+#: ../emerillon/window.c:589
+msgid "_Tools"
+msgstr "_Orodja"
+
+#: ../emerillon/window.c:590
+msgid "_Help"
+msgstr "_Pomoč"
+
+#: ../emerillon/window.c:592
+msgid "_Quit"
+msgstr "_Končaj"
+
+#: ../emerillon/window.c:593
+msgid "Quit the program"
+msgstr "Zapusti program"
+
+#: ../emerillon/window.c:595
+msgid "_Zoom In"
+msgstr "Po_večaj"
+
+#: ../emerillon/window.c:596
+msgid "Enlarge the image"
+msgstr "Povečaj velikost slike"
+
+#: ../emerillon/window.c:598
+msgid "Zoom _Out"
+msgstr "Po_manjšaj"
+
+#: ../emerillon/window.c:599
+msgid "Shrink the image"
+msgstr "Pomanjšaj velikost slike"
+
+#: ../emerillon/window.c:601
+msgid "_Preferences"
+msgstr "_Nastavitve"
+
+#: ../emerillon/window.c:602
+msgid "Edit the preferences"
+msgstr "Uredi nastavitve"
+
+#: ../emerillon/window.c:604
+msgid "_Contents"
+msgstr "_Vsebina"
+
+#: ../emerillon/window.c:605
+msgid "Help on this application"
+msgstr "Pomoč za ta program"
+
+#: ../emerillon/window.c:607
+msgid "_About"
+msgstr "_O Programu"
+
+#: ../emerillon/window.c:608
+msgid "About this application"
+msgstr "O programu"
+
+#: ../emerillon/window.c:613
+msgid "_Toolbar"
+msgstr "_Orodna vrstica"
+
+#: ../emerillon/window.c:614
+msgid "Show or hide the toolbar in the current window"
+msgstr "Prikaži ali skrij orodno vrstico v trenutnem oknu"
+
+#: ../emerillon/window.c:616
+msgid "_Statusbar"
+msgstr "_Vrstica stanja"
+
+#: ../emerillon/window.c:617
+msgid "Show or hide the statusbar in the current window"
+msgstr "Prikaži ali skrij vrstico stanja v trenutnem oknu"
+
+#: ../emerillon/window.c:619
+msgid "Side _Pane"
+msgstr "Stranski _pladenj"
+
+#: ../emerillon/window.c:620
+msgid "Show or hide the side pane in the current window"
+msgstr "Prikaži ali skrij stranski pladenj v trenutnem oknu"
+
+#: ../emerillon/window.c:625
+msgid "_Street"
+msgstr "_Ulica"
+
+#: ../emerillon/window.c:626
+msgid "View the street map based on OpenStreetMap"
+msgstr "Pogled zemljevida mesta z OpenStreetMap"
+
+#: ../emerillon/window.c:627
+msgid "_Cycling"
+msgstr "_Kolesarjenje"
+
+#: ../emerillon/window.c:628
+msgid "View the cycling map based on OpenCycleMap"
+msgstr "Pogled zemljevida kolesarjenja z OpenCycleMap"
+
+#: ../emerillon/window.c:629
+msgid "_Public Transportation"
+msgstr "_Javni prevoz"
+
+#: ../emerillon/window.c:630
+msgid "View the public transportation map based on Öpnvkarte"
+msgstr "Pogled zemljevida javnega prometa z Öpnvkarte"
+
+#: ../emerillon/window.c:631
+msgid "_Terrain"
+msgstr "_Teren"
+
+#: ../emerillon/window.c:632
+msgid "View the terrain map based on mapsforfree.com Relief"
+msgstr "Pogled zemljevida terena z mapsforfree.com"
+
+#: ../emerillon/window.c:667
+msgid "In"
+msgstr "Povečaj"
+
+#: ../emerillon/window.c:671
+msgid "Out"
+msgstr "Pomanjšaj"
+
+#: ../emerillon/preferences.c:118
+msgid "Plugins"
+msgstr "Vstavki"
+
+#: ../emerillon/preferences.c:137
+msgid "Emerillon Preferences"
+msgstr "Emerillon nastavitve"
+
+#: ../plugins/placemarks/placemarks.c:112
+msgid "Go to this placemark"
+msgstr "Skoči na to označeno mesto"
+
+#: ../plugins/placemarks/placemarks.c:495
+msgid "_Placemarks"
+msgstr "_Označena mesta"
+
+#: ../plugins/placemarks/placemarks.c:499
+msgid "Placemark this location"
+msgstr "Označi to mesto"
+
+#: ../plugins/placemarks/placemarks.c:501
+msgid "Add current location to your placemarks"
+msgstr "Dodaj trenutno mesto med označena mesta"
+
+#: ../plugins/placemarks/placemarks.c:505
+msgid "Organize placemarks..."
+msgstr "Urejanje označenih mest"
+
+#: ../plugins/placemarks/placemarks.c:507
+msgid "Edit and delete existing placemarks"
+msgstr "Urejanje in brisanje obstoječih označenih mest"
+
+#: ../plugins/placemarks/add-dialog.c:117
+msgid "New Placemark"
+msgstr "Novo označeno mesto"
+
+#: ../plugins/placemarks/add-dialog.c:130
+msgid "Name:"
+msgstr "Ime:"
+
+#: ../plugins/placemarks/manage-dialog.c:167
+#, c-format
+msgid ""
+"You are about to remove the %s placemark!\n"
+"Are you sure you want to proceed?"
+msgstr ""
+"Odstranjeno bo %s označeno mesto!\n"
+"Ali zares želite nadaljevati?"
+
+#: ../plugins/placemarks/manage-dialog.c:201
+msgid "Organize Placemarks"
+msgstr "Urejanje označenih mest"
+
+#: ../plugins/placemarks/manage-dialog.c:233
+#: ../plugins/search/search.c:452
+msgid "Name"
+msgstr "Ime"
+
+#: ../plugins/placemarks/manage-dialog.c:252
+msgid "Latitude"
+msgstr "Zemljepisna širina"
+
+#: ../plugins/placemarks/manage-dialog.c:260
+msgid "Longitude"
+msgstr "Zemljepisna dolžina "
+
+#: ../plugins/placemarks/manage-dialog.c:268
+msgid "Zoom"
+msgstr "Povečava"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
+msgid "Placemarks"
+msgstr "Označena mesta"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:2
+msgid "Remembers your favorite view points"
+msgstr "Zapomni si priljubljeni pogled"
+
+#: ../plugins/search/search.c:92
+#: ../plugins/search/search.c:93
+msgid "No result found"
+msgstr "Ni najdeniz zadetkov"
+
+#: ../plugins/search/search.c:443
+msgid "No"
+msgstr "Ne"
+
+#: ../plugins/search/search.c:462
+msgid "Search results"
+msgstr "Rezultati iskanja"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:1
+msgid "Allows searching GeoNames database"
+msgstr "Dovoli iskanje po podatkovni zbirki GeoNames"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:2
+msgid "Search"
+msgstr "Iskanje"
+
+#: ../data/emerillon.schemas.in.h:1
+msgid "Active plugins"
+msgstr "Dejavni vstavki"
+
+#: ../data/emerillon.schemas.in.h:2
+msgid "List of active plugins."
+msgstr "Seznam dejavnih vstavkov."
+
+#: ../data/emerillon.schemas.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "Pokaži / skrij stranski pladenj."
+
+#: ../data/emerillon.schemas.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "Pokaži / skrij vrstico stanja."
+
+#: ../data/emerillon.schemas.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "Pokaži / skrij orodno vrstico."
+
+#: ../data/emerillon.desktop.in.in.h:1
+msgid "Browse maps"
+msgstr "Brskanje med zemljevidi"
+
+#: ../data/emerillon.desktop.in.in.h:2
+msgid "Map Viewer"
+msgstr "Pregledovalnik zemljevidov"
+
