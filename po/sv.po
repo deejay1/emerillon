@@ -1,0 +1,308 @@
+# Swedish translation for Emerillon.
+# Copyright (C) 2009 Free Software Foundation, Inc.
+# This file is distributed under the same license as the emerillon package.
+# Daniel Nylander <po@danielnylander.se>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: emerillon\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-08 09:44+0200\n"
+"PO-Revision-Date: 2009-10-08 11:49+0100\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../emerillon/main.c:51
+msgid "Emerillon Map Viewer"
+msgstr "Kartvisaren Emerillon"
+
+#: ../emerillon/window.c:363
+msgid "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.\n"
+msgstr "Detta program är fri programvara. Du kan distribuera det och/eller modifiera det under villkoren i GNU General Public License, publicerad av Free Software Foundation, antingen version 2 eller (om du så vill) någon senare version.\n"
+
+#: ../emerillon/window.c:367
+msgid "This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n"
+msgstr "Detta program distribueras i hopp om att det ska vara användbart, men UTAN NÅGON SOM HELST GARANTI, även utan underförstådd garanti om SÄLJBARHET eller LÄMPLIGHET FÖR NÅGOT SPECIELLT ÄNDAMÅL. Se GNU General Public License för ytterligare information.\n"
+
+#: ../emerillon/window.c:371
+msgid "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr "Du bör ha fått en kopia av GNU General Public License tillsammans med Brasero. Om inte, skriv till Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+
+#: ../emerillon/window.c:376
+msgid "translator-credits"
+msgstr ""
+"Daniel Nylander <po@danielnylander.se>\n"
+"\n"
+"Skicka synpunkter på översättningen till\n"
+"<tp-sv@listor.tp-sv.se>."
+
+#: ../emerillon/window.c:383
+msgid "Emerillon"
+msgstr "Emerillon"
+
+#: ../emerillon/window.c:387
+msgid "A map viewer for the GNOME desktop"
+msgstr "En kartvisare för GNOME-skrivbordet"
+
+#: ../emerillon/window.c:586
+msgid "_Map"
+msgstr "K_arta"
+
+#: ../emerillon/window.c:587
+msgid "_Edit"
+msgstr "R_edigera"
+
+#: ../emerillon/window.c:588
+msgid "_View"
+msgstr "_Visa"
+
+#: ../emerillon/window.c:589
+msgid "_Tools"
+msgstr "Ver_ktyg"
+
+#: ../emerillon/window.c:590
+msgid "_Help"
+msgstr "_Hjälp"
+
+#: ../emerillon/window.c:592
+msgid "_Quit"
+msgstr "A_vsluta"
+
+#: ../emerillon/window.c:593
+msgid "Quit the program"
+msgstr "Avsluta programmet"
+
+#: ../emerillon/window.c:595
+msgid "_Zoom In"
+msgstr "_Zooma in"
+
+#: ../emerillon/window.c:596
+msgid "Enlarge the image"
+msgstr "Förstora bilden"
+
+#: ../emerillon/window.c:598
+msgid "Zoom _Out"
+msgstr "Zooma _ut"
+
+#: ../emerillon/window.c:599
+msgid "Shrink the image"
+msgstr "Minska bilden"
+
+#: ../emerillon/window.c:601
+msgid "_Preferences"
+msgstr "_Inställningar"
+
+#: ../emerillon/window.c:602
+msgid "Edit the preferences"
+msgstr "Redigera inställningarna"
+
+#: ../emerillon/window.c:604
+msgid "_Contents"
+msgstr "_Innehåll"
+
+#: ../emerillon/window.c:605
+msgid "Help on this application"
+msgstr "Hjälp för detta program"
+
+#: ../emerillon/window.c:607
+msgid "_About"
+msgstr "_Om"
+
+#: ../emerillon/window.c:608
+msgid "About this application"
+msgstr "Om detta program"
+
+#: ../emerillon/window.c:613
+msgid "_Toolbar"
+msgstr "Ve_rktygsrad"
+
+#: ../emerillon/window.c:614
+msgid "Show or hide the toolbar in the current window"
+msgstr "Visa eller dölj verktygsraden i det aktuella fönstret"
+
+#: ../emerillon/window.c:616
+msgid "_Statusbar"
+msgstr "_Statusrad"
+
+#: ../emerillon/window.c:617
+msgid "Show or hide the statusbar in the current window"
+msgstr "Visa eller dölj statusraden i det aktuella fönstret"
+
+#: ../emerillon/window.c:619
+msgid "Side _Pane"
+msgstr "Sido_panel"
+
+#: ../emerillon/window.c:620
+msgid "Show or hide the side pane in the current window"
+msgstr "Visa eller dölj sidopanelen i det aktuella fönstret"
+
+#: ../emerillon/window.c:625
+msgid "_Street"
+msgstr "_Gata"
+
+#: ../emerillon/window.c:626
+msgid "View the street map based on OpenStreetMap"
+msgstr "Visa gatukartan baserad på OpenStreetMap"
+
+#: ../emerillon/window.c:627
+msgid "_Cycling"
+msgstr "_Cykel"
+
+#: ../emerillon/window.c:628
+msgid "View the cycling map based on OpenCycleMap"
+msgstr "Visa cykelkartan baserad på OpenCycleMap"
+
+#: ../emerillon/window.c:629
+msgid "_Public Transportation"
+msgstr "_Kollektivtrafik"
+
+#: ../emerillon/window.c:630
+msgid "View the public transportation map based on Öpnvkarte"
+msgstr "Visa kartan över kollektivtrafik baserad på Öpnvkarte"
+
+#: ../emerillon/window.c:631
+msgid "_Terrain"
+msgstr "_Terräng"
+
+#: ../emerillon/window.c:632
+msgid "View the terrain map based on mapsforfree.com Relief"
+msgstr "Visa terrängkartan baserad på mapsforfree.com"
+
+#: ../emerillon/window.c:667
+msgid "In"
+msgstr "In"
+
+#: ../emerillon/window.c:671
+msgid "Out"
+msgstr "Ut"
+
+#: ../emerillon/preferences.c:118
+msgid "Plugins"
+msgstr "Insticksmoduler"
+
+#: ../emerillon/preferences.c:137
+msgid "Emerillon Preferences"
+msgstr "Inställningar för Emerillon"
+
+#: ../plugins/placemarks/placemarks.c:112
+msgid "Go to this placemark"
+msgstr "Gå till denna intressepunkt"
+
+#: ../plugins/placemarks/placemarks.c:495
+msgid "_Placemarks"
+msgstr "I_ntressepunkter"
+
+#: ../plugins/placemarks/placemarks.c:499
+msgid "Placemark this location"
+msgstr "Märk denna plats som intressant"
+
+#: ../plugins/placemarks/placemarks.c:501
+msgid "Add current location to your placemarks"
+msgstr "Lägg till aktuellt plats till dina intressepunkter"
+
+#: ../plugins/placemarks/placemarks.c:505
+msgid "Organize placemarks..."
+msgstr "Organisera intressepunkter..."
+
+#: ../plugins/placemarks/placemarks.c:507
+msgid "Edit and delete existing placemarks"
+msgstr "Redigera och ta bort befintliga intressepunkter"
+
+#: ../plugins/placemarks/add-dialog.c:117
+msgid "New Placemark"
+msgstr "Ny intressepunkt"
+
+#: ../plugins/placemarks/add-dialog.c:130
+msgid "Name:"
+msgstr "Namn:"
+
+#: ../plugins/placemarks/manage-dialog.c:167
+#, c-format
+msgid ""
+"You are about to remove the %s placemark!\n"
+"Are you sure you want to proceed?"
+msgstr ""
+"Du är på väg att ta bort intressepunkten %s!\n"
+"Är du säker på att du vill fortsätta?"
+
+#: ../plugins/placemarks/manage-dialog.c:201
+msgid "Organize Placemarks"
+msgstr "Organisera intressepunkter"
+
+#: ../plugins/placemarks/manage-dialog.c:233
+#: ../plugins/search/search.c:452
+msgid "Name"
+msgstr "Namn"
+
+#: ../plugins/placemarks/manage-dialog.c:252
+msgid "Latitude"
+msgstr "Latitud"
+
+#: ../plugins/placemarks/manage-dialog.c:260
+msgid "Longitude"
+msgstr "Longitud"
+
+#: ../plugins/placemarks/manage-dialog.c:268
+msgid "Zoom"
+msgstr "Zoom"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
+msgid "Placemarks"
+msgstr "Intressepunkter"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:2
+msgid "Remembers your favorite view points"
+msgstr "Kommer ihåg dina favoritpunkter"
+
+#: ../plugins/search/search.c:92
+#: ../plugins/search/search.c:93
+msgid "No result found"
+msgstr "Inga resultat hittades"
+
+#: ../plugins/search/search.c:443
+msgid "No"
+msgstr "Nr."
+
+#: ../plugins/search/search.c:462
+msgid "Search results"
+msgstr "Sökresultat"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:1
+msgid "Allows searching GeoNames database"
+msgstr "Tillåter sökning i GeoNames-databasen"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:2
+msgid "Search"
+msgstr "Sök"
+
+#: ../data/emerillon.schemas.in.h:1
+msgid "Active plugins"
+msgstr "Aktiva insticksmoduler"
+
+#: ../data/emerillon.schemas.in.h:2
+msgid "List of active plugins."
+msgstr "Lista över aktiva insticksmoduler."
+
+#: ../data/emerillon.schemas.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "Visa/dölj fönstrets sidopanel."
+
+#: ../data/emerillon.schemas.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "Visa/dölj fönstrets statusrad."
+
+#: ../data/emerillon.schemas.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "Visa/dölj fönstrets verktygsrad."
+
+#: ../data/emerillon.desktop.in.in.h:1
+msgid "Browse maps"
+msgstr "Bläddra i kartor"
+
+#: ../data/emerillon.desktop.in.in.h:2
+msgid "Map Viewer"
+msgstr "Kartvisare"
+
