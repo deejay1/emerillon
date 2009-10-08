@@ -524,7 +524,6 @@ activated (EthosPlugin *plugin)
   PlacemarksPluginPrivate *priv;
   GtkUIManager *manager;
   GtkListStore *store;
-  GtkWidget *menu_item;
 
   priv = PLACEMARKS_PLUGIN (plugin)->priv;
   priv->window = EMERILLON_WINDOW (emerillon_window_dup_default ());
@@ -547,10 +546,6 @@ activated (EthosPlugin *plugin)
                                                    ui_definition,
                                                    -1, NULL);
   g_warn_if_fail (priv->ui_id != 0);
-
-  menu_item = gtk_ui_manager_get_widget (manager,
-                                         "/MainMenu/PluginsMenu/Placemarks");
-  priv->menu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (menu_item));
 
   store = gtk_list_store_new (COL_COUNT,
                               G_TYPE_STRING,       /* ID */
