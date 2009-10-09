@@ -65,6 +65,8 @@ GtkWidget *    emerillon_window_get_toolbar    (EmerillonWindow *window);
 
 GtkWidget *    emerillon_window_get_sidebar    (EmerillonWindow *window);
 
+GtkWidget *    emerillon_window_get_statusbar  (EmerillonWindow *window);
+
 G_END_DECLS
 
 #endif

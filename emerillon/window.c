@@ -803,3 +803,11 @@ emerillon_window_get_sidebar (EmerillonWindow *window)
 
   return window->priv->sidebar;
 }
+
+GtkWidget *
+emerillon_window_get_statusbar (EmerillonWindow *window)
+{
+  g_return_val_if_fail (EMERILLON_IS_WINDOW (window), NULL);
+
+  return window->priv->statusbar;
+}
