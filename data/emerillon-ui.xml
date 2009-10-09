@@ -9,6 +9,8 @@
       <menuitem action="MapQuit"/>
     </menu>
     <menu action="Edit">
+      <placeholder name="EditPluginMenu" />
+      <separator/>
       <menuitem action="EditPreferences"/>
     </menu>
     <menu action="View">

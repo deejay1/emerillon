@@ -33,6 +33,20 @@ placemarks_libplacemarks_la_LIBADD = \
 	$(EMERILLON_LIBS) \
 	$(top_builddir)/cut-paste/libempathycell.la
 
+# CopyLink plugin
+plugins_LTLIBRARIES += \
+	copy-link/libcopy-link.la
+
+plugins_in_files += \
+	copy-link/copy-link.emerillon-plugin.in
+
+copy_link_libcopy_link_la_SOURCES = \
+	copy-link/copy-link.h  \
+	copy-link/copy-link.c
+
+copy_link_libcopy_link_la_LIBADD = \
+	$(EMERILLON_LIBS)
+
 # Search plugin
 if ENABLE_SEARCH
 plugins_LTLIBRARIES += \
