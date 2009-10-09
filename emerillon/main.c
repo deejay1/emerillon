@@ -36,9 +36,17 @@ main (int argc,
 {
   EthosManager *manager;
   GtkWidget *window;
-  gchar *plugin_dirs[3] = {"~/.local/share/emerillon/plugins",
-                           EMERILLON_PLUGINDIR,
-                           NULL };
+  gchar *user_data;
+  gchar *plugin_dirs[3] = {EMERILLON_PLUGINDIR,
+                           NULL,
+                           NULL};
+
+  user_data = g_build_path (G_DIR_SEPARATOR_S,
+                            g_get_user_data_dir (),
+                            "emerillon",
+                            "plugins",
+                            NULL);
+  plugin_dirs[1] = user_data;
 
   bindtextdomain (PACKAGE, EMERILLON_LOCALEDIR);
   bind_textdomain_codeset (PACKAGE, "UTF-8");
@@ -63,5 +71,6 @@ main (int argc,
 
   gtk_main ();
 
+  g_free (user_data);
   return 0;
 }
