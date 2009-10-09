@@ -47,6 +47,20 @@ copy_link_libcopy_link_la_SOURCES = \
 copy_link_libcopy_link_la_LIBADD = \
 	$(EMERILLON_LIBS)
 
+# MousePosition plugin
+plugins_LTLIBRARIES += \
+	map-position/libmap-position.la
+
+plugins_in_files += \
+	map-position/map-position.emerillon-plugin.in
+
+map_position_libmap_position_la_SOURCES = \
+	map-position/map-position.h  \
+	map-position/map-position.c
+
+map_position_libmap_position_la_LIBADD = \
+	$(EMERILLON_LIBS)
+
 # Search plugin
 if ENABLE_SEARCH
 plugins_LTLIBRARIES += \
