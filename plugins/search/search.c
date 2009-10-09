@@ -56,6 +56,23 @@ struct _SearchPluginPrivate
 };
 
 static void
+present_sidebar (SearchPlugin *plugin)
+{
+  EmerillonWindow *window;
+  EmerillonSidebar *sidebar;
+
+  SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
+
+  window = EMERILLON_WINDOW (emerillon_window_dup_default ());
+  sidebar = EMERILLON_SIDEBAR (emerillon_window_get_sidebar (window));
+
+  emerillon_sidebar_set_page (sidebar, priv->search_page);
+  gtk_widget_show (GTK_WIDGET (sidebar));
+
+  g_object_unref (window);
+}
+
+static void
 result_cb (RestProxyCall *call,
            GError *error,
            GObject *weak_object,
@@ -94,7 +111,8 @@ result_cb (RestProxyCall *call,
                           COL_MARKER, NULL,
                           -1);
 
-      rest_xml_node_unref (root);
+      if (root)
+        rest_xml_node_unref (root);
       return;
     }
 
@@ -239,7 +257,6 @@ search_address (SearchPlugin *plugin)
       "lang", lang,
       NULL);
 
-
   if (!rest_proxy_call_async (priv->call,
         (RestProxyCallAsyncCallback) result_cb,
         G_OBJECT (priv->proxy),
@@ -249,6 +266,10 @@ search_address (SearchPlugin *plugin)
       g_error ("Cannot make call: %s", error->message);
       g_error_free (error);
     }
+
+  /* Present the result pane to the user */
+  present_sidebar (plugin);
+
 }
 
 static void
