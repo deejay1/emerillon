@@ -3,8 +3,8 @@
  * Copyright (C) 2007 The Free Software Foundation
  * Copyright (C) 2008 Marco Barisione <marco@barisione.org>
  *
- * Based on evince code (shell/ev-sidebar.h) by: 
- * 	- Jonathan Blandford <jrb@alum.mit.edu>
+ * Based on evince code (shell/ev-sidebar.h) by:
+ * - Jonathan Blandford <jrb@alum.mit.edu>
  *
  * Base on eog code (src/eog-sidebar.c) by:
  *      - Lucas Rocha <lucasr@gnome.org>
@@ -57,10 +57,10 @@ struct _EmerillonSidebarClass
 {
   GtkVBoxClass base_class;
 
-  void (* page_added)   (EmerillonSidebar *sidebar, 
+  void (* page_added)   (EmerillonSidebar *sidebar,
                          GtkWidget *main_widget);
 
-  void (* page_removed) (EmerillonSidebar *sidebar, 
+  void (* page_removed) (EmerillonSidebar *sidebar,
                          GtkWidget *main_widget);
 };
 
@@ -69,14 +69,14 @@ GType      emerillon_sidebar_get_type     (void);
 GtkWidget *emerillon_sidebar_new          (void);
 
 void       emerillon_sidebar_add_page     (EmerillonSidebar *sidebar,
-                                            const gchar *title,
-                                            GtkWidget *main_widget);
+                                           const gchar *title,
+                                           GtkWidget *main_widget);
 
 void       emerillon_sidebar_remove_page  (EmerillonSidebar *sidebar,
-                                            GtkWidget *main_widget);
+                                           GtkWidget *main_widget);
 
 void       emerillon_sidebar_set_page     (EmerillonSidebar *sidebar,
-                                            GtkWidget *main_widget);
+                                           GtkWidget *main_widget);
 
 gint       emerillon_sidebar_get_n_pages  (EmerillonSidebar *sidebar);
 
@@ -85,5 +85,3 @@ gboolean   emerillon_sidebar_is_empty     (EmerillonSidebar *sidebar);
 G_END_DECLS
 
 #endif /* __EMERILLON_SIDEBAR_H__ */
-
-
