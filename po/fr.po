@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-07 13:27-0400\n"
+"POT-Creation-Date: 2009-10-10 18:01-0400\n"
 "PO-Revision-Date: 2009-10-07 18:03+0200\n"
 "Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../emerillon/main.c:51
+#: ../emerillon/main.c:59
 msgid "Emerillon Map Viewer"
 msgstr "Visionneur de cartes Emerillon"
 
@@ -88,33 +88,17 @@ msgstr "_Outils"
 msgid "_Help"
 msgstr "Aid_e"
 
-#: ../emerillon/window.c:592
-msgid "_Quit"
-msgstr "_Quitter"
-
 #: ../emerillon/window.c:593
 msgid "Quit the program"
 msgstr "Quitte le programme"
-
-#: ../emerillon/window.c:595
-msgid "_Zoom In"
-msgstr "_Zoom avant"
 
 #: ../emerillon/window.c:596
 msgid "Enlarge the image"
 msgstr "Agrandit la carte"
 
-#: ../emerillon/window.c:598
-msgid "Zoom _Out"
-msgstr "Zoom _arrière"
-
 #: ../emerillon/window.c:599
 msgid "Shrink the image"
 msgstr "Réduit la carte"
-
-#: ../emerillon/window.c:601
-msgid "_Preferences"
-msgstr "_Préférences"
 
 #: ../emerillon/window.c:602
 msgid "Edit the preferences"
@@ -127,10 +111,6 @@ msgstr "_Sommaire"
 #: ../emerillon/window.c:605
 msgid "Help on this application"
 msgstr "Aide pour cette application"
-
-#: ../emerillon/window.c:607
-msgid "_About"
-msgstr "À _propos"
 
 #: ../emerillon/window.c:608
 msgid "About this application"
@@ -254,7 +234,7 @@ msgstr ""
 msgid "Organize Placemarks"
 msgstr "Organiser les repères"
 
-#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:452
+#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:473
 msgid "Name"
 msgstr "Nom"
 
@@ -278,15 +258,15 @@ msgstr "Repères"
 msgid "Remembers your favorite view points"
 msgstr "Enregistre vos repères"
 
-#: ../plugins/search/search.c:92 ../plugins/search/search.c:93
+#: ../plugins/search/search.c:109 ../plugins/search/search.c:110
 msgid "No result found"
 msgstr "Aucun résultat trouvé"
 
-#: ../plugins/search/search.c:443
+#: ../plugins/search/search.c:464
 msgid "No"
 msgstr "N°"
 
-#: ../plugins/search/search.c:462
+#: ../plugins/search/search.c:483
 msgid "Search results"
 msgstr "Résultats de recherche"
 
