@@ -8,8 +8,11 @@ emerillon/preferences.c
 plugins/placemarks/placemarks.c
 plugins/placemarks/add-dialog.c
 plugins/placemarks/manage-dialog.c
+[type: gettext/ini]plugins/copy-link/copy-link.emerillon-plugin.in
+plugins/copy-link/copy-link.c
 [type: gettext/ini]plugins/placemarks/placemarks.emerillon-plugin.in
 plugins/search/search.c
 [type: gettext/ini]plugins/search/search.emerillon-plugin.in
 data/emerillon.schemas.in
 data/emerillon.desktop.in.in
+
