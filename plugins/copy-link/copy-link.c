@@ -46,12 +46,15 @@ struct _CopyLinkPluginPrivate
   guint yahoo_ui_id;
 };
 
+#define LEN 255
+
 static void
 copy_cb (GtkAction *action,
          CopyLinkPlugin *plugin)
 {
   const gchar *id;
   gdouble lat, lon;
+  gchar slat[LEN], slon[LEN];
   gint zoom;
   gchar *url = NULL;
   GtkClipboard *clipboard;
@@ -65,21 +68,23 @@ copy_cb (GtkAction *action,
                 NULL);
 
   id = gtk_action_get_name (action);
+  g_ascii_dtostr (slat, LEN, lat);
+  g_ascii_dtostr (slon, LEN, lon);
 
   if (strcmp (id, OSM_ID) == 0)
     {
-      url = g_strdup_printf ("http://www.openstreetmap.org/?lat=%f&lon=%f&zoom=%d", lat, lon, zoom);
+      url = g_strdup_printf ("http://www.openstreetmap.org/?lat=%s&lon=%s&zoom=%d", slat, slon, zoom);
     }
   else if (strcmp (id, GOOGLE_ID) == 0)
     {
-      url = g_strdup_printf ("http://maps.google.com?ll=%f,%f&z=%d", lat, lon, zoom);
+      url = g_strdup_printf ("http://maps.google.com?ll=%s,%s&z=%d", slat, slon, zoom);
     }
   else if (strcmp (id, YAHOO_ID) == 0)
     {
       zoom += 1;
       if (zoom < 2)
         zoom = 2;
-      url = g_strdup_printf ("http://maps.yahoo.com/#mvt=m&lat=%f&lon=%f&zoom=%d", lat, lon, zoom);
+      url = g_strdup_printf ("http://maps.yahoo.com/#mvt=m&lat=%s&lon=%s&zoom=%d", slat, slon, zoom);
     }
 
   clipboard = gtk_clipboard_get (GDK_SELECTION_CLIPBOARD);
