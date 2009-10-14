@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-10 18:01-0400\n"
+"POT-Creation-Date: 2009-10-14 19:13-0400\n"
 "PO-Revision-Date: 2009-10-07 18:03+0200\n"
 "Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -249,6 +249,34 @@ msgstr "Longitude"
 #: ../plugins/placemarks/manage-dialog.c:268
 msgid "Zoom"
 msgstr "Zoom"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:1
+msgid "Copy link to Web"
+msgstr "Copier un liens vers le Web"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:2
+msgid "Provides a link for current view to major online maps"
+msgstr "Fournit un liens pour la position en cours vers les cartes en lignes"
+
+#: ../plugins/copy-link/copy-link.c:105
+msgid "Copy to clipboard the link to this web service"
+msgstr "Copier dans le presse-papier le liens vers ce service en ligne"
+
+#: ../plugins/copy-link/copy-link.c:152
+msgid "OpenStreetMap"
+msgstr "OpenStreetMap"
+
+#: ../plugins/copy-link/copy-link.c:153
+msgid "Yahoo! Maps"
+msgstr "Yahoo! Cartes"
+
+#: ../plugins/copy-link/copy-link.c:154
+msgid "Google Maps"
+msgstr "Google Maps"
+
+#: ../plugins/copy-link/copy-link.c:170
+msgid "_Copy link to"
+msgstr "_Copier le liens vers"
 
 #: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
 msgid "Placemarks"
