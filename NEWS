@@ -1,1 +1,18 @@
-No releases yet.
+Emerillon 0.1 (2009-10-14)
+===============================
+
+Preview release.
+First ever release.
+
+New Plugins:
+ * Search
+ * Placemarks
+ * Copy Link
+ * Map Position
+
+Added/updated translations:
+ * ar, courtesy of Khaled Hosny
+ * fr, courtesy of Claude Paroz and Pierre-Luc Beaudoin
+ * id, courtesy of Andika Triwidada
+ * sl, courtesy of Matej Urbančič
+ * sv, courtesy of Daniel Nylander
