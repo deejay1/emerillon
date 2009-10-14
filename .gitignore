@@ -41,6 +41,9 @@ xmldocs.make
 po/.intltool-merge-cache
 po/POTFILES
 po/stamp-it
+po/Makefile.in.in
+*.pot
+*.gmo
 
 data/emerillon.schemas
 data/emerillon.desktop
