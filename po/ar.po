@@ -1,14 +1,13 @@
 # Arabic translation for emerillon.
 # Copyright (C) 2009 Khaled Hosny
 # This file is distributed under the same license as the emerillon package.
-#
 # Khaled Hosny <khaledhosny@eglug.org>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-07 23:41+0200\n"
-"PO-Revision-Date: 2009-10-07 23:39+0300\n"
+"POT-Creation-Date: 2009-10-15 06:22+0200\n"
+"PO-Revision-Date: 2009-10-15 06:21+0300\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +18,7 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 "X-Generator: Virtaal 0.4.0\n"
 
-#: ../emerillon/main.c:51
+#: ../emerillon/main.c:59
 msgid "Emerillon Map Viewer"
 msgstr "عارض الخرائط إميرِلّون"
 
@@ -90,33 +89,17 @@ msgstr "أ_دوات"
 msgid "_Help"
 msgstr "_مساعدة"
 
-#: ../emerillon/window.c:592
-msgid "_Quit"
-msgstr "أ_نهِ"
-
 #: ../emerillon/window.c:593
 msgid "Quit the program"
 msgstr "أنهِ البرنامج"
-
-#: ../emerillon/window.c:595
-msgid "_Zoom In"
-msgstr "_قرّب"
 
 #: ../emerillon/window.c:596
 msgid "Enlarge the image"
 msgstr "كبّر الصورة"
 
-#: ../emerillon/window.c:598
-msgid "Zoom _Out"
-msgstr "ب_عّد"
-
 #: ../emerillon/window.c:599
 msgid "Shrink the image"
 msgstr "صغّر الصورة"
-
-#: ../emerillon/window.c:601
-msgid "_Preferences"
-msgstr "ال_تفضيلات"
 
 #: ../emerillon/window.c:602
 msgid "Edit the preferences"
@@ -129,10 +112,6 @@ msgstr "الم_حتويات"
 #: ../emerillon/window.c:605
 msgid "Help on this application"
 msgstr "مساعدة حول هذا التّطبيق"
-
-#: ../emerillon/window.c:607
-msgid "_About"
-msgstr "_عن"
 
 #: ../emerillon/window.c:608
 msgid "About this application"
@@ -255,7 +234,7 @@ msgstr ""
 msgid "Organize Placemarks"
 msgstr "نظّم العلامات"
 
-#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:452
+#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:473
 msgid "Name"
 msgstr "الاسم"
 
@@ -271,6 +250,34 @@ msgstr "خط الطول"
 msgid "Zoom"
 msgstr "قرّب"
 
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:1
+msgid "Copy link to Web"
+msgstr "انسخ الرابط إلى الوب"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:2
+msgid "Provides a link for current view to major online maps"
+msgstr "يوفر رابطا إلى المنظور الحالي في خرائط الوب الرئيسية"
+
+#: ../plugins/copy-link/copy-link.c:110
+msgid "Copy to clipboard the link to this web service"
+msgstr "انسخ إلى الحافظة رابط خدمة الوب هذه"
+
+#: ../plugins/copy-link/copy-link.c:157
+msgid "OpenStreetMap"
+msgstr "OpenStreetMap"
+
+#: ../plugins/copy-link/copy-link.c:158
+msgid "Yahoo! Maps"
+msgstr "خرائط ياهو!"
+
+#: ../plugins/copy-link/copy-link.c:159
+msgid "Google Maps"
+msgstr "خرائط جوجل"
+
+#: ../plugins/copy-link/copy-link.c:175
+msgid "_Copy link to"
+msgstr "ا_نسخ الرابط إلى"
+
 #: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
 msgid "Placemarks"
 msgstr "العلامات"
@@ -279,15 +286,15 @@ msgstr "العلامات"
 msgid "Remembers your favorite view points"
 msgstr "تذكر نقاط المشاهدة المفضلة"
 
-#: ../plugins/search/search.c:92 ../plugins/search/search.c:93
+#: ../plugins/search/search.c:109 ../plugins/search/search.c:110
 msgid "No result found"
 msgstr "لا نتائج"
 
-#: ../plugins/search/search.c:443
+#: ../plugins/search/search.c:464
 msgid "No"
 msgstr "لا"
 
-#: ../plugins/search/search.c:462
+#: ../plugins/search/search.c:483
 msgid "Search results"
 msgstr "نتائج البحث"
 
@@ -326,3 +333,18 @@ msgstr "تصفّح الخرائط"
 #: ../data/emerillon.desktop.in.in.h:2
 msgid "Map Viewer"
 msgstr "عارض الخرائط"
+
+#~ msgid "_Quit"
+#~ msgstr "أ_نهِ"
+
+#~ msgid "_Zoom In"
+#~ msgstr "_قرّب"
+
+#~ msgid "Zoom _Out"
+#~ msgstr "ب_عّد"
+
+#~ msgid "_Preferences"
+#~ msgstr "ال_تفضيلات"
+
+#~ msgid "_About"
+#~ msgstr "_عن"
