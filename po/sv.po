@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: emerillon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-08 09:44+0200\n"
-"PO-Revision-Date: 2009-10-08 11:49+0100\n"
+"POT-Creation-Date: 2009-10-15 18:18+0200\n"
+"PO-Revision-Date: 2009-10-15 18:19+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../emerillon/main.c:51
+#: ../emerillon/main.c:59
 msgid "Emerillon Map Viewer"
 msgstr "Kartvisaren Emerillon"
 
@@ -67,33 +67,17 @@ msgstr "Ver_ktyg"
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: ../emerillon/window.c:592
-msgid "_Quit"
-msgstr "A_vsluta"
-
 #: ../emerillon/window.c:593
 msgid "Quit the program"
 msgstr "Avsluta programmet"
-
-#: ../emerillon/window.c:595
-msgid "_Zoom In"
-msgstr "_Zooma in"
 
 #: ../emerillon/window.c:596
 msgid "Enlarge the image"
 msgstr "Förstora bilden"
 
-#: ../emerillon/window.c:598
-msgid "Zoom _Out"
-msgstr "Zooma _ut"
-
 #: ../emerillon/window.c:599
 msgid "Shrink the image"
 msgstr "Minska bilden"
-
-#: ../emerillon/window.c:601
-msgid "_Preferences"
-msgstr "_Inställningar"
 
 #: ../emerillon/window.c:602
 msgid "Edit the preferences"
@@ -106,10 +90,6 @@ msgstr "_Innehåll"
 #: ../emerillon/window.c:605
 msgid "Help on this application"
 msgstr "Hjälp för detta program"
-
-#: ../emerillon/window.c:607
-msgid "_About"
-msgstr "_Om"
 
 #: ../emerillon/window.c:608
 msgid "About this application"
@@ -233,7 +213,7 @@ msgid "Organize Placemarks"
 msgstr "Organisera intressepunkter"
 
 #: ../plugins/placemarks/manage-dialog.c:233
-#: ../plugins/search/search.c:452
+#: ../plugins/search/search.c:473
 msgid "Name"
 msgstr "Namn"
 
@@ -249,6 +229,34 @@ msgstr "Longitud"
 msgid "Zoom"
 msgstr "Zoom"
 
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:1
+msgid "Copy link to Web"
+msgstr "Kopiera länk till webb"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:2
+msgid "Provides a link for current view to major online maps"
+msgstr "Tillhandahåller en länk för aktuell vy till större karttjänster på nätet"
+
+#: ../plugins/copy-link/copy-link.c:110
+msgid "Copy to clipboard the link to this web service"
+msgstr "Kopiera länken till denna webbtjänst till urklipp"
+
+#: ../plugins/copy-link/copy-link.c:157
+msgid "OpenStreetMap"
+msgstr "OpenStreetMap"
+
+#: ../plugins/copy-link/copy-link.c:158
+msgid "Yahoo! Maps"
+msgstr "Yahoo! Maps"
+
+#: ../plugins/copy-link/copy-link.c:159
+msgid "Google Maps"
+msgstr "Google Maps"
+
+#: ../plugins/copy-link/copy-link.c:175
+msgid "_Copy link to"
+msgstr "_Kopiera länk till"
+
 #: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
 msgid "Placemarks"
 msgstr "Intressepunkter"
@@ -257,16 +265,16 @@ msgstr "Intressepunkter"
 msgid "Remembers your favorite view points"
 msgstr "Kommer ihåg dina favoritpunkter"
 
-#: ../plugins/search/search.c:92
-#: ../plugins/search/search.c:93
+#: ../plugins/search/search.c:109
+#: ../plugins/search/search.c:110
 msgid "No result found"
 msgstr "Inga resultat hittades"
 
-#: ../plugins/search/search.c:443
+#: ../plugins/search/search.c:464
 msgid "No"
 msgstr "Nr."
 
-#: ../plugins/search/search.c:462
+#: ../plugins/search/search.c:483
 msgid "Search results"
 msgstr "Sökresultat"
 
@@ -305,4 +313,15 @@ msgstr "Bläddra i kartor"
 #: ../data/emerillon.desktop.in.in.h:2
 msgid "Map Viewer"
 msgstr "Kartvisare"
+
+#~ msgid "_Quit"
+#~ msgstr "A_vsluta"
+#~ msgid "_Zoom In"
+#~ msgstr "_Zooma in"
+#~ msgid "Zoom _Out"
+#~ msgstr "Zooma _ut"
+#~ msgid "_Preferences"
+#~ msgstr "_Inställningar"
+#~ msgid "_About"
+#~ msgstr "_Om"
 
