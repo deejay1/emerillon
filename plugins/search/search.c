@@ -334,22 +334,21 @@ row_selected_cb (GtkTreeSelection *selection,
                  SearchPlugin *plugin)
 {
   GtkTreeIter iter;
-  GValue value = {0};
   ChamplainBaseMarker *marker;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   if (!gtk_tree_selection_get_selected (selection, &priv->model, &iter))
     return;
 
-  gtk_tree_model_get_value (priv->model, &iter, COL_MARKER, &value);
-  marker = g_value_get_object (&value);
-  g_value_unset (&value);
+  gtk_tree_model_get (priv->model, &iter, COL_MARKER, &marker, -1);
 
   if (!marker)
     return;
 
   champlain_selection_layer_select (CHAMPLAIN_SELECTION_LAYER (priv->layer),
         marker);
+
+  g_object_unref (marker);
 }
 
 static void
@@ -359,7 +358,6 @@ row_activated_cb (GtkTreeView *tree_view,
                   SearchPlugin *plugin)
 {
   GtkTreeIter iter;
-  GValue value = {0};
   gfloat lat, lon;
   ChamplainMarker *marker;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
@@ -367,25 +365,18 @@ row_activated_cb (GtkTreeView *tree_view,
   if (!gtk_tree_model_get_iter (priv->model, &iter, path))
     return;
 
-  gtk_tree_model_get_value (priv->model, &iter, COL_MARKER, &value);
-  marker = g_value_get_object (&value);
-  g_value_unset (&value);
+  gtk_tree_model_get (priv->model, &iter, COL_MARKER, &marker, -1);
 
   if (!marker)
     return;
 
-  gtk_tree_model_get_value (priv->model, &iter, COL_LAT, &value);
-  lat = g_value_get_float (&value);
-  g_value_unset (&value);
-
-  gtk_tree_model_get_value (priv->model, &iter, COL_LON, &value);
-  lon = g_value_get_float (&value);
-  g_value_unset (&value);
+  gtk_tree_model_get (priv->model, &iter, COL_LAT, &lat, COL_LON, &lon, -1);
 
   if (champlain_view_get_zoom_level (priv->map_view) < 12)
     champlain_view_set_zoom_level (priv->map_view, 12);
 
   champlain_view_center_on (priv->map_view, lat, lon);
+  g_object_unref (marker);
 }
 
 static gboolean
