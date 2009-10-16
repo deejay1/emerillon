@@ -288,6 +288,47 @@ search_icon_activate_cb (GtkEntry *entry,
   search_address (plugin);
 }
 
+#if CHAMPLAIN_CHECK_VERSION(0, 4, 1)
+static void
+marker_selected_cb (ChamplainSelectionLayer *layer,
+                    SearchPlugin *plugin)
+{
+  GtkTreeIter iter;
+  ChamplainBaseMarker *selected;
+  GtkTreeSelection *selection;
+  SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
+
+  selected = champlain_selection_layer_get_selected (layer);
+
+  if (!selected)
+    return;
+
+  if (!gtk_tree_model_get_iter_first (priv->model, &iter))
+    return;
+
+  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (priv->treeview));
+
+  do
+    {
+      ChamplainBaseMarker *marker;
+      gtk_tree_model_get (priv->model, &iter, COL_MARKER, &marker, -1);
+
+      if (!marker)
+        continue;
+
+      if (marker == selected)
+        {
+          gtk_tree_selection_select_iter (selection, &iter);
+          g_object_unref (marker);
+          return;
+        }
+
+      g_object_unref (marker);
+    }
+  while (gtk_tree_model_iter_next (priv->model, &iter));
+}
+#endif
+
 static void
 row_selected_cb (GtkTreeSelection *selection,
                  SearchPlugin *plugin)
@@ -488,8 +529,13 @@ activated (EthosPlugin *plugin)
   champlain_view_add_layer (priv->map_view,
       priv->layer);
 
-  /* FIXME: when ChamplainSelectionLayer grows a selection-changed
-   * signal, connect to it */
+#if CHAMPLAIN_CHECK_VERSION(0, 4, 1)
+  g_signal_connect (priv->layer,
+                    "changed",
+                    G_CALLBACK (marker_selected_cb),
+                    plugin);
+#endif
+
   clutter_actor_show (CLUTTER_ACTOR (priv->layer));
 
   g_object_unref (window);
