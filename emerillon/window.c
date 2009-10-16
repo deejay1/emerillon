@@ -743,6 +743,8 @@ build_ui (EmerillonWindow *self)
   self->priv->view = gtk_champlain_embed_get_view (GTK_CHAMPLAIN_EMBED (embed_view));
   g_signal_connect (self->priv->view, "notify::zoom-level",
       G_CALLBACK (zoom_changed_cb), self);
+  g_signal_connect (self->priv->view, "notify::map-source",
+      G_CALLBACK (zoom_changed_cb), self);
   g_signal_connect (self->priv->view, "notify::state",
       G_CALLBACK (state_changed_cb), self);
   g_object_set (self->priv->view, "zoom-level", 1,
