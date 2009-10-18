@@ -2,14 +2,15 @@
 # Copyright (C) 2009 emerillon's COPYRIGHT HOLDER
 # This file is distributed under the same license as the emerillon package.
 # Mario Blättermann <mariobl@gnome.org>, 2009.
+# Christian Kirbach <Christian.Kirbach@googlemail.com>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-17 15:33+0000\n"
-"PO-Revision-Date: 2009-10-17 17:56+0100\n"
-"Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
+"POT-Creation-Date: 2009-10-18 11:26+0200\n"
+"PO-Revision-Date: 2009-10-17 22:11+0200\n"
+"Last-Translator: Christian Kirbach <Christian.Kirbach@googlemail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,10 +25,10 @@ msgstr "Emerillon Kartenbetrachter"
 
 #: ../emerillon/window.c:363
 msgid ""
-"This program is free software; you can redistribute it and/or modify it under "
-"the terms of the GNU General Public License as published by the Free Software "
-"Foundation; either version 2 of the License, or (at your option) any later "
-"version.\n"
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version.\n"
 msgstr ""
 "Dieses Programm ist freie Software, Sie können sie weitergeben und/oder "
 "verändern solange Sie sich an die Regeln der GNU General Public License "
@@ -38,9 +39,9 @@ msgstr ""
 #: ../emerillon/window.c:367
 msgid ""
 "This program is distributed in the hope that it will be useful, but WITHOUT "
-"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
-"details.\n"
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details.\n"
 msgstr ""
 "Dieses Programm wurde mit dem Ziel veröffentlicht, dass Sie es nützlich "
 "finden, jedoch OHNE JEDWEDE GARANTIE, sogar ohne eine implizite Garantie der "
@@ -110,7 +111,7 @@ msgstr "Einstellungen bearbeiten"
 
 #: ../emerillon/window.c:604
 msgid "_Contents"
-msgstr "_Inhalte"
+msgstr "_Inhalt"
 
 #: ../emerillon/window.c:605
 msgid "Help on this application"
@@ -255,19 +256,19 @@ msgstr "Vergrößerung"
 
 #: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:1
 msgid "Copy link to Web"
-msgstr "Weblink kopieren"
+msgstr "Web-Adresse kopieren"
 
 #: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:2
 msgid "Provides a link for current view to major online maps"
 msgstr ""
-"Stellt einen Link in der aktuellen Ansicht zu bedeutenden Online-Karten bereit"
+"Stellt einen Verweis in der aktuellen Ansicht auf bedeutende Online-Karten "
+"bereit"
 
 #: ../plugins/copy-link/copy-link.c:110
 msgid "Copy to clipboard the link to this web service"
 msgstr "Den Link zu diesem Webdienst in die Zwischenablage kopieren"
 
 #: ../plugins/copy-link/copy-link.c:157
-#| msgid "_Street"
 msgid "OpenStreetMap"
 msgstr "OpenStreetMap"
 
