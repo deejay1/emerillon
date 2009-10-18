@@ -88,6 +88,8 @@ deactivated (EthosPlugin *plugin)
 
   priv = MOUSE_POSITION_PLUGIN (plugin)->priv;
   g_signal_handler_disconnect (priv->map_view, priv->signal_id);
+
+  gtk_statusbar_pop (priv->statusbar, 0);
 }
 
 static void
