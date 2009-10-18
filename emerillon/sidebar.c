@@ -411,10 +411,14 @@ emerillon_sidebar_init (EmerillonSidebar *sidebar)
   select_hbox = gtk_hbox_new (FALSE, 0);
 
   sidebar->priv->label = gtk_label_new ("");
+  gtk_label_set_ellipsize (GTK_LABEL (sidebar->priv->label),
+                           PANGO_ELLIPSIZE_END);
+  gtk_misc_set_alignment (GTK_MISC (sidebar->priv->label),
+                          0, 0.5);
 
   gtk_box_pack_start (GTK_BOX (select_hbox),
       sidebar->priv->label,
-      FALSE, FALSE, 0);
+      TRUE, TRUE, 0);
 
   gtk_widget_show (sidebar->priv->label);
 
