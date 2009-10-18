@@ -202,6 +202,7 @@ result_cb (RestProxyCall *call,
 
       g_free (symbol);
       g_free (display_name);
+      g_free (escaped_name);
 
       n = n->next;
       i++;
