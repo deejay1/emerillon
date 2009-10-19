@@ -1,0 +1,320 @@
+# Icelandic translations for Emerillon.
+# Copyright (C) 2009 Free Software Foundation, Inc.
+# This file is distributed under the same license as the emerillon package.
+# Anna Jonna Armannsdottir <annajonna@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: Emerillon\n"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=emerillon\n"
+"POT-Creation-Date: 2009-10-19 19:04+0000\n"
+"PO-Revision-Date: 2009-10-19 22:28+0000\n"
+"Last-Translator: Anna Jonna Armannsdottir <annajonna@gmail.com>\n"
+"Language-Team: Icelandic\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../emerillon/main.c:59
+msgid "Emerillon Map Viewer"
+msgstr "Kortaskoðarinn Emerillon"
+
+#: ../emerillon/window.c:363
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version.\n"
+msgstr ""
+"Þetta forrit er frjáls hugbúnaður; þú getur dreift því eða breytt að vild \n"
+"samkvæmt skilmálum GNU General Public Hugbúnaðarleyfinu eins og það er gefið út af Free Software Foundation; annað hvort samkvæmt útgáfu 2 af leyfinu eða (ef þú vilt) undir seinni útgáfu.\n"
+
+#: ../emerillon/window.c:367
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details.\n"
+msgstr "Þessu forriti er dreift í von um að það verði til gagns, en ÁN NOKKURRAR ÁBYRGÐAR; jafnvel þó að ábyrgð hafi verið gefin í skyn sökum SELJANLEIKA eða að HÆFA SÉRSTÖKUM TILGANGI. Sjá frekari upplýsingar í GNU General Public Leyfinu .\n"
+
+#: ../emerillon/window.c:371
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr "Með forritinu hefði átt að fylgja eintak af GNU General Public Leyfinu; en ef svo er ekki þá er hægt að senda bréf til Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 Bandaríkjunum (USA)"
+
+#: ../emerillon/window.c:376
+msgid "translator-credits"
+msgstr "Anna Jonna Armannsdottir <annajonna@gmail.com>"
+
+#: ../emerillon/window.c:383
+msgid "Emerillon"
+msgstr "Emerillon"
+
+#: ../emerillon/window.c:387
+msgid "A map viewer for the GNOME desktop"
+msgstr "Kortaskoðari fyrir GNOME desktoppinn"
+
+#: ../emerillon/window.c:586
+msgid "_Map"
+msgstr "_Kort"
+
+#: ../emerillon/window.c:587
+msgid "_Edit"
+msgstr "_Sýsla"
+
+#: ../emerillon/window.c:588
+#, fuzzy
+msgid "_View"
+msgstr "/_Skoða"
+
+#: ../emerillon/window.c:589
+msgid "_Tools"
+msgstr "_Tól"
+
+#: ../emerillon/window.c:590
+msgid "_Help"
+msgstr "_Hjálp"
+
+#: ../emerillon/window.c:593
+msgid "Quit the program"
+msgstr ""
+
+#: ../emerillon/window.c:596
+msgid "Enlarge the image"
+msgstr ""
+
+#: ../emerillon/window.c:599
+msgid "Shrink the image"
+msgstr ""
+
+#: ../emerillon/window.c:602
+msgid "Edit the preferences"
+msgstr ""
+
+#: ../emerillon/window.c:604
+msgid "_Contents"
+msgstr ""
+
+#: ../emerillon/window.c:605
+msgid "Help on this application"
+msgstr ""
+
+#: ../emerillon/window.c:608
+msgid "About this application"
+msgstr ""
+
+#: ../emerillon/window.c:613
+msgid "_Toolbar"
+msgstr ""
+
+#: ../emerillon/window.c:614
+msgid "Show or hide the toolbar in the current window"
+msgstr ""
+
+#: ../emerillon/window.c:616
+msgid "_Statusbar"
+msgstr ""
+
+#: ../emerillon/window.c:617
+msgid "Show or hide the statusbar in the current window"
+msgstr ""
+
+#: ../emerillon/window.c:619
+msgid "Side _Pane"
+msgstr ""
+
+#: ../emerillon/window.c:620
+msgid "Show or hide the side pane in the current window"
+msgstr ""
+
+#: ../emerillon/window.c:625
+msgid "_Street"
+msgstr ""
+
+#: ../emerillon/window.c:626
+msgid "View the street map based on OpenStreetMap"
+msgstr ""
+
+#: ../emerillon/window.c:627
+msgid "_Cycling"
+msgstr ""
+
+#: ../emerillon/window.c:628
+msgid "View the cycling map based on OpenCycleMap"
+msgstr ""
+
+#: ../emerillon/window.c:629
+msgid "_Public Transportation"
+msgstr ""
+
+#: ../emerillon/window.c:630
+msgid "View the public transportation map based on Öpnvkarte"
+msgstr ""
+
+#: ../emerillon/window.c:631
+msgid "_Terrain"
+msgstr ""
+
+#: ../emerillon/window.c:632
+msgid "View the terrain map based on mapsforfree.com Relief"
+msgstr ""
+
+#: ../emerillon/window.c:667
+msgid "In"
+msgstr ""
+
+#: ../emerillon/window.c:671
+msgid "Out"
+msgstr ""
+
+#: ../emerillon/preferences.c:118
+msgid "Plugins"
+msgstr ""
+
+#: ../emerillon/preferences.c:137
+msgid "Emerillon Preferences"
+msgstr ""
+
+#: ../plugins/placemarks/placemarks.c:112
+msgid "Go to this placemark"
+msgstr ""
+
+#: ../plugins/placemarks/placemarks.c:495
+msgid "_Placemarks"
+msgstr ""
+
+#: ../plugins/placemarks/placemarks.c:499
+msgid "Placemark this location"
+msgstr ""
+
+#: ../plugins/placemarks/placemarks.c:501
+msgid "Add current location to your placemarks"
+msgstr ""
+
+#: ../plugins/placemarks/placemarks.c:505
+msgid "Organize placemarks..."
+msgstr ""
+
+#: ../plugins/placemarks/placemarks.c:507
+msgid "Edit and delete existing placemarks"
+msgstr ""
+
+#: ../plugins/placemarks/add-dialog.c:117
+msgid "New Placemark"
+msgstr ""
+
+#: ../plugins/placemarks/add-dialog.c:130
+msgid "Name:"
+msgstr "Nafn:"
+
+#: ../plugins/placemarks/manage-dialog.c:167
+#, c-format
+msgid ""
+"You are about to remove the %s placemark!\n"
+"Are you sure you want to proceed?"
+msgstr ""
+
+#: ../plugins/placemarks/manage-dialog.c:201
+msgid "Organize Placemarks"
+msgstr ""
+
+#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:473
+msgid "Name"
+msgstr "Nafn"
+
+#: ../plugins/placemarks/manage-dialog.c:252
+msgid "Latitude"
+msgstr ""
+
+#: ../plugins/placemarks/manage-dialog.c:260
+msgid "Longitude"
+msgstr ""
+
+#: ../plugins/placemarks/manage-dialog.c:268
+msgid "Zoom"
+msgstr "Aðdráttur"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:1
+msgid "Copy link to Web"
+msgstr ""
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:2
+msgid "Provides a link for current view to major online maps"
+msgstr ""
+
+#: ../plugins/copy-link/copy-link.c:110
+msgid "Copy to clipboard the link to this web service"
+msgstr ""
+
+#: ../plugins/copy-link/copy-link.c:157
+msgid "OpenStreetMap"
+msgstr ""
+
+#: ../plugins/copy-link/copy-link.c:158
+msgid "Yahoo! Maps"
+msgstr ""
+
+#: ../plugins/copy-link/copy-link.c:159
+msgid "Google Maps"
+msgstr ""
+
+#: ../plugins/copy-link/copy-link.c:175
+msgid "_Copy link to"
+msgstr ""
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
+msgid "Placemarks"
+msgstr ""
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:2
+msgid "Remembers your favorite view points"
+msgstr ""
+
+#: ../plugins/search/search.c:109 ../plugins/search/search.c:110
+msgid "No result found"
+msgstr ""
+
+#: ../plugins/search/search.c:464
+msgid "No"
+msgstr ""
+
+#: ../plugins/search/search.c:483
+msgid "Search results"
+msgstr ""
+
+#: ../plugins/search/search.emerillon-plugin.in.h:1
+msgid "Allows searching GeoNames database"
+msgstr ""
+
+#: ../plugins/search/search.emerillon-plugin.in.h:2
+msgid "Search"
+msgstr "Leita"
+
+#: ../data/emerillon.schemas.in.h:1
+msgid "Active plugins"
+msgstr ""
+
+#: ../data/emerillon.schemas.in.h:2
+msgid "List of active plugins."
+msgstr ""
+
+#: ../data/emerillon.schemas.in.h:3
+msgid "Show/hide the window side pane."
+msgstr ""
+
+#: ../data/emerillon.schemas.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr ""
+
+#: ../data/emerillon.schemas.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr ""
+
+#: ../data/emerillon.desktop.in.in.h:1
+msgid "Browse maps"
+msgstr ""
+
+#: ../data/emerillon.desktop.in.in.h:2
+msgid "Map Viewer"
+msgstr ""
