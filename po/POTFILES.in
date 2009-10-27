@@ -9,6 +9,7 @@ emerillon/window.c
 emerillon/preferences.c
 [type: gettext/ini]plugins/copy-link/copy-link.emerillon-plugin.in
 plugins/copy-link/copy-link.c
+[type: gettext/ini]plugins/map-position/map-position.emerillon-plugin.in
 plugins/placemarks/add-dialog.c
 plugins/placemarks/manage-dialog.c
 plugins/placemarks/placemarks.c
