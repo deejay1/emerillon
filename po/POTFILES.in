@@ -1,18 +1,17 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
 [encoding: UTF-8]
+data/emerillon.schemas.in
+data/emerillon.desktop.in.in
 emerillon/main.c
 emerillon/sidebar.c
 emerillon/window.c
 emerillon/preferences.c
-plugins/placemarks/placemarks.c
-plugins/placemarks/add-dialog.c
-plugins/placemarks/manage-dialog.c
 [type: gettext/ini]plugins/copy-link/copy-link.emerillon-plugin.in
 plugins/copy-link/copy-link.c
+plugins/placemarks/add-dialog.c
+plugins/placemarks/manage-dialog.c
+plugins/placemarks/placemarks.c
 [type: gettext/ini]plugins/placemarks/placemarks.emerillon-plugin.in
 plugins/search/search.c
 [type: gettext/ini]plugins/search/search.emerillon-plugin.in
-data/emerillon.schemas.in
-data/emerillon.desktop.in.in
-
