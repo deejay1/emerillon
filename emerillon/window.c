@@ -476,6 +476,22 @@ cmd_show_hide_bar (GtkAction *action,
 }
 
 static void
+cmd_toggle_fullscreen (GtkAction *action,
+              EmerillonWindow *self)
+{
+  gboolean fullscreen;
+
+  fullscreen = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action));
+
+  if (fullscreen) {
+    gtk_window_fullscreen (GTK_WINDOW (default_window));
+  } else {
+    gtk_window_unfullscreen (GTK_WINDOW (default_window));
+  }
+
+}
+
+static void
 cmd_zoom_in (GtkAction *action,
              EmerillonWindow *self)
 {
@@ -619,6 +635,9 @@ static const GtkToggleActionEntry toggle_entries[] = {
       { "ViewSidebar", NULL, N_("Side _Pane"), "F9",
         N_("Show or hide the side pane in the current window"),
         G_CALLBACK (cmd_show_hide_bar), TRUE },
+      { "ViewFullscreen", NULL, N_("_Full Screen"), "F11",
+        N_("Enable or disable full screen mode"),
+        G_CALLBACK (cmd_toggle_fullscreen), FALSE },
 };
 
 static const GtkRadioActionEntry radio_entries[] = {

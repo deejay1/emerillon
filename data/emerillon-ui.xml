@@ -18,6 +18,8 @@
       <menuitem name="StatusbarToggle" action="ViewStatusbar"/>
       <menuitem name="SidebarToggle" action="ViewSidebar"/>
       <separator/>
+      <menuitem name="FullscreenToggle" action="ViewFullscreen"/>
+      <separator/>
       <menuitem action="ViewZoomIn"/>
       <menuitem action="ViewZoomOut"/>
     </menu>
