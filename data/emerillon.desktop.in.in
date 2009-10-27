@@ -7,4 +7,4 @@ Icon=emerillon
 StartupNotify=true
 Terminal=false
 Type=Application
-Categories=GNOME;GTK;Utility;Viewer;DataVisualization
+Categories=GNOME;GTK;Utility;Viewer;DataVisualization;
