@@ -20,8 +20,7 @@ emerillon_LDADD = \
 	$(top_builddir)/cut-paste/libephyspinner.la
 
 emerillon_LDFLAGS = \
-	-export-dynamic		\
-	-Wl
+	-export-dynamic
 
 BUILT_SOURCES =
 
