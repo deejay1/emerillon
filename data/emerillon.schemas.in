@@ -1,9 +1,9 @@
 <gconfschemafile>
   <schemalist>
     <schema>
-      <key>/schemas/apps/emerillion/ui/toolbar</key>
-      <applyto>/apps/emerillion/ui/toolbar</applyto>
-      <owner>emerillion</owner>
+      <key>/schemas/apps/emerillon/ui/toolbar</key>
+      <applyto>/apps/emerillon/ui/toolbar</applyto>
+      <owner>emerillon</owner>
       <type>bool</type>
       <default>1</default>
       <locale name="C">
@@ -12,9 +12,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/emerillion/ui/statusbar</key>
-      <applyto>/apps/emerillion/ui/statusbar</applyto>
-      <owner>emerillion</owner>
+      <key>/schemas/apps/emerillon/ui/statusbar</key>
+      <applyto>/apps/emerillon/ui/statusbar</applyto>
+      <owner>emerillon</owner>
       <type>bool</type>
       <default>1</default>
       <locale name="C">
@@ -23,9 +23,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/emerillion/ui/sidebar</key>
-      <applyto>/apps/emerillion/ui/sidebar</applyto>
-      <owner>emerillion</owner>
+      <key>/schemas/apps/emerillon/ui/sidebar</key>
+      <applyto>/apps/emerillon/ui/sidebar</applyto>
+      <owner>emerillon</owner>
       <type>bool</type>
       <default>1</default>
       <locale name="C">
@@ -34,9 +34,9 @@
     </schema>
 
     <schema>
-      <key>/schemas/apps/emerillion/plugins/active-plugins</key>
-      <applyto>/apps/emerillion/plugins/active-plugins</applyto>
-      <owner>emerillion</owner>
+      <key>/schemas/apps/emerillon/plugins/active-plugins</key>
+      <applyto>/apps/emerillon/plugins/active-plugins</applyto>
+      <owner>emerillon</owner>
       <type>list</type>
       <list_type>string</list_type>
       <default>[search,placemarks]</default>
