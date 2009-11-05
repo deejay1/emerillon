@@ -7,13 +7,41 @@ msgid ""
 msgstr ""
 "Project-Id-Version: emerillon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-15 18:18+0200\n"
-"PO-Revision-Date: 2009-10-15 18:19+0100\n"
+"POT-Creation-Date: 2009-11-05 07:42+0100\n"
+"PO-Revision-Date: 2009-11-05 07:43+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/emerillon.schemas.in.h:1
+msgid "Active plugins"
+msgstr "Aktiva insticksmoduler"
+
+#: ../data/emerillon.schemas.in.h:2
+msgid "List of active plugins."
+msgstr "Lista över aktiva insticksmoduler."
+
+#: ../data/emerillon.schemas.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "Visa/dölj fönstrets sidopanel."
+
+#: ../data/emerillon.schemas.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "Visa/dölj fönstrets statusrad."
+
+#: ../data/emerillon.schemas.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "Visa/dölj fönstrets verktygsrad."
+
+#: ../data/emerillon.desktop.in.in.h:1
+msgid "Browse maps"
+msgstr "Bläddra i kartor"
+
+#: ../data/emerillon.desktop.in.in.h:2
+msgid "Map Viewer"
+msgstr "Kartvisare"
 
 #: ../emerillon/main.c:59
 msgid "Emerillon Map Viewer"
@@ -47,115 +75,119 @@ msgstr "Emerillon"
 msgid "A map viewer for the GNOME desktop"
 msgstr "En kartvisare för GNOME-skrivbordet"
 
-#: ../emerillon/window.c:586
+#: ../emerillon/window.c:608
 msgid "_Map"
 msgstr "K_arta"
 
-#: ../emerillon/window.c:587
+#: ../emerillon/window.c:609
 msgid "_Edit"
 msgstr "R_edigera"
 
-#: ../emerillon/window.c:588
+#: ../emerillon/window.c:610
 msgid "_View"
 msgstr "_Visa"
 
-#: ../emerillon/window.c:589
+#: ../emerillon/window.c:611
 msgid "_Tools"
 msgstr "Ver_ktyg"
 
-#: ../emerillon/window.c:590
+#: ../emerillon/window.c:612
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: ../emerillon/window.c:593
+#: ../emerillon/window.c:615
 msgid "Quit the program"
 msgstr "Avsluta programmet"
 
-#: ../emerillon/window.c:596
+#: ../emerillon/window.c:618
 msgid "Enlarge the image"
 msgstr "Förstora bilden"
 
-#: ../emerillon/window.c:599
+#: ../emerillon/window.c:621
 msgid "Shrink the image"
 msgstr "Minska bilden"
 
-#: ../emerillon/window.c:602
+#: ../emerillon/window.c:624
 msgid "Edit the preferences"
 msgstr "Redigera inställningarna"
 
-#: ../emerillon/window.c:604
+#: ../emerillon/window.c:626
 msgid "_Contents"
 msgstr "_Innehåll"
 
-#: ../emerillon/window.c:605
+#: ../emerillon/window.c:627
 msgid "Help on this application"
 msgstr "Hjälp för detta program"
 
-#: ../emerillon/window.c:608
+#: ../emerillon/window.c:630
 msgid "About this application"
 msgstr "Om detta program"
 
-#: ../emerillon/window.c:613
+#: ../emerillon/window.c:635
 msgid "_Toolbar"
 msgstr "Ve_rktygsrad"
 
-#: ../emerillon/window.c:614
+#: ../emerillon/window.c:636
 msgid "Show or hide the toolbar in the current window"
 msgstr "Visa eller dölj verktygsraden i det aktuella fönstret"
 
-#: ../emerillon/window.c:616
+#: ../emerillon/window.c:638
 msgid "_Statusbar"
 msgstr "_Statusrad"
 
-#: ../emerillon/window.c:617
+#: ../emerillon/window.c:639
 msgid "Show or hide the statusbar in the current window"
 msgstr "Visa eller dölj statusraden i det aktuella fönstret"
 
-#: ../emerillon/window.c:619
+#: ../emerillon/window.c:641
 msgid "Side _Pane"
 msgstr "Sido_panel"
 
-#: ../emerillon/window.c:620
+#: ../emerillon/window.c:642
 msgid "Show or hide the side pane in the current window"
 msgstr "Visa eller dölj sidopanelen i det aktuella fönstret"
 
-#: ../emerillon/window.c:625
+#: ../emerillon/window.c:645
+msgid "Enable or disable full screen mode"
+msgstr "Aktivera eller inaktivera helskärmsläge"
+
+#: ../emerillon/window.c:650
 msgid "_Street"
 msgstr "_Gata"
 
-#: ../emerillon/window.c:626
+#: ../emerillon/window.c:651
 msgid "View the street map based on OpenStreetMap"
 msgstr "Visa gatukartan baserad på OpenStreetMap"
 
-#: ../emerillon/window.c:627
+#: ../emerillon/window.c:652
 msgid "_Cycling"
 msgstr "_Cykel"
 
-#: ../emerillon/window.c:628
+#: ../emerillon/window.c:653
 msgid "View the cycling map based on OpenCycleMap"
 msgstr "Visa cykelkartan baserad på OpenCycleMap"
 
-#: ../emerillon/window.c:629
+#: ../emerillon/window.c:654
 msgid "_Public Transportation"
 msgstr "_Kollektivtrafik"
 
-#: ../emerillon/window.c:630
+#: ../emerillon/window.c:655
 msgid "View the public transportation map based on Öpnvkarte"
 msgstr "Visa kartan över kollektivtrafik baserad på Öpnvkarte"
 
-#: ../emerillon/window.c:631
+#: ../emerillon/window.c:656
 msgid "_Terrain"
 msgstr "_Terräng"
 
-#: ../emerillon/window.c:632
+#: ../emerillon/window.c:657
 msgid "View the terrain map based on mapsforfree.com Relief"
 msgstr "Visa terrängkartan baserad på mapsforfree.com"
 
-#: ../emerillon/window.c:667
+#: ../emerillon/window.c:692
 msgid "In"
 msgstr "In"
 
-#: ../emerillon/window.c:671
+#: ../emerillon/window.c:696
 msgid "Out"
 msgstr "Ut"
 
@@ -166,68 +198,6 @@ msgstr "Insticksmoduler"
 #: ../emerillon/preferences.c:137
 msgid "Emerillon Preferences"
 msgstr "Inställningar för Emerillon"
-
-#: ../plugins/placemarks/placemarks.c:112
-msgid "Go to this placemark"
-msgstr "Gå till denna intressepunkt"
-
-#: ../plugins/placemarks/placemarks.c:495
-msgid "_Placemarks"
-msgstr "I_ntressepunkter"
-
-#: ../plugins/placemarks/placemarks.c:499
-msgid "Placemark this location"
-msgstr "Märk denna plats som intressant"
-
-#: ../plugins/placemarks/placemarks.c:501
-msgid "Add current location to your placemarks"
-msgstr "Lägg till aktuellt plats till dina intressepunkter"
-
-#: ../plugins/placemarks/placemarks.c:505
-msgid "Organize placemarks..."
-msgstr "Organisera intressepunkter..."
-
-#: ../plugins/placemarks/placemarks.c:507
-msgid "Edit and delete existing placemarks"
-msgstr "Redigera och ta bort befintliga intressepunkter"
-
-#: ../plugins/placemarks/add-dialog.c:117
-msgid "New Placemark"
-msgstr "Ny intressepunkt"
-
-#: ../plugins/placemarks/add-dialog.c:130
-msgid "Name:"
-msgstr "Namn:"
-
-#: ../plugins/placemarks/manage-dialog.c:167
-#, c-format
-msgid ""
-"You are about to remove the %s placemark!\n"
-"Are you sure you want to proceed?"
-msgstr ""
-"Du är på väg att ta bort intressepunkten %s!\n"
-"Är du säker på att du vill fortsätta?"
-
-#: ../plugins/placemarks/manage-dialog.c:201
-msgid "Organize Placemarks"
-msgstr "Organisera intressepunkter"
-
-#: ../plugins/placemarks/manage-dialog.c:233
-#: ../plugins/search/search.c:473
-msgid "Name"
-msgstr "Namn"
-
-#: ../plugins/placemarks/manage-dialog.c:252
-msgid "Latitude"
-msgstr "Latitud"
-
-#: ../plugins/placemarks/manage-dialog.c:260
-msgid "Longitude"
-msgstr "Longitud"
-
-#: ../plugins/placemarks/manage-dialog.c:268
-msgid "Zoom"
-msgstr "Zoom"
 
 #: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:1
 msgid "Copy link to Web"
@@ -257,6 +227,76 @@ msgstr "Google Maps"
 msgid "_Copy link to"
 msgstr "_Kopiera länk till"
 
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:1
+msgid "Display in the statusbar the coordinates at the center of the map"
+msgstr "Visa koordinaterna för kartans centerpunkt i statusraden"
+
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:2
+msgid "Map Position"
+msgstr "Kartposition"
+
+#: ../plugins/placemarks/add-dialog.c:117
+msgid "New Placemark"
+msgstr "Ny intressepunkt"
+
+#: ../plugins/placemarks/add-dialog.c:130
+msgid "Name:"
+msgstr "Namn:"
+
+#: ../plugins/placemarks/manage-dialog.c:167
+#, c-format
+msgid ""
+"You are about to remove the %s placemark!\n"
+"Are you sure you want to proceed?"
+msgstr ""
+"Du är på väg att ta bort intressepunkten %s!\n"
+"Är du säker på att du vill fortsätta?"
+
+#: ../plugins/placemarks/manage-dialog.c:201
+msgid "Organize Placemarks"
+msgstr "Organisera intressepunkter"
+
+#: ../plugins/placemarks/manage-dialog.c:233
+#: ../plugins/search/search.c:506
+msgid "Name"
+msgstr "Namn"
+
+#: ../plugins/placemarks/manage-dialog.c:252
+msgid "Latitude"
+msgstr "Latitud"
+
+#: ../plugins/placemarks/manage-dialog.c:260
+msgid "Longitude"
+msgstr "Longitud"
+
+#: ../plugins/placemarks/manage-dialog.c:268
+msgid "Zoom"
+msgstr "Zoom"
+
+#: ../plugins/placemarks/placemarks.c:112
+msgid "Go to this placemark"
+msgstr "Gå till denna intressepunkt"
+
+#: ../plugins/placemarks/placemarks.c:495
+msgid "_Placemarks"
+msgstr "I_ntressepunkter"
+
+#: ../plugins/placemarks/placemarks.c:499
+msgid "Placemark this location"
+msgstr "Märk denna plats som intressant"
+
+#: ../plugins/placemarks/placemarks.c:501
+msgid "Add current location to your placemarks"
+msgstr "Lägg till aktuellt plats till dina intressepunkter"
+
+#: ../plugins/placemarks/placemarks.c:505
+msgid "Organize placemarks..."
+msgstr "Organisera intressepunkter..."
+
+#: ../plugins/placemarks/placemarks.c:507
+msgid "Edit and delete existing placemarks"
+msgstr "Redigera och ta bort befintliga intressepunkter"
+
 #: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
 msgid "Placemarks"
 msgstr "Intressepunkter"
@@ -270,11 +310,11 @@ msgstr "Kommer ihåg dina favoritpunkter"
 msgid "No result found"
 msgstr "Inga resultat hittades"
 
-#: ../plugins/search/search.c:464
+#: ../plugins/search/search.c:497
 msgid "No"
 msgstr "Nr."
 
-#: ../plugins/search/search.c:483
+#: ../plugins/search/search.c:516
 msgid "Search results"
 msgstr "Sökresultat"
 
@@ -285,34 +325,6 @@ msgstr "Tillåter sökning i GeoNames-databasen"
 #: ../plugins/search/search.emerillon-plugin.in.h:2
 msgid "Search"
 msgstr "Sök"
-
-#: ../data/emerillon.schemas.in.h:1
-msgid "Active plugins"
-msgstr "Aktiva insticksmoduler"
-
-#: ../data/emerillon.schemas.in.h:2
-msgid "List of active plugins."
-msgstr "Lista över aktiva insticksmoduler."
-
-#: ../data/emerillon.schemas.in.h:3
-msgid "Show/hide the window side pane."
-msgstr "Visa/dölj fönstrets sidopanel."
-
-#: ../data/emerillon.schemas.in.h:4
-msgid "Show/hide the window statusbar."
-msgstr "Visa/dölj fönstrets statusrad."
-
-#: ../data/emerillon.schemas.in.h:5
-msgid "Show/hide the window toolbar."
-msgstr "Visa/dölj fönstrets verktygsrad."
-
-#: ../data/emerillon.desktop.in.in.h:1
-msgid "Browse maps"
-msgstr "Bläddra i kartor"
-
-#: ../data/emerillon.desktop.in.in.h:2
-msgid "Map Viewer"
-msgstr "Kartvisare"
 
 #~ msgid "_Quit"
 #~ msgstr "A_vsluta"
