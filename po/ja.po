@@ -1,0 +1,342 @@
+# emerillon ja.po.
+# Copyright (C) 2009 Novopia Solutions Inc.
+# This file is distributed under the same license as the emerillon package.
+# Takeshi AIHANA <takeshi.aihana@gmail.com>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: emerillon master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-07 16:14+0900\n"
+"PO-Revision-Date: 2009-11-07 16:06+0900\n"
+"Last-Translator: Takeshi AIHANA <takeshi.aihana@gmail.com>\n"
+"Language-Team: Japanese <takeshi.aihana@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/emerillon.schemas.in.h:1
+msgid "Active plugins"
+msgstr "利用可能なプラグイン"
+
+#: ../data/emerillon.schemas.in.h:2
+msgid "List of active plugins."
+msgstr "利用できるプラグインを要素とするリストです。"
+
+#: ../data/emerillon.schemas.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "サイド・ペインを表示するかどうか"
+
+#: ../data/emerillon.schemas.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "ステータスバーを表示するかどうか"
+
+#: ../data/emerillon.schemas.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "ツールバーを表示するかどうか"
+
+#: ../data/emerillon.desktop.in.in.h:1
+msgid "Browse maps"
+msgstr "地図を閲覧します"
+
+#: ../data/emerillon.desktop.in.in.h:2
+msgid "Map Viewer"
+msgstr "地図ビューア"
+
+#: ../emerillon/main.c:59
+msgid "Emerillon Map Viewer"
+msgstr "Emerillon 地図ビューア"
+
+#: ../emerillon/window.c:363
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version.\n"
+msgstr ""
+"このプログラムはフリーソフトウェアです。フリーソフトウェア財団が提供する GNU "
+"一般公衆利用許諾契約書の第二版、あるいはそれ以降の版が定める条項の下で本プロ"
+"グラムを再頒布または変更することができます。\n"
+
+#: ../emerillon/window.c:367
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details.\n"
+msgstr ""
+"本プログラムは有用とは思いますが、その頒布にあたり商用での利用や特定の目的に"
+"対する適用については暗黙の保証を含めて、いかなる保証も行ないません。詳細には "
+"GNU 一般公衆利用許諾契約書をご覧下さい。\n"
+
+#: ../emerillon/window.c:371
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr ""
+"あなたは本プログラムと一緒に GNU 一般公衆利用許諾契約書の写しを受け取っている"
+"はずです。そうでない場合は、Free Software Foundation, Inc., 51 Franklin "
+"Street, Fifth Floor, Boston, MA 02110-1301, USA まで連絡して下さい。"
+
+#: ../emerillon/window.c:376
+msgid "translator-credits"
+msgstr "相花 毅 <takeshi.aihana@gmail.com>"
+
+#: ../emerillon/window.c:383
+msgid "Emerillon"
+msgstr "Emerillon"
+
+#: ../emerillon/window.c:387
+msgid "A map viewer for the GNOME desktop"
+msgstr "GNOME デスクトップ向けの地図ビューアです。"
+
+#: ../emerillon/window.c:608
+msgid "_Map"
+msgstr "地図(_M)"
+
+#: ../emerillon/window.c:609
+msgid "_Edit"
+msgstr "編集(_E)"
+
+#: ../emerillon/window.c:610
+msgid "_View"
+msgstr "表示(_V)"
+
+#: ../emerillon/window.c:611
+msgid "_Tools"
+msgstr "ツール(_T)"
+
+#: ../emerillon/window.c:612
+msgid "_Help"
+msgstr "ヘルプ(_H)"
+
+#: ../emerillon/window.c:615
+msgid "Quit the program"
+msgstr "プログラムを終了します"
+
+#: ../emerillon/window.c:618
+msgid "Enlarge the image"
+msgstr "地図を拡大します"
+
+#: ../emerillon/window.c:621
+msgid "Shrink the image"
+msgstr "地図を縮小します"
+
+#: ../emerillon/window.c:624
+msgid "Edit the preferences"
+msgstr "設定を変更します"
+
+#: ../emerillon/window.c:626
+msgid "_Contents"
+msgstr "目次(_C)"
+
+#: ../emerillon/window.c:627
+msgid "Help on this application"
+msgstr "このアプリケーションのヘルプを表示します"
+
+#: ../emerillon/window.c:630
+msgid "About this application"
+msgstr "このアプリケーションについて"
+
+#: ../emerillon/window.c:635
+msgid "_Toolbar"
+msgstr "ツールバー(_T)"
+
+#: ../emerillon/window.c:636
+msgid "Show or hide the toolbar in the current window"
+msgstr "ツールバーの表示を ON/OFF します"
+
+#: ../emerillon/window.c:638
+msgid "_Statusbar"
+msgstr "ステータスバー(_S)"
+
+#: ../emerillon/window.c:639
+msgid "Show or hide the statusbar in the current window"
+msgstr "ステータスバーの表示を ON/OFF します"
+
+#: ../emerillon/window.c:641
+msgid "Side _Pane"
+msgstr "サイド・ペイン(_P)"
+
+#: ../emerillon/window.c:642
+msgid "Show or hide the side pane in the current window"
+msgstr "サイド・ペインの表示を ON/OFF します"
+
+#: ../emerillon/window.c:645
+msgid "Enable or disable full screen mode"
+msgstr "フルスクリーン表示を ON/OFF します"
+
+#: ../emerillon/window.c:650
+msgid "_Street"
+msgstr "道路(_S)"
+
+#: ../emerillon/window.c:651
+msgid "View the street map based on OpenStreetMap"
+msgstr "OpenStreetMap が提供している道路の地図を表示します"
+
+#: ../emerillon/window.c:652
+msgid "_Cycling"
+msgstr "自転車(_C)"
+
+#: ../emerillon/window.c:653
+msgid "View the cycling map based on OpenCycleMap"
+msgstr "OpenCycleMap が提供しているサイクリングロードの地図を表示します"
+
+#: ../emerillon/window.c:654
+msgid "_Public Transportation"
+msgstr "交通機関(_P)"
+
+#: ../emerillon/window.c:655
+msgid "View the public transportation map based on Öpnvkarte"
+msgstr "Öpnvkarte が提供している公共の交通機関の地図を表示します"
+
+#: ../emerillon/window.c:656
+msgid "_Terrain"
+msgstr "地形(_T)"
+
+#: ../emerillon/window.c:657
+msgid "View the terrain map based on mapsforfree.com Relief"
+msgstr "mapsforfree.com Relief が提供している地勢図を表示します"
+
+#: ../emerillon/window.c:692
+msgid "In"
+msgstr "拡大"
+
+#: ../emerillon/window.c:696
+msgid "Out"
+msgstr "縮小"
+
+#: ../emerillon/preferences.c:118
+msgid "Plugins"
+msgstr "プラグイン"
+
+#: ../emerillon/preferences.c:137
+msgid "Emerillon Preferences"
+msgstr "Emerillon の設定"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:1
+msgid "Copy link to Web"
+msgstr "地図情報の提供"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:2
+msgid "Provides a link for current view to major online maps"
+msgstr ""
+"現在表示している地図のリンクを主要なオンライン・マップ・サイトへ提供します。"
+
+#: ../plugins/copy-link/copy-link.c:110
+msgid "Copy to clipboard the link to this web service"
+msgstr "クリップボードにあるリンク情報をウェブ・サービスへコピーします"
+
+#: ../plugins/copy-link/copy-link.c:157
+msgid "OpenStreetMap"
+msgstr "OpenStreetMap"
+
+#: ../plugins/copy-link/copy-link.c:158
+msgid "Yahoo! Maps"
+msgstr "Yahoo! 地図"
+
+#: ../plugins/copy-link/copy-link.c:159
+msgid "Google Maps"
+msgstr "Google マップ"
+
+#: ../plugins/copy-link/copy-link.c:175
+msgid "_Copy link to"
+msgstr "リンクを提供する(_C)"
+
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:1
+msgid "Display in the statusbar the coordinates at the center of the map"
+msgstr "地図の中央の座標をステータスバーに表示します。"
+
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:2
+msgid "Map Position"
+msgstr "地図の位置"
+
+#: ../plugins/placemarks/add-dialog.c:117
+msgid "New Placemark"
+msgstr "新しいマーカー"
+
+#: ../plugins/placemarks/add-dialog.c:130
+msgid "Name:"
+msgstr "名前:"
+
+#: ../plugins/placemarks/manage-dialog.c:167
+#, c-format
+msgid ""
+"You are about to remove the %s placemark!\n"
+"Are you sure you want to proceed?"
+msgstr ""
+"%s というマーカーを削除しようとしています！\n"
+"本当に削除してもよろしいですか？"
+
+#: ../plugins/placemarks/manage-dialog.c:201
+msgid "Organize Placemarks"
+msgstr "マーカーの管理"
+
+#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:506
+msgid "Name"
+msgstr "名前"
+
+#: ../plugins/placemarks/manage-dialog.c:252
+msgid "Latitude"
+msgstr "緯度"
+
+#: ../plugins/placemarks/manage-dialog.c:260
+msgid "Longitude"
+msgstr "経度"
+
+#: ../plugins/placemarks/manage-dialog.c:268
+msgid "Zoom"
+msgstr "ズーム"
+
+#: ../plugins/placemarks/placemarks.c:112
+msgid "Go to this placemark"
+msgstr "このマーカーが指す場所へジャンプします"
+
+#: ../plugins/placemarks/placemarks.c:495
+msgid "_Placemarks"
+msgstr "マーカー(_P)"
+
+#: ../plugins/placemarks/placemarks.c:499
+msgid "Placemark this location"
+msgstr "マーカーを付与する"
+
+#: ../plugins/placemarks/placemarks.c:501
+msgid "Add current location to your placemarks"
+msgstr "現在の場所にマーカーを付与します"
+
+#: ../plugins/placemarks/placemarks.c:505
+msgid "Organize placemarks..."
+msgstr "マーカーの管理..."
+
+#: ../plugins/placemarks/placemarks.c:507
+msgid "Edit and delete existing placemarks"
+msgstr "保存してあるマーカを編集したり削除します"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
+msgid "Placemarks"
+msgstr "マーカー"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:2
+msgid "Remembers your favorite view points"
+msgstr "お気に入りのエリアにマーカーを付与して保存します。"
+
+#: ../plugins/search/search.c:109 ../plugins/search/search.c:110
+msgid "No result found"
+msgstr "見つかりませんでした"
+
+#: ../plugins/search/search.c:497
+msgid "No"
+msgstr "No"
+
+#: ../plugins/search/search.c:516
+msgid "Search results"
+msgstr "検索結果"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:1
+msgid "Allows searching GeoNames database"
+msgstr "GeoNames データベースから検索できるようにします。"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:2
+msgid "Search"
+msgstr "検索"
