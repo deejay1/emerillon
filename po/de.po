@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-18 11:26+0200\n"
-"PO-Revision-Date: 2009-10-17 22:11+0200\n"
-"Last-Translator: Christian Kirbach <Christian.Kirbach@googlemail.com>\n"
+"POT-Creation-Date: 2009-10-27 18:55+0000\n"
+"PO-Revision-Date: 2009-11-18 16:26+0100\n"
+"Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,16 +19,44 @@ msgstr ""
 "X-Poedit-Language: German\n"
 "X-Poedit-Country: GERMANY\n"
 
+#: ../data/emerillon.schemas.in.h:1
+msgid "Active plugins"
+msgstr "Aktivierte Plugins"
+
+#: ../data/emerillon.schemas.in.h:2
+msgid "List of active plugins."
+msgstr "Liste der aktivierten Plugins"
+
+#: ../data/emerillon.schemas.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "Seitenleiste im Fenster anzeigen oder verbergen"
+
+#: ../data/emerillon.schemas.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "Statusleiste im Fenster anzeigen oder verbergen"
+
+#: ../data/emerillon.schemas.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "Werkzeugleiste im Fenster anzeigen oder verbergen."
+
+#: ../data/emerillon.desktop.in.in.h:1
+msgid "Browse maps"
+msgstr "Karten durchsuchen"
+
+#: ../data/emerillon.desktop.in.in.h:2
+msgid "Map Viewer"
+msgstr "Kartenbetrachter"
+
 #: ../emerillon/main.c:59
 msgid "Emerillon Map Viewer"
 msgstr "Emerillon Kartenbetrachter"
 
 #: ../emerillon/window.c:363
 msgid ""
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version.\n"
+"This program is free software; you can redistribute it and/or modify it under "
+"the terms of the GNU General Public License as published by the Free Software "
+"Foundation; either version 2 of the License, or (at your option) any later "
+"version.\n"
 msgstr ""
 "Dieses Programm ist freie Software, Sie können sie weitergeben und/oder "
 "verändern solange Sie sich an die Regeln der GNU General Public License "
@@ -39,9 +67,9 @@ msgstr ""
 #: ../emerillon/window.c:367
 msgid ""
 "This program is distributed in the hope that it will be useful, but WITHOUT "
-"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
-"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
-"more details.\n"
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more "
+"details.\n"
 msgstr ""
 "Dieses Programm wurde mit dem Ziel veröffentlicht, dass Sie es nützlich "
 "finden, jedoch OHNE JEDWEDE GARANTIE, sogar ohne eine implizite Garantie der "
@@ -73,115 +101,119 @@ msgstr "Emerillon"
 msgid "A map viewer for the GNOME desktop"
 msgstr "Ein Kartenbetrachter für die GNOME-Arbeitsumgebung"
 
-#: ../emerillon/window.c:586
+#: ../emerillon/window.c:608
 msgid "_Map"
 msgstr "_Karte"
 
-#: ../emerillon/window.c:587
+#: ../emerillon/window.c:609
 msgid "_Edit"
 msgstr "_Bearbeiten"
 
-#: ../emerillon/window.c:588
+#: ../emerillon/window.c:610
 msgid "_View"
 msgstr "_Ansicht"
 
-#: ../emerillon/window.c:589
+#: ../emerillon/window.c:611
 msgid "_Tools"
 msgstr "_Werkzeuge"
 
-#: ../emerillon/window.c:590
+#: ../emerillon/window.c:612
 msgid "_Help"
 msgstr "_Hilfe"
 
-#: ../emerillon/window.c:593
+#: ../emerillon/window.c:615
 msgid "Quit the program"
 msgstr "Das Programm beenden"
 
-#: ../emerillon/window.c:596
+#: ../emerillon/window.c:618
 msgid "Enlarge the image"
 msgstr "Ansicht vergrößern"
 
-#: ../emerillon/window.c:599
+#: ../emerillon/window.c:621
 msgid "Shrink the image"
 msgstr "Ansicht verkleinern"
 
-#: ../emerillon/window.c:602
+#: ../emerillon/window.c:624
 msgid "Edit the preferences"
 msgstr "Einstellungen bearbeiten"
 
-#: ../emerillon/window.c:604
+#: ../emerillon/window.c:626
 msgid "_Contents"
 msgstr "_Inhalt"
 
-#: ../emerillon/window.c:605
+#: ../emerillon/window.c:627
 msgid "Help on this application"
 msgstr "Hilfe zu dieser Anwendung anzeigen"
 
-#: ../emerillon/window.c:608
+#: ../emerillon/window.c:630
 msgid "About this application"
 msgstr "Info zu dieser Anwendung"
 
-#: ../emerillon/window.c:613
+#: ../emerillon/window.c:635
 msgid "_Toolbar"
 msgstr "_Werkzeugleiste"
 
-#: ../emerillon/window.c:614
+#: ../emerillon/window.c:636
 msgid "Show or hide the toolbar in the current window"
 msgstr "Die Werkzeugleiste im aktuellen Fenster anzeigen oder verbergen"
 
-#: ../emerillon/window.c:616
+#: ../emerillon/window.c:638
 msgid "_Statusbar"
 msgstr "_Statusleiste"
 
-#: ../emerillon/window.c:617
+#: ../emerillon/window.c:639
 msgid "Show or hide the statusbar in the current window"
 msgstr "Statusleiste im aktuellen Fenster anzeigen oder verbergen"
 
-#: ../emerillon/window.c:619
+#: ../emerillon/window.c:641
 msgid "Side _Pane"
 msgstr "Seiten_leiste"
 
-#: ../emerillon/window.c:620
+#: ../emerillon/window.c:642
 msgid "Show or hide the side pane in the current window"
 msgstr "Seitenleiste im aktuellen Fenster anzeigen oder verbergen"
 
-#: ../emerillon/window.c:625
+#: ../emerillon/window.c:645
+msgid "Enable or disable full screen mode"
+msgstr "Vollbildmodus ein- oder ausschalten"
+
+#: ../emerillon/window.c:650
 msgid "_Street"
 msgstr "_Straße"
 
-#: ../emerillon/window.c:626
+#: ../emerillon/window.c:651
 msgid "View the street map based on OpenStreetMap"
 msgstr "Straßenkarte basierend auf OpenStreetMap betrachten"
 
-#: ../emerillon/window.c:627
+#: ../emerillon/window.c:652
 msgid "_Cycling"
 msgstr "_Fahrrad"
 
-#: ../emerillon/window.c:628
+#: ../emerillon/window.c:653
 msgid "View the cycling map based on OpenCycleMap"
 msgstr "Fahrradkarte basierend auf OpenCycleMap betrachten"
 
-#: ../emerillon/window.c:629
+#: ../emerillon/window.c:654
 msgid "_Public Transportation"
 msgstr "Ö_ffentliche Verkehrsmittel"
 
-#: ../emerillon/window.c:630
+#: ../emerillon/window.c:655
 msgid "View the public transportation map based on Öpnvkarte"
 msgstr "Karte für den öffentlichen Verkehr basierend auf »Öpnvkarte« anzeigen"
 
-#: ../emerillon/window.c:631
+#: ../emerillon/window.c:656
 msgid "_Terrain"
 msgstr "_Gelände"
 
-#: ../emerillon/window.c:632
+#: ../emerillon/window.c:657
 msgid "View the terrain map based on mapsforfree.com Relief"
 msgstr "Geländekarte basierend auf den Karten von mapsforfree.com anzeigen"
 
-#: ../emerillon/window.c:667
+#: ../emerillon/window.c:692
 msgid "In"
 msgstr "Hinein"
 
-#: ../emerillon/window.c:671
+#: ../emerillon/window.c:696
 msgid "Out"
 msgstr "Heraus"
 
@@ -192,67 +224,6 @@ msgstr "Plugins"
 #: ../emerillon/preferences.c:137
 msgid "Emerillon Preferences"
 msgstr "Emerillon-Einstellungen"
-
-#: ../plugins/placemarks/placemarks.c:112
-msgid "Go to this placemark"
-msgstr "Zu diesem Lesezeichen gehen"
-
-#: ../plugins/placemarks/placemarks.c:495
-msgid "_Placemarks"
-msgstr "_Lesezeichen"
-
-#: ../plugins/placemarks/placemarks.c:499
-msgid "Placemark this location"
-msgstr "Diesen Ort als Lesezeichen speichern"
-
-#: ../plugins/placemarks/placemarks.c:501
-msgid "Add current location to your placemarks"
-msgstr "Aktuellen Ort zu Ihren Lesezeichen hinzufügen"
-
-#: ../plugins/placemarks/placemarks.c:505
-msgid "Organize placemarks..."
-msgstr "Lesezeichen verwalten …"
-
-#: ../plugins/placemarks/placemarks.c:507
-msgid "Edit and delete existing placemarks"
-msgstr "Vorhandene Lesezeichen bearbeiten oder löschen"
-
-#: ../plugins/placemarks/add-dialog.c:117
-msgid "New Placemark"
-msgstr "Lesezeichen hinzufügen"
-
-#: ../plugins/placemarks/add-dialog.c:130
-msgid "Name:"
-msgstr "Name:"
-
-#: ../plugins/placemarks/manage-dialog.c:167
-#, c-format
-msgid ""
-"You are about to remove the %s placemark!\n"
-"Are you sure you want to proceed?"
-msgstr ""
-"Sie sind dabei, das Lesezeichen %s zu entfernen!\n"
-"Wollen Sie wirklich fortsetzen?"
-
-#: ../plugins/placemarks/manage-dialog.c:201
-msgid "Organize Placemarks"
-msgstr "Lesezeichen verwalten"
-
-#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:473
-msgid "Name"
-msgstr "Name"
-
-#: ../plugins/placemarks/manage-dialog.c:252
-msgid "Latitude"
-msgstr "Breitengrad"
-
-#: ../plugins/placemarks/manage-dialog.c:260
-msgid "Longitude"
-msgstr "Längengrad"
-
-#: ../plugins/placemarks/manage-dialog.c:268
-msgid "Zoom"
-msgstr "Vergrößerung"
 
 #: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:1
 msgid "Copy link to Web"
@@ -284,6 +255,75 @@ msgstr "Google Maps"
 msgid "_Copy link to"
 msgstr "Link _kopieren nach"
 
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:1
+msgid "Display in the statusbar the coordinates at the center of the map"
+msgstr "In der Statusleiste die Koordinaten der Kartenmitte anzeigen"
+
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:2
+msgid "Map Position"
+msgstr "Kartenposition"
+
+#: ../plugins/placemarks/add-dialog.c:117
+msgid "New Placemark"
+msgstr "Lesezeichen hinzufügen"
+
+#: ../plugins/placemarks/add-dialog.c:130
+msgid "Name:"
+msgstr "Name:"
+
+#: ../plugins/placemarks/manage-dialog.c:167
+#, c-format
+msgid ""
+"You are about to remove the %s placemark!\n"
+"Are you sure you want to proceed?"
+msgstr ""
+"Sie sind dabei, das Lesezeichen %s zu entfernen!\n"
+"Wollen Sie wirklich fortsetzen?"
+
+#: ../plugins/placemarks/manage-dialog.c:201
+msgid "Organize Placemarks"
+msgstr "Lesezeichen verwalten"
+
+#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:506
+msgid "Name"
+msgstr "Name"
+
+#: ../plugins/placemarks/manage-dialog.c:252
+msgid "Latitude"
+msgstr "Breitengrad"
+
+#: ../plugins/placemarks/manage-dialog.c:260
+msgid "Longitude"
+msgstr "Längengrad"
+
+#: ../plugins/placemarks/manage-dialog.c:268
+msgid "Zoom"
+msgstr "Vergrößerung"
+
+#: ../plugins/placemarks/placemarks.c:112
+msgid "Go to this placemark"
+msgstr "Zu diesem Lesezeichen gehen"
+
+#: ../plugins/placemarks/placemarks.c:495
+msgid "_Placemarks"
+msgstr "_Lesezeichen"
+
+#: ../plugins/placemarks/placemarks.c:499
+msgid "Placemark this location"
+msgstr "Diesen Ort als Lesezeichen speichern"
+
+#: ../plugins/placemarks/placemarks.c:501
+msgid "Add current location to your placemarks"
+msgstr "Aktuellen Ort zu Ihren Lesezeichen hinzufügen"
+
+#: ../plugins/placemarks/placemarks.c:505
+msgid "Organize placemarks..."
+msgstr "Lesezeichen verwalten …"
+
+#: ../plugins/placemarks/placemarks.c:507
+msgid "Edit and delete existing placemarks"
+msgstr "Vorhandene Lesezeichen bearbeiten oder löschen"
+
 #: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
 msgid "Placemarks"
 msgstr "Lesezeichen"
@@ -296,11 +336,11 @@ msgstr "Ihre bevorzugten Ziele merken"
 msgid "No result found"
 msgstr "Keine Ergebnisse gefunden"
 
-#: ../plugins/search/search.c:464
+#: ../plugins/search/search.c:497
 msgid "No"
 msgstr "Kein"
 
-#: ../plugins/search/search.c:483
+#: ../plugins/search/search.c:516
 msgid "Search results"
 msgstr "Suchergebnisse"
 
@@ -311,31 +351,3 @@ msgstr "Erlaubt das Durchsuchen der GeoNames-Datenbank"
 #: ../plugins/search/search.emerillon-plugin.in.h:2
 msgid "Search"
 msgstr "Suche"
-
-#: ../data/emerillon.schemas.in.h:1
-msgid "Active plugins"
-msgstr "Aktivierte Plugins"
-
-#: ../data/emerillon.schemas.in.h:2
-msgid "List of active plugins."
-msgstr "Liste der aktivierten Plugins"
-
-#: ../data/emerillon.schemas.in.h:3
-msgid "Show/hide the window side pane."
-msgstr "Seitenleiste im Fenster anzeigen oder verbergen"
-
-#: ../data/emerillon.schemas.in.h:4
-msgid "Show/hide the window statusbar."
-msgstr "Statusleiste im Fenster anzeigen oder verbergen"
-
-#: ../data/emerillon.schemas.in.h:5
-msgid "Show/hide the window toolbar."
-msgstr "Werkzeugleiste im Fenster anzeigen oder verbergen."
-
-#: ../data/emerillon.desktop.in.in.h:1
-msgid "Browse maps"
-msgstr "Karten durchsuchen"
-
-#: ../data/emerillon.desktop.in.in.h:2
-msgid "Map Viewer"
-msgstr "Kartenbetrachter"
