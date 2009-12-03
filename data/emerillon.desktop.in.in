@@ -1,5 +1,7 @@
 [Desktop Entry]
-_Name=Map Viewer
+_Name=Emerillon
+_GenericName=Map Viewer
+_X-GNOME-FullName=Emerillon Map Viewer
 _Comment=Browse maps
 TryExec=emerillon
 Exec=emerillon %U
