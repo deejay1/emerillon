@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-07 10:18+0100\n"
-"PO-Revision-Date: 2009-10-20 21:55-0400\n"
+"POT-Creation-Date: 2009-12-10 23:48+0100\n"
+"PO-Revision-Date: 2009-12-07 21:55-0400\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -175,7 +175,7 @@ msgstr "Vis eller skjul sideruden i det aktuelle vindue"
 
 #: ../emerillon/window.c:645
 msgid "Enable or disable full screen mode"
-msgstr ""
+msgstr "Slå fuldskærmtilstand til/fra"
 
 #: ../emerillon/window.c:650
 msgid "_Street"
@@ -255,11 +255,11 @@ msgstr "_Kopiér henvisning til"
 
 #: ../plugins/map-position/map-position.emerillon-plugin.in.h:1
 msgid "Display in the statusbar the coordinates at the center of the map"
-msgstr ""
+msgstr "Vis koordinaterne for centrum af kortet i statusbjælken"
 
 #: ../plugins/map-position/map-position.emerillon-plugin.in.h:2
 msgid "Map Position"
-msgstr ""
+msgstr "Kortposition"
 
 #: ../plugins/placemarks/add-dialog.c:117
 msgid "New Placemark"
