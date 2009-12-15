@@ -774,6 +774,9 @@ build_ui (EmerillonWindow *self)
       G_CALLBACK (state_changed_cb), self);
   g_object_set (self->priv->view, "zoom-level", 1,
       "scroll-mode", CHAMPLAIN_SCROLL_MODE_KINETIC,
+#if CHAMPLAIN_CHECK_VERSION (0, 4, 3)
+      "show-scale", TRUE,
+#endif
       NULL);
   champlain_view_center_on (self->priv->view, 40, 0);
 
