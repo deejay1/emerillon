@@ -154,7 +154,7 @@ result_cb (RestProxyCall *call,
         }
 
       lat = rest_xml_node_find (n, "lat");
-      if (!lon)
+      if (!lat)
         {
           n = n->next;
           continue;
