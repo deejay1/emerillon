@@ -209,6 +209,8 @@ save_placemarks (PlacemarksPlugin *plugin)
     }
 
   g_key_file_free (file);
+  g_free (data);
+  g_free (filename);
   return FALSE;
 }
 
