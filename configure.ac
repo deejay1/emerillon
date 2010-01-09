@@ -2,7 +2,7 @@ AC_PREREQ(2.59)
 
 m4_define(emerillon_major_version, 0)
 m4_define(emerillon_minor_version, 1)
-m4_define(emerillon_micro_version, 0)
+m4_define(emerillon_micro_version, 1)
 m4_define(emerillon_version, emerillon_major_version.emerillon_minor_version.emerillon_micro_version)
 
 m4_define([emerillon_api_version],
@@ -103,7 +103,7 @@ if test x$enable_search = xyes; then
   AC_SUBST(SEARCH_DEPS_LIBS)
   PKG_CHECK_MODULES(SEARCH_DEPS,
     [
-      rest >= 0.6
+      rest-0.6 >= 0.6
     ]
   )
 

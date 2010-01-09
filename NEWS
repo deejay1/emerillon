@@ -1,3 +1,34 @@
+Emerillon 0.1.1 (2010-01-09)
+===============================
+
+Small update to include small bug fixes and translation updates.
+
+Fixes:
+* COPYING is GPLv2
+* Enable scale is built against libchamplain 0.4.3
+* Fix some memory leaks
+* Sidebar: turn on ellipsizing
+* Map Position: remove from status bar on disable
+* Search: select the row when the marker is selected
+* Search: remove layer on disable
+* Reset zoom actions after changing the map-source
+* Fix .desktop file (Debarshi Ray)
+* Add Fullscreen mode (Simon Wenner)
+* Fix translations (Łukasz Jernaś)
+
+Added/updated translations:
+ * ar, courtesy of Khaled Hosny
+ * da, courtesy of Joe Hansen
+ * de, courtesy of Mario Blättermann
+ * es, courtesy of Jorge González
+ * id, courtesy of Andika Triwidada
+ * is, courtesy of Anna Jonna Armannsdottir
+ * ja, courtesy of Takeshi AIHANA
+ * lv, courtesy of "Last-Translator:
+ * pt_BR, courtesy of Vladimir Melo
+ * sl, courtesy of Matej Urbančič
+ * sv, courtesy of Daniel Nylander
+
 Emerillon 0.1 (2009-10-14)
 ===============================
 
