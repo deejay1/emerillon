@@ -592,7 +592,7 @@ sidebar_visibility_changed_cb (GtkWidget *widget,
   GtkAction *action;
   gboolean visible;
 
-  visible = GTK_WIDGET_VISIBLE (self->priv->sidebar);
+  visible = gtk_widget_get_visible (self->priv->sidebar);
 
   gconf_client_set_bool (self->priv->client, EMERILLON_CONF_UI_SIDEBAR,
       visible, NULL);
