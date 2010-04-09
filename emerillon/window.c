@@ -34,7 +34,6 @@
 #include <gtk/gtk.h>
 
 #include "config-keys.h"
-#include "../cut-paste/ephy-spinner.h"
 #include "sidebar.h"
 
 static GtkWidget *default_window = NULL;
@@ -261,9 +260,9 @@ state_changed_cb (GtkWidget *widget,
 
   g_object_get (self->priv->view, "state", &state, NULL);
   if (state == CHAMPLAIN_STATE_LOADING)
-    ephy_spinner_start (EPHY_SPINNER (self->priv->throbber));
+    gtk_spinner_start (GTK_SPINNER (self->priv->throbber));
   else
-    ephy_spinner_stop (EPHY_SPINNER (self->priv->throbber));
+    gtk_spinner_stop (GTK_SPINNER (self->priv->throbber));
 }
 
 static void
@@ -731,9 +730,7 @@ build_ui (EmerillonWindow *self)
   self->priv->toolbar = gtk_ui_manager_get_widget (self->priv->ui_manager,
       "/Toolbar");
 
-  self->priv->throbber = ephy_spinner_new ();
-  ephy_spinner_set_size (EPHY_SPINNER (self->priv->throbber),
-      GTK_ICON_SIZE_LARGE_TOOLBAR);
+  self->priv->throbber = gtk_spinner_new ();
 
   throbber = gtk_tool_item_new ();
   gtk_container_add (GTK_CONTAINER (throbber), self->priv->throbber);

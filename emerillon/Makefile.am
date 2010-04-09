@@ -15,8 +15,7 @@ INCLUDES =								\
 bin_PROGRAMS = emerillon
 
 emerillon_LDADD = \
-	$(EMERILLON_LIBS) \
-	$(top_builddir)/cut-paste/libephyspinner.la
+	$(EMERILLON_LIBS)
 
 emerillon_LDFLAGS = \
 	-export-dynamic
