@@ -243,10 +243,12 @@ emerillon_sidebar_menu_position_under (GtkMenu *menu,
 
   widget = GTK_WIDGET (user_data);
 
-  gdk_window_get_origin (widget->window, x, y);
+  gdk_window_get_origin (gtk_widget_get_window (widget), x, y);
 
-  *x += widget->allocation.x;
-  *y += widget->allocation.y + widget->allocation.height;
+  GtkAllocation allocation;
+  gtk_widget_get_allocation (widget, &allocation);
+  *x += allocation.x;
+  *y += allocation.y + allocation.height;
 
   *push_in = FALSE;
 }
@@ -263,7 +265,9 @@ emerillon_sidebar_select_button_press_cb (GtkWidget *widget,
       GtkRequisition requisition;
       gint width;
 
-      width = widget->allocation.width;
+      GtkAllocation allocation;
+      gtk_widget_get_allocation (widget, &allocation);
+      width = allocation.width;
 
       gtk_widget_set_size_request (sidebar->priv->menu, -1, -1);
       gtk_widget_size_request (sidebar->priv->menu, &requisition);
