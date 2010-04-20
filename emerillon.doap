@@ -6,7 +6,7 @@
 
   <name xml:lang="en">Emerillon</name>
   <shortdesc xml:lang="en">A map browser</shortdesc>
-  <homepage rdf:resource="http://www.novopia.com/emerillon" />
+  <homepage rdf:resource="http://projects.gnome.org/emerillon" />
 
   <maintainer>
     <foaf:Person>
