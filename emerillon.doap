@@ -10,9 +10,9 @@
 
   <maintainer>
     <foaf:Person>
-      <foaf:name>Pierre-Luc Beaudoin</foaf:name>
-      <foaf:mbox rdf:resource="mailto:pierre-luc.beaudoin@novopia.com" />
-      <gnome:userid>plbeaudoin</gnome:userid>
+      <foaf:name>Łukasz Jernaś</foaf:name>
+      <foaf:mbox rdf:resource="mailto:deejay1@srem.org" />
+      <gnome:userid>ljernas</gnome:userid>
     </foaf:Person>
   </maintainer>
 </Project>
