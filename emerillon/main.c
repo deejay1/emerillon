@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2008 Marco Barisione <marco@barisione.org>
  * Copyright (C) 2009 Novopia Inc.
+ * Copyright (C) 2010 Emerillon Contributors
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -27,8 +28,43 @@
 #include <clutter-gtk/clutter-gtk.h>
 #include <ethos/ethos.h>
 
+#include <stdlib.h>
+
 #include "manager.h"
 #include "window.h"
+
+static void
+display_version()
+{
+  g_print (_("%s - Version %s\n"), g_get_application_name(), PACKAGE_VERSION);
+  exit (0);
+}
+
+static GOptionEntry entries[]  =
+{
+  { "version", 'V', G_OPTION_FLAG_NO_ARG, G_OPTION_ARG_CALLBACK, display_version,
+      N_("Show version information and exit"), NULL},
+  {NULL}
+};
+
+void
+parse_options(int *argc,
+      char ***argv)
+{
+  GError *error = NULL;
+  GOptionContext *context;
+
+  context = g_option_context_new (_("- map viewer"));
+  g_option_context_add_group(context, gtk_get_option_group (TRUE));
+  g_option_context_add_main_entries(context, entries, GETTEXT_PACKAGE);
+  if (!g_option_context_parse (context, argc, argv, &error))
+    {
+      g_print ("%s\n", error->message);
+      g_print (_("Run '%s --help' to see a list of available command line options.\n"), *argv[0]);
+      g_error_free(error);
+      exit (1);
+    }
+}
 
 int
 main (int argc,
@@ -57,6 +93,8 @@ main (int argc,
   gtk_clutter_init (&argc, &argv);
 
   g_set_application_name (_("Emerillon Map Viewer"));
+
+  parse_options(&argc, &argv);
 
   window = emerillon_window_dup_default ();
   g_signal_connect (window, "delete-event", gtk_main_quit, NULL);
