@@ -137,6 +137,15 @@ if test "x$enable_deprecations" = "xyes"; then
    AC_SUBST(DISABLE_DEPRECATED_CFLAGS)
 fi
 
+#######################################
+# Vala bindings (disabled by default) #
+#######################################
+AC_ARG_ENABLE(vala,
+  AC_HELP_STRING([--enable-vala],[Install Vala bindings]),
+    enable_vala=$enableval, enable_vala=no )
+
+AM_CONDITIONAL(ENABLE_VALA, test "x$enable_vala" = "xyes")
+
 ################
 # Output files #
 ################
@@ -148,6 +157,8 @@ data/Makefile
 data/emerillon.pc
 data/emerillon.desktop.in
 plugins/Makefile
+bindings/Makefile
+bindings/vala/Makefile
 po/Makefile.in
 ])
 

@@ -1,4 +1,4 @@
-SUBDIRS = cut-paste emerillon data plugins po
+SUBDIRS = cut-paste emerillon data plugins po bindings
 
 EXTRA_DIST = 			\
 	autogen.sh		\
