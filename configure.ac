@@ -146,7 +146,7 @@ AC_ARG_ENABLE(vala,
 
 if test "$enable_vala" = "yes"
 then
-  PKG_CHECK_MODULES(VALA, vala-1.0, enable_vala=yes, enable_vala=no)
+  AM_PROG_VALAC([0.8.0], enable_vala=yes, enable_vala=no)
 fi
 
 AM_CONDITIONAL(ENABLE_VALA, test "x$enable_vala" = "xyes")
