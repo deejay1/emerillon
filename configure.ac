@@ -137,12 +137,17 @@ if test "x$enable_deprecations" = "xyes"; then
    AC_SUBST(DISABLE_DEPRECATED_CFLAGS)
 fi
 
-#######################################
-# Vala bindings (disabled by default) #
-#######################################
+#################
+# Vala bindings #
+#################
 AC_ARG_ENABLE(vala,
-  AC_HELP_STRING([--enable-vala],[Install Vala bindings]),
-    enable_vala=$enableval, enable_vala=no )
+  AC_HELP_STRING([--enable-vala],[install Vala bindings [default=yes]]),,
+    enable_vala=yes )
+
+if test "$enable_vala" = "yes"
+then
+  PKG_CHECK_MODULES(VALA, vala-1.0, enable_vala=yes, enable_vala=no)
+fi
 
 AM_CONDITIONAL(ENABLE_VALA, test "x$enable_vala" = "xyes")
 
@@ -170,4 +175,8 @@ Configuration:
 
 	Source code location:	${srcdir}
 	Compiler:		${CC}
+
+Bindings:
+
+	Vala:			$enable_vala
 "
