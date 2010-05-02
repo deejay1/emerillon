@@ -34,9 +34,9 @@
 #include "window.h"
 
 static void
-display_version()
+display_version ()
 {
-  g_print (_("%s - Version %s\n"), g_get_application_name(), PACKAGE_VERSION);
+  g_print (_("%s - Version %s\n"), g_get_application_name (), PACKAGE_VERSION);
   exit (0);
 }
 
@@ -47,16 +47,16 @@ static GOptionEntry entries[]  =
   {NULL}
 };
 
-void
-parse_options(int *argc,
+static void
+parse_options (int *argc,
       char ***argv)
 {
   GError *error = NULL;
   GOptionContext *context;
 
   context = g_option_context_new (_("- map viewer"));
-  g_option_context_add_group(context, gtk_get_option_group (TRUE));
-  g_option_context_add_main_entries(context, entries, GETTEXT_PACKAGE);
+  g_option_context_add_group (context, gtk_get_option_group (TRUE));
+  g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
   if (!g_option_context_parse (context, argc, argv, &error))
     {
       g_print ("%s\n", error->message);
