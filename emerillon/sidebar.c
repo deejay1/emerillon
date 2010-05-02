@@ -553,6 +553,7 @@ emerillon_sidebar_remove_page (EmerillonSidebar *sidebar,
   GtkTreeIter iter;
   GtkWidget *widget, *menu_item;
   gboolean valid;
+  gboolean visible;
   gint index;
 
   g_return_if_fail (EMERILLON_IS_SIDEBAR (sidebar));
@@ -579,6 +580,9 @@ emerillon_sidebar_remove_page (EmerillonSidebar *sidebar,
 
   if (valid)
     {
+      visible = (index == gtk_notebook_get_current_page (
+          GTK_NOTEBOOK (sidebar->priv->notebook)));
+
       gtk_notebook_remove_page (GTK_NOTEBOOK (sidebar->priv->notebook), 
           index);
 
@@ -587,7 +591,20 @@ emerillon_sidebar_remove_page (EmerillonSidebar *sidebar,
       gtk_list_store_remove (GTK_LIST_STORE (sidebar->priv->page_model), 
           &iter);
 
-      g_signal_emit (G_OBJECT (sidebar), 
+      /* If we removed the visible tab, we select the first page or remove
+       * the text in the dropdown menu if no page is left */
+      if (visible)
+        {
+          if (!emerillon_sidebar_is_empty(sidebar))
+            {
+              valid = gtk_tree_model_get_iter_first (sidebar->priv->page_model, &iter);
+              emerillon_sidebar_select_page (sidebar, &iter);
+            }
+          else
+            gtk_label_set_text (GTK_LABEL (sidebar->priv->label), "");
+        }
+
+      g_signal_emit (G_OBJECT (sidebar),
           signals[SIGNAL_PAGE_REMOVED], 0, main_widget);
     }
 }
