@@ -403,6 +403,7 @@ emerillon_sidebar_init (EmerillonSidebar *sidebar)
   sidebar->priv->select_button = gtk_toggle_button_new ();
   gtk_button_set_relief (GTK_BUTTON (sidebar->priv->select_button), 
       GTK_RELIEF_NONE);
+  gtk_widget_set_sensitive (sidebar->priv->select_button, FALSE);
 
   g_signal_connect (sidebar->priv->select_button, "button_press_event",
       G_CALLBACK (emerillon_sidebar_select_button_press_cb),
@@ -542,6 +543,9 @@ emerillon_sidebar_add_page (EmerillonSidebar *sidebar,
 
   g_free (label_title);
 
+  if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (sidebar->priv->notebook)) > 1)
+    gtk_widget_set_sensitive (sidebar->priv->select_button, TRUE);
+
   g_signal_emit (G_OBJECT (sidebar), signals[SIGNAL_PAGE_ADDED],
       0, main_widget);
 }
@@ -603,6 +607,9 @@ emerillon_sidebar_remove_page (EmerillonSidebar *sidebar,
           else
             gtk_label_set_text (GTK_LABEL (sidebar->priv->label), "");
         }
+
+      if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (sidebar->priv->notebook)) <= 1)
+        gtk_widget_set_sensitive (sidebar->priv->select_button, FALSE);
 
       g_signal_emit (G_OBJECT (sidebar),
           signals[SIGNAL_PAGE_REMOVED], 0, main_widget);
