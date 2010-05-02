@@ -72,6 +72,8 @@ main (int argc,
 {
   EthosManager *manager;
   GtkWidget *window;
+  GError *error = NULL;
+  GFile *plugin_dir;
   gchar *user_data;
   gchar *plugin_dirs[3] = {EMERILLON_PLUGINDIR,
                            NULL,
@@ -99,6 +101,19 @@ main (int argc,
   window = emerillon_window_dup_default ();
   g_signal_connect (window, "delete-event", gtk_main_quit, NULL);
   gtk_widget_show (window);
+
+  /* Create the user plugin directory */
+  plugin_dir = g_file_new_for_path (plugin_dirs[1]);
+  if (!g_file_query_exists (plugin_dir, NULL))
+    {
+      g_file_make_directory_with_parents (plugin_dir, NULL, &error);
+      if (error)
+        {
+          g_warning ("%s", error->message);
+          g_error_free (error);
+        }
+    }
+  g_object_unref (plugin_dir);
 
   /* Setup the plugin infrastructure */
   manager = emerillon_manager_dup_default ();
