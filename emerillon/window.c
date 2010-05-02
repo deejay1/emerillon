@@ -781,17 +781,17 @@ build_ui (EmerillonWindow *self)
   self->priv->sidebar = emerillon_sidebar_new ();
   gtk_widget_set_size_request (self->priv->sidebar, 200, -1);
 
-  g_signal_connect_after (self->priv->sidebar, "show",
-      G_CALLBACK (sidebar_visibility_changed_cb), self);
-  g_signal_connect_after (self->priv->sidebar, "hide",
-      G_CALLBACK (sidebar_visibility_changed_cb), self);
-
   /* Horizontal pane. */
   hpaned = gtk_hpaned_new ();
   gtk_paned_pack1 (GTK_PANED (hpaned), self->priv->sidebar, FALSE, FALSE);
   gtk_paned_pack2 (GTK_PANED (hpaned), viewport, TRUE, FALSE);
   gtk_widget_show (self->priv->sidebar);
   gtk_widget_show (viewport);
+
+  g_signal_connect_after (self->priv->sidebar, "show",
+      G_CALLBACK (sidebar_visibility_changed_cb), self);
+  g_signal_connect_after (self->priv->sidebar, "hide",
+      G_CALLBACK (sidebar_visibility_changed_cb), self);
 
   gtk_box_pack_start (GTK_BOX (vbox), hpaned, TRUE, TRUE, 0);
   gtk_widget_show (hpaned);
