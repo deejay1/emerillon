@@ -1,0 +1,4 @@
+Plugins:
+- placemarks:
+  - removing placemarks should also remove the marker
+  - ability to specify placemark color in the manager dialog
