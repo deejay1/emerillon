@@ -24,6 +24,8 @@
 #define EMERILLON_CONF_UI_TOOLBAR              "/apps/emerillon/ui/toolbar"
 #define EMERILLON_CONF_UI_STATUSBAR            "/apps/emerillon/ui/statusbar"
 #define EMERILLON_CONF_UI_SIDEBAR              "/apps/emerillon/ui/sidebar"
+#define EMERILLON_CONF_UI_WINDOW_WIDTH         "/apps/emerillon/ui/window_width"
+#define EMERILLON_CONF_UI_WINDOW_HEIGHT        "/apps/emerillon/ui/window_height"
 #define EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS  "/apps/emerillon/plugins/active-plugins"
 
 #endif /* __EMERILLON_CONFIG_KEYS_H__ */

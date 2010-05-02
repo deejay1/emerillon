@@ -34,6 +34,28 @@
     </schema>
 
     <schema>
+      <key>/schemas/apps/emerillon/ui/window_width</key>
+      <applyto>/apps/emerillon/ui/window_width</applyto>
+      <owner>emerillon</owner>
+      <type>int</type>
+      <default>640</default>
+      <locale name="C">
+        <short>Window width in pixels.</short>
+      </locale>
+    </schema>
+
+    <schema>
+      <key>/schemas/apps/emerillon/ui/window_height</key>
+      <applyto>/apps/emerillon/ui/window_height</applyto>
+      <owner>emerillon</owner>
+      <type>int</type>
+      <default>450</default>
+      <locale name="C">
+        <short>Window height in pixels.</short>
+      </locale>
+    </schema>
+
+    <schema>
       <key>/schemas/apps/emerillon/plugins/active-plugins</key>
       <applyto>/apps/emerillon/plugins/active-plugins</applyto>
       <owner>emerillon</owner>

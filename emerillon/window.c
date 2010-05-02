@@ -141,6 +141,7 @@ emerillon_window_init (EmerillonWindow *self)
   GeoclueMaster *master;
   GeoclueMasterClient *client;
   GeocluePosition *position;
+  gint width, height;
 
   self->priv = EMERILLON_WINDOW_GET_PRIVATE (self);
 
@@ -156,7 +157,16 @@ emerillon_window_init (EmerillonWindow *self)
   gtk_window_set_geometry_hints (GTK_WINDOW (self), GTK_WIDGET (self),
       &geometry,GDK_HINT_MIN_SIZE);
 
-  gtk_window_set_default_size (GTK_WINDOW (self), 640, 450);
+  /* Set the window size */
+  width = gconf_client_get_int (self->priv->client,
+      EMERILLON_CONF_UI_WINDOW_WIDTH, NULL);
+  height = gconf_client_get_int (self->priv->client,
+      EMERILLON_CONF_UI_WINDOW_HEIGHT, NULL);
+
+  if (width > 0 && height > 0)
+    gtk_window_set_default_size (GTK_WINDOW (self), width, height);
+  else
+    gtk_window_set_default_size (GTK_WINDOW (self), 640, 450);
 
   /* Current position. */
   master = geoclue_master_get_default ();
@@ -183,6 +193,14 @@ static void
 emerillon_window_dispose (GObject *object)
 {
   EmerillonWindow *self = EMERILLON_WINDOW (object);
+  gint width, height;
+
+  /* Save the window size */
+  gtk_window_get_size (GTK_WINDOW (self), &width, &height);
+  width = gconf_client_set_int (self->priv->client,
+      EMERILLON_CONF_UI_WINDOW_WIDTH, width, NULL);
+  height = gconf_client_set_int (self->priv->client,
+      EMERILLON_CONF_UI_WINDOW_HEIGHT, height, NULL);
 
   if (self->priv->main_actions != NULL)
     {
