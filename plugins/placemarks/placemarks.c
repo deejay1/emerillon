@@ -47,9 +47,14 @@ struct _PlacemarksPluginPrivate
   GtkTreeModel *model;
   GtkWidget *menu;
 
+  /** Layer with placemark markers */
+  ChamplainLayer *markers_layer;
   guint deleted_cb_id;
 };
 
+/**
+ * Go to the specified placemark
+ */
 static void
 go_cb (GtkAction *action,
        PlacemarksPlugin *plugin)
@@ -93,6 +98,24 @@ go_cb (GtkAction *action,
 
   champlain_view_set_zoom_level (priv->map_view, zoom);
   champlain_view_center_on (priv->map_view, lat, lon);
+}
+
+static void
+add_marker(PlacemarksPlugin *plugin, const gchar *name, gdouble lat, gdouble lon)
+{
+  PlacemarksPluginPrivate *priv;
+  priv = PLACEMARKS_PLUGIN (plugin)->priv;
+  ClutterActor *marker;
+
+  ClutterColor orange = { 0xf3, 0x94, 0x07, 0xbb };
+  marker = champlain_marker_new_with_text (name, "Serif 14", NULL, NULL);
+  champlain_marker_set_use_markup (CHAMPLAIN_MARKER (marker), TRUE);
+  champlain_marker_set_alignment (CHAMPLAIN_MARKER (marker), PANGO_ALIGN_RIGHT);
+  champlain_marker_set_color (CHAMPLAIN_MARKER (marker), &orange);
+
+  champlain_base_marker_set_position (CHAMPLAIN_BASE_MARKER (marker),
+                                      lat, lon);
+  champlain_layer_add_marker (priv->markers_layer, CHAMPLAIN_BASE_MARKER (marker));
 }
 
 static guint
@@ -370,6 +393,7 @@ load_placemarks (PlacemarksPlugin *plugin)
   groups = g_key_file_get_groups (file, &group_count);
   priv->placemark_count = group_count;
 
+
   for (i = 0; i < group_count; i++)
     {
       gchar *name;
@@ -413,8 +437,9 @@ load_placemarks (PlacemarksPlugin *plugin)
         }
 
       add_placemark (plugin, groups[i], name, lat, lon, zoom);
+      add_marker (plugin, name, lat, lon);
 
-      g_free (name);
+    g_free (name);
     }
 
   g_strfreev (groups);
@@ -456,6 +481,7 @@ add_cb (GtkAction *action,
   add_menu (plugin, id, name, &iter);
 
   save_placemarks (plugin);
+  add_marker (plugin, name, lat, lon);
 
   g_free (id);
 }
@@ -530,6 +556,9 @@ activated (EthosPlugin *plugin)
   priv = PLACEMARKS_PLUGIN (plugin)->priv;
   priv->window = EMERILLON_WINDOW (emerillon_window_dup_default ());
   priv->map_view = emerillon_window_get_map_view (priv->window);
+
+  priv->markers_layer = champlain_selection_layer_new ();
+  champlain_view_add_layer(priv->map_view, priv->markers_layer);
 
   manager = emerillon_window_get_ui_manager (priv->window);
 
