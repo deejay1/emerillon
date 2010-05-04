@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: emerillon.po.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=emerillon&component=General\n"
-"POT-Creation-Date: 2010-04-21 10:08+0000\n"
-"PO-Revision-Date: 2010-04-21 18:28+0200\n"
+"POT-Creation-Date: 2010-05-04 10:08+0000\n"
+"PO-Revision-Date: 2010-05-04 23:15+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -39,15 +39,23 @@ msgstr "Muestra/oculta la barra de estado de la ventana."
 msgid "Show/hide the window toolbar."
 msgstr "Muestra/oculta la barra de herramientas de la ventana."
 
+#: ../data/emerillon.schemas.in.h:6
+msgid "Window height in pixels."
+msgstr "Altura de la ventana en píxeles."
+
+#: ../data/emerillon.schemas.in.h:7
+msgid "Window width in pixels."
+msgstr "Anchura de la ventana en píxeles."
+
 #: ../data/emerillon.desktop.in.in.h:1
 msgid "Browse maps"
 msgstr "Examinar mapas"
 
-#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:382
+#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:400
 msgid "Emerillon"
 msgstr "Emerillon"
 
-#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:95
+#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:97
 msgid "Emerillon Map Viewer"
 msgstr "Visor de mapas Emerillon"
 
@@ -65,7 +73,6 @@ msgid "Show version information and exit"
 msgstr "Mostrar información de la versión y salir"
 
 #: ../emerillon/main.c:57
-#| msgid "Map Viewer"
 msgid "- map viewer"
 msgstr ": visor de mapas"
 
@@ -76,7 +83,7 @@ msgstr ""
 "Ejecutar «%s --help» para ver una lista completa de opciones de línea de "
 "comandos disponibles.\n"
 
-#: ../emerillon/window.c:362
+#: ../emerillon/window.c:380
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -88,7 +95,7 @@ msgstr ""
 "la Free Software Foundation; ya sea la versión 2 de la Licencia, o (a su "
 "elección) cualquier versión posterior.\n"
 
-#: ../emerillon/window.c:366
+#: ../emerillon/window.c:384
 msgid ""
 "This program is distributed in the hope that it will be useful, but WITHOUT "
 "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
@@ -100,7 +107,7 @@ msgstr ""
 "IDONEIDAD PARA UN PROPÓSITO PARTICULAR. Vea la Licencia Pública General GNU "
 "para más detalles.\n"
 
-#: ../emerillon/window.c:370
+#: ../emerillon/window.c:388
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
@@ -110,127 +117,127 @@ msgstr ""
 "con este programa, si no es así, escriba a la Free Software Foundation, Inc, "
 "59 Temple Place - Suite 330, Boston, MA 02111-1307, EE.UU."
 
-#: ../emerillon/window.c:375
+#: ../emerillon/window.c:393
 msgid "translator-credits"
 msgstr "Jorge González <jorgegonz@svn.gnome.org>, 2007-2008."
 
-#: ../emerillon/window.c:386
+#: ../emerillon/window.c:404
 msgid "A map viewer for the GNOME desktop"
 msgstr "Un visor de mapas para el Escritorio GNOME"
 
-#: ../emerillon/window.c:607
+#: ../emerillon/window.c:625
 msgid "_Map"
 msgstr "_Mapa"
 
-#: ../emerillon/window.c:608
+#: ../emerillon/window.c:626
 msgid "_Edit"
 msgstr "_Editar"
 
-#: ../emerillon/window.c:609
+#: ../emerillon/window.c:627
 msgid "_View"
 msgstr "_Ver"
 
-#: ../emerillon/window.c:610
+#: ../emerillon/window.c:628
 msgid "_Tools"
 msgstr "_Herramientas"
 
-#: ../emerillon/window.c:611
+#: ../emerillon/window.c:629
 msgid "_Help"
 msgstr "Ay_uda"
 
-#: ../emerillon/window.c:614
+#: ../emerillon/window.c:632
 msgid "Quit the program"
 msgstr "Salir del programa"
 
-#: ../emerillon/window.c:617
+#: ../emerillon/window.c:635
 msgid "Enlarge the image"
 msgstr "Agranda la imagen"
 
-#: ../emerillon/window.c:620
+#: ../emerillon/window.c:638
 msgid "Shrink the image"
 msgstr "Encoge la imagen"
 
-#: ../emerillon/window.c:623
+#: ../emerillon/window.c:641
 msgid "Edit the preferences"
 msgstr "Editar las preferencias"
 
-#: ../emerillon/window.c:625
+#: ../emerillon/window.c:643
 msgid "_Contents"
 msgstr "Índ_ice"
 
-#: ../emerillon/window.c:626
+#: ../emerillon/window.c:644
 msgid "Help on this application"
 msgstr "Ayuda acerca de esta aplicación"
 
-#: ../emerillon/window.c:629
+#: ../emerillon/window.c:647
 msgid "About this application"
 msgstr "Acerca de esta aplicación"
 
-#: ../emerillon/window.c:634
+#: ../emerillon/window.c:652
 msgid "_Toolbar"
 msgstr "Barra de _herramientas"
 
-#: ../emerillon/window.c:635
+#: ../emerillon/window.c:653
 msgid "Show or hide the toolbar in the current window"
 msgstr "Muestra u oculta la barra de herramientas en la ventana actual"
 
-#: ../emerillon/window.c:637
+#: ../emerillon/window.c:655
 msgid "_Statusbar"
 msgstr "Barra de _estado"
 
-#: ../emerillon/window.c:638
+#: ../emerillon/window.c:656
 msgid "Show or hide the statusbar in the current window"
 msgstr "Muestra u oculta la barra de estado en la ventana actual"
 
-#: ../emerillon/window.c:640
+#: ../emerillon/window.c:658
 msgid "Side _Pane"
 msgstr "Panel _lateral"
 
-#: ../emerillon/window.c:641
+#: ../emerillon/window.c:659
 msgid "Show or hide the side pane in the current window"
 msgstr "Muestra u oculta el panel lateral en la ventana actual"
 
-#: ../emerillon/window.c:644
+#: ../emerillon/window.c:662
 msgid "Enable or disable full screen mode"
 msgstr "Activar o desactivar el modo a pantalla completa"
 
-#: ../emerillon/window.c:649
+#: ../emerillon/window.c:667
 msgid "_Street"
 msgstr "Call_e"
 
-#: ../emerillon/window.c:650
+#: ../emerillon/window.c:668
 msgid "View the street map based on OpenStreetMap"
 msgstr "Ver el mapa de calles basado en OpenStreetMap"
 
-#: ../emerillon/window.c:651
+#: ../emerillon/window.c:669
 msgid "_Cycling"
 msgstr "_Bicicleta"
 
-#: ../emerillon/window.c:652
+#: ../emerillon/window.c:670
 msgid "View the cycling map based on OpenCycleMap"
 msgstr "Ver el mapa en bicicleta basado en OpenCycleMap"
 
-#: ../emerillon/window.c:653
+#: ../emerillon/window.c:671
 msgid "_Public Transportation"
 msgstr "Tra_nsporte público"
 
-#: ../emerillon/window.c:654
+#: ../emerillon/window.c:672
 msgid "View the public transportation map based on Öpnvkarte"
 msgstr "Ver el mapa de transporte público basado en Öpnvkarte"
 
-#: ../emerillon/window.c:655
+#: ../emerillon/window.c:673
 msgid "_Terrain"
 msgstr "_Terreno"
 
-#: ../emerillon/window.c:656
+#: ../emerillon/window.c:674
 msgid "View the terrain map based on mapsforfree.com Relief"
 msgstr "Ver el mapa del terreno basado en mapsforfree.com Relief"
 
-#: ../emerillon/window.c:691
+#: ../emerillon/window.c:709
 msgid "In"
 msgstr "Ampliar"
 
-#: ../emerillon/window.c:695
+#: ../emerillon/window.c:713
 msgid "Out"
 msgstr "Reducir"
 
