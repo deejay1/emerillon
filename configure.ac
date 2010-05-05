@@ -184,13 +184,13 @@ po/Makefile.in
 AC_OUTPUT
 
 echo "
+Emerillon ${VERSION}
 
 Configuration:
-
-	Source code location:	${srcdir}
-	Compiler:		${CC}
+       Prefix           : ${prefix}
+       Compiler         : ${CC}
+       Documentation    : ${enable_gtk_doc}
 
 Bindings:
-
-	Vala:			$enable_vala
+       Vala             : ${enable_vala}
 "
