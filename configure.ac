@@ -23,6 +23,7 @@ AC_SUBST(EMERILLON_API_VERSION)
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 no-dist-gzip -Wno-portability])
 
 AC_CONFIG_HEADERS(config.h)
+AC_CONFIG_MACRO_DIR(m4)
 
 AM_MAINTAINER_MODE
 
@@ -39,6 +40,7 @@ AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
+GTK_DOC_CHECK([1.14],[--flavour no-tmpl])
 
 ###############
 # GLib tools. #
@@ -66,6 +68,13 @@ IT_PROG_INTLTOOL([0.40.0])
 GETTEXT_PACKAGE=AC_PACKAGE_NAME
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package])
+
+###################
+# gnome-doc-utils #
+###################
+
+PKG_PROG_PKG_CONFIG
+GNOME_DOC_INIT
 
 ################
 # Dependencies #
@@ -163,6 +172,9 @@ cut-paste/Makefile
 data/Makefile
 data/emerillon.pc
 data/emerillon.desktop.in
+docs/Makefile
+docs/reference/Makefile
+docs/reference/version.xml
 plugins/Makefile
 bindings/Makefile
 bindings/vala/Makefile

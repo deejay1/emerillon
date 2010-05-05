@@ -12,6 +12,8 @@
 *.lo
 *.pc
 
+m4/*
+
 Makefile
 Makefile.in
 .dirstamp
@@ -26,6 +28,7 @@ config.status
 config.sub
 configure
 depcomp
+gtk-doc.make
 install-sh
 intltool-extract.in
 intltool-merge.in
@@ -37,6 +40,12 @@ mkinstalldirs
 omf.make
 stamp-h1
 xmldocs.make
+
+ChangeLog
+
+docs/reference/html
+docs/reference/xml
+*.stamp
 
 po/.intltool-merge-cache
 po/POTFILES

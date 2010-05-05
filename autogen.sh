@@ -17,14 +17,14 @@ which gnome-autogen.sh || {
     exit 1
 }
 
-#gtkdocize || {
-#    echo "You are missing gtk-doc. Please install it"
-#    exit 1
-#}
+which gtkdocize || {
+    echo "You are missing gtk-doc. Please install it"
+    exit 1
+}
 
 REQUIRED_AUTOCONF_VERSION=2.59
 REQUIRED_AUTOMAKE_VERSION=1.7
 REQUIRED_INTLTOOL_VERSION=0.40.0
 REQUIRED_PKG_CONFIG_VERSION=0.16.0
-REQUIRED_GTK_DOC_VERSION=1.9
+REQUIRED_GTK_DOC_VERSION=1.14
 USE_GNOME2_MACROS=1 USE_COMMON_DOC_BUILD=yes . gnome-autogen.sh

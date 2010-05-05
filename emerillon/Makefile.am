@@ -14,16 +14,13 @@ INCLUDES =								\
 
 bin_PROGRAMS = emerillon
 
-emerillon_LDADD = \
-	$(EMERILLON_LIBS)
+noinst_LTLIBRARIES = libemerillon.la
 
-emerillon_LDFLAGS = \
-	-export-dynamic
+
 
 BUILT_SOURCES =
 
-emerillon_SOURCES =	\
-	main.c		\
+libemerillon_la_SOURCES =	\
 	manager.h	\
 	manager.c	\
 	preferences.h	\
@@ -35,6 +32,13 @@ emerillon_SOURCES =	\
 	config-keys.h	\
 	emerillon.h	\
 	$(BUILT_SOURCES)
+
+emerillon_SOURCES = main.c
+
+emerillon_CFLAGS = $(EOG_CFLAGS)
+emerillon_LDFLAGS = -export-dynamic
+
+emerillon_LDADD = libemerillon.la $(EMERILLON_LIBS)
 
 CLEANFILES = $(BUILT_SOURCES)
 
