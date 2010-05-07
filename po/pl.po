@@ -8,19 +8,20 @@
 # gnomepl@aviary.pl
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 #
-# Łukasz Jernaś <deejay1@srem.org>, 2009.
+# Łukasz Jernaś <deejay1@srem.org>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-21 14:01+0100\n"
-"PO-Revision-Date: 2010-01-02 17:30+0100\n"
-"Last-Translator: Joanna Mazgaj <jmazgaj@aviary.pl>\n"
+"POT-Creation-Date: 2010-05-07 12:16+0200\n"
+"PO-Revision-Date: 2010-05-07 12:16+0200\n"
+"Last-Translator: Łukasz Jernaś <deejay1@srem.org>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 1.0\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
@@ -45,157 +46,207 @@ msgstr "Wyświetla/ukrywa pasek stanu."
 msgid "Show/hide the window toolbar."
 msgstr "Wyświetla/ukrywa pasek narzędziowy."
 
+#: ../data/emerillon.schemas.in.h:6
+msgid "Window height in pixels."
+msgstr "Wysokość okna w pikselach."
+
+#: ../data/emerillon.schemas.in.h:7
+msgid "Window width in pixels."
+msgstr "Szerokość okna w pikselach."
+
 #: ../data/emerillon.desktop.in.in.h:1
 msgid "Browse maps"
 msgstr "Przeglądaj mapy"
 
-#: ../data/emerillon.desktop.in.in.h:2
-msgid "Map Viewer"
-msgstr "Przeglądarka map"
-
-#: ../emerillon/main.c:59
-msgid "Emerillon Map Viewer"
-msgstr "Przeglądarka map Emerillon"
-
-#: ../emerillon/window.c:363
-msgid "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.\n"
-msgstr "Niniejszy program jest wolnym oprogramowaniem; można go rozprowadzać dalej i/lub modyfikować na warunkach Powszechnej Licencji Publicznej GNU, wydanej przez Fundację Wolnego Oprogramowania - według wersji drugiej tej Licencji lub którejś z późniejszych wersji.\n"
-
-#: ../emerillon/window.c:367
-msgid "This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n"
-msgstr "Niniejszy program rozpowszechniany jest z nadzieją, iż będzie on użyteczny - jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet domyślnej gwarancji PRZYDATNOŚCI HANDLOWEJ albo PRZYDATNOŚCI DO OKREŚLONYCH ZASTOSOWAŃ. W celu uzyskania bliższych informacji należy zapoznać się z Powszechną Licencją Publiczną GNU.\n"
-
-#: ../emerillon/window.c:371
-msgid "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
-msgstr "Z pewnością wraz z niniejszym programem dostarczono także egzemplarz Powszechnej Licencji Publicznej GNU (GNU General Public License); jeśli nie - proszę napisać do Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-130159 USA."
-
-#: ../emerillon/window.c:376
-msgid "translator-credits"
-msgstr ""
-"Aviary.pl <gnomepl@aviary.pl>, 2009\n"
-"Łukasz Jernaś <deejay1@srem.org>, 2009"
-
-#: ../emerillon/window.c:383
+#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:400
 msgid "Emerillon"
 msgstr "Emerillon"
 
-#: ../emerillon/window.c:387
+#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:97
+msgid "Emerillon Map Viewer"
+msgstr "Przeglądarka map Emerillon"
+
+#: ../data/emerillon.desktop.in.in.h:4
+msgid "Map Viewer"
+msgstr "Przeglądarka map"
+
+#: ../emerillon/main.c:39
+#, c-format
+msgid "%s - Version %s\n"
+msgstr "%s - wersja %s\n"
+
+#: ../emerillon/main.c:46
+msgid "Show version information and exit"
+msgstr "Wyświetla informacje o wersji"
+
+#: ../emerillon/main.c:57
+msgid "- map viewer"
+msgstr "- przeglądarka map"
+
+#: ../emerillon/main.c:63
+#, c-format
+msgid "Run '%s --help' to see a list of available command line options.\n"
+msgstr "Polecenie „%s --help” wyświetla listę dostępnych opcji.\n"
+
+#: ../emerillon/window.c:380
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version.\n"
+msgstr ""
+"Niniejszy program jest wolnym oprogramowaniem; można go rozprowadzać dalej i/"
+"lub modyfikować na warunkach Powszechnej Licencji Publicznej GNU, wydanej "
+"przez Fundację Wolnego Oprogramowania - według wersji drugiej tej Licencji "
+"lub którejś z późniejszych wersji.\n"
+
+#: ../emerillon/window.c:384
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details.\n"
+msgstr ""
+"Niniejszy program rozpowszechniany jest z nadzieją, iż będzie on użyteczny - "
+"jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet domyślnej gwarancji PRZYDATNOŚCI "
+"HANDLOWEJ albo PRZYDATNOŚCI DO OKREŚLONYCH ZASTOSOWAŃ. W celu uzyskania "
+"bliższych informacji należy zapoznać się z Powszechną Licencją Publiczną "
+"GNU.\n"
+
+#: ../emerillon/window.c:388
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr ""
+"Z pewnością wraz z niniejszym programem dostarczono także egzemplarz "
+"Powszechnej Licencji Publicznej GNU (GNU General Public License); jeśli nie "
+"- proszę napisać do Free Software Foundation, Inc., 51 Franklin Street, "
+"Fifth Floor, Boston, MA 02110-130159 USA."
+
+#: ../emerillon/window.c:393
+msgid "translator-credits"
+msgstr ""
+"Aviary.pl <gnomepl@aviary.pl>, 2010\n"
+"Łukasz Jernaś <deejay1@srem.org>, 2010"
+
+#: ../emerillon/window.c:404
 msgid "A map viewer for the GNOME desktop"
 msgstr "Przeglądarka map dla środowiska GNOME"
 
-#: ../emerillon/window.c:608
+#: ../emerillon/window.c:625
 msgid "_Map"
 msgstr "_Mapa"
 
-#: ../emerillon/window.c:609
+#: ../emerillon/window.c:626
 msgid "_Edit"
 msgstr "_Edycja"
 
-#: ../emerillon/window.c:610
+#: ../emerillon/window.c:627
 msgid "_View"
 msgstr "_Widok"
 
-#: ../emerillon/window.c:611
+#: ../emerillon/window.c:628
 msgid "_Tools"
 msgstr "_Narzędzia"
 
-#: ../emerillon/window.c:612
+#: ../emerillon/window.c:629
 msgid "_Help"
 msgstr "Pomo_c"
 
-#: ../emerillon/window.c:615
+#: ../emerillon/window.c:632
 msgid "Quit the program"
 msgstr "Kończy pracę programu"
 
-#: ../emerillon/window.c:618
+#: ../emerillon/window.c:635
 msgid "Enlarge the image"
 msgstr "Powiększa obraz"
 
-#: ../emerillon/window.c:621
+#: ../emerillon/window.c:638
 msgid "Shrink the image"
 msgstr "Pomniejsza obraz"
 
-#: ../emerillon/window.c:624
+#: ../emerillon/window.c:641
 msgid "Edit the preferences"
 msgstr "Modyfikuje preferencje programu"
 
-#: ../emerillon/window.c:626
+#: ../emerillon/window.c:643
 msgid "_Contents"
 msgstr "_Zawartość"
 
-#: ../emerillon/window.c:627
+#: ../emerillon/window.c:644
 msgid "Help on this application"
 msgstr "Pomoc na temat programu"
 
-#: ../emerillon/window.c:630
+#: ../emerillon/window.c:647
 msgid "About this application"
 msgstr "O tym programie"
 
-#: ../emerillon/window.c:635
+#: ../emerillon/window.c:652
 msgid "_Toolbar"
 msgstr "Pasek _narzędziowy"
 
-#: ../emerillon/window.c:636
+#: ../emerillon/window.c:653
 msgid "Show or hide the toolbar in the current window"
 msgstr "Wyświetla lub ukrywa pasek narzędziowy w bieżącym oknie"
 
-#: ../emerillon/window.c:638
+#: ../emerillon/window.c:655
 msgid "_Statusbar"
 msgstr "_Pasek stanu"
 
-#: ../emerillon/window.c:639
+#: ../emerillon/window.c:656
 msgid "Show or hide the statusbar in the current window"
 msgstr "Wyświetla lub ukrywa pasek stanu w bieżącym oknie"
 
-#: ../emerillon/window.c:641
+#: ../emerillon/window.c:658
 msgid "Side _Pane"
 msgstr "Panel _boczny"
 
-#: ../emerillon/window.c:642
+#: ../emerillon/window.c:659
 msgid "Show or hide the side pane in the current window"
 msgstr "Wyświetla lub ukrywa panel boczny w bieżącym oknie"
 
-#: ../emerillon/window.c:645
+#: ../emerillon/window.c:662
 msgid "Enable or disable full screen mode"
 msgstr "Włącza lub wyłącza tryb pełnoekranowy"
 
-#: ../emerillon/window.c:650
+#: ../emerillon/window.c:667
 msgid "_Street"
 msgstr "_Drogowa"
 
-#: ../emerillon/window.c:651
+#: ../emerillon/window.c:668
 msgid "View the street map based on OpenStreetMap"
 msgstr "Wyświetla mapę ulic bazując na projekcie OpenStreetMap"
 
-#: ../emerillon/window.c:652
+#: ../emerillon/window.c:669
 msgid "_Cycling"
 msgstr "_Rowerowa"
 
-#: ../emerillon/window.c:653
+#: ../emerillon/window.c:670
 msgid "View the cycling map based on OpenCycleMap"
 msgstr "Wyświetla mapę rowerową na podstawie projektu OpenCycleMap"
 
-#: ../emerillon/window.c:654
+#: ../emerillon/window.c:671
 msgid "_Public Transportation"
 msgstr "_Transportu publicznego"
 
-#: ../emerillon/window.c:655
+#: ../emerillon/window.c:672
 msgid "View the public transportation map based on Öpnvkarte"
 msgstr "Wyświetla mapę transportu publicznego na podstawie projektu Öpnvkarte"
 
-#: ../emerillon/window.c:656
+#: ../emerillon/window.c:673
 msgid "_Terrain"
 msgstr "_Terenu"
 
-#: ../emerillon/window.c:657
+#: ../emerillon/window.c:674
 msgid "View the terrain map based on mapsforfree.com Relief"
 msgstr "Wyświetla mapę terenu na podstawie reliefu projektu mapsforfree.com"
 
-#: ../emerillon/window.c:692
+#: ../emerillon/window.c:709
 msgid "In"
 msgstr "Powiększ"
 
-#: ../emerillon/window.c:696
+#: ../emerillon/window.c:713
 msgid "Out"
 msgstr "Pomniejsz"
 
@@ -213,7 +264,9 @@ msgstr "Skopiuj odnośnik do strony internetowej"
 
 #: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:2
 msgid "Provides a link for current view to major online maps"
-msgstr "Dostarcza odnośnik pozwalający wyświetlić obecne położenie w znanych serwisach online z mapami."
+msgstr ""
+"Dostarcza odnośnik pozwalający wyświetlić obecne położenie w znanych "
+"serwisach online z mapami."
 
 #: ../plugins/copy-link/copy-link.c:110
 msgid "Copy to clipboard the link to this web service"
@@ -262,8 +315,7 @@ msgstr "Czy na pewno usunąć znacznik %s?"
 msgid "Organize Placemarks"
 msgstr "Zarządzanie znacznikami"
 
-#: ../plugins/placemarks/manage-dialog.c:233
-#: ../plugins/search/search.c:506
+#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:506
 msgid "Name"
 msgstr "Nazwa"
 
@@ -283,23 +335,23 @@ msgstr "Powiększenie"
 msgid "Go to this placemark"
 msgstr "Przejdź do tego znacznika"
 
-#: ../plugins/placemarks/placemarks.c:495
+#: ../plugins/placemarks/placemarks.c:497
 msgid "_Placemarks"
 msgstr "_Znaczniki"
 
-#: ../plugins/placemarks/placemarks.c:499
+#: ../plugins/placemarks/placemarks.c:501
 msgid "Placemark this location"
 msgstr "Utwórz znacznik na tej pozycji"
 
-#: ../plugins/placemarks/placemarks.c:501
+#: ../plugins/placemarks/placemarks.c:503
 msgid "Add current location to your placemarks"
 msgstr "Dodaje obecne położenie do znaczników"
 
-#: ../plugins/placemarks/placemarks.c:505
+#: ../plugins/placemarks/placemarks.c:507
 msgid "Organize placemarks..."
 msgstr "Zarządzaj znacznikami..."
 
-#: ../plugins/placemarks/placemarks.c:507
+#: ../plugins/placemarks/placemarks.c:509
 msgid "Edit and delete existing placemarks"
 msgstr "Pozwala na edycję i usuwanie istniejących znaczników"
 
@@ -311,14 +363,14 @@ msgstr "Znaczniki"
 msgid "Remembers your favorite view points"
 msgstr "Zapamiętuje ulubione punkty widokowe"
 
-#: ../plugins/search/search.c:109
-#: ../plugins/search/search.c:110
+#: ../plugins/search/search.c:109 ../plugins/search/search.c:110
 msgid "No result found"
 msgstr "Nie znaleziono wyników"
 
+#. Translators: In this case "No" means "number".
 #: ../plugins/search/search.c:497
 msgid "No"
-msgstr "Nie"
+msgstr "Nr"
 
 #: ../plugins/search/search.c:516
 msgid "Search results"
@@ -331,4 +383,3 @@ msgstr "Pozwala na przeszukiwanie bazy danych GeoNames"
 #: ../plugins/search/search.emerillon-plugin.in.h:2
 msgid "Search"
 msgstr "Wyszukiwanie"
-
