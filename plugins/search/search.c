@@ -493,7 +493,7 @@ activated (EthosPlugin *plugin)
   g_object_set (cell,
                 "ellipsize", PANGO_ELLIPSIZE_END,
                 NULL);
-
+  /* Translators: In this case "No" means "number". */
   column = gtk_tree_view_column_new_with_attributes (_("No"),
                                                      cell,
                                                      "text", COL_SYMBOL,
