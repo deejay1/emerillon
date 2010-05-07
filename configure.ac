@@ -157,10 +157,13 @@ AC_ARG_ENABLE(vala,
 
 if test "$enable_vala" = "yes"
 then
-  AM_PROG_VALAC([0.8.0], enable_vala=yes, enable_vala=no)
+  AM_PROG_VALAC([0.8.0])
+  if test x${VALAC} = x""; then
+    exit 0;
+  fi
 fi
 
-AM_CONDITIONAL(ENABLE_VALA, test "x$enable_vala" = "xyes")
+AM_CONDITIONAL(ENABLE_VALA, test x${VALAC} != x"")
 
 ################
 # Output files #
