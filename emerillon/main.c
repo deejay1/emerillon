@@ -40,6 +40,11 @@ display_version ()
   exit (0);
 }
 
+static gdouble lat = 2555;
+static gdouble lon = 2555;
+// Defines if all required coordinates were set on the command line
+static gboolean coords_set = FALSE;
+
 static GOptionEntry entries[]  =
 {
   { "version", 'V', G_OPTION_FLAG_NO_ARG, G_OPTION_ARG_CALLBACK, display_version,
@@ -47,16 +52,48 @@ static GOptionEntry entries[]  =
   {NULL}
 };
 
+static GOptionEntry position_entries[] =
+{
+  { "lat", 0, 0, G_OPTION_ARG_DOUBLE, &lat, N_("Initial latitude"), "latitude" },
+  { "lon", 0, 0, G_OPTION_ARG_DOUBLE, &lon, N_("Initial longitude"), "longitude" },
+  {NULL}
+};
+
+static gboolean
+parse_position_options (GOptionContext *context, GOptionGroup *group, gpointer data,
+                        GError **error)
+{
+  // No commandline lat/lon parameters are set, so we can stop parsing
+  if (lat == 2555 && lon == 2555)
+    return TRUE;
+  if (lat > 90.0 || lat < -90.0 || lon > 180.0 || lon < -180.0) {
+    g_set_error_literal (error, G_OPTION_ERROR, G_OPTION_ERROR_BAD_VALUE,
+                         _("Incorrect or missing coordinates"));
+    return FALSE;
+  } else {
+    coords_set = TRUE;
+    return TRUE;
+  }
+}
+
 static void
 parse_options (int *argc,
       char ***argv)
 {
   GError *error = NULL;
   GOptionContext *context;
+  GOptionGroup *position_group;
 
   context = g_option_context_new (_("- map viewer"));
   g_option_context_add_group (context, gtk_get_option_group (TRUE));
   g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
+
+  position_group = g_option_group_new (_("position"), _("Specifies the default position"),
+                                       _("Show position options"), NULL, NULL);
+  g_option_group_add_entries (position_group, position_entries);
+  g_option_group_set_parse_hooks (position_group, NULL, parse_position_options);
+  g_option_context_add_group (context, position_group);
+
   if (!g_option_context_parse (context, argc, argv, &error))
     {
       g_print ("%s\n", error->message);
@@ -72,6 +109,7 @@ main (int argc,
 {
   EthosManager *manager;
   GtkWidget *window;
+  ChamplainView *map_view = NULL;
   GError *error = NULL;
   GFile *plugin_dir;
   gchar *user_data;
@@ -101,6 +139,14 @@ main (int argc,
   window = emerillon_window_dup_default ();
   g_signal_connect (window, "delete-event", gtk_main_quit, NULL);
   gtk_widget_show (window);
+
+  /* Go to the position specified on the command line with a sensible default zoom */
+  if (coords_set)
+  {
+    map_view = emerillon_window_get_map_view ((EmerillonWindow *) window);
+    g_object_set (map_view, "zoom-level", 14, NULL);
+    champlain_view_center_on (map_view, lat, lon);
+  }
 
   /* Create the user plugin directory */
   plugin_dir = g_file_new_for_path (plugin_dirs[1]);
