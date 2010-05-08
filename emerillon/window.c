@@ -371,6 +371,7 @@ cmd_about (GtkAction *action,
   static const char *authors[] = {
       "Marco Barisione <marco@barisione.org>",
       "Pierre-Luc Beaudoin <pierre-luc.beaudoin@novopia.com>",
+      "Simon Wenner <simon@wenner.ch>",
       NULL
   };
   static const char *documenters[] = {
@@ -400,7 +401,8 @@ cmd_about (GtkAction *action,
       "program-name", _("Emerillon"),
       "version", VERSION,
       "copyright", "Copyright \xc2\xa9 2008 Marco Barisione\n"
-                   "Copyright \xc2\xa9 2009 Novopia Inc.",
+                   "Copyright \xc2\xa9 2009 Novopia Inc.\n"
+                   "Copyright \xc2\xa9 2010 Emerillon Contributors.",
       "comments",_("A map viewer for the GNOME desktop"),
       "authors", authors,
       "documenters", documenters,
