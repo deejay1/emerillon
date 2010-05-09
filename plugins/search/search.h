@@ -52,6 +52,7 @@ struct _SearchPluginClass
 
 GType        search_plugin_get_type (void);
 EthosPlugin* search_plugin_new      (void);
+G_MODULE_EXPORT EthosPlugin* ethos_plugin_register (void);
 
 G_END_DECLS
 

@@ -52,6 +52,7 @@ struct _CopyLinkPluginClass
 
 GType        copy_link_plugin_get_type (void);
 EthosPlugin* copy_link_plugin_new      (void);
+G_MODULE_EXPORT EthosPlugin* ethos_plugin_register (void);
 
 G_END_DECLS
 
