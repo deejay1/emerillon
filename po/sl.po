@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: emerillon\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=emerillon&component=General\n"
-"POT-Creation-Date: 2010-05-07 10:17+0000\n"
-"PO-Revision-Date: 2010-05-07 13:35+0100\n"
+"POT-Creation-Date: 2010-05-09 09:23+0000\n"
+"PO-Revision-Date: 2010-05-09 20:58+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -53,12 +53,12 @@ msgid "Browse maps"
 msgstr "Brskanje med zemljevidi"
 
 #: ../data/emerillon.desktop.in.in.h:2
-#: ../emerillon/window.c:400
+#: ../emerillon/window.c:401
 msgid "Emerillon"
 msgstr "Emerillon"
 
 #: ../data/emerillon.desktop.in.in.h:3
-#: ../emerillon/main.c:97
+#: ../emerillon/main.c:135
 msgid "Emerillon Map Viewer"
 msgstr "Emerillon pregledovalnik zemljevidov"
 
@@ -71,152 +71,176 @@ msgstr "Pregledovalnik zemljevidov"
 msgid "%s - Version %s\n"
 msgstr "%s - različica %s\n"
 
-#: ../emerillon/main.c:46
+#: ../emerillon/main.c:51
 msgid "Show version information and exit"
 msgstr "Izpiši podrobnosti različice in končaj"
 
 #: ../emerillon/main.c:57
+msgid "Initial latitude"
+msgstr "Začetna geografska širina"
+
+#: ../emerillon/main.c:58
+msgid "Initial longitude"
+msgstr "Začetna geografska dolžina"
+
+#: ../emerillon/main.c:71
+msgid "Incorrect or missing coordinates"
+msgstr "Nepravilno določene koordinate"
+
+#: ../emerillon/main.c:87
 msgid "- map viewer"
 msgstr "- pregledovalnik zemljevidov"
 
-#: ../emerillon/main.c:63
+#: ../emerillon/main.c:91
+msgid "position"
+msgstr "položaj"
+
+#: ../emerillon/main.c:91
+msgid "Specifies the default position"
+msgstr "Določa privzeti položaj"
+
+#: ../emerillon/main.c:92
+msgid "Show position options"
+msgstr "Pokaži možnosti položaja"
+
+#: ../emerillon/main.c:100
 #, c-format
 msgid "Run '%s --help' to see a list of available command line options.\n"
 msgstr "Za popoln seznam možnosti ukazne vrstice zaženite '%s --help'.\n"
 
-#: ../emerillon/window.c:380
+#: ../emerillon/window.c:381
 msgid "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.\n"
 msgstr "Ta program spada med prosto programsko opremo; lahko ga širite in/ali spreminjate pod pogoji Splošnega javnega dovoljenja GNU (GNU General Public License), kot ga je objavila ustanova Free Software Foundation; bodisi različice 2 ali (po vaši izbiri) katirekoli poznejši različici.\n"
 
-#: ../emerillon/window.c:384
+#: ../emerillon/window.c:385
 msgid "This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n"
 msgstr "Ta program je na voljo v upanju, da bo uporaben, vendar je BREZ VSAKRŠNEGA JAMSTVA; tudi brez jamstva o USTREZNOSTI ZA PRODAJO ali PRIMERNOSTI ZA UPORABO. Za več podrobnosti si glejte besedilo Splošnega javnega dovoljenja (GNU GPL).\n"
 
-#: ../emerillon/window.c:388
+#: ../emerillon/window.c:389
 msgid "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
 msgstr "S programom bi morali dobiti tudi kopijo Splošnega Javnega dovoljenja (GNU General Public License); v primeru, da je niste, stopite v stik s Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
 
-#: ../emerillon/window.c:393
+#: ../emerillon/window.c:394
 msgid "translator-credits"
 msgstr "Matej Urbančič <mateju@svn.gnome.org>"
 
-#: ../emerillon/window.c:404
+#: ../emerillon/window.c:406
 msgid "A map viewer for the GNOME desktop"
 msgstr "Pregledovalnik zemljevidov za namizje GNOME"
 
-#: ../emerillon/window.c:625
+#: ../emerillon/window.c:627
 msgid "_Map"
 msgstr "_Zemljevid"
 
-#: ../emerillon/window.c:626
+#: ../emerillon/window.c:628
 msgid "_Edit"
 msgstr "_Uredi"
 
-#: ../emerillon/window.c:627
+#: ../emerillon/window.c:629
 msgid "_View"
 msgstr "_Pogled"
 
-#: ../emerillon/window.c:628
+#: ../emerillon/window.c:630
 msgid "_Tools"
 msgstr "_Orodja"
 
-#: ../emerillon/window.c:629
+#: ../emerillon/window.c:631
 msgid "_Help"
 msgstr "Pomo_č"
 
-#: ../emerillon/window.c:632
+#: ../emerillon/window.c:634
 msgid "Quit the program"
 msgstr "Končaj program"
 
-#: ../emerillon/window.c:635
+#: ../emerillon/window.c:637
 msgid "Enlarge the image"
 msgstr "Približaj sliko"
 
-#: ../emerillon/window.c:638
+#: ../emerillon/window.c:640
 msgid "Shrink the image"
 msgstr "Pomanjšaj velikost slike"
 
-#: ../emerillon/window.c:641
+#: ../emerillon/window.c:643
 msgid "Edit the preferences"
 msgstr "Uredi možnosti"
 
-#: ../emerillon/window.c:643
+#: ../emerillon/window.c:645
 msgid "_Contents"
 msgstr "_Vsebina"
 
-#: ../emerillon/window.c:644
+#: ../emerillon/window.c:646
 msgid "Help on this application"
 msgstr "Pomoč za delo s programom"
 
-#: ../emerillon/window.c:647
+#: ../emerillon/window.c:649
 msgid "About this application"
 msgstr "O programu"
 
-#: ../emerillon/window.c:652
+#: ../emerillon/window.c:654
 msgid "_Toolbar"
 msgstr "_Orodna vrstica"
 
-#: ../emerillon/window.c:653
+#: ../emerillon/window.c:655
 msgid "Show or hide the toolbar in the current window"
 msgstr "Pokaži ali skrij orodno vrstico v trenutnem oknu"
 
-#: ../emerillon/window.c:655
+#: ../emerillon/window.c:657
 msgid "_Statusbar"
 msgstr "_Vrstica stanja"
 
-#: ../emerillon/window.c:656
+#: ../emerillon/window.c:658
 msgid "Show or hide the statusbar in the current window"
 msgstr "Pokaži ali skrij vrstico stanja v trenutnem oknu"
 
-#: ../emerillon/window.c:658
+#: ../emerillon/window.c:660
 msgid "Side _Pane"
 msgstr "Stranski _pladenj"
 
-#: ../emerillon/window.c:659
+#: ../emerillon/window.c:661
 msgid "Show or hide the side pane in the current window"
 msgstr "Pokaži ali skrij stranski pladenj v trenutnem oknu"
 
-#: ../emerillon/window.c:662
+#: ../emerillon/window.c:664
 msgid "Enable or disable full screen mode"
 msgstr "Omogoči ali onemogoči celozaslonski način"
 
-#: ../emerillon/window.c:667
+#: ../emerillon/window.c:669
 msgid "_Street"
 msgstr "_Ulica"
 
-#: ../emerillon/window.c:668
+#: ../emerillon/window.c:670
 msgid "View the street map based on OpenStreetMap"
 msgstr "Pogled zemljevida mesta z OpenStreetMap"
 
-#: ../emerillon/window.c:669
+#: ../emerillon/window.c:671
 msgid "_Cycling"
 msgstr "_Kolesarjenje"
 
-#: ../emerillon/window.c:670
+#: ../emerillon/window.c:672
 msgid "View the cycling map based on OpenCycleMap"
 msgstr "Pogled zemljevida kolesarjenja z OpenCycleMap"
 
-#: ../emerillon/window.c:671
+#: ../emerillon/window.c:673
 msgid "_Public Transportation"
 msgstr "_Javni prevoz"
 
-#: ../emerillon/window.c:672
+#: ../emerillon/window.c:674
 msgid "View the public transportation map based on Öpnvkarte"
 msgstr "Pogled zemljevida javnega prevoza z Öpnvkarte"
 
-#: ../emerillon/window.c:673
+#: ../emerillon/window.c:675
 msgid "_Terrain"
 msgstr "_Teren"
 
-#: ../emerillon/window.c:674
+#: ../emerillon/window.c:676
 msgid "View the terrain map based on mapsforfree.com Relief"
 msgstr "Pogled zemljevida terena z mapsforfree.com"
 
-#: ../emerillon/window.c:709
+#: ../emerillon/window.c:711
 msgid "In"
 msgstr "Približaj"
 
-#: ../emerillon/window.c:713
+#: ../emerillon/window.c:715
 msgid "Out"
 msgstr "Oddalji"
 
