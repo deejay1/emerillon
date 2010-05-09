@@ -223,7 +223,7 @@ build_ui (ManageDialog *self)
   gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled),
       GTK_SHADOW_IN);
   gtk_container_add (GTK_CONTAINER (scrolled), treeview);
-  gtk_box_pack_start_defaults (GTK_BOX (area), scrolled);
+  gtk_box_pack_start (GTK_BOX (area), scrolled, TRUE, TRUE, 0);
 
   cell = gtk_cell_renderer_text_new ();
   g_object_set (cell,
