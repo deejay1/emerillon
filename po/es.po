@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: emerillon.po.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=emerillon&component=General\n"
-"POT-Creation-Date: 2010-05-04 10:08+0000\n"
-"PO-Revision-Date: 2010-05-04 23:15+0200\n"
+"POT-Creation-Date: 2010-05-08 12:42+0000\n"
+"PO-Revision-Date: 2010-05-10 23:20+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -55,7 +55,7 @@ msgstr "Examinar mapas"
 msgid "Emerillon"
 msgstr "Emerillon"
 
-#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:97
+#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:135
 msgid "Emerillon Map Viewer"
 msgstr "Visor de mapas Emerillon"
 
@@ -68,15 +68,41 @@ msgstr "Visor de mapas"
 msgid "%s - Version %s\n"
 msgstr "%s: versión %s\n"
 
-#: ../emerillon/main.c:46
+#: ../emerillon/main.c:51
 msgid "Show version information and exit"
 msgstr "Mostrar información de la versión y salir"
 
 #: ../emerillon/main.c:57
+msgid "Initial latitude"
+msgstr "Latitud inicial"
+
+#: ../emerillon/main.c:58
+#| msgid "Longitude"
+msgid "Initial longitude"
+msgstr "Longitud inicial"
+
+#: ../emerillon/main.c:71
+msgid "Incorrect or missing coordinates"
+msgstr "Faltan las coordenadas o son incorrectas"
+
+#: ../emerillon/main.c:87
 msgid "- map viewer"
 msgstr ": visor de mapas"
 
-#: ../emerillon/main.c:63
+#: ../emerillon/main.c:91
+#| msgid "Map Position"
+msgid "position"
+msgstr "posición"
+
+#: ../emerillon/main.c:91
+msgid "Specifies the default position"
+msgstr "Especifica la posición predeterminada"
+
+#: ../emerillon/main.c:92
+msgid "Show position options"
+msgstr "Mostrar las opciones de posición"
+
+#: ../emerillon/main.c:100
 #, c-format
 msgid "Run '%s --help' to see a list of available command line options.\n"
 msgstr ""
@@ -119,7 +145,7 @@ msgstr ""
 
 #: ../emerillon/window.c:393
 msgid "translator-credits"
-msgstr "Jorge González <jorgegonz@svn.gnome.org>, 2007-2008."
+msgstr "Jorge González <jorgegonz@svn.gnome.org>, 2007-2010"
 
 #: ../emerillon/window.c:404
 msgid "A map viewer for the GNOME desktop"
@@ -360,6 +386,7 @@ msgstr "Recuerda sus puntos de vista favoritos"
 msgid "No result found"
 msgstr "No se encontraron resultados"
 
+#. Translators: In this case "No" means "number".
 #: ../plugins/search/search.c:497
 msgid "No"
 msgstr "No"
