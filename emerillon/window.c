@@ -60,7 +60,7 @@ struct _EmerillonWindowPrivate
 
   GConfClient *client;
 
-  guint tooltip_messase_context_id;
+  guint tooltip_message_context_id;
 };
 
 static void     build_ui        (EmerillonWindow *self);
@@ -562,7 +562,7 @@ menu_item_select_cb (GtkMenuItem *proxy,
   if (tooltip)
     {
       gtk_statusbar_push (GTK_STATUSBAR (self->priv->statusbar),
-          self->priv->tooltip_messase_context_id, tooltip);
+          self->priv->tooltip_message_context_id, tooltip);
       g_free (tooltip);
     }
 }
@@ -572,7 +572,7 @@ menu_item_deselect_cb (GtkMenuItem *proxy,
                        EmerillonWindow *self)
 {
   gtk_statusbar_pop (GTK_STATUSBAR (self->priv->statusbar),
-      self->priv->tooltip_messase_context_id);
+      self->priv->tooltip_message_context_id);
 }
 
 static void
@@ -769,7 +769,7 @@ build_ui (EmerillonWindow *self)
       GTK_WIDGET (self->priv->statusbar), FALSE, FALSE, 0);
   gtk_widget_show (self->priv->statusbar);
 
-  self->priv->tooltip_messase_context_id = gtk_statusbar_get_context_id (
+  self->priv->tooltip_message_context_id = gtk_statusbar_get_context_id (
       GTK_STATUSBAR (self->priv->statusbar), "tooltip-message");
 
   /* Viewport. */
