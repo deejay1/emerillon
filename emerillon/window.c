@@ -60,10 +60,73 @@ struct _EmerillonWindowPrivate
 
   GConfClient *client;
 
+
   guint tooltip_message_context_id;
+
+  /** Defines whether the view position should be updated based on geoclue information */
+  gboolean position_auto_update;
+
+  GeoclueMasterClient *geoclue_client;
+  GeocluePosition *geoclue_position;
+};
+
+enum
+{
+  PROP_0,
+
+  PROP_AUTO_UPDATE
 };
 
 static void     build_ui        (EmerillonWindow *self);
+static void
+position_changed_cb (GeocluePosition *position,
+                     GeocluePositionFields fields,
+                     int timestamp,
+                     double latitude,
+                     double longitude,
+                     double altitude,
+                     GeoclueAccuracy *accuracy,
+                     GError *error,
+                     EmerillonWindow *self);
+
+static void
+emerillon_window_set_property (GObject      *object,
+                               guint         property_id,
+                               const GValue *value,
+                               GParamSpec   *pspec)
+{
+  EmerillonWindow *self = EMERILLON_WINDOW (object);
+  switch (property_id)
+  {
+    case PROP_AUTO_UPDATE:
+      self->priv->position_auto_update = g_value_get_boolean(value);
+      if (self->priv->geoclue_position != NULL)
+        geoclue_position_get_position_async (self->priv->geoclue_position,
+                                             (GeocluePositionCallback)position_changed_cb, self);
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      break;
+  }
+}
+
+static void
+emerillon_window_get_property (GObject    *object,
+                               guint       property_id,
+                               GValue     *value,
+                               GParamSpec *pspec)
+{
+  EmerillonWindow *self = EMERILLON_WINDOW (object);
+  switch (property_id)
+  {
+    case PROP_AUTO_UPDATE:
+      g_value_set_boolean (value, self->priv->position_auto_update);
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      break;
+  }
+}
 
 static gboolean
 set_zoom_for_accuracy (EmerillonWindow *self,
@@ -122,7 +185,7 @@ position_changed_cb (GeocluePosition *position,
       return;
     }
   else if (fields & GEOCLUE_POSITION_FIELDS_LATITUDE &&
-           fields & GEOCLUE_POSITION_FIELDS_LONGITUDE)
+           fields & GEOCLUE_POSITION_FIELDS_LONGITUDE && self->priv->position_auto_update)
     {
       /* FIXME: if the next calls are inverted then the wrong position is
        * shown (libchamplain bug). */
@@ -139,11 +202,12 @@ emerillon_window_init (EmerillonWindow *self)
 {
   GdkGeometry geometry;
   GeoclueMaster *master;
-  GeoclueMasterClient *client;
-  GeocluePosition *position;
+
   gint width, height;
 
   self->priv = EMERILLON_WINDOW_GET_PRIVATE (self);
+
+  self->priv->position_auto_update = FALSE;
 
   /* GConf. */
   self->priv->client = gconf_client_get_default ();
@@ -170,23 +234,24 @@ emerillon_window_init (EmerillonWindow *self)
 
   /* Current position. */
   master = geoclue_master_get_default ();
-  client = geoclue_master_create_client (master, NULL, NULL);
+  self->priv->geoclue_client = geoclue_master_create_client (master, NULL, NULL);
   g_object_unref (master);
 
-  geoclue_master_client_set_requirements (client,
-      GEOCLUE_ACCURACY_LEVEL_COUNTRY, 0, FALSE, GEOCLUE_RESOURCE_ALL, NULL);
-  position = geoclue_master_client_create_position (client, NULL);
-  if (position)
-    {
-      g_object_set_data (G_OBJECT (position), "client", client);
-      geoclue_position_get_position_async (position,
-          (GeocluePositionCallback)position_changed_cb, self);
-    }
+  geoclue_master_client_set_requirements (self->priv->geoclue_client,
+                                          GEOCLUE_ACCURACY_LEVEL_COUNTRY, 0, FALSE, GEOCLUE_RESOURCE_ALL, NULL);
+  self->priv->geoclue_position = geoclue_master_client_create_position (self->priv->geoclue_client, NULL);
+  if (self->priv->geoclue_position)
+  {
+    g_object_set_data (G_OBJECT (self->priv->geoclue_position), "client", self->priv->geoclue_client);
+    g_signal_connect(self->priv->geoclue_position, "position-changed",
+                     G_CALLBACK(position_changed_cb), NULL);
+  }
   else
-    {
-      g_object_unref (client);
-      g_object_unref (position);
-    }
+  {
+    g_object_unref (self->priv->geoclue_client);
+    g_object_unref (self->priv->geoclue_position);
+  }
+
 }
 
 static void
@@ -257,6 +322,22 @@ emerillon_window_class_init (EmerillonWindowClass *klass)
   object_class->constructor = emerillon_window_constructor;
   object_class->dispose = emerillon_window_dispose;
   object_class->finalize = emerillon_window_finalize;
+
+  /* Initialize object properties */
+  object_class->get_property = emerillon_window_get_property;
+  object_class->set_property = emerillon_window_set_property;
+
+  /**
+   * EmerillonWindow:auto-update:
+   *
+   * Toggle automatic update of the map position based on geoclue data
+   *
+   * Since 0.1.2
+   */
+  g_object_class_install_property(object_class, PROP_AUTO_UPDATE,
+                                  g_param_spec_boolean ("auto-update", "Position auto update",
+                                "Toggle automatic update of the map position based on geoclue data",
+                                FALSE, G_PARAM_READWRITE));
 
   g_type_class_add_private (object_class, sizeof (EmerillonWindowPrivate));
 }

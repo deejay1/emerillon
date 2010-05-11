@@ -45,6 +45,8 @@ typedef struct _EmerillonWindowPrivate EmerillonWindowPrivate;
 struct _EmerillonWindow
 {
   GtkWindow parent;
+
+  /*< private >*/
   EmerillonWindowPrivate *priv;
 };
 

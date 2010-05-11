@@ -147,6 +147,8 @@ main (int argc,
     map_view = emerillon_window_get_map_view ((EmerillonWindow *) window);
     g_object_set (map_view, "zoom-level", 14, NULL);
     champlain_view_center_on (map_view, lat, lon);
+  } else {
+    g_object_set(window, "auto-update", TRUE, NULL);
   }
 
   /* Create the user plugin directory */
