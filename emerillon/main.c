@@ -88,8 +88,9 @@ parse_options (int *argc,
   g_option_context_add_group (context, gtk_get_option_group (TRUE));
   g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
 
-  position_group = g_option_group_new (_("position"), _("Specifies the default position"),
+  position_group = g_option_group_new ("position", _("Specifies the default position"),
                                        _("Show position options"), NULL, NULL);
+  g_option_group_set_translation_domain (position_group, GETTEXT_PACKAGE);
   g_option_group_add_entries (position_group, position_entries);
   g_option_group_set_parse_hooks (position_group, NULL, parse_position_options);
   g_option_context_add_group (context, position_group);
