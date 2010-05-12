@@ -1,3 +1,48 @@
+Emerillon 0.1.2 (2010-06-25)
+===============================
+
+This release includes some minor fixes and completion
+of the GSEAL GNOME goal.
+Also experimental GObject introspection has been added
+Thanks go out to Simon Wenner and the translators.
+
+New:
+  #616729, Vala bindings (Simon Wenner)
+  #616389, support specifying lat/lon on the command line
+  #620601, Initial user documentation (Mario Blättermann)
+
+Bug fixes:
+  #614575, fix build with GTK+ 2.20  (Andreas Henriksson)
+  #615725, use accessor functions
+  #606757, command line argument handling
+
+Other changes:
+  * Use Automake silent rules (Simon Wenner)
+  * Sidebar: Fix display bugs (Simon Wenner)
+  * Save and restore the window size (Simon Wenner)
+  * Buildsystem: Improve the configure output (Simon Wenner)
+  * Placemark plugin: replace deprecated function
+  * Placemark plugin: display markers on the map
+  * Added gtk-doc based documentation
+  * Added GObject introspection support
+  * Ported to libchamplain 0.6.x
+
+New and updated translations:
+  * cz, courtesy of Marek Černocký
+  * da, courtesy of Joe Hansen
+  * de, courtesy of Mario Blättermann
+  * es, courtesy of Jorge González
+  * fr, courtesy of Bruno Brouard
+  * gl, courtesy of Fran Diéguez
+  * it, courtesy of Claudio Arseni
+  * jp, courtesy of Takeshi AIHANA
+  * nb, courtesy of Kjartan Maraas
+  * pl, courtesy of Aviary.pl
+  * pt, courtesy of António Lima
+  * pt_BR, courtesy of Michel Recondo and Hugo Vaz Sampaio
+  * sl, courtesy of Matej Urbančič
+  * zh_CN, courtesy of Sun Ning
+
 Emerillon 0.1.1 (2010-01-09)
 ===============================
 
