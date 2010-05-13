@@ -63,7 +63,7 @@ struct _EmerillonWindowPrivate
 
   guint tooltip_message_context_id;
 
-  /** Defines whether the view position should be updated based on geoclue information */
+  /* Defines whether the view position should be updated based on geoclue information */
   gboolean position_auto_update;
 
   GeoclueMasterClient *geoclue_client;
@@ -181,7 +181,6 @@ position_changed_cb (GeocluePosition *position,
     {
       g_printerr ("Error retrieving the current position: %s\n", error->message);
       g_error_free (error);
-      g_object_unref (position);
       return;
     }
   else if (fields & GEOCLUE_POSITION_FIELDS_LATITUDE &&
@@ -192,16 +191,14 @@ position_changed_cb (GeocluePosition *position,
       set_zoom_for_accuracy (self, accuracy);
       champlain_view_center_on (self->priv->view, latitude, longitude);
     }
-
-  g_object_unref (g_object_get_data (G_OBJECT (position), "client"));
-  g_object_unref (position);
 }
 
 static void
 emerillon_window_init (EmerillonWindow *self)
 {
   GdkGeometry geometry;
-  GeoclueMaster *master;
+  GeoclueMaster *master = NULL;
+  GError *error = NULL;
 
   gint width, height;
 
@@ -234,12 +231,19 @@ emerillon_window_init (EmerillonWindow *self)
 
   /* Current position. */
   master = geoclue_master_get_default ();
-  self->priv->geoclue_client = geoclue_master_create_client (master, NULL, NULL);
+  self->priv->geoclue_client = geoclue_master_create_client (master, NULL, &error);
+  if (!self->priv->geoclue_client)
+    {
+       g_warning ("Creating Geoclue Master client failed: %s", error->message);
+       g_error_free (error);
+       g_object_unref (master);
+       return;
+    }
   g_object_unref (master);
 
   geoclue_master_client_set_requirements (self->priv->geoclue_client,
                                           GEOCLUE_ACCURACY_LEVEL_COUNTRY, 0, FALSE, GEOCLUE_RESOURCE_ALL, NULL);
-  self->priv->geoclue_position = geoclue_master_client_create_position (self->priv->geoclue_client, NULL);
+  self->priv->geoclue_position = geoclue_master_client_create_position (self->priv->geoclue_client, &error);
   if (self->priv->geoclue_position)
   {
     g_object_set_data (G_OBJECT (self->priv->geoclue_position), "client", self->priv->geoclue_client);
@@ -248,8 +252,10 @@ emerillon_window_init (EmerillonWindow *self)
   }
   else
   {
-    g_object_unref (self->priv->geoclue_client);
-    g_object_unref (self->priv->geoclue_position);
+    g_warning ("Getting Geoclue Position Failed: %s", error->message);
+    g_error_free (error);
+    if (self->priv->geoclue_client)
+      g_object_unref (self->priv->geoclue_client);
   }
 
 }
@@ -278,6 +284,17 @@ emerillon_window_dispose (GObject *object)
       gconf_client_remove_dir (self->priv->client, EMERILLON_CONF_DIR, NULL);
       g_object_unref (self->priv->client);
       self->priv->client = NULL;
+    }
+
+  if (self->priv->geoclue_client)
+    {
+       g_object_unref (self->priv->geoclue_client);
+       self->priv->geoclue_client = NULL;
+    }
+   if (self->priv->geoclue_position)
+    {
+       g_object_unref (self->priv->geoclue_position);
+       self->priv->geoclue_client = NULL;
     }
 
   G_OBJECT_CLASS (emerillon_window_parent_class)->dispose (object);
