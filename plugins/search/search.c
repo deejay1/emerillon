@@ -119,10 +119,10 @@ result_cb (RestProxyCall *call,
   n = rest_xml_node_find (root, "geoname");
   i = 1;
 
-  min_lat = CHAMPLAIN_MAX_LAT;
-  max_lat = CHAMPLAIN_MIN_LAT;
-  min_lon = CHAMPLAIN_MAX_LONG;
-  max_lon = CHAMPLAIN_MIN_LONG;
+  min_lat = 90;
+  max_lat = -90;
+  min_lon = 180;
+  max_lon = -180;
 
   while (n)
     {

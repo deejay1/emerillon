@@ -395,10 +395,8 @@ zoom_changed_cb (GtkWidget *widget,
   ChamplainMapSource *source = NULL;
 
   source = champlain_view_get_map_source (self->priv->view);
-  g_object_get (G_OBJECT (source),
-      "min-zoom-level", &min_zoom_level,
-      "max-zoom-level", &max_zoom_level,
-      NULL);
+  min_zoom_level = champlain_map_source_get_min_zoom_level (source);
+  max_zoom_level = champlain_map_source_get_max_zoom_level (source);
 
   zoom_in_action = gtk_action_group_get_action (self->priv->main_actions,
         "ViewZoomIn");
