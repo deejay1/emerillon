@@ -35,7 +35,6 @@ libemerillon_la_SOURCES =	\
 
 emerillon_SOURCES = main.c
 
-emerillon_CFLAGS = $(EOG_CFLAGS)
 emerillon_LDFLAGS = -export-dynamic
 
 emerillon_LDADD = libemerillon.la $(EMERILLON_LIBS)
