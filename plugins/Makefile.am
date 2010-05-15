@@ -7,6 +7,7 @@ INCLUDES = \
 	$(EMERILLON_CFLAGS) 				\
 	$(SEARCH_DEPS_CFLAGS) 				\
 	$(WARN_CFLAGS)					\
+	$(DISABLE_DEPRECATED)				\
 	-DEMERILLON_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
 	-DEMERILLON_UIDIR=\""$(datadir)/emerillon/ui/"\" \
 	-DEMERILLON_DATADIR=\""$(datadir)/emerillon"\"

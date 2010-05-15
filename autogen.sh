@@ -13,7 +13,7 @@ PKG_NAME="emerillon"
 }
 
 which gnome-autogen.sh || {
-    echo "You need to install gnome-common from the GNOME CVS"
+    echo "You need to install gnome-common from the GNOME GIT"
     exit 1
 }
 
@@ -22,8 +22,8 @@ which gtkdocize || {
     exit 1
 }
 
-REQUIRED_AUTOCONF_VERSION=2.59
-REQUIRED_AUTOMAKE_VERSION=1.7
+REQUIRED_AUTOCONF_VERSION=2.63
+REQUIRED_AUTOMAKE_VERSION=1.11
 REQUIRED_INTLTOOL_VERSION=0.40.0
 REQUIRED_PKG_CONFIG_VERSION=0.16.0
 REQUIRED_GTK_DOC_VERSION=1.14

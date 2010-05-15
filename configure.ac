@@ -1,4 +1,4 @@
-AC_PREREQ(2.59)
+AC_PREREQ(2.63)
 
 m4_define(emerillon_major_version, 0)
 m4_define(emerillon_minor_version, 1)
@@ -7,7 +7,7 @@ m4_define(emerillon_version, emerillon_major_version.emerillon_minor_version.eme
 
 m4_define([emerillon_api_version],
           [emerillon_major_version.emerillon_minor_version])
-AC_INIT(emerillon, emerillon_version)
+AC_INIT([emerillon], [emerillon_version], [http://bugzilla.gnome.org/enter_bug.cgi?product=emerillon], [emerillon])
 AC_CONFIG_SRCDIR(emerillon/main.c)
 
 AC_DEFINE(EMERILLON_MAJOR_VERSION, emerillon_major_version, [Emerillon major version])
@@ -20,15 +20,16 @@ AC_SUBST(EMERILLON_MICRO_VERSION, emerillon_micro_version)
 EMERILLON_API_VERSION=emerillon_api_version
 AC_SUBST(EMERILLON_API_VERSION)
 
-AM_INIT_AUTOMAKE([1.8 dist-bzip2 no-dist-gzip -Wno-portability])
+AM_INIT_AUTOMAKE([1.11 dist-bzip2 no-dist-gzip -Wno-portability])
 
-AC_CONFIG_HEADERS(config.h)
-AC_CONFIG_MACRO_DIR(m4)
+AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIR([m4])
 
-AM_MAINTAINER_MODE
+AM_MAINTAINER_MODE([enable])
+AM_SILENT_RULES([yes])
 
 GNOME_MAINTAINER_MODE_DEFINES
-GNOME_COMPILE_WARNINGS
+GNOME_COMPILE_WARNINGS([maximum])
 GNOME_DEBUG_CHECK
 
 AC_DISABLE_STATIC
@@ -39,7 +40,6 @@ AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 
-m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 GTK_DOC_CHECK([1.14],[--flavour no-tmpl])
 
 ###############
@@ -129,24 +129,6 @@ EMERILLON_CFLAGS=`echo $EMERILLON_CFLAGS | sed s,/geoclue,,`
 
 AC_SUBST(EMERILLON_CFLAGS)
 AC_SUBST(EMERILLON_LIBS)
-
-###############
-# Depecations #
-###############
-AC_ARG_ENABLE(deprecations,
-              [AC_HELP_STRING([--enable-deprecations],
-                              [warn about deprecated usages [default=yes]])],,
-              [enable_deprecations=yes])
-
-if test "x$enable_deprecations" = "xyes"; then
-   DISABLE_DEPRECATED_CFLAGS="\
--DG_DISABLE_DEPRECATED \
--DGDK_DISABLE_DEPRECATED \
--DGTK_DISABLE_DEPRECATED \
--DGDK_PIXBUF_DISABLE_DEPRECATED \
--DGNOME_DISABLE_DEPRECATED"
-   AC_SUBST(DISABLE_DEPRECATED_CFLAGS)
-fi
 
 #################
 # Vala bindings #

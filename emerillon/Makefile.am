@@ -2,11 +2,11 @@ SUBDIRS =
 
 INCLUDES =								\
 	-I$(top_srcdir)							\
-	-I$(srcdir)							\
+	-I$(srcdir)								\
 	$(EMERILLON_CFLAGS)						\
-	$(WARN_CFLAGS)							\
-	$(DISABLE_DEPRECATED_CFLAGS)					\
-	-DEMERILLON_COMPILATION						\
+	$(WARN_CFLAGS)						\
+	$(DISABLE_DEPRECATED)					\
+	-DEMERILLON_COMPILATION					\
 	-DEMERILLON_DATADIR=\""$(datadir)/emerillon"\"			\
 	-DEMERILLON_PLUGINDIR=\""$(libdir)/emerillon/plugins"\"		\
 	-DEMERILLON_LOCALEDIR=\""$(prefix)/$(DATADIRNAME)/locale"\"	\
