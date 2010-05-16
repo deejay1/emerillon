@@ -1,15 +1,13 @@
 # Czech translation for emerillon.
 # Copyright (C) 2009 the author(s) of emerillon.
 # This file is distributed under the same license as the emerillon package.
-#
 # Marek Černocký <marek@manet.cz>, 2009, 2010.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-22 23:51+0200\n"
-"PO-Revision-Date: 2010-04-21 17:11+0200\n"
+"POT-Creation-Date: 2010-05-17 00:03+0200\n"
+"PO-Revision-Date: 2010-05-04 16:01+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -39,15 +37,23 @@ msgstr "Zobrazit/skrýt stavový panel okna."
 msgid "Show/hide the window toolbar."
 msgstr "Zobrazit/skrýt panel nástrojů okna."
 
+#: ../data/emerillon.schemas.in.h:6
+msgid "Window height in pixels."
+msgstr "Výška okna v pixelech."
+
+#: ../data/emerillon.schemas.in.h:7
+msgid "Window width in pixels."
+msgstr "Šířka okna v pixelech."
+
 #: ../data/emerillon.desktop.in.in.h:1
 msgid "Browse maps"
 msgstr "Prohlížet mapy"
 
-#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:382
+#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:500
 msgid "Emerillon"
 msgstr "Emerillon"
 
-#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:95
+#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:141
 msgid "Emerillon Map Viewer"
 msgstr "Prohlížeč map Emerillon"
 
@@ -55,27 +61,48 @@ msgstr "Prohlížeč map Emerillon"
 msgid "Map Viewer"
 msgstr "Prohlížeč map"
 
-#: ../emerillon/main.c:39
+#: ../emerillon/main.c:43
 #, c-format
 msgid "%s - Version %s\n"
 msgstr "%s - verze %s\n"
 
-#: ../emerillon/main.c:46
+#: ../emerillon/main.c:55
 msgid "Show version information and exit"
 msgstr "Zobrazit informace o verzi a skončit"
 
-#: ../emerillon/main.c:57
+#: ../emerillon/main.c:61
+msgid "Initial latitude"
+msgstr ""
+
+#: ../emerillon/main.c:62
+#, fuzzy
+msgid "Initial longitude"
+msgstr "Zeměpisná délka"
+
+#: ../emerillon/main.c:75
+msgid "Incorrect or missing coordinates"
+msgstr ""
+
+#: ../emerillon/main.c:91
 msgid "- map viewer"
 msgstr "- prohlížeč map"
 
-#: ../emerillon/main.c:63
+#: ../emerillon/main.c:95
+msgid "Specifies the default position"
+msgstr ""
+
+#: ../emerillon/main.c:96
+msgid "Show position options"
+msgstr ""
+
+#: ../emerillon/main.c:108
 #, c-format
 msgid "Run '%s --help' to see a list of available command line options.\n"
 msgstr ""
 "Spuštěním „%s --help“ si zobrazíte seznam dostupných přepínačů příkazové "
 "řádky.\n"
 
-#: ../emerillon/window.c:362
+#: ../emerillon/window.c:480
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -87,7 +114,7 @@ msgstr ""
 "Free Software Foundation, a to buď ve verzi 2 této licence nebo (dle vaší "
 "volby) v libovolné novější verzi.\n"
 
-#: ../emerillon/window.c:366
+#: ../emerillon/window.c:484
 msgid ""
 "This program is distributed in the hope that it will be useful, but WITHOUT "
 "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
@@ -98,7 +125,7 @@ msgstr ""
 "a to i bez předpokládané záruky na PRODEJNOST nebo VHODNOST PRO KONKRÉTNÍ "
 "ÚČEL. Více podrobností najdete přímo v licenci GNU General Public License.\n"
 
-#: ../emerillon/window.c:370
+#: ../emerillon/window.c:488
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
@@ -108,127 +135,127 @@ msgstr ""
 "License. Pokud se tak nestalo, napište na Free Software Foundation, Inc., 59 "
 "Temple Place - Suite 330, Boston, MA 02111-1307, USA."
 
-#: ../emerillon/window.c:375
+#: ../emerillon/window.c:493
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>"
 
-#: ../emerillon/window.c:386
+#: ../emerillon/window.c:505
 msgid "A map viewer for the GNOME desktop"
 msgstr "Prohlížeč map pro pracovní prostředí GNOME"
 
-#: ../emerillon/window.c:607
+#: ../emerillon/window.c:726
 msgid "_Map"
 msgstr "_Mapa"
 
-#: ../emerillon/window.c:608
+#: ../emerillon/window.c:727
 msgid "_Edit"
 msgstr "_Upravit"
 
-#: ../emerillon/window.c:609
+#: ../emerillon/window.c:728
 msgid "_View"
 msgstr "_Zobrazit"
 
-#: ../emerillon/window.c:610
+#: ../emerillon/window.c:729
 msgid "_Tools"
 msgstr "Nás_troje"
 
-#: ../emerillon/window.c:611
+#: ../emerillon/window.c:730
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: ../emerillon/window.c:614
+#: ../emerillon/window.c:733
 msgid "Quit the program"
 msgstr "Ukončit program"
 
-#: ../emerillon/window.c:617
+#: ../emerillon/window.c:736
 msgid "Enlarge the image"
 msgstr "Zvětšit obraz"
 
-#: ../emerillon/window.c:620
+#: ../emerillon/window.c:739
 msgid "Shrink the image"
 msgstr "Zmenšit obraz"
 
-#: ../emerillon/window.c:623
+#: ../emerillon/window.c:742
 msgid "Edit the preferences"
 msgstr "Upravit předvolby"
 
-#: ../emerillon/window.c:625
+#: ../emerillon/window.c:744
 msgid "_Contents"
 msgstr "_Obsah"
 
-#: ../emerillon/window.c:626
+#: ../emerillon/window.c:745
 msgid "Help on this application"
 msgstr "Pomoci s touto aplikací"
 
-#: ../emerillon/window.c:629
+#: ../emerillon/window.c:748
 msgid "About this application"
 msgstr "O této aplikaci"
 
-#: ../emerillon/window.c:634
+#: ../emerillon/window.c:753
 msgid "_Toolbar"
 msgstr "Panel nás_trojů"
 
-#: ../emerillon/window.c:635
+#: ../emerillon/window.c:754
 msgid "Show or hide the toolbar in the current window"
 msgstr "Zobrazit nebo skrýt panel nástrojů v současném okně"
 
-#: ../emerillon/window.c:637
+#: ../emerillon/window.c:756
 msgid "_Statusbar"
 msgstr "_Stavový panel"
 
-#: ../emerillon/window.c:638
+#: ../emerillon/window.c:757
 msgid "Show or hide the statusbar in the current window"
 msgstr "Zobrazit nebo skrýt stavový panel v současném okně"
 
-#: ../emerillon/window.c:640
+#: ../emerillon/window.c:759
 msgid "Side _Pane"
 msgstr "Postranní _panel"
 
-#: ../emerillon/window.c:641
+#: ../emerillon/window.c:760
 msgid "Show or hide the side pane in the current window"
 msgstr "Zobrazit nebo skrýt postranní panel v současném okně"
 
-#: ../emerillon/window.c:644
+#: ../emerillon/window.c:763
 msgid "Enable or disable full screen mode"
 msgstr "Zapnout nebo vypnout zobrazení přes celou obrazovku"
 
-#: ../emerillon/window.c:649
+#: ../emerillon/window.c:768
 msgid "_Street"
 msgstr "_Ulice"
 
-#: ../emerillon/window.c:650
+#: ../emerillon/window.c:769
 msgid "View the street map based on OpenStreetMap"
 msgstr "Zobrazit mapu ulic založenou na OpenStreetMap"
 
-#: ../emerillon/window.c:651
+#: ../emerillon/window.c:770
 msgid "_Cycling"
 msgstr "_Cyklotrasy"
 
-#: ../emerillon/window.c:652
+#: ../emerillon/window.c:771
 msgid "View the cycling map based on OpenCycleMap"
 msgstr "Zobrazit cyklistickou mapu založenou na OpenCycleMap"
 
-#: ../emerillon/window.c:653
+#: ../emerillon/window.c:772
 msgid "_Public Transportation"
 msgstr "_Veřejná doprava"
 
-#: ../emerillon/window.c:654
+#: ../emerillon/window.c:773
 msgid "View the public transportation map based on Öpnvkarte"
 msgstr "Zobrazit mapu veřejné dopravy založenou na Öpnvkarte"
 
-#: ../emerillon/window.c:655
+#: ../emerillon/window.c:774
 msgid "_Terrain"
 msgstr "_Terén"
 
-#: ../emerillon/window.c:656
+#: ../emerillon/window.c:775
 msgid "View the terrain map based on mapsforfree.com Relief"
 msgstr "Zobrazit mapu terénu založenou na mapsforfree.com Relief"
 
-#: ../emerillon/window.c:691
+#: ../emerillon/window.c:810
 msgid "In"
 msgstr "Přiblížit"
 
-#: ../emerillon/window.c:695
+#: ../emerillon/window.c:814
 msgid "Out"
 msgstr "Oddálit"
 
@@ -349,6 +376,7 @@ msgstr "Zapamatovat si zobrazení svých oblíbených míst"
 msgid "No result found"
 msgstr "Nenalezeny žádné výsledky"
 
+#. Translators: In this case "No" means "number".
 #: ../plugins/search/search.c:497
 msgid "No"
 msgstr "Číslo"
