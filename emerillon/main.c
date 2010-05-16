@@ -137,12 +137,13 @@ main (int argc,
   textdomain (PACKAGE);
 
   g_thread_init (NULL);
-  gtk_init (&argc, &argv);
-  gtk_clutter_init (&argc, &argv);
 
   g_set_application_name (_("Emerillon Map Viewer"));
 
   parse_options(&argc, &argv);
+
+  gtk_init (&argc, &argv);
+  gtk_clutter_init (&argc, &argv);
 
   window = emerillon_window_dup_default ();
   g_signal_connect (window, "delete-event", gtk_main_quit, NULL);
