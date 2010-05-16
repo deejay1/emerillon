@@ -1,5 +1,3 @@
-ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
-
 SUBDIRS = cut-paste emerillon data plugins po bindings docs
 
 EXTRA_DIST = 			\
