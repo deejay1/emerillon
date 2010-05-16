@@ -486,6 +486,16 @@ emerillon_sidebar_new (void)
   return sidebar;
 }
 
+/**
+ * emerillon_sidebar_add_page:
+ * @sidebar: (in): An #EmerillonSidebar instance
+ * @title: (in): Sidebar title
+ * @main_widget: (in): A #GtkWidget which should be embedded in the sidebar
+ *
+ * Adds a new page to the sidebar
+ *
+ * See: emerillon_window_get_sidebar()
+ */
 void
 emerillon_sidebar_add_page (EmerillonSidebar *sidebar,
                              const gchar *title,
@@ -616,6 +626,15 @@ emerillon_sidebar_remove_page (EmerillonSidebar *sidebar,
     }
 }
 
+/**
+ * emerillon_sidebar_get_n_pages:
+ * @sidebar: (in): An #EmerillonSidebar instance
+ *
+ * Returns the number of pages @sidebar has.
+ *
+ * Return value: The number of pages @sidebar has. If @sidebar isn't
+ * an #EmerillonSidebar instance this function returns #TRUE.
+ */
 gint
 emerillon_sidebar_get_n_pages (EmerillonSidebar *sidebar)
 {
@@ -625,6 +644,15 @@ emerillon_sidebar_get_n_pages (EmerillonSidebar *sidebar)
       GTK_TREE_MODEL (sidebar->priv->page_model), NULL);
 }
 
+/**
+ * emerillon_sidebar_is_empty:
+ * @sidebar: (in): An #EmerillonSidebar instance
+ *
+ * Checks if the @sidebar is empty
+ *
+ * Return value: #TRUE if @sidebar has no pages or isn't
+ * an #EmerillonSidebar instance
+ */
 gboolean
 emerillon_sidebar_is_empty (EmerillonSidebar *sidebar)
 {

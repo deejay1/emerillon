@@ -347,7 +347,8 @@ emerillon_window_class_init (EmerillonWindowClass *klass)
   /**
    * EmerillonWindow:auto-update:
    *
-   * Toggle automatic update of the map position based on geoclue data
+   * Toggle automatic update of the map position based on geoclue data.
+   * When enabled also gets the current position.
    *
    * Since 0.1.2
    */
@@ -933,6 +934,14 @@ emerillon_window_get_ui_manager (EmerillonWindow *window)
   return window->priv->ui_manager;
 }
 
+/**
+ * emerillon_window_get_toolbar:
+ * @window: (in): An #EmerillonWindow instance
+ *
+ * Retrieves Emerillon's toolbar
+ *
+ * Return value: A #GtkWidget containig Emerillon's toolbar
+ */
 GtkWidget *
 emerillon_window_get_toolbar (EmerillonWindow *window)
 {
@@ -941,6 +950,14 @@ emerillon_window_get_toolbar (EmerillonWindow *window)
   return window->priv->toolbar;
 }
 
+/**
+ * emerillon_window_get_sidebar:
+ * @window: (in): An #EmerillonWindow instance
+ *
+ * Retrieves Emerillon's sidebar
+ *
+ * Return value: A #GtkWidget containig the current sidebar
+ */
 GtkWidget *
 emerillon_window_get_sidebar (EmerillonWindow *window)
 {
