@@ -186,6 +186,7 @@ Configuration:
        Prefix           : ${prefix}
        Compiler         : ${CC}
        Documentation    : ${enable_gtk_doc}
+       Introspection    : ${enable_introspection}
 
 Bindings:
        Vala             : ${enable_vala}
