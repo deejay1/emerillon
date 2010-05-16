@@ -2,7 +2,7 @@ SUBDIRS =
 
 INCLUDES =								\
 	-I$(top_srcdir)							\
-	-I$(srcdir)								\
+	-I$(srcdir)							\
 	$(EMERILLON_CFLAGS)						\
 	$(WARN_CFLAGS)						\
 	$(DISABLE_DEPRECATED)					\
@@ -39,6 +39,11 @@ emerillon_LDFLAGS = -export-dynamic
 
 emerillon_LDADD = libemerillon.la $(EMERILLON_LIBS)
 
+if HAVE_INTROSPECTION
+EMERILLON_CFLAGS += $(INTROSPECTION_CFLAGS)
+emerillon_LDADD += $(INTROSPECTION_LIBS)
+endif
+
 CLEANFILES = $(BUILT_SOURCES)
 
 headerdir = $(prefix)/include/emerillon-@EMERILLON_API_VERSION@/emerillon
@@ -48,6 +53,29 @@ API_H_FILES =			\
 	emerillon.h			\
 	window.h			\
 	sidebar.h
+
+if HAVE_INTROSPECTION
+-include $(INTROSPECTION_MAKEFILE)
+INTROSPECTION_GIRS = Emerillon-0.1.gir
+
+  introspection_sources = emerillon.h
+
+  Emerillon-0.1.gir: $(libemerillon_la_SOURCES) $(bin_PROGRAMS)
+  Emerillon_0_1_gir_INCLUDES = GObject-2.0 Gtk-2.0 Clutter-1.0 Champlain-0.4 GtkChamplain-0.4
+  Emerillon_0_1_gir_CFLAGS =  -I$(top_srcdir) $(EMERILLON_CFLAGS) -DEMERILLON_COMPILATION
+  Emerillon_0_1_gir_PROGRAM = ./$(bin_PROGRAMS)
+  Emerillon_0_1_gir_FILES = emerillon.h window.h sidebar.h
+
+  girdir = $(datadir)/gir-1.0
+  dist_gir_DATA = $(INTROSPECTION_GIRS)
+
+  typelibdir = $(libdir)/girepository-1.0
+  typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
+
+CLEANFILES += \
+	$(dist_gir_DATA)		\
+	$(typelib_DATA)
+endif
 
 dist-hook:
 	cd $(distdir); rm -f $(BUILT_SOURCES)

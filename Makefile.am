@@ -1,3 +1,5 @@
+ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+
 SUBDIRS = cut-paste emerillon data plugins po bindings docs
 
 EXTRA_DIST = 			\
@@ -12,7 +14,8 @@ DISTCLEANFILES = 		\
 DISTCHECK_CONFIGURE_FLAGS =		\
 	--disable-scrollkeeper		\
 	--disable-schemas-install	\
-	--enable-gtk-doc
+	--enable-gtk-doc \
+	--enable-introspection
 
 .PHONY: ChangeLog
 ChangeLog: Makefile.am

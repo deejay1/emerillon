@@ -28,6 +28,8 @@ AC_CONFIG_MACRO_DIR([m4])
 AM_MAINTAINER_MODE([enable])
 AM_SILENT_RULES([yes])
 
+GOBJECT_INTROSPECTION_CHECK([0.6.7])
+
 GNOME_MAINTAINER_MODE_DEFINES
 GNOME_COMPILE_WARNINGS([maximum])
 GNOME_DEBUG_CHECK
@@ -123,6 +125,15 @@ fi
 
 AM_CONDITIONAL(ENABLE_SEARCH, test "x$enable_search" = "xyes")
 # -----------------------------------------------------------
+
+#################
+# Introspection #
+#################
+if test "x$enable_introspection" = "xyes"
+then
+  AC_DEFINE(HAVE_INTROSPECTION, [1], [Enable introspection runtime options])
+fi
+
 
 # Workaround a bug in geoclue.
 EMERILLON_CFLAGS=`echo $EMERILLON_CFLAGS | sed s,/geoclue,,`

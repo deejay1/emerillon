@@ -28,6 +28,10 @@
 #include <clutter-gtk/clutter-gtk.h>
 #include <ethos/ethos.h>
 
+#ifdef HAVE_INTROSPECTION
+#include <gobject-introspection-1.0/girepository.h>
+#endif
+
 #include <stdlib.h>
 
 #include "manager.h"
@@ -94,6 +98,9 @@ parse_options (int *argc,
   g_option_group_add_entries (position_group, position_entries);
   g_option_group_set_parse_hooks (position_group, NULL, parse_position_options);
   g_option_context_add_group (context, position_group);
+#ifdef HAVE_INTROSPECTION
+  g_option_context_add_group (context, g_irepository_get_option_group ());
+#endif
 
   if (!g_option_context_parse (context, argc, argv, &error))
     {
