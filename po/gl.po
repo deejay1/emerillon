@@ -2,19 +2,19 @@
 # Copyright (C) 2010 emerillon's COPYRIGHT HOLDER
 # This file is distributed under the same license as the emerillon package.
 # Fran Diéguez <frandieguez@ubuntu.com>, 2010.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=emerillon&component=General\n"
-"POT-Creation-Date: 2010-03-01 10:15+0000\n"
-"PO-Revision-Date: 2010-03-04 12:58+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-05-24 11:28+0200\n"
+"PO-Revision-Date: 2010-05-24 11:27+0200\n"
 "Last-Translator: Fran Diéguez <frandieguez@ubuntu.com>\n"
-"Language-Team: Galician <proxecto@trasno.net>\n"
+"Language-Team: Galician <gnome@g11.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\\\n"
 
 #: ../data/emerillon.schemas.in.h:1
 msgid "Active plugins"
@@ -36,15 +36,23 @@ msgstr "Mostrar ou ocultar a barra de estado da xanela."
 msgid "Show/hide the window toolbar."
 msgstr "Mostrar ou ocultar a barra de ferramentas da xanela."
 
+#: ../data/emerillon.schemas.in.h:6
+msgid "Window height in pixels."
+msgstr "Altura da xanela en píxeles."
+
+#: ../data/emerillon.schemas.in.h:7
+msgid "Window width in pixels."
+msgstr "Anchura da xanela en píxeles."
+
 #: ../data/emerillon.desktop.in.in.h:1
 msgid "Browse maps"
 msgstr "Explorar mapas"
 
-#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:383
+#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:500
 msgid "Emerillon"
 msgstr "Emerillon"
 
-#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:59
+#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:141
 msgid "Emerillon Map Viewer"
 msgstr "Visor de mapas Emerillon"
 
@@ -52,7 +60,47 @@ msgstr "Visor de mapas Emerillon"
 msgid "Map Viewer"
 msgstr "Visor de mapas"
 
-#: ../emerillon/window.c:363
+#: ../emerillon/main.c:43
+#, c-format
+msgid "%s - Version %s\n"
+msgstr "%s - Versión %s\n"
+
+#: ../emerillon/main.c:55
+msgid "Show version information and exit"
+msgstr "Mostrar información da versión e saír"
+
+#: ../emerillon/main.c:61
+msgid "Initial latitude"
+msgstr "Latitude inicial"
+
+#: ../emerillon/main.c:62
+msgid "Initial longitude"
+msgstr "Lonxitude inicial"
+
+#: ../emerillon/main.c:75
+msgid "Incorrect or missing coordinates"
+msgstr "Faltan as coordenadas ou son incorrectas"
+
+#: ../emerillon/main.c:91
+msgid "- map viewer"
+msgstr "- visor de mapas"
+
+#: ../emerillon/main.c:95
+msgid "Specifies the default position"
+msgstr "Especifica a posición predefinida"
+
+#: ../emerillon/main.c:96
+msgid "Show position options"
+msgstr "Mostra as opcións da posición"
+
+#: ../emerillon/main.c:108
+#, c-format
+msgid "Run '%s --help' to see a list of available command line options.\n"
+msgstr ""
+"Executar «%s --help» para ver unha lista completa de opcións de liña de ordes "
+"dispoñíbeis.\n"
+
+#: ../emerillon/window.c:480
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -64,7 +112,7 @@ msgstr ""
 "Foundation; tanto na versión 2 da Licenza como (segundo o seu criterio) en "
 "calquera versión posterior.\n"
 
-#: ../emerillon/window.c:367
+#: ../emerillon/window.c:484
 msgid ""
 "This program is distributed in the hope that it will be useful, but WITHOUT "
 "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
@@ -76,7 +124,7 @@ msgstr ""
 "ADECUACIÓN A CALQUERA PROPÓSITO EN PARTICULAR. Vexa a Licenza pública xeral "
 "de GNU para obter máis información.\n"
 
-#: ../emerillon/window.c:371
+#: ../emerillon/window.c:488
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
@@ -86,127 +134,127 @@ msgstr ""
 "Se non é así escriba á Free Software Foundation, Inc., 59 Temple Place - "
 "Suite 330, boston MA 02111-1307, USA."
 
-#: ../emerillon/window.c:376
+#: ../emerillon/window.c:493
 msgid "translator-credits"
 msgstr "Fran Diéguez <frandieguez@ubuntu.com>, 2010;"
 
-#: ../emerillon/window.c:387
+#: ../emerillon/window.c:505
 msgid "A map viewer for the GNOME desktop"
 msgstr "Un visor de mapas para o escritorio GNOME"
 
-#: ../emerillon/window.c:608
+#: ../emerillon/window.c:726
 msgid "_Map"
 msgstr "_Mapa"
 
-#: ../emerillon/window.c:609
+#: ../emerillon/window.c:727
 msgid "_Edit"
 msgstr "_Editar"
 
-#: ../emerillon/window.c:610
+#: ../emerillon/window.c:728
 msgid "_View"
 msgstr "_Ver"
 
-#: ../emerillon/window.c:611
+#: ../emerillon/window.c:729
 msgid "_Tools"
 msgstr "_Ferramentas"
 
-#: ../emerillon/window.c:612
+#: ../emerillon/window.c:730
 msgid "_Help"
 msgstr "_Axuda"
 
-#: ../emerillon/window.c:615
+#: ../emerillon/window.c:733
 msgid "Quit the program"
 msgstr "Saír do programa"
 
-#: ../emerillon/window.c:618
+#: ../emerillon/window.c:736
 msgid "Enlarge the image"
 msgstr "Expandir a imaxe"
 
-#: ../emerillon/window.c:621
+#: ../emerillon/window.c:739
 msgid "Shrink the image"
 msgstr "Encoller a imaxe"
 
-#: ../emerillon/window.c:624
+#: ../emerillon/window.c:742
 msgid "Edit the preferences"
 msgstr "Editar as preferencias"
 
-#: ../emerillon/window.c:626
+#: ../emerillon/window.c:744
 msgid "_Contents"
 msgstr "_Contidos"
 
-#: ../emerillon/window.c:627
+#: ../emerillon/window.c:745
 msgid "Help on this application"
 msgstr "Axuda deste aplicativo"
 
-#: ../emerillon/window.c:630
+#: ../emerillon/window.c:748
 msgid "About this application"
 msgstr "Sobre este aplicativo"
 
-#: ../emerillon/window.c:635
+#: ../emerillon/window.c:753
 msgid "_Toolbar"
 msgstr "Barra de _ferramentas"
 
-#: ../emerillon/window.c:636
+#: ../emerillon/window.c:754
 msgid "Show or hide the toolbar in the current window"
 msgstr "Mostrar ou ocultar a barra de ferramentas na xanela actual"
 
-#: ../emerillon/window.c:638
+#: ../emerillon/window.c:756
 msgid "_Statusbar"
 msgstr "Barra de _estado"
 
-#: ../emerillon/window.c:639
+#: ../emerillon/window.c:757
 msgid "Show or hide the statusbar in the current window"
 msgstr "Mostrar ou ocultar a barra de estado na xanela actual"
 
-#: ../emerillon/window.c:641
+#: ../emerillon/window.c:759
 msgid "Side _Pane"
 msgstr "_Panel lateral"
 
-#: ../emerillon/window.c:642
+#: ../emerillon/window.c:760
 msgid "Show or hide the side pane in the current window"
 msgstr "Mostrar ou ocultar o panel lateral na xanela actual"
 
-#: ../emerillon/window.c:645
+#: ../emerillon/window.c:763
 msgid "Enable or disable full screen mode"
 msgstr "Activar ou desactivar o modo pantalla completa"
 
-#: ../emerillon/window.c:650
+#: ../emerillon/window.c:768
 msgid "_Street"
 msgstr "_Calle"
 
-#: ../emerillon/window.c:651
+#: ../emerillon/window.c:769
 msgid "View the street map based on OpenStreetMap"
 msgstr "Ver o mapa das calles baseados en OpenStreetMap"
 
-#: ../emerillon/window.c:652
+#: ../emerillon/window.c:770
 msgid "_Cycling"
 msgstr "En _bicicleta"
 
-#: ../emerillon/window.c:653
+#: ../emerillon/window.c:771
 msgid "View the cycling map based on OpenCycleMap"
 msgstr "Ver o mapa de bicicleta baseado en OpenCycleMap"
 
-#: ../emerillon/window.c:654
+#: ../emerillon/window.c:772
 msgid "_Public Transportation"
 msgstr "Transporte _público"
 
-#: ../emerillon/window.c:655
+#: ../emerillon/window.c:773
 msgid "View the public transportation map based on Öpnvkarte"
 msgstr "Ver o mapa de transporte público baseado en Öpnvkarte"
 
-#: ../emerillon/window.c:656
+#: ../emerillon/window.c:774
 msgid "_Terrain"
 msgstr "_Terreo"
 
-#: ../emerillon/window.c:657
+#: ../emerillon/window.c:775
 msgid "View the terrain map based on mapsforfree.com Relief"
 msgstr "Ver o mapa de terreo baseado no relevo de mapsforfree.com"
 
-#: ../emerillon/window.c:692
+#: ../emerillon/window.c:810
 msgid "In"
 msgstr "Dentro"
 
-#: ../emerillon/window.c:696
+#: ../emerillon/window.c:814
 msgid "Out"
 msgstr "Fora"
 
@@ -328,6 +376,7 @@ msgstr "Lembra os seus puntos de visualización favoritos"
 msgid "No result found"
 msgstr "Non se encontraron resultados"
 
+#. Translators: In this case "No" means "number".
 #: ../plugins/search/search.c:497
 msgid "No"
 msgstr "No"
@@ -343,4 +392,3 @@ msgstr "Permítelle buscar na base de datos GeoNames"
 #: ../plugins/search/search.emerillon-plugin.in.h:2
 msgid "Search"
 msgstr "Buscar"
-
