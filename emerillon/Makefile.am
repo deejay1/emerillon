@@ -61,7 +61,7 @@ INTROSPECTION_GIRS = Emerillon-0.1.gir
   introspection_sources = $(libemerillon_la_SOURCES)
 
   Emerillon-0.1.gir: $(libemerillon_la_SOURCES) $(bin_PROGRAMS)
-  Emerillon_0_1_gir_INCLUDES = GObject-2.0 Gtk-2.0 Clutter-1.0 Champlain-0.4 GtkChamplain-0.4
+  Emerillon_0_1_gir_INCLUDES = GObject-2.0 Gtk-2.0 Clutter-1.0 Champlain-0.6 GtkChamplain-0.6
   Emerillon_0_1_gir_CFLAGS =  -I$(top_srcdir) $(EMERILLON_CFLAGS) -DEMERILLON_COMPILATION
   Emerillon_0_1_gir_PROGRAM = ./$(bin_PROGRAMS)
   Emerillon_0_1_gir_FILES = $(top_srcdir)/emerillon/emerillon.h $(top_srcdir)/emerillon/window.h $(top_srcdir)/emerillon/sidebar.h
