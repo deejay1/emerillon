@@ -529,19 +529,19 @@ cmd_map_change_map (GtkRadioAction *action,
     {
       default:
       case 0:
-        source = champlain_map_source_factory_create (factory,
+        source = champlain_map_source_factory_create_cached_source (factory,
             CHAMPLAIN_MAP_SOURCE_OSM_MAPNIK);
         break;
       case 1:
-        source = champlain_map_source_factory_create (factory,
+        source = champlain_map_source_factory_create_cached_source (factory,
             CHAMPLAIN_MAP_SOURCE_OSM_CYCLE_MAP);
         break;
       case 2:
-        source = champlain_map_source_factory_create (factory,
+        source = champlain_map_source_factory_create_cached_source (factory,
             CHAMPLAIN_MAP_SOURCE_OSM_TRANSPORT_MAP);
         break;
       case 3:
-        source = champlain_map_source_factory_create (factory,
+        source = champlain_map_source_factory_create_cached_source (factory,
             CHAMPLAIN_MAP_SOURCE_MFF_RELIEF);
         break;
 
