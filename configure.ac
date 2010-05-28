@@ -129,7 +129,7 @@ AM_CONDITIONAL(ENABLE_SEARCH, test "x$enable_search" = "xyes")
 #################
 # Introspection #
 #################
-if test "x$enable_introspection" = "xyes"
+if test "x$found_introspection" = "xyes"
 then
   AC_DEFINE(HAVE_INTROSPECTION, [1], [Enable introspection runtime options])
 fi
