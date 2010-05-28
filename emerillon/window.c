@@ -266,13 +266,6 @@ emerillon_window_dispose (GObject *object)
   EmerillonWindow *self = EMERILLON_WINDOW (object);
   gint width, height;
 
-  /* Save the window size */
-  gtk_window_get_size (GTK_WINDOW (self), &width, &height);
-  width = gconf_client_set_int (self->priv->client,
-      EMERILLON_CONF_UI_WINDOW_WIDTH, width, NULL);
-  height = gconf_client_set_int (self->priv->client,
-      EMERILLON_CONF_UI_WINDOW_HEIGHT, height, NULL);
-
   if (self->priv->main_actions != NULL)
     {
       g_object_unref (self->priv->main_actions);
@@ -280,11 +273,18 @@ emerillon_window_dispose (GObject *object)
     }
 
   if (self->priv->client)
-    {
-      gconf_client_remove_dir (self->priv->client, EMERILLON_CONF_DIR, NULL);
-      g_object_unref (self->priv->client);
-      self->priv->client = NULL;
-    }
+  {
+    /* Save the window size */
+    gtk_window_get_size (GTK_WINDOW (self), &width, &height);
+    width = gconf_client_set_int (self->priv->client,
+                                  EMERILLON_CONF_UI_WINDOW_WIDTH, width, NULL);
+    height = gconf_client_set_int (self->priv->client,
+                                   EMERILLON_CONF_UI_WINDOW_HEIGHT, height, NULL);
+
+    gconf_client_remove_dir (self->priv->client, EMERILLON_CONF_DIR, NULL);
+    g_object_unref (self->priv->client);
+    self->priv->client = NULL;
+  }
 
   if (self->priv->geoclue_client)
     {
