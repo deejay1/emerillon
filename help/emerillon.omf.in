@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?>
+<omf>
+  <resource>
+    <subject category="GNOME|Applications"/>
+    <type>manual</type>
+    <relation seriesid="075c6d9f-1dfd-d645-913b-12b9208efc6610"/>
+    <rights type="CC0" license.version="3.0" holder="GNOME Documentation Project"/>
+  </resource>
+</omf>

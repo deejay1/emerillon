@@ -1,0 +1,39 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:e="http://projectmallard.org/experimental/"
+      type="topic"
+      id="about">
+
+  <info>
+    <link type="seealso" xref="index"/>
+    <revision version="0.1" date="2010-06-04" status="incomplete"/>
+    <desc>
+      Information about this application.
+    </desc>
+    <credit type="author">
+      <name>Mario Blättermann</name>
+      <email>mariobl@gnome.org</email>
+    </credit>
+    <license>
+      <p>Creative Commons Share Alike 3.0</p>
+    </license>    
+  </info>
+
+    <title>About <app>Emerillon</app></title>
+
+    <p>
+      Currently, certain people have contributed to <app>Emerillon</app>. For a
+      complete list, see the <link href="http://git.gnome.org/browse/emerillon/tree/AUTHORS">authors list</link>.
+    </p>
+    <p>
+      To report a bug or make a suggestion regarding this application or
+      this manual, write a bug report to
+      <link href="https://bugzilla.gnome.org/browse.cgi?product=emerillon">GNOME Bugzilla</link>.
+    </p>
+
+    <p> This program is distributed under the terms of the GNU
+      General Public license as published by the Free Software
+      Foundation; either version 2 of the License, or (at your option)
+      any later version. A copy of this license can be found at this
+      <link href="ghelp:gpl">link</link>, or in the file
+      COPYING included with the source code of this program. </p>
+</page>

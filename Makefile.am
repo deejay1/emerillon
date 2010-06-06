@@ -1,13 +1,15 @@
-SUBDIRS = cut-paste emerillon data plugins po bindings docs
+SUBDIRS = cut-paste emerillon data plugins po bindings help docs
 
 EXTRA_DIST = 			\
 	autogen.sh		\
 	ChangeLog		\
 	README			\
-	AUTHORS
+	AUTHORS			\
+	gnome-doc-utils.make
 
 DISTCLEANFILES = 		\
-	ChangeLog
+	ChangeLog		\
+	gnome-doc-utils.make
 
 DISTCHECK_CONFIGURE_FLAGS =		\
 	--disable-scrollkeeper		\

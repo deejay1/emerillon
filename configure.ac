@@ -171,6 +171,7 @@ data/emerillon.desktop.in
 docs/Makefile
 docs/reference/Makefile
 docs/reference/version.xml
+help/Makefile
 plugins/Makefile
 bindings/Makefile
 bindings/vala/Makefile

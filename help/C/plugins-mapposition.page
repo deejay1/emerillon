@@ -1,0 +1,26 @@
+<page xmlns="http://projectmallard.org/1.0/"
+  type="guide"
+  id="plugins-mapposition">
+  
+  <info>
+    <link type="guide" xref="plugins#plugins-shipped"/>
+    <desc>Displays the position at the middle of the map in the statusbar.</desc>
+    <revision version="0.1" date="2010-06-04" status="incomplete"/>
+    <credit type="author">
+      <name>Mario Blättermann</name>
+      <email>mariobl@gnome.org</email>
+    </credit>
+<!--
+    <copyright>
+      <year>2010</year>
+      <name>GNOME Documentation Project</name>
+    </copyright>
+-->
+    <license><p>Creative Commons Share Alike 3.0</p></license>
+
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude" />
+  </info>
+
+  <title>Map Position</title>
+
+</page>
