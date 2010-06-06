@@ -458,7 +458,16 @@ static void
 cmd_help (GtkAction *action,
           EmerillonWindow *self)
 {
-  g_printerr ("Sorry, help not available\n");
+  GError *error = NULL;
+
+  gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (self)), "ghelp:emerillon",
+                gtk_get_current_event_time (), &error);
+
+  if (error != NULL)
+  {
+    g_printerr ("Error opening help: %s\n", error->message);
+    g_error_free (error);
+  }
 }
 
 static void
