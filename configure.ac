@@ -7,7 +7,7 @@ m4_define(emerillon_version, emerillon_major_version.emerillon_minor_version.eme
 
 m4_define([emerillon_api_version],
           [emerillon_major_version.emerillon_minor_version])
-AC_INIT([emerillon], [emerillon_version], [http://bugzilla.gnome.org/enter_bug.cgi?product=emerillon], [emerillon])
+AC_INIT([emerillon], [emerillon_version], [http://bugzilla.gnome.org/enter_bug.cgi?product=emerillon], [emerillon], [http://projects.gnome.org/emerillon])
 AC_CONFIG_SRCDIR(emerillon/main.c)
 
 AC_DEFINE(EMERILLON_MAJOR_VERSION, emerillon_major_version, [Emerillon major version])
