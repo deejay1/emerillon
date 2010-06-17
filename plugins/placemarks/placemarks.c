@@ -100,15 +100,16 @@ go_cb (GtkAction *action,
   champlain_view_center_on (priv->map_view, lat, lon);
 }
 
-static void
+static ChamplainMarker *
 add_marker(PlacemarksPlugin *plugin, const gchar *name, gdouble lat, gdouble lon)
 {
   PlacemarksPluginPrivate *priv;
   priv = PLACEMARKS_PLUGIN (plugin)->priv;
-  ClutterActor *marker;
+  ChamplainMarker *marker;
 
   ClutterColor orange = { 0xf3, 0x94, 0x07, 0xbb };
-  marker = champlain_marker_new_with_text (name, "Serif 14", NULL, NULL);
+  marker = CHAMPLAIN_MARKER ( champlain_marker_new_with_text (name, "Serif 14",
+                                                              NULL, NULL));
   champlain_marker_set_use_markup (CHAMPLAIN_MARKER (marker), TRUE);
   champlain_marker_set_alignment (CHAMPLAIN_MARKER (marker), PANGO_ALIGN_RIGHT);
   champlain_marker_set_color (CHAMPLAIN_MARKER (marker), &orange);
@@ -116,6 +117,8 @@ add_marker(PlacemarksPlugin *plugin, const gchar *name, gdouble lat, gdouble lon
   champlain_base_marker_set_position (CHAMPLAIN_BASE_MARKER (marker),
                                       lat, lon);
   champlain_layer_add_marker (priv->markers_layer, CHAMPLAIN_BASE_MARKER (marker));
+
+  return marker;
 }
 
 static guint
@@ -266,12 +269,14 @@ add_placemark (PlacemarksPlugin *plugin,
   gchar *lat_str, *lon_str, *zoom_str;
   GtkTreeIter iter;
   PlacemarksPluginPrivate *priv;
+  ChamplainMarker *marker;
 
   priv = PLACEMARKS_PLUGIN (plugin)->priv;
 
   lat_str = g_strdup_printf ("%f", lat);
   lon_str = g_strdup_printf ("%f", lon);
   zoom_str = g_strdup_printf ("%d", zoom);
+  marker = add_marker (plugin, name, lat, lon);
 
   gtk_list_store_append (GTK_LIST_STORE (priv->model), &iter);
   gtk_list_store_set (GTK_LIST_STORE (priv->model), &iter,
@@ -283,6 +288,7 @@ add_placemark (PlacemarksPlugin *plugin,
                       COL_LON_STR, lon_str,
                       COL_ZOOM, zoom,
                       COL_ZOOM_STR, zoom_str,
+                      COL_MARKER, marker,
                       -1);
 
   g_free (lat_str);
@@ -437,9 +443,8 @@ load_placemarks (PlacemarksPlugin *plugin)
         }
 
       add_placemark (plugin, groups[i], name, lat, lon, zoom);
-      add_marker (plugin, name, lat, lon);
 
-    g_free (name);
+      g_free (name);
     }
 
   g_strfreev (groups);
@@ -481,7 +486,6 @@ add_cb (GtkAction *action,
   add_menu (plugin, id, name, &iter);
 
   save_placemarks (plugin);
-  add_marker (plugin, name, lat, lon);
 
   g_free (id);
 }
@@ -587,7 +591,8 @@ activated (EthosPlugin *plugin)
                               G_TYPE_STRING,       /* Longitude as a string */
                               G_TYPE_INT,          /* Zoom level */
                               G_TYPE_STRING,       /* Zoom level as a string */
-                              G_TYPE_UINT);        /* UI ID */
+                              G_TYPE_UINT,        /* UI ID */
+                              G_TYPE_POINTER);       /* Marker pointer */
   priv->model = GTK_TREE_MODEL (store);
   priv->deleted_cb_id  =  g_signal_connect (priv->model,
                                             "row-deleted",

@@ -31,6 +31,7 @@ enum {
   COL_ZOOM,
   COL_ZOOM_STR,
   COL_UI_ID,
+  COL_MARKER,
   COL_COUNT
 };
 

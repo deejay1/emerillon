@@ -149,6 +149,7 @@ delete_activated_cb (EmpathyCellRendererActivatable *cell,
   GtkWidget *msg_dialog;
   gint response;
   guint ui_id;
+  ChamplainMarker *marker;
 
   model = dialog->priv->model;
 
@@ -158,6 +159,7 @@ delete_activated_cb (EmpathyCellRendererActivatable *cell,
   gtk_tree_model_get (model, &iter,
                       COL_NAME, &name,
                       COL_UI_ID, &ui_id,
+                      COL_MARKER, &marker,
                       -1);
 
   msg_dialog = gtk_message_dialog_new (GTK_WINDOW (dialog),
@@ -183,7 +185,7 @@ delete_activated_cb (EmpathyCellRendererActivatable *cell,
                                 ui_id);
 
       gtk_list_store_remove (GTK_LIST_STORE (model), &iter);
-
+      clutter_actor_destroy (CLUTTER_ACTOR(marker));
       g_object_unref (window);
     }
 
