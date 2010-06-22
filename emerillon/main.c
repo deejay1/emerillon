@@ -89,6 +89,7 @@ parse_options (int *argc,
   GOptionGroup *position_group;
 
   context = g_option_context_new (_("- map viewer"));
+  g_option_context_set_translation_domain (context, GETTEXT_PACKAGE);
   g_option_context_add_group (context, gtk_get_option_group (TRUE));
   g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
 
@@ -138,12 +139,12 @@ main (int argc,
 
   g_thread_init (NULL);
 
-  g_set_application_name (_("Emerillon Map Viewer"));
-
   parse_options(&argc, &argv);
 
   gtk_init (&argc, &argv);
   gtk_clutter_init (&argc, &argv);
+
+  g_set_application_name (_("Emerillon Map Viewer"));
 
   window = emerillon_window_dup_default ();
   g_signal_connect (window, "delete-event", gtk_main_quit, NULL);
