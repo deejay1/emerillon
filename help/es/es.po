@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: emerillon-help.master\n"
-"POT-Creation-Date: 2010-06-25 13:01+0000\n"
-"PO-Revision-Date: 2010-07-11 09:49+0200\n"
+"POT-Creation-Date: 2010-07-11 07:50+0000\n"
+"PO-Revision-Date: 2010-07-18 14:08+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -86,10 +86,15 @@ msgid ""
 "default, and some more you can get from the emerillon-plugins package of "
 "your distribution."
 msgstr ""
+"Los complementos añaden algunas características adicionales a "
+"<app>Emerillon</app> y pueden extender su funcionalidad. Algunos "
+"complementos ya vienen con <app>Emerillon</app> de forma predeterminada, y "
+"puede obtener algunos más con el paquete emerillon-plugins de su "
+"distribución."
 
 #: C/plugins.page:34(title)
 msgid "Plugins shipped with <app>Emerillon</app>"
-msgstr ""
+msgstr "Complementos que trae <app>Emerillon</app>"
 
 #: C/plugins.page:38(title)
 msgid "External Plugins"
@@ -204,6 +209,9 @@ msgid ""
 "Emerillon is a map viewer. Aiming at simple user interface, Emerillon is a "
 "powerful, extensible application. It is pronounced <em>Ey-may-ree-yon</em>."
 msgstr ""
+"Emerillon es un visor de mapas. Intentando usar una interfaz simple, "
+"Emerillon es una aplicación potente y extensible. Se pronuncia <em>Ei-mei-ri-"
+"llon</em>."
 
 #: C/intro.page:30(p)
 msgid ""
@@ -211,6 +219,9 @@ msgid ""
 "link> based maps: the street map, the cycling map and the transportation "
 "map. Use it to:"
 msgstr ""
+"Está basado en los mapas de <link href=\"http://www.openstreetmap.org/"
+"\">OpenStreetMap</link>: el mapa de calles, el mapa de ciclismo y el mapa de "
+"transporte. Úselo para:"
 
 #: C/intro.page:36(p)
 msgid "Browse maps,"
@@ -232,6 +243,11 @@ msgid ""
 "<link href=\"http://en.wikipedia.org/wiki/Merlin_(bird)\">Merlin Falcons</"
 "link>."
 msgstr ""
+"El nombre Emerillon viene de Émérillon, uno de los tres barcos que visitó "
+"Nueva Francia bajo el mando de <link href=\"http://es.wikipedia.org/wiki/"
+"Jacques_Cartier\">Jacques Cartier</link> en 1535. Émérillon también es el "
+"nombre francés para el <link href=\"http://es.wikipedia.org/wiki/"
+"Falco_columbarius\">esmerejón</link>."
 
 #: C/index.page:22(title)
 msgid "Emerillon"
@@ -251,6 +267,9 @@ msgid ""
 "complete list, see the <link href=\"http://git.gnome.org/browse/emerillon/"
 "tree/AUTHORS\">authors list</link>."
 msgstr ""
+"Actualmente, algunas personas han contribuído en <app>Emerillon</app>. "
+"Consulte la <link href=\"http://git.gnome.org/browse/emerillon/tree/AUTHORS"
+"\">lista de autores</link> para obtener la lista completa."
 
 #: C/about.page:27(p)
 msgid ""
@@ -258,6 +277,10 @@ msgid ""
 "manual, write a bug report to <link href=\"https://bugzilla.gnome.org/browse."
 "cgi?product=emerillon\">GNOME Bugzilla</link>."
 msgstr ""
+"Para informar de un fallo o hacer alguna sugerencia concerniente a esta "
+"aplicación o este manual, escriba un informe de fallo en la <link href="
+"\"https://bugzilla.gnome.org/browse.cgi?product=emerillon\">Página de "
+"comentarios de GNOME</ulink>."
 
 #: C/about.page:33(p)
 msgid ""
@@ -267,6 +290,12 @@ msgid ""
 "can be found at this <link href=\"ghelp:gpl\">link</link>, or in the file "
 "COPYING included with the source code of this program."
 msgstr ""
+"Este programa se distribuye bajo los términos de la Licencia Pública General "
+"GNU tal como la publica la Free Software Foundation; en cualquiera de las "
+"versiones 2 de la Licencia o (a su elección) cualquier versión posterior. "
+"Puede encontrar una copia de esta licencia en este <link href=\"ghelp:gpl"
+"\">enlace</ulink>, o en el archivo COPYING incluido con el código fuente de "
+"este programa."
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: C/index.page:0(None)
