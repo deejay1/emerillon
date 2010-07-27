@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-25 00:02+0100\n"
+"POT-Creation-Date: 2010-07-28 00:13+0200\n"
 "PO-Revision-Date: 2010-05-13 22:39+0000\n"
 "Last-Translator: António Lima <amrlima@gmail.com>\n"
 "Language-Team: gnome_pt@yahoogroups.com\n"
@@ -17,49 +17,49 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.5.2\n"
 
-#: ../data/emerillon.schemas.in.h:1
-msgid "Active plugins"
-msgstr "Plugins activos"
-
-#: ../data/emerillon.schemas.in.h:2
-msgid "List of active plugins."
-msgstr "Lista de plugins activos"
-
-#: ../data/emerillon.schemas.in.h:3
-msgid "Show/hide the window side pane."
-msgstr "Apresentar/ocultar o painel lateral da janela."
-
-#: ../data/emerillon.schemas.in.h:4
-msgid "Show/hide the window statusbar."
-msgstr "Apresentar/ocultar a barra de estado da janela."
-
-#: ../data/emerillon.schemas.in.h:5
-msgid "Show/hide the window toolbar."
-msgstr "Apresentar/ocultar a barra de ferramentas da janela."
-
-#: ../data/emerillon.schemas.in.h:6
-msgid "Window height in pixels."
-msgstr "Altura da janela em pixeis. "
-
-#: ../data/emerillon.schemas.in.h:7
-msgid "Window width in pixels."
-msgstr "Largura da janela em pixeis."
-
 #: ../data/emerillon.desktop.in.in.h:1
 msgid "Browse maps"
 msgstr "Navegar nos mapas"
 
-#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:500
+#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:505
 msgid "Emerillon"
 msgstr "Emerillon"
 
-#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:141
+#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:147
 msgid "Emerillon Map Viewer"
 msgstr "Visualizador de Mapas Emerillon"
 
 #: ../data/emerillon.desktop.in.in.h:4
 msgid "Map Viewer"
 msgstr "Visualizador de Mapas"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:1
+msgid "Active plugins"
+msgstr "Plugins activos"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:2
+msgid "List of active plugins."
+msgstr "Lista de plugins activos"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "Apresentar/ocultar o painel lateral da janela."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "Apresentar/ocultar a barra de estado da janela."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "Apresentar/ocultar a barra de ferramentas da janela."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:6
+msgid "Window height in pixels."
+msgstr "Altura da janela em pixeis. "
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:7
+msgid "Window width in pixels."
+msgstr "Largura da janela em pixeis."
 
 #: ../emerillon/main.c:43
 #, c-format
@@ -86,20 +86,20 @@ msgstr "Coordenadas incorrectas ou inexistentes"
 msgid "- map viewer"
 msgstr "- visualizador de mapas"
 
-#: ../emerillon/main.c:95
+#: ../emerillon/main.c:96
 msgid "Specifies the default position"
 msgstr "Especifica a posição por omissão"
 
-#: ../emerillon/main.c:96
+#: ../emerillon/main.c:97
 msgid "Show position options"
 msgstr "Mostrar opções de posição"
 
-#: ../emerillon/main.c:108
+#: ../emerillon/main.c:109
 #, c-format
 msgid "Run '%s --help' to see a list of available command line options.\n"
 msgstr "Execute '%s --help' para ver a lista de opções de linha de comandos.\n"
 
-#: ../emerillon/window.c:480
+#: ../emerillon/window.c:485
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -111,7 +111,7 @@ msgstr ""
 "Software Foundation; ou a versão 2 da Licença ou (à sua escolha) qualquer "
 "versão posterior.\n"
 
-#: ../emerillon/window.c:484
+#: ../emerillon/window.c:489
 msgid ""
 "This program is distributed in the hope that it will be useful, but WITHOUT "
 "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
@@ -123,7 +123,7 @@ msgstr ""
 "ADEQUAÇÃO A UM DETERMINADO PROPÓSITO.  Consulte a Licença Pública Genérica "
 "GNU para mais detalhes.\n"
 
-#: ../emerillon/window.c:488
+#: ../emerillon/window.c:493
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
@@ -133,127 +133,127 @@ msgstr ""
 "o Brasero; caso contrário, escreva para a Free Software Foundation, Inc., 59 "
 "Temple Place - Suite 330, Boston, MA 02111-1307, USA.(em inglês)."
 
-#: ../emerillon/window.c:493
+#: ../emerillon/window.c:498
 msgid "translator-credits"
 msgstr "António Lima <amrlima@gmail.com>"
 
-#: ../emerillon/window.c:505
+#: ../emerillon/window.c:510
 msgid "A map viewer for the GNOME desktop"
 msgstr "Um visualizador de mapas para o ambiente de trabalho GNOME"
 
-#: ../emerillon/window.c:726
+#: ../emerillon/window.c:731
 msgid "_Map"
 msgstr "_Mapa"
 
-#: ../emerillon/window.c:727
+#: ../emerillon/window.c:732
 msgid "_Edit"
 msgstr "_Editar"
 
-#: ../emerillon/window.c:728
+#: ../emerillon/window.c:733
 msgid "_View"
 msgstr "_Ver"
 
-#: ../emerillon/window.c:729
+#: ../emerillon/window.c:734
 msgid "_Tools"
 msgstr "_Ferramentas"
 
-#: ../emerillon/window.c:730
+#: ../emerillon/window.c:735
 msgid "_Help"
 msgstr "_Ajuda"
 
-#: ../emerillon/window.c:733
+#: ../emerillon/window.c:738
 msgid "Quit the program"
 msgstr "Sair da aplicação"
 
-#: ../emerillon/window.c:736
+#: ../emerillon/window.c:741
 msgid "Enlarge the image"
 msgstr "Ampliar a imagem"
 
-#: ../emerillon/window.c:739
+#: ../emerillon/window.c:744
 msgid "Shrink the image"
 msgstr "Reduzir a imagem"
 
-#: ../emerillon/window.c:742
+#: ../emerillon/window.c:747
 msgid "Edit the preferences"
 msgstr "Editar as preferências"
 
-#: ../emerillon/window.c:744
+#: ../emerillon/window.c:749
 msgid "_Contents"
 msgstr "_Conteúdos"
 
-#: ../emerillon/window.c:745
+#: ../emerillon/window.c:750
 msgid "Help on this application"
 msgstr "Contribua para esta aplicação"
 
-#: ../emerillon/window.c:748
+#: ../emerillon/window.c:753
 msgid "About this application"
 msgstr "Sobre esta aplicação"
 
-#: ../emerillon/window.c:753
+#: ../emerillon/window.c:758
 msgid "_Toolbar"
 msgstr "_Barra de Ferramentas"
 
-#: ../emerillon/window.c:754
+#: ../emerillon/window.c:759
 msgid "Show or hide the toolbar in the current window"
 msgstr "Apresentar ou ocultar a barra de ferramentas na janela actual"
 
-#: ../emerillon/window.c:756
+#: ../emerillon/window.c:761
 msgid "_Statusbar"
 msgstr "_Barra de Estado"
 
-#: ../emerillon/window.c:757
+#: ../emerillon/window.c:762
 msgid "Show or hide the statusbar in the current window"
 msgstr "Apresentar ou ocultar a barra de estado na janela actual"
 
-#: ../emerillon/window.c:759
+#: ../emerillon/window.c:764
 msgid "Side _Pane"
 msgstr "_Painel Lateral"
 
-#: ../emerillon/window.c:760
+#: ../emerillon/window.c:765
 msgid "Show or hide the side pane in the current window"
 msgstr "Apresentar ou ocultar o painel lateral na janela actual"
 
-#: ../emerillon/window.c:763
+#: ../emerillon/window.c:768
 msgid "Enable or disable full screen mode"
 msgstr "Activar ou desactivar modo de ecrã inteiro"
 
-#: ../emerillon/window.c:768
+#: ../emerillon/window.c:773
 msgid "_Street"
 msgstr "_Rua"
 
-#: ../emerillon/window.c:769
+#: ../emerillon/window.c:774
 msgid "View the street map based on OpenStreetMap"
 msgstr "Visualizar o mapa de ruas baseado no OpenStreetMap"
 
-#: ../emerillon/window.c:770
+#: ../emerillon/window.c:775
 msgid "_Cycling"
 msgstr "_Ciclismo"
 
-#: ../emerillon/window.c:771
+#: ../emerillon/window.c:776
 msgid "View the cycling map based on OpenCycleMap"
 msgstr "Visualizar o mapa de ciclismo baseado no OpenStreetMap"
 
-#: ../emerillon/window.c:772
+#: ../emerillon/window.c:777
 msgid "_Public Transportation"
 msgstr "Transportes _Públicos"
 
-#: ../emerillon/window.c:773
+#: ../emerillon/window.c:778
 msgid "View the public transportation map based on Öpnvkarte"
 msgstr "Visualizar o mapa de transportes públicos baseado no Öpnvkarte"
 
-#: ../emerillon/window.c:774
+#: ../emerillon/window.c:779
 msgid "_Terrain"
 msgstr "_Terreno"
 
-#: ../emerillon/window.c:775
+#: ../emerillon/window.c:780
 msgid "View the terrain map based on mapsforfree.com Relief"
 msgstr "Visualizar o mapa topográfico baseado no mapsforfree.com Relief"
 
-#: ../emerillon/window.c:810
+#: ../emerillon/window.c:815
 msgid "In"
 msgstr "Aumentar"
 
-#: ../emerillon/window.c:814
+#: ../emerillon/window.c:819
 msgid "Out"
 msgstr "Diminuir"
 
@@ -311,7 +311,7 @@ msgstr "Nova Localização Marcada"
 msgid "Name:"
 msgstr "Nome:"
 
-#: ../plugins/placemarks/manage-dialog.c:167
+#: ../plugins/placemarks/manage-dialog.c:169
 #, c-format
 msgid ""
 "You are about to remove the %s placemark!\n"
@@ -320,47 +320,47 @@ msgstr ""
 "Está prestes a remover a localização %s!\n"
 "Tem a certeza que deseja continuar?"
 
-#: ../plugins/placemarks/manage-dialog.c:201
+#: ../plugins/placemarks/manage-dialog.c:203
 msgid "Organize Placemarks"
 msgstr "Organizar Localizações Marcadas"
 
-#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:506
+#: ../plugins/placemarks/manage-dialog.c:235 ../plugins/search/search.c:506
 msgid "Name"
 msgstr "Nome"
 
-#: ../plugins/placemarks/manage-dialog.c:252
+#: ../plugins/placemarks/manage-dialog.c:254
 msgid "Latitude"
 msgstr "Latitude"
 
-#: ../plugins/placemarks/manage-dialog.c:260
+#: ../plugins/placemarks/manage-dialog.c:262
 msgid "Longitude"
 msgstr "Longitude"
 
-#: ../plugins/placemarks/manage-dialog.c:268
+#: ../plugins/placemarks/manage-dialog.c:270
 msgid "Zoom"
 msgstr "Zoom"
 
-#: ../plugins/placemarks/placemarks.c:112
+#: ../plugins/placemarks/placemarks.c:138
 msgid "Go to this placemark"
 msgstr "Ir para este local marcado"
 
-#: ../plugins/placemarks/placemarks.c:497
+#: ../plugins/placemarks/placemarks.c:527
 msgid "_Placemarks"
 msgstr "_Locais Marcados"
 
-#: ../plugins/placemarks/placemarks.c:501
+#: ../plugins/placemarks/placemarks.c:531
 msgid "Placemark this location"
 msgstr "Marcar esta localização"
 
-#: ../plugins/placemarks/placemarks.c:503
+#: ../plugins/placemarks/placemarks.c:533
 msgid "Add current location to your placemarks"
 msgstr "Adicionar localização actual às suas localizações marcadas"
 
-#: ../plugins/placemarks/placemarks.c:507
+#: ../plugins/placemarks/placemarks.c:537
 msgid "Organize placemarks..."
 msgstr "Organizar localizações marcadas..."
 
-#: ../plugins/placemarks/placemarks.c:509
+#: ../plugins/placemarks/placemarks.c:539
 msgid "Edit and delete existing placemarks"
 msgstr "Editar e apagar localizações marcadas existentes"
 

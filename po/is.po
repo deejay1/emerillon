@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Emerillon\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=emerillon\n"
-"POT-Creation-Date: 2009-10-19 19:04+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-07-28 00:13+0200\n"
 "PO-Revision-Date: 2009-10-19 22:28+0000\n"
 "Last-Translator: Anna Jonna Armannsdottir <annajonna@gmail.com>\n"
 "Language-Team: Icelandic\n"
@@ -14,11 +14,89 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../emerillon/main.c:59
+#: ../data/emerillon.desktop.in.in.h:1
+msgid "Browse maps"
+msgstr ""
+
+#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:505
+msgid "Emerillon"
+msgstr "Emerillon"
+
+#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:147
 msgid "Emerillon Map Viewer"
 msgstr "Kortaskoðarinn Emerillon"
 
-#: ../emerillon/window.c:363
+#: ../data/emerillon.desktop.in.in.h:4
+msgid "Map Viewer"
+msgstr ""
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:1
+msgid "Active plugins"
+msgstr ""
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:2
+msgid "List of active plugins."
+msgstr ""
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:3
+msgid "Show/hide the window side pane."
+msgstr ""
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr ""
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr ""
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:6
+msgid "Window height in pixels."
+msgstr ""
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:7
+msgid "Window width in pixels."
+msgstr ""
+
+#: ../emerillon/main.c:43
+#, c-format
+msgid "%s - Version %s\n"
+msgstr ""
+
+#: ../emerillon/main.c:55
+msgid "Show version information and exit"
+msgstr ""
+
+#: ../emerillon/main.c:61
+msgid "Initial latitude"
+msgstr ""
+
+#: ../emerillon/main.c:62
+msgid "Initial longitude"
+msgstr ""
+
+#: ../emerillon/main.c:75
+msgid "Incorrect or missing coordinates"
+msgstr ""
+
+#: ../emerillon/main.c:91
+msgid "- map viewer"
+msgstr ""
+
+#: ../emerillon/main.c:96
+msgid "Specifies the default position"
+msgstr ""
+
+#: ../emerillon/main.c:97
+msgid "Show position options"
+msgstr ""
+
+#: ../emerillon/main.c:109
+#, c-format
+msgid "Run '%s --help' to see a list of available command line options.\n"
+msgstr ""
+
+#: ../emerillon/window.c:485
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -26,145 +104,154 @@ msgid ""
 "any later version.\n"
 msgstr ""
 "Þetta forrit er frjáls hugbúnaður; þú getur dreift því eða breytt að vild \n"
-"samkvæmt skilmálum GNU General Public Hugbúnaðarleyfinu eins og það er gefið út af Free Software Foundation; annað hvort samkvæmt útgáfu 2 af leyfinu eða (ef þú vilt) undir seinni útgáfu.\n"
+"samkvæmt skilmálum GNU General Public Hugbúnaðarleyfinu eins og það er gefið "
+"út af Free Software Foundation; annað hvort samkvæmt útgáfu 2 af leyfinu eða "
+"(ef þú vilt) undir seinni útgáfu.\n"
 
-#: ../emerillon/window.c:367
+#: ../emerillon/window.c:489
 msgid ""
 "This program is distributed in the hope that it will be useful, but WITHOUT "
 "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
 "more details.\n"
-msgstr "Þessu forriti er dreift í von um að það verði til gagns, en ÁN NOKKURRAR ÁBYRGÐAR; jafnvel þó að ábyrgð hafi verið gefin í skyn sökum SELJANLEIKA eða að HÆFA SÉRSTÖKUM TILGANGI. Sjá frekari upplýsingar í GNU General Public Leyfinu .\n"
+msgstr ""
+"Þessu forriti er dreift í von um að það verði til gagns, en ÁN NOKKURRAR "
+"ÁBYRGÐAR; jafnvel þó að ábyrgð hafi verið gefin í skyn sökum SELJANLEIKA eða "
+"að HÆFA SÉRSTÖKUM TILGANGI. Sjá frekari upplýsingar í GNU General Public "
+"Leyfinu .\n"
 
-#: ../emerillon/window.c:371
+#: ../emerillon/window.c:493
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
 "Place - Suite 330, Boston, MA 02111-1307, USA."
-msgstr "Með forritinu hefði átt að fylgja eintak af GNU General Public Leyfinu; en ef svo er ekki þá er hægt að senda bréf til Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 Bandaríkjunum (USA)"
+msgstr ""
+"Með forritinu hefði átt að fylgja eintak af GNU General Public Leyfinu; en "
+"ef svo er ekki þá er hægt að senda bréf til Free Software Foundation, Inc., "
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 Bandaríkjunum (USA)"
 
-#: ../emerillon/window.c:376
+#: ../emerillon/window.c:498
 msgid "translator-credits"
 msgstr "Anna Jonna Armannsdottir <annajonna@gmail.com>"
 
-#: ../emerillon/window.c:383
-msgid "Emerillon"
-msgstr "Emerillon"
-
-#: ../emerillon/window.c:387
+#: ../emerillon/window.c:510
 msgid "A map viewer for the GNOME desktop"
 msgstr "Kortaskoðari fyrir GNOME desktoppinn"
 
-#: ../emerillon/window.c:586
+#: ../emerillon/window.c:731
 msgid "_Map"
 msgstr "_Kort"
 
-#: ../emerillon/window.c:587
+#: ../emerillon/window.c:732
 msgid "_Edit"
 msgstr "_Sýsla"
 
-#: ../emerillon/window.c:588
+#: ../emerillon/window.c:733
 #, fuzzy
 msgid "_View"
 msgstr "/_Skoða"
 
-#: ../emerillon/window.c:589
+#: ../emerillon/window.c:734
 msgid "_Tools"
 msgstr "_Tól"
 
-#: ../emerillon/window.c:590
+#: ../emerillon/window.c:735
 msgid "_Help"
 msgstr "_Hjálp"
 
-#: ../emerillon/window.c:593
+#: ../emerillon/window.c:738
 msgid "Quit the program"
 msgstr ""
 
-#: ../emerillon/window.c:596
+#: ../emerillon/window.c:741
 msgid "Enlarge the image"
 msgstr ""
 
-#: ../emerillon/window.c:599
+#: ../emerillon/window.c:744
 msgid "Shrink the image"
 msgstr ""
 
-#: ../emerillon/window.c:602
+#: ../emerillon/window.c:747
 msgid "Edit the preferences"
 msgstr ""
 
-#: ../emerillon/window.c:604
+#: ../emerillon/window.c:749
 msgid "_Contents"
 msgstr ""
 
-#: ../emerillon/window.c:605
+#: ../emerillon/window.c:750
 msgid "Help on this application"
 msgstr ""
 
-#: ../emerillon/window.c:608
+#: ../emerillon/window.c:753
 msgid "About this application"
 msgstr ""
 
-#: ../emerillon/window.c:613
+#: ../emerillon/window.c:758
 msgid "_Toolbar"
 msgstr ""
 
-#: ../emerillon/window.c:614
+#: ../emerillon/window.c:759
 msgid "Show or hide the toolbar in the current window"
 msgstr ""
 
-#: ../emerillon/window.c:616
+#: ../emerillon/window.c:761
 msgid "_Statusbar"
 msgstr ""
 
-#: ../emerillon/window.c:617
+#: ../emerillon/window.c:762
 msgid "Show or hide the statusbar in the current window"
 msgstr ""
 
-#: ../emerillon/window.c:619
+#: ../emerillon/window.c:764
 msgid "Side _Pane"
 msgstr ""
 
-#: ../emerillon/window.c:620
+#: ../emerillon/window.c:765
 msgid "Show or hide the side pane in the current window"
 msgstr ""
 
-#: ../emerillon/window.c:625
+#: ../emerillon/window.c:768
+msgid "Enable or disable full screen mode"
+msgstr ""
+
+#: ../emerillon/window.c:773
 msgid "_Street"
 msgstr ""
 
-#: ../emerillon/window.c:626
+#: ../emerillon/window.c:774
 msgid "View the street map based on OpenStreetMap"
 msgstr ""
 
-#: ../emerillon/window.c:627
+#: ../emerillon/window.c:775
 msgid "_Cycling"
 msgstr ""
 
-#: ../emerillon/window.c:628
+#: ../emerillon/window.c:776
 msgid "View the cycling map based on OpenCycleMap"
 msgstr ""
 
-#: ../emerillon/window.c:629
+#: ../emerillon/window.c:777
 msgid "_Public Transportation"
 msgstr ""
 
-#: ../emerillon/window.c:630
+#: ../emerillon/window.c:778
 msgid "View the public transportation map based on Öpnvkarte"
 msgstr ""
 
-#: ../emerillon/window.c:631
+#: ../emerillon/window.c:779
 msgid "_Terrain"
 msgstr ""
 
-#: ../emerillon/window.c:632
+#: ../emerillon/window.c:780
 msgid "View the terrain map based on mapsforfree.com Relief"
 msgstr ""
 
-#: ../emerillon/window.c:667
+#: ../emerillon/window.c:815
 msgid "In"
 msgstr ""
 
-#: ../emerillon/window.c:671
+#: ../emerillon/window.c:819
 msgid "Out"
 msgstr ""
 
@@ -175,65 +262,6 @@ msgstr ""
 #: ../emerillon/preferences.c:137
 msgid "Emerillon Preferences"
 msgstr ""
-
-#: ../plugins/placemarks/placemarks.c:112
-msgid "Go to this placemark"
-msgstr ""
-
-#: ../plugins/placemarks/placemarks.c:495
-msgid "_Placemarks"
-msgstr ""
-
-#: ../plugins/placemarks/placemarks.c:499
-msgid "Placemark this location"
-msgstr ""
-
-#: ../plugins/placemarks/placemarks.c:501
-msgid "Add current location to your placemarks"
-msgstr ""
-
-#: ../plugins/placemarks/placemarks.c:505
-msgid "Organize placemarks..."
-msgstr ""
-
-#: ../plugins/placemarks/placemarks.c:507
-msgid "Edit and delete existing placemarks"
-msgstr ""
-
-#: ../plugins/placemarks/add-dialog.c:117
-msgid "New Placemark"
-msgstr ""
-
-#: ../plugins/placemarks/add-dialog.c:130
-msgid "Name:"
-msgstr "Nafn:"
-
-#: ../plugins/placemarks/manage-dialog.c:167
-#, c-format
-msgid ""
-"You are about to remove the %s placemark!\n"
-"Are you sure you want to proceed?"
-msgstr ""
-
-#: ../plugins/placemarks/manage-dialog.c:201
-msgid "Organize Placemarks"
-msgstr ""
-
-#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:473
-msgid "Name"
-msgstr "Nafn"
-
-#: ../plugins/placemarks/manage-dialog.c:252
-msgid "Latitude"
-msgstr ""
-
-#: ../plugins/placemarks/manage-dialog.c:260
-msgid "Longitude"
-msgstr ""
-
-#: ../plugins/placemarks/manage-dialog.c:268
-msgid "Zoom"
-msgstr "Aðdráttur"
 
 #: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:1
 msgid "Copy link to Web"
@@ -263,6 +291,73 @@ msgstr ""
 msgid "_Copy link to"
 msgstr ""
 
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:1
+msgid "Display in the statusbar the coordinates at the center of the map"
+msgstr ""
+
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:2
+msgid "Map Position"
+msgstr ""
+
+#: ../plugins/placemarks/add-dialog.c:117
+msgid "New Placemark"
+msgstr ""
+
+#: ../plugins/placemarks/add-dialog.c:130
+msgid "Name:"
+msgstr "Nafn:"
+
+#: ../plugins/placemarks/manage-dialog.c:169
+#, c-format
+msgid ""
+"You are about to remove the %s placemark!\n"
+"Are you sure you want to proceed?"
+msgstr ""
+
+#: ../plugins/placemarks/manage-dialog.c:203
+msgid "Organize Placemarks"
+msgstr ""
+
+#: ../plugins/placemarks/manage-dialog.c:235 ../plugins/search/search.c:506
+msgid "Name"
+msgstr "Nafn"
+
+#: ../plugins/placemarks/manage-dialog.c:254
+msgid "Latitude"
+msgstr ""
+
+#: ../plugins/placemarks/manage-dialog.c:262
+msgid "Longitude"
+msgstr ""
+
+#: ../plugins/placemarks/manage-dialog.c:270
+msgid "Zoom"
+msgstr "Aðdráttur"
+
+#: ../plugins/placemarks/placemarks.c:138
+msgid "Go to this placemark"
+msgstr ""
+
+#: ../plugins/placemarks/placemarks.c:527
+msgid "_Placemarks"
+msgstr ""
+
+#: ../plugins/placemarks/placemarks.c:531
+msgid "Placemark this location"
+msgstr ""
+
+#: ../plugins/placemarks/placemarks.c:533
+msgid "Add current location to your placemarks"
+msgstr ""
+
+#: ../plugins/placemarks/placemarks.c:537
+msgid "Organize placemarks..."
+msgstr ""
+
+#: ../plugins/placemarks/placemarks.c:539
+msgid "Edit and delete existing placemarks"
+msgstr ""
+
 #: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
 msgid "Placemarks"
 msgstr ""
@@ -275,11 +370,12 @@ msgstr ""
 msgid "No result found"
 msgstr ""
 
-#: ../plugins/search/search.c:464
+#. Translators: In this case "No" means "number".
+#: ../plugins/search/search.c:497
 msgid "No"
 msgstr ""
 
-#: ../plugins/search/search.c:483
+#: ../plugins/search/search.c:516
 msgid "Search results"
 msgstr ""
 
@@ -290,31 +386,3 @@ msgstr ""
 #: ../plugins/search/search.emerillon-plugin.in.h:2
 msgid "Search"
 msgstr "Leita"
-
-#: ../data/emerillon.schemas.in.h:1
-msgid "Active plugins"
-msgstr ""
-
-#: ../data/emerillon.schemas.in.h:2
-msgid "List of active plugins."
-msgstr ""
-
-#: ../data/emerillon.schemas.in.h:3
-msgid "Show/hide the window side pane."
-msgstr ""
-
-#: ../data/emerillon.schemas.in.h:4
-msgid "Show/hide the window statusbar."
-msgstr ""
-
-#: ../data/emerillon.schemas.in.h:5
-msgid "Show/hide the window toolbar."
-msgstr ""
-
-#: ../data/emerillon.desktop.in.in.h:1
-msgid "Browse maps"
-msgstr ""
-
-#: ../data/emerillon.desktop.in.in.h:2
-msgid "Map Viewer"
-msgstr ""

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-09 00:10+0200\n"
+"POT-Creation-Date: 2010-07-28 00:12+0200\n"
 "PO-Revision-Date: 2010-05-13 21:55-0400\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -20,49 +20,49 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/emerillon.schemas.in.h:1
-msgid "Active plugins"
-msgstr "Aktive udvidelsesmoduler"
-
-#: ../data/emerillon.schemas.in.h:2
-msgid "List of active plugins."
-msgstr "Liste over aktive udvidelsesmoduler."
-
-#: ../data/emerillon.schemas.in.h:3
-msgid "Show/hide the window side pane."
-msgstr "Vis/skjul vinduesideruden."
-
-#: ../data/emerillon.schemas.in.h:4
-msgid "Show/hide the window statusbar."
-msgstr "Vis/skjul vinduestatusbjælken."
-
-#: ../data/emerillon.schemas.in.h:5
-msgid "Show/hide the window toolbar."
-msgstr "Vis/skjul vindueværktøjsbjælken."
-
-#: ../data/emerillon.schemas.in.h:6
-msgid "Window height in pixels."
-msgstr "Vindueshøjde i billedpunkter."
-
-#: ../data/emerillon.schemas.in.h:7
-msgid "Window width in pixels."
-msgstr "Vindueshøjde i billedpunkter."
-
 #: ../data/emerillon.desktop.in.in.h:1
 msgid "Browse maps"
 msgstr "Gennemse kort"
 
-#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:507
+#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:505
 msgid "Emerillon"
 msgstr "Emerillon"
 
-#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:141
+#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:147
 msgid "Emerillon Map Viewer"
 msgstr "Emerillon - kortviser"
 
 #: ../data/emerillon.desktop.in.in.h:4
 msgid "Map Viewer"
 msgstr "Kortviser"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:1
+msgid "Active plugins"
+msgstr "Aktive udvidelsesmoduler"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:2
+msgid "List of active plugins."
+msgstr "Liste over aktive udvidelsesmoduler."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "Vis/skjul vinduesideruden."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "Vis/skjul vinduestatusbjælken."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "Vis/skjul vindueværktøjsbjælken."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:6
+msgid "Window height in pixels."
+msgstr "Vindueshøjde i billedpunkter."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:7
+msgid "Window width in pixels."
+msgstr "Vindueshøjde i billedpunkter."
 
 #: ../emerillon/main.c:43
 #, c-format
@@ -89,21 +89,21 @@ msgstr "Forkerte eller manglende koordinater"
 msgid "- map viewer"
 msgstr "- kortviser"
 
-#: ../emerillon/main.c:95
+#: ../emerillon/main.c:96
 msgid "Specifies the default position"
 msgstr "Angiver standardpositionen"
 
-#: ../emerillon/main.c:96
+#: ../emerillon/main.c:97
 msgid "Show position options"
 msgstr "Vis positionstilvalg"
 
-#: ../emerillon/main.c:108
+#: ../emerillon/main.c:109
 #, c-format
 msgid "Run '%s --help' to see a list of available command line options.\n"
 msgstr ""
 "Kør '%s --help' for at se en liste over tilgængelige kommandolinjetilvalg.\n"
 
-#: ../emerillon/window.c:487
+#: ../emerillon/window.c:485
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -115,7 +115,7 @@ msgstr ""
 "udgivet af Free Software Foundation. Entenversion 2 af licensen eller (efter "
 "eget valg) enhver senere version.\n"
 
-#: ../emerillon/window.c:491
+#: ../emerillon/window.c:489
 msgid ""
 "This program is distributed in the hope that it will be useful, but WITHOUT "
 "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
@@ -127,7 +127,7 @@ msgstr ""
 "SALGBARHED eller EGNETHED TIL ET BESTEMT FORMÅL. Yderligeredetaljer kan "
 "læses i GNU General Public License.\n"
 
-#: ../emerillon/window.c:495
+#: ../emerillon/window.c:493
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
@@ -137,7 +137,7 @@ msgstr ""
 "dette program. Hvis ikke, så skriv til Free software Foundation, Inc., 59 "
 "Temple Place - Suite 330, Boston, MA 02111-1307, USA."
 
-#: ../emerillon/window.c:500
+#: ../emerillon/window.c:498
 msgid "translator-credits"
 msgstr ""
 "Joe Hansen <joedalton2@yahoo.dk>, 2009, 2010.\n"
@@ -145,124 +145,124 @@ msgstr ""
 "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
 
-#: ../emerillon/window.c:512
+#: ../emerillon/window.c:510
 msgid "A map viewer for the GNOME desktop"
 msgstr "En kortviser til GNOME-skrivebordet"
 
-#: ../emerillon/window.c:733
+#: ../emerillon/window.c:731
 msgid "_Map"
 msgstr "_Kort"
 
-#: ../emerillon/window.c:734
+#: ../emerillon/window.c:732
 msgid "_Edit"
 msgstr "_Redigér"
 
-#: ../emerillon/window.c:735
+#: ../emerillon/window.c:733
 msgid "_View"
 msgstr "_Vis"
 
-#: ../emerillon/window.c:736
+#: ../emerillon/window.c:734
 msgid "_Tools"
 msgstr "_Værktøjer"
 
-#: ../emerillon/window.c:737
+#: ../emerillon/window.c:735
 msgid "_Help"
 msgstr "_Hjælp"
 
-#: ../emerillon/window.c:740
+#: ../emerillon/window.c:738
 msgid "Quit the program"
 msgstr "Afslut programmet"
 
-#: ../emerillon/window.c:743
+#: ../emerillon/window.c:741
 msgid "Enlarge the image"
 msgstr "Forstør billedet"
 
-#: ../emerillon/window.c:746
+#: ../emerillon/window.c:744
 msgid "Shrink the image"
 msgstr "Formindsk billedet"
 
-#: ../emerillon/window.c:749
+#: ../emerillon/window.c:747
 msgid "Edit the preferences"
 msgstr "Redigér indstillingerne"
 
-#: ../emerillon/window.c:751
+#: ../emerillon/window.c:749
 msgid "_Contents"
 msgstr "_Indhold"
 
-#: ../emerillon/window.c:752
+#: ../emerillon/window.c:750
 msgid "Help on this application"
 msgstr "Hjælp til dette program"
 
-#: ../emerillon/window.c:755
+#: ../emerillon/window.c:753
 msgid "About this application"
 msgstr "Om dette program"
 
-#: ../emerillon/window.c:760
+#: ../emerillon/window.c:758
 msgid "_Toolbar"
 msgstr "_Værktøjsbjælke"
 
-#: ../emerillon/window.c:761
+#: ../emerillon/window.c:759
 msgid "Show or hide the toolbar in the current window"
 msgstr "Vis eller skjul værktøjsbjælken i det aktuelle vindue"
 
-#: ../emerillon/window.c:763
+#: ../emerillon/window.c:761
 msgid "_Statusbar"
 msgstr "_Statusbjælke"
 
-#: ../emerillon/window.c:764
+#: ../emerillon/window.c:762
 msgid "Show or hide the statusbar in the current window"
 msgstr "Vis eller skjul statusbjælken i det aktuelle vindue"
 
 # Vi har ikke pane på ordlisten?
-#: ../emerillon/window.c:766
+#: ../emerillon/window.c:764
 msgid "Side _Pane"
 msgstr "_Siderude"
 
-#: ../emerillon/window.c:767
+#: ../emerillon/window.c:765
 msgid "Show or hide the side pane in the current window"
 msgstr "Vis eller skjul sideruden i det aktuelle vindue"
 
-#: ../emerillon/window.c:770
+#: ../emerillon/window.c:768
 msgid "Enable or disable full screen mode"
 msgstr "Slå fuldskærmtilstand til/fra"
 
-#: ../emerillon/window.c:775
+#: ../emerillon/window.c:773
 msgid "_Street"
 msgstr "_Gade"
 
-#: ../emerillon/window.c:776
+#: ../emerillon/window.c:774
 msgid "View the street map based on OpenStreetMap"
 msgstr "Vis gadekortet baseret på OpenStreetMap"
 
-#: ../emerillon/window.c:777
+#: ../emerillon/window.c:775
 msgid "_Cycling"
 msgstr "_Cykling"
 
-#: ../emerillon/window.c:778
+#: ../emerillon/window.c:776
 msgid "View the cycling map based on OpenCycleMap"
 msgstr "Vis cykelkortet baseret på OpenCycleMap"
 
-#: ../emerillon/window.c:779
+#: ../emerillon/window.c:777
 msgid "_Public Transportation"
 msgstr "_Offentlig transport"
 
-#: ../emerillon/window.c:780
+#: ../emerillon/window.c:778
 msgid "View the public transportation map based on Öpnvkarte"
 msgstr "Vis kortet for offentlig transport baseret på Öpnvkarte"
 
-#: ../emerillon/window.c:781
+#: ../emerillon/window.c:779
 msgid "_Terrain"
 msgstr "_Terræn"
 
-#: ../emerillon/window.c:782
+#: ../emerillon/window.c:780
 msgid "View the terrain map based on mapsforfree.com Relief"
 msgstr "Vis terrænkortet baseret på mapsforfree.com Relief"
 
-#: ../emerillon/window.c:817
+#: ../emerillon/window.c:815
 msgid "In"
 msgstr "Ind"
 
-#: ../emerillon/window.c:821
+#: ../emerillon/window.c:819
 msgid "Out"
 msgstr "Ud"
 
@@ -318,7 +318,7 @@ msgstr "Nyt interessepunkt"
 msgid "Name:"
 msgstr "Navn:"
 
-#: ../plugins/placemarks/manage-dialog.c:167
+#: ../plugins/placemarks/manage-dialog.c:169
 #, c-format
 msgid ""
 "You are about to remove the %s placemark!\n"
@@ -327,50 +327,50 @@ msgstr ""
 "Du er i gang med at fjerne interessepunktet %s!\n"
 "Ønsker du at fortsætte?"
 
-#: ../plugins/placemarks/manage-dialog.c:201
+#: ../plugins/placemarks/manage-dialog.c:203
 msgid "Organize Placemarks"
 msgstr "Organisér interessepunkter"
 
-#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:506
+#: ../plugins/placemarks/manage-dialog.c:235 ../plugins/search/search.c:506
 msgid "Name"
 msgstr "Navn"
 
-#: ../plugins/placemarks/manage-dialog.c:252
+#: ../plugins/placemarks/manage-dialog.c:254
 msgid "Latitude"
 msgstr "Breddegrad"
 
-#: ../plugins/placemarks/manage-dialog.c:260
+#: ../plugins/placemarks/manage-dialog.c:262
 msgid "Longitude"
 msgstr "Længdegrad"
 
-#: ../plugins/placemarks/manage-dialog.c:268
+#: ../plugins/placemarks/manage-dialog.c:270
 msgid "Zoom"
 msgstr "Zoom"
 
 # Er der i det hele taget noget der hedder placemark på engelsk
 # søgte i dictionary og de havde ikke ordet. Virker lidt konstrueret
 # men kan se at andre (google) også bruger det.
-#: ../plugins/placemarks/placemarks.c:112
+#: ../plugins/placemarks/placemarks.c:138
 msgid "Go to this placemark"
 msgstr "Gå til dette interessepunkt"
 
-#: ../plugins/placemarks/placemarks.c:497
+#: ../plugins/placemarks/placemarks.c:527
 msgid "_Placemarks"
 msgstr "_Interessepunkter"
 
-#: ../plugins/placemarks/placemarks.c:501
+#: ../plugins/placemarks/placemarks.c:531
 msgid "Placemark this location"
 msgstr "Marker dette sted med et interessepunkt"
 
-#: ../plugins/placemarks/placemarks.c:503
+#: ../plugins/placemarks/placemarks.c:533
 msgid "Add current location to your placemarks"
 msgstr "Tilføj aktuelt sted til dine nuværende interessepunkter"
 
-#: ../plugins/placemarks/placemarks.c:507
+#: ../plugins/placemarks/placemarks.c:537
 msgid "Organize placemarks..."
 msgstr "Organisér interessepunkter..."
 
-#: ../plugins/placemarks/placemarks.c:509
+#: ../plugins/placemarks/placemarks.c:539
 msgid "Edit and delete existing placemarks"
 msgstr "Redigér og slet eksisterende interessepunkter"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-17 07:21+0900\n"
+"POT-Creation-Date: 2010-07-28 00:13+0200\n"
 "PO-Revision-Date: 2010-05-17 07:15+0900\n"
 "Last-Translator: Takeshi AIHANA <takeshi.aihana@gmail.com>\n"
 "Language-Team: Japanese <takeshi.aihana@gmail.com>\n"
@@ -15,49 +15,49 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../data/emerillon.schemas.in.h:1
-msgid "Active plugins"
-msgstr "利用可能なプラグイン"
-
-#: ../data/emerillon.schemas.in.h:2
-msgid "List of active plugins."
-msgstr "利用できるプラグインを要素とするリストです。"
-
-#: ../data/emerillon.schemas.in.h:3
-msgid "Show/hide the window side pane."
-msgstr "サイド・ペインを表示するかどうか"
-
-#: ../data/emerillon.schemas.in.h:4
-msgid "Show/hide the window statusbar."
-msgstr "ステータスバーを表示するかどうか"
-
-#: ../data/emerillon.schemas.in.h:5
-msgid "Show/hide the window toolbar."
-msgstr "ツールバーを表示するかどうか"
-
-#: ../data/emerillon.schemas.in.h:6
-msgid "Window height in pixels."
-msgstr "ウィンドウの高さ (ピクセル単位) です。"
-
-#: ../data/emerillon.schemas.in.h:7
-msgid "Window width in pixels."
-msgstr "ウィンドウの幅 (ピクセル単位) です。"
-
 #: ../data/emerillon.desktop.in.in.h:1
 msgid "Browse maps"
 msgstr "地図を閲覧します"
 
-#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:500
+#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:505
 msgid "Emerillon"
 msgstr "Emerillon"
 
-#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:141
+#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:147
 msgid "Emerillon Map Viewer"
 msgstr "Emerillon 地図ビューア"
 
 #: ../data/emerillon.desktop.in.in.h:4
 msgid "Map Viewer"
 msgstr "地図ビューア"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:1
+msgid "Active plugins"
+msgstr "利用可能なプラグイン"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:2
+msgid "List of active plugins."
+msgstr "利用できるプラグインを要素とするリストです。"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "サイド・ペインを表示するかどうか"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "ステータスバーを表示するかどうか"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "ツールバーを表示するかどうか"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:6
+msgid "Window height in pixels."
+msgstr "ウィンドウの高さ (ピクセル単位) です。"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:7
+msgid "Window width in pixels."
+msgstr "ウィンドウの幅 (ピクセル単位) です。"
 
 #: ../emerillon/main.c:43
 #, c-format
@@ -84,20 +84,20 @@ msgstr "座標が間違っているか見つかりません"
 msgid "- map viewer"
 msgstr "- 地図ビューア"
 
-#: ../emerillon/main.c:95
+#: ../emerillon/main.c:96
 msgid "Specifies the default position"
 msgstr "デフォルトで表示する位置の指定"
 
-#: ../emerillon/main.c:96
+#: ../emerillon/main.c:97
 msgid "Show position options"
 msgstr "位置を指定するオプションを表示する"
 
-#: ../emerillon/main.c:108
+#: ../emerillon/main.c:109
 #, c-format
 msgid "Run '%s --help' to see a list of available command line options.\n"
 msgstr "'%s --help' で利用可能なコマンドライン・オプションを表示します\n"
 
-#: ../emerillon/window.c:480
+#: ../emerillon/window.c:485
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -108,7 +108,7 @@ msgstr ""
 "一般公衆利用許諾契約書の第二版、あるいはそれ以降の版が定める条項の下で本プロ"
 "グラムを再頒布または変更することができます。\n"
 
-#: ../emerillon/window.c:484
+#: ../emerillon/window.c:489
 msgid ""
 "This program is distributed in the hope that it will be useful, but WITHOUT "
 "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
@@ -119,7 +119,7 @@ msgstr ""
 "対する適用については暗黙の保証を含めて、いかなる保証も行ないません。詳細には "
 "GNU 一般公衆利用許諾契約書をご覧下さい。\n"
 
-#: ../emerillon/window.c:488
+#: ../emerillon/window.c:493
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
@@ -129,127 +129,127 @@ msgstr ""
 "はずです。そうでない場合は、Free Software Foundation, Inc., 51 Franklin "
 "Street, Fifth Floor, Boston, MA 02110-1301, USA まで連絡して下さい。"
 
-#: ../emerillon/window.c:493
+#: ../emerillon/window.c:498
 msgid "translator-credits"
 msgstr "相花 毅 <takeshi.aihana@gmail.com>"
 
-#: ../emerillon/window.c:505
+#: ../emerillon/window.c:510
 msgid "A map viewer for the GNOME desktop"
 msgstr "GNOME デスクトップ向けの地図ビューアです。"
 
-#: ../emerillon/window.c:726
+#: ../emerillon/window.c:731
 msgid "_Map"
 msgstr "地図(_M)"
 
-#: ../emerillon/window.c:727
+#: ../emerillon/window.c:732
 msgid "_Edit"
 msgstr "編集(_E)"
 
-#: ../emerillon/window.c:728
+#: ../emerillon/window.c:733
 msgid "_View"
 msgstr "表示(_V)"
 
-#: ../emerillon/window.c:729
+#: ../emerillon/window.c:734
 msgid "_Tools"
 msgstr "ツール(_T)"
 
-#: ../emerillon/window.c:730
+#: ../emerillon/window.c:735
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: ../emerillon/window.c:733
+#: ../emerillon/window.c:738
 msgid "Quit the program"
 msgstr "プログラムを終了します"
 
-#: ../emerillon/window.c:736
+#: ../emerillon/window.c:741
 msgid "Enlarge the image"
 msgstr "地図を拡大します"
 
-#: ../emerillon/window.c:739
+#: ../emerillon/window.c:744
 msgid "Shrink the image"
 msgstr "地図を縮小します"
 
-#: ../emerillon/window.c:742
+#: ../emerillon/window.c:747
 msgid "Edit the preferences"
 msgstr "設定を変更します"
 
-#: ../emerillon/window.c:744
+#: ../emerillon/window.c:749
 msgid "_Contents"
 msgstr "目次(_C)"
 
-#: ../emerillon/window.c:745
+#: ../emerillon/window.c:750
 msgid "Help on this application"
 msgstr "このアプリケーションのヘルプを表示します"
 
-#: ../emerillon/window.c:748
+#: ../emerillon/window.c:753
 msgid "About this application"
 msgstr "このアプリケーションについて"
 
-#: ../emerillon/window.c:753
+#: ../emerillon/window.c:758
 msgid "_Toolbar"
 msgstr "ツールバー(_T)"
 
-#: ../emerillon/window.c:754
+#: ../emerillon/window.c:759
 msgid "Show or hide the toolbar in the current window"
 msgstr "ツールバーの表示を ON/OFF します"
 
-#: ../emerillon/window.c:756
+#: ../emerillon/window.c:761
 msgid "_Statusbar"
 msgstr "ステータスバー(_S)"
 
-#: ../emerillon/window.c:757
+#: ../emerillon/window.c:762
 msgid "Show or hide the statusbar in the current window"
 msgstr "ステータスバーの表示を ON/OFF します"
 
-#: ../emerillon/window.c:759
+#: ../emerillon/window.c:764
 msgid "Side _Pane"
 msgstr "サイド・ペイン(_P)"
 
-#: ../emerillon/window.c:760
+#: ../emerillon/window.c:765
 msgid "Show or hide the side pane in the current window"
 msgstr "サイド・ペインの表示を ON/OFF します"
 
-#: ../emerillon/window.c:763
+#: ../emerillon/window.c:768
 msgid "Enable or disable full screen mode"
 msgstr "フルスクリーン表示を ON/OFF します"
 
-#: ../emerillon/window.c:768
+#: ../emerillon/window.c:773
 msgid "_Street"
 msgstr "道路(_S)"
 
-#: ../emerillon/window.c:769
+#: ../emerillon/window.c:774
 msgid "View the street map based on OpenStreetMap"
 msgstr "OpenStreetMap が提供している道路の地図を表示します"
 
-#: ../emerillon/window.c:770
+#: ../emerillon/window.c:775
 msgid "_Cycling"
 msgstr "自転車(_C)"
 
-#: ../emerillon/window.c:771
+#: ../emerillon/window.c:776
 msgid "View the cycling map based on OpenCycleMap"
 msgstr "OpenCycleMap が提供しているサイクリングロードの地図を表示します"
 
-#: ../emerillon/window.c:772
+#: ../emerillon/window.c:777
 msgid "_Public Transportation"
 msgstr "交通機関(_P)"
 
-#: ../emerillon/window.c:773
+#: ../emerillon/window.c:778
 msgid "View the public transportation map based on Öpnvkarte"
 msgstr "Öpnvkarte が提供している公共の交通機関の地図を表示します"
 
-#: ../emerillon/window.c:774
+#: ../emerillon/window.c:779
 msgid "_Terrain"
 msgstr "地形(_T)"
 
-#: ../emerillon/window.c:775
+#: ../emerillon/window.c:780
 msgid "View the terrain map based on mapsforfree.com Relief"
 msgstr "mapsforfree.com Relief が提供している地勢図を表示します"
 
-#: ../emerillon/window.c:810
+#: ../emerillon/window.c:815
 msgid "In"
 msgstr "拡大"
 
-#: ../emerillon/window.c:814
+#: ../emerillon/window.c:819
 msgid "Out"
 msgstr "縮小"
 
@@ -306,7 +306,7 @@ msgstr "新しいマーカー"
 msgid "Name:"
 msgstr "名前:"
 
-#: ../plugins/placemarks/manage-dialog.c:167
+#: ../plugins/placemarks/manage-dialog.c:169
 #, c-format
 msgid ""
 "You are about to remove the %s placemark!\n"
@@ -315,47 +315,47 @@ msgstr ""
 "%s というマーカーを削除しようとしています！\n"
 "本当に削除してもよろしいですか？"
 
-#: ../plugins/placemarks/manage-dialog.c:201
+#: ../plugins/placemarks/manage-dialog.c:203
 msgid "Organize Placemarks"
 msgstr "マーカーの管理"
 
-#: ../plugins/placemarks/manage-dialog.c:233 ../plugins/search/search.c:506
+#: ../plugins/placemarks/manage-dialog.c:235 ../plugins/search/search.c:506
 msgid "Name"
 msgstr "名前"
 
-#: ../plugins/placemarks/manage-dialog.c:252
+#: ../plugins/placemarks/manage-dialog.c:254
 msgid "Latitude"
 msgstr "緯度"
 
-#: ../plugins/placemarks/manage-dialog.c:260
+#: ../plugins/placemarks/manage-dialog.c:262
 msgid "Longitude"
 msgstr "経度"
 
-#: ../plugins/placemarks/manage-dialog.c:268
+#: ../plugins/placemarks/manage-dialog.c:270
 msgid "Zoom"
 msgstr "ズーム"
 
-#: ../plugins/placemarks/placemarks.c:112
+#: ../plugins/placemarks/placemarks.c:138
 msgid "Go to this placemark"
 msgstr "このマーカーが指す場所へジャンプします"
 
-#: ../plugins/placemarks/placemarks.c:497
+#: ../plugins/placemarks/placemarks.c:527
 msgid "_Placemarks"
 msgstr "マーカー(_P)"
 
-#: ../plugins/placemarks/placemarks.c:501
+#: ../plugins/placemarks/placemarks.c:531
 msgid "Placemark this location"
 msgstr "マーカーを付与する"
 
-#: ../plugins/placemarks/placemarks.c:503
+#: ../plugins/placemarks/placemarks.c:533
 msgid "Add current location to your placemarks"
 msgstr "現在の場所にマーカーを付与します"
 
-#: ../plugins/placemarks/placemarks.c:507
+#: ../plugins/placemarks/placemarks.c:537
 msgid "Organize placemarks..."
 msgstr "マーカーの管理..."
 
-#: ../plugins/placemarks/placemarks.c:509
+#: ../plugins/placemarks/placemarks.c:539
 msgid "Edit and delete existing placemarks"
 msgstr "保存してあるマーカを編集したり削除します"
 
