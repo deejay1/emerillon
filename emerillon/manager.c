@@ -25,7 +25,6 @@
 
 #include <string.h>
 #include <ethos/ethos.h>
-#include <gconf/gconf-client.h>
 
 #include "config-keys.h"
 
@@ -40,7 +39,7 @@ G_DEFINE_TYPE (EmerillonManager, emerillon_manager, ETHOS_TYPE_MANAGER);
 
 struct _EmerillonManagerPrivate
 {
-  GConfClient *client;
+  GSettings *settings_plugins;
 };
 
 static void
@@ -86,25 +85,13 @@ emerillon_manager_constructor (GType type,
   return object;
 }
 
-static void
-gconf_list_free (GSList *conf)
-{
-  GSList *iter;
-
-  for (iter = conf; iter; iter = iter->next)
-    g_free (iter->data);
-
-  g_slist_free (conf);
-}
-
 static gboolean
-is_enabled (GSList *conf, EthosPluginInfo *plugin)
+is_enabled (gchar ** conf, EthosPluginInfo *plugin)
 {
-  GSList *iter;
-
-  for (iter = conf; iter; iter = iter->next)
+  int i;
+  for (i = 0; conf[i] != NULL; i++)
     {
-      if (strcmp (iter->data, ethos_plugin_info_get_id (plugin)) == 0)
+      if (strcmp (conf[i], ethos_plugin_info_get_id (plugin)) == 0)
         return TRUE;
     }
 
@@ -115,141 +102,122 @@ static void
 emerillon_manager_plugin_loaded (EthosManager    *emanager,
                                  EthosPluginInfo *plugin_info)
 {
-  GSList *conf_list;
-  GError *error = NULL;
+  gchar **conf_list;
+  GPtrArray *tmp;
+  GVariant *value;
+  int i;
+  gboolean res;
   EmerillonManager *manager = EMERILLON_MANAGER (emanager);
 
-  conf_list = gconf_client_get_list (manager->priv->client,
-      EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS,
-      GCONF_VALUE_STRING,
-      &error);
+  tmp = g_ptr_array_new_with_free_func (g_free);
 
-  if (error)
-    {
-      g_warning ("gconf: %s", error->message);
-      g_error_free (error);
-      error = NULL;
-      return;
-    }
+  conf_list = g_settings_get_strv (manager->priv->settings_plugins,
+                                   EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS);
+
 
   /* if the plugin is already in the list, stop */
   if (is_enabled (conf_list, plugin_info))
-    {
-      gconf_list_free (conf_list);
-      return;
-    }
+  {
+    g_strfreev (conf_list);
+    return;
+  }
 
-  conf_list = g_slist_append (conf_list, g_strdup (ethos_plugin_info_get_id (plugin_info)));
+  /* rebuilding as a pointer array, sorry */
+  for (i=0;conf_list[i] != NULL;i++)
+    g_ptr_array_add (tmp,g_strdup(conf_list[i]));
 
-  gconf_client_set_list (manager->priv->client,
-      EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS,
-      GCONF_VALUE_STRING,
-      conf_list,
-      &error);
+  g_ptr_array_add (tmp, g_strdup (ethos_plugin_info_get_id (plugin_info)));
 
-  if (error)
-    {
-      g_warning ("gconf: %s", error->message);
-      g_error_free (error);
-      error = NULL;
-    }
+  value = g_variant_new_strv  ((const gchar * const *) tmp->pdata, tmp->len);
+  res = g_settings_set_value (manager->priv->settings_plugins,
+                             EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS,
+                             value);
+  if (!res)
+    g_warning ("gsettings: Key %s is not writable!",
+               EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS);
 
-  gconf_list_free (conf_list);
+  g_ptr_array_free (tmp, TRUE);
+  g_strfreev (conf_list);
+  g_variant_unref(value);
 }
 
 static void
 emerillon_manager_plugin_unloaded (EthosManager    *emanager,
                                    EthosPluginInfo *plugin_info)
 {
-  GSList *conf_list;
-  GSList *iter;
-  GError *error = NULL;
+  gboolean res;
+  int i;
+  gchar **conf_list;
+  GPtrArray *tmp;
+  GVariant *value;
+  
   EmerillonManager *manager = EMERILLON_MANAGER (emanager);
 
-  conf_list = gconf_client_get_list (manager->priv->client,
-      EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS,
-      GCONF_VALUE_STRING,
-      &error);
+  tmp = g_ptr_array_new_with_free_func (g_free);
 
-  if (error)
-    {
-      g_warning ("gconf: %s", error->message);
-      g_error_free (error);
-      error = NULL;
-      return;
-    }
+  conf_list = g_settings_get_strv (manager->priv->settings_plugins,
+                                   EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS);
 
-  for (iter = conf_list; iter; iter = iter->next)
-    {
-      if (strcmp (iter->data, ethos_plugin_info_get_id (plugin_info)) == 0)
-        conf_list = g_slist_delete_link (conf_list, iter);
-    }
+  for (i=0; conf_list[i] != NULL; i++)
+  {
+    if (!strcmp (conf_list[i], ethos_plugin_info_get_id (plugin_info)) == 0)
+      g_ptr_array_add (tmp,g_strdup(conf_list[i]));
+  }
+  value = g_variant_new_strv  ((const gchar * const *) tmp->pdata, tmp->len);
+  res = g_settings_set_value (manager->priv->settings_plugins,
+                             EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS,
+                             value);
 
-  gconf_client_set_list (manager->priv->client,
-      EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS,
-      GCONF_VALUE_STRING,
-      conf_list,
-      &error);
+  if (!res)
+    g_warning ("gsettings: Key %s is not writable!",
+               EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS);
 
-  if (error)
-    {
-      g_warning ("gconf: %s", error->message);
-      g_error_free (error);
-      error = NULL;
-    }
-
-  gconf_list_free (conf_list);
+  g_ptr_array_free (tmp, TRUE);
+  g_strfreev (conf_list);
+  g_variant_unref (value);
 }
 
 static void
 emerillon_manager_initialized (EthosManager *emanager)
 {
   GList  *list,
-         *iter;
-  GSList *conf_list;
+  *iter;
+  gchar **conf_list;
   GError *error = NULL;
+
   EmerillonManager *manager = EMERILLON_MANAGER (emanager);
 
   g_return_if_fail (ETHOS_IS_MANAGER (manager));
 
-  manager->priv->client = gconf_client_get_default ();
-  conf_list = gconf_client_get_list (manager->priv->client,
-      EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS,
-      GCONF_VALUE_STRING,
-      &error);
-
-  if (error)
-    {
-      g_warning ("gconf: %s", error->message);
-      g_error_free (error);
-      error = NULL;
-    }
+  manager->priv->settings_plugins = g_settings_new (EMERILLON_SCHEMA_PLUGINS);
+  conf_list = g_settings_get_strv (manager->priv->settings_plugins,
+                                   EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS);
 
   list = ethos_manager_get_plugin_info (emanager);
   for (iter = list; iter; iter = iter->next)
+  {
+    if (ethos_plugin_info_get_active (iter->data))
     {
-      if (ethos_plugin_info_get_active (iter->data))
-        {
-          continue;
-        }
-      else if (is_enabled (conf_list, iter->data) &&
-               !ethos_manager_load_plugin (emanager, iter->data, &error))
-        {
-          g_warning ("%s: %s",
-                     ethos_plugin_info_get_id (iter->data),
-                     error ? error->message : "Error loading");
-
-          if (error)
-            {
-              //ethos_plugin_info_add_error (iter->data, error);
-              g_error_free (error);
-              error = NULL;
-            }
-        }
+      continue;
     }
+    else if (is_enabled (conf_list, iter->data) &&
+             !ethos_manager_load_plugin (emanager, iter->data, &error))
+    {
+      g_warning ("%s: %s",
+                 ethos_plugin_info_get_id (iter->data),
+                 error ? error->message : "Error loading");
+
+      if (error)
+      {
+        //ethos_plugin_info_add_error (iter->data, error);
+        g_error_free (error);
+        error = NULL;
+      }
+    }
+  }
 
   g_list_free (list);
-  gconf_list_free (conf_list);
+  g_strfreev (conf_list);
 }
 
 static void

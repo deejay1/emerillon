@@ -1,0 +1,35 @@
+<schemalist>
+  <schema id="org.gnome.emerillon" path="/apps/emerillon/">
+    <child name="ui" schema="org.gnome.emerillon.ui"/>
+    <child name="plugins" schema="org.gnome.emerillon.plugins"/>
+  </schema>
+  <schema id="org.gnome.emerillon.ui" path="/apps/emerillon/ui/">
+    <key name="toolbar" type="b">
+      <default>true</default>
+      <_summary>Show/hide the window toolbar.</_summary>
+    </key>
+    <key name="statusbar" type="b">
+      <default>true</default>
+      <_summary>Show/hide the window statusbar.</_summary>
+    </key>
+    <key name="sidebar" type="b">
+      <default>true</default>
+      <_summary>Show/hide the window side pane.</_summary>
+    </key>
+    <key name="window-width" type="i">
+      <default>640</default>
+      <_summary>Window width in pixels.</_summary>
+    </key>
+    <key name="window-height" type="i">
+      <default>450</default>
+      <_summary>Window height in pixels.</_summary>
+    </key>
+  </schema>
+  <schema id="org.gnome.emerillon.plugins" path="/apps/emerillon/plugins/">
+    <key name="active-plugins" type="as">
+      <default>[ 'search', 'placemarks' ]</default>
+      <_summary>Active plugins</_summary>
+      <_description>List of active plugins.</_description>
+    </key>
+  </schema>
+</schemalist>

@@ -1,8 +1,8 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
 [encoding: UTF-8]
-data/emerillon.schemas.in
 data/emerillon.desktop.in.in
+data/org.gnome.emerillon.gschema.xml.in
 emerillon/main.c
 emerillon/sidebar.c
 emerillon/window.c

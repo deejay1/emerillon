@@ -27,7 +27,6 @@
 
 #include <champlain/champlain.h>
 #include <champlain-gtk/champlain-gtk.h>
-#include <gconf/gconf-client.h>
 #include <geoclue/geoclue-master.h>
 #include <geoclue/geoclue-position.h>
 #include <glib/gi18n.h>
@@ -58,7 +57,7 @@ struct _EmerillonWindowPrivate
 
   GtkActionGroup *main_actions;
 
-  GConfClient *client;
+  GSettings *settings_ui;
 
 
   guint tooltip_message_context_id;
@@ -204,13 +203,11 @@ emerillon_window_init (EmerillonWindow *self)
 
   self->priv = EMERILLON_WINDOW_GET_PRIVATE (self);
 
+
   self->priv->position_auto_update = FALSE;
 
-  /* GConf. */
-  self->priv->client = gconf_client_get_default ();
-
-  gconf_client_add_dir (self->priv->client, EMERILLON_CONF_DIR,
-      GCONF_CLIENT_PRELOAD_RECURSIVE, NULL);
+  /* GSettings. */
+  self->priv->settings_ui = g_settings_new (EMERILLON_SCHEMA_UI);
 
   /* Window setup. */
   geometry.min_width = 400;
@@ -219,10 +216,10 @@ emerillon_window_init (EmerillonWindow *self)
       &geometry,GDK_HINT_MIN_SIZE);
 
   /* Set the window size */
-  width = gconf_client_get_int (self->priv->client,
-      EMERILLON_CONF_UI_WINDOW_WIDTH, NULL);
-  height = gconf_client_get_int (self->priv->client,
-      EMERILLON_CONF_UI_WINDOW_HEIGHT, NULL);
+  width = g_settings_get_int (self->priv->settings_ui,
+      EMERILLON_CONF_UI_WINDOW_WIDTH);
+  height = g_settings_get_int (self->priv->settings_ui,
+      EMERILLON_CONF_UI_WINDOW_HEIGHT);
 
   if (width > 0 && height > 0)
     gtk_window_set_default_size (GTK_WINDOW (self), width, height);
@@ -272,19 +269,17 @@ emerillon_window_dispose (GObject *object)
       self->priv->main_actions = NULL;
     }
 
-  if (self->priv->client)
-  {
-    /* Save the window size */
-    gtk_window_get_size (GTK_WINDOW (self), &width, &height);
-    width = gconf_client_set_int (self->priv->client,
-                                  EMERILLON_CONF_UI_WINDOW_WIDTH, width, NULL);
-    height = gconf_client_set_int (self->priv->client,
-                                   EMERILLON_CONF_UI_WINDOW_HEIGHT, height, NULL);
-
-    gconf_client_remove_dir (self->priv->client, EMERILLON_CONF_DIR, NULL);
-    g_object_unref (self->priv->client);
-    self->priv->client = NULL;
-  }
+  if (self->priv->settings_ui)
+    {
+      /* Save the window size */
+      gtk_window_get_size (GTK_WINDOW (self), &width, &height);
+      width = g_settings_set_int (self->priv->settings_ui,
+                                  EMERILLON_CONF_UI_WINDOW_WIDTH, width);
+      height = g_settings_set_int (self->priv->settings_ui,
+                                   EMERILLON_CONF_UI_WINDOW_HEIGHT, height);
+      g_object_unref (self->priv->settings_ui);
+      self->priv->settings_ui = NULL;
+    }
 
   if (self->priv->geoclue_client)
     {
@@ -409,6 +404,9 @@ zoom_changed_cb (GtkWidget *widget,
   gtk_action_set_sensitive (zoom_out_action, zoom_level > min_zoom_level);
 }
 
+/* TODO: use g_settings_bind instead of manual visibility switching
+ * see also cmd_show_hide_bar()
+*/
 static void
 update_ui_visibility (EmerillonWindow *self)
 {
@@ -416,8 +414,8 @@ update_ui_visibility (EmerillonWindow *self)
   GtkAction *action;
 
   /* Toolbar. */
-  visible = gconf_client_get_bool (self->priv->client,
-      EMERILLON_CONF_UI_TOOLBAR, NULL);
+  visible = g_settings_get_boolean (self->priv->settings_ui,
+      EMERILLON_CONF_UI_TOOLBAR);
   action = gtk_ui_manager_get_action (self->priv->ui_manager,
       "/MainMenu/View/ToolbarToggle");
   g_assert (action != NULL);
@@ -425,8 +423,8 @@ update_ui_visibility (EmerillonWindow *self)
   g_object_set (G_OBJECT (self->priv->toolbar), "visible", visible, NULL);
 
   /* Statusbar. */
-  visible = gconf_client_get_bool (self->priv->client,
-      EMERILLON_CONF_UI_STATUSBAR, NULL);
+  visible = g_settings_get_boolean (self->priv->settings_ui,
+      EMERILLON_CONF_UI_STATUSBAR);
   action = gtk_ui_manager_get_action (self->priv->ui_manager,
       "/MainMenu/View/StatusbarToggle");
   g_assert (action != NULL);
@@ -434,8 +432,8 @@ update_ui_visibility (EmerillonWindow *self)
   g_object_set (G_OBJECT (self->priv->statusbar), "visible", visible, NULL);
 
   /* Sidebar. */
-  visible = gconf_client_get_bool (self->priv->client,
-      EMERILLON_CONF_UI_SIDEBAR, NULL);
+  visible = g_settings_get_boolean (self->priv->settings_ui,
+      EMERILLON_CONF_UI_SIDEBAR);
   action = gtk_ui_manager_get_action (self->priv->ui_manager,
       "/MainMenu/View/SidebarToggle");
   g_assert (action != NULL);
@@ -597,7 +595,7 @@ cmd_show_hide_bar (GtkAction *action,
   else
       gtk_widget_hide (target_widget);
 
-  gconf_client_set_bool (self->priv->client, target_conf_key, visible, NULL);
+  g_settings_set_boolean (self->priv->settings_ui, target_conf_key, visible);
 }
 
 static void
@@ -720,8 +718,8 @@ sidebar_visibility_changed_cb (GtkWidget *widget,
 
   visible = gtk_widget_get_visible (self->priv->sidebar);
 
-  gconf_client_set_bool (self->priv->client, EMERILLON_CONF_UI_SIDEBAR,
-      visible, NULL);
+  g_settings_set_boolean (self->priv->settings_ui, EMERILLON_CONF_UI_SIDEBAR,
+      visible);
 
   action = gtk_action_group_get_action (self->priv->main_actions,
       "ViewSidebar");

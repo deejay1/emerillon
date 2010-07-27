@@ -19,13 +19,15 @@
 #ifndef __EMERILLON_CONFIG_KEYS_H__
 #define __EMERILLON_CONFIG_KEYS_H__
 
-#define EMERILLON_CONF_DIR                     "/apps/emerillon"
+#define EMERILLON_SCHEMA                       "org.gnome.emerillon"
+#define EMERILLON_SCHEMA_UI                    EMERILLON_SCHEMA ".ui"
+#define EMERILLON_SCHEMA_PLUGINS               EMERILLON_SCHEMA ".plugins"
 
-#define EMERILLON_CONF_UI_TOOLBAR              "/apps/emerillon/ui/toolbar"
-#define EMERILLON_CONF_UI_STATUSBAR            "/apps/emerillon/ui/statusbar"
-#define EMERILLON_CONF_UI_SIDEBAR              "/apps/emerillon/ui/sidebar"
-#define EMERILLON_CONF_UI_WINDOW_WIDTH         "/apps/emerillon/ui/window_width"
-#define EMERILLON_CONF_UI_WINDOW_HEIGHT        "/apps/emerillon/ui/window_height"
-#define EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS  "/apps/emerillon/plugins/active-plugins"
+#define EMERILLON_CONF_UI_TOOLBAR              "toolbar"
+#define EMERILLON_CONF_UI_STATUSBAR            "statusbar"
+#define EMERILLON_CONF_UI_SIDEBAR              "sidebar"
+#define EMERILLON_CONF_UI_WINDOW_WIDTH         "window-width"
+#define EMERILLON_CONF_UI_WINDOW_HEIGHT        "window-height"
+#define EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS  "active-plugins"
 
 #endif /* __EMERILLON_CONFIG_KEYS_H__ */

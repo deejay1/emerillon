@@ -50,16 +50,10 @@ GTK_DOC_CHECK([1.14],[--flavour no-tmpl])
 AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
 AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
 
-##########
-# GConf. #
-##########
-AM_GCONF_SOURCE_2
-
-AC_PATH_PROG([GCONFTOOL], [gconftool-2], [no])
-
-if test "$GCONFTOOL" = "no"; then
-    AC_MSG_ERROR([gconftool-2 not found])
-fi
+#############
+# GSettings #
+#############
+GLIB_GSETTINGS
 
 ################
 # Translations #
@@ -81,10 +75,10 @@ GNOME_DOC_INIT
 ################
 # Dependencies #
 ################
-GLIB_REQUIRED=2.12.0
+GLIB_REQUIRED=2.25.10
 GTHREAD_REQUIRED=2.12.0
 GTK_REQUIRED=2.20.0
-GCONF_REQUIRED=2.5.90
+GCONF_REQUIRED=2.31.1
 CHAMPLAIN_REQUIRED=0.6.0
 CHAMPLAIN_GTK_REQUIRED=0.6.0
 GEOCLUE_REQUIRED=0.11.1

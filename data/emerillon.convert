@@ -1,0 +1,9 @@
+[org.gnome.emerillon.ui]
+toolbar = /apps/emerillon/ui/toolbar
+statusbar = /apps/emerillon/ui/statusbar
+sidebar = /apps/emerillon/ui/sidebar
+window-width = /apps/emerillon/ui/window_width
+window-height = /apps/emerillon/ui/window_height
+
+[org.gnome.emerillon.plugins]
+active-plugins = /apps/emerillon/plugins/active-plugins
