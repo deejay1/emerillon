@@ -124,7 +124,7 @@ msgstr ""
 
 #: ../emerillon/window.c:498
 msgid "translator-credits"
-msgstr "Kjartan Maraas <kmaraas@broadpark.no>"
+msgstr "Kjartan Maraas <kmaraas@gnome.org>"
 
 #: ../emerillon/window.c:510
 msgid "A map viewer for the GNOME desktop"
