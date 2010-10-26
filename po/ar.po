@@ -1,13 +1,13 @@
 # Arabic translation for emerillon.
 # Copyright (C) 2009 Khaled Hosny
 # This file is distributed under the same license as the emerillon package.
-# Khaled Hosny <khaledhosny@eglug.org>, 2009.
+# Khaled Hosny <khaledhosny@eglug.org>, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 00:11+0200\n"
-"PO-Revision-Date: 2009-10-15 06:21+0300\n"
+"POT-Creation-Date: 2010-10-26 13:02+0200\n"
+"PO-Revision-Date: 2010-10-26 13:02+0300\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Virtaal 0.4.0\n"
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Virtaal 0.6.1\n"
 
 #: ../data/emerillon.desktop.in.in.h:1
 msgid "Browse maps"
@@ -56,11 +56,11 @@ msgstr "أظهر\\أخفِ شريط أدوات النّافذة."
 
 #: ../data/org.gnome.emerillon.gschema.xml.in.h:6
 msgid "Window height in pixels."
-msgstr ""
+msgstr "ارتفاع النافذة بالبكسل."
 
 #: ../data/org.gnome.emerillon.gschema.xml.in.h:7
 msgid "Window width in pixels."
-msgstr ""
+msgstr "عرض النافذة بالبكسل."
 
 #: ../emerillon/main.c:43
 #, c-format
@@ -219,7 +219,7 @@ msgstr "أظهر أو أخف اللوح الجانبي في النافذة ال�
 
 #: ../emerillon/window.c:768
 msgid "Enable or disable full screen mode"
-msgstr ""
+msgstr "فعّل أو عطّل وضع ملء الشاشة"
 
 #: ../emerillon/window.c:773
 msgid "_Street"
@@ -299,11 +299,11 @@ msgstr "ا_نسخ الرابط إلى"
 
 #: ../plugins/map-position/map-position.emerillon-plugin.in.h:1
 msgid "Display in the statusbar the coordinates at the center of the map"
-msgstr ""
+msgstr "يعرض إحداثيات مركز الخريطة في شريط الحالة"
 
 #: ../plugins/map-position/map-position.emerillon-plugin.in.h:2
 msgid "Map Position"
-msgstr ""
+msgstr "موضع الخريطة"
 
 #: ../plugins/placemarks/add-dialog.c:117
 msgid "New Placemark"
