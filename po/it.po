@@ -1,20 +1,21 @@
 # Italian translation for emerillon
 # Copyright (c) 2010 the emerillon copyright holder
 # This file is distributed under the same license as the emerillon package.
-#
 # Claudio Arseni <claudio.arseni@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: emerillon\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 00:13+0200\n"
-"PO-Revision-Date: 2010-01-20 01:22+0000\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=emerillon&component=General\n"
+"POT-Creation-Date: 2010-10-19 18:08+0000\n"
+"PO-Revision-Date: 2010-11-02 23:02+0100\n"
 "Last-Translator: Claudio Arseni <claudio.arseni@gmail.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/emerillon.desktop.in.in.h:1
 msgid "Browse maps"
@@ -54,51 +55,49 @@ msgstr "Mostra/nascondi la barra degli strumenti."
 
 #: ../data/org.gnome.emerillon.gschema.xml.in.h:6
 msgid "Window height in pixels."
-msgstr ""
+msgstr "Altezza finestra in pixel."
 
 #: ../data/org.gnome.emerillon.gschema.xml.in.h:7
 msgid "Window width in pixels."
-msgstr ""
+msgstr "Larghezza finestra in pixel."
 
 #: ../emerillon/main.c:43
 #, c-format
 msgid "%s - Version %s\n"
-msgstr ""
+msgstr "%s - Versione %s\n"
 
 #: ../emerillon/main.c:55
 msgid "Show version information and exit"
-msgstr ""
+msgstr "Mostra informazioni sulla versione ed esce"
 
 #: ../emerillon/main.c:61
 msgid "Initial latitude"
-msgstr ""
+msgstr "Latitudine iniziale"
 
 #: ../emerillon/main.c:62
-#, fuzzy
 msgid "Initial longitude"
-msgstr "Longitudine"
+msgstr "Longitudine iniziale"
 
 #: ../emerillon/main.c:75
 msgid "Incorrect or missing coordinates"
-msgstr ""
+msgstr "Coordinate non corrette o mancanti"
 
 #: ../emerillon/main.c:91
-#, fuzzy
 msgid "- map viewer"
-msgstr "Visualizzatore di mappe"
+msgstr "- visualizzatore di mappe"
 
 #: ../emerillon/main.c:96
 msgid "Specifies the default position"
-msgstr ""
+msgstr "Specifica la posizione predefinita"
 
 #: ../emerillon/main.c:97
 msgid "Show position options"
-msgstr ""
+msgstr "Mostra opzioni posizione"
 
 #: ../emerillon/main.c:109
 #, c-format
 msgid "Run '%s --help' to see a list of available command line options.\n"
-msgstr ""
+msgstr "Eseguire \"%s --help\" per visualizzare l'elenco delle opzioni da riga di comando disponibili.\n"
 
 #: ../emerillon/window.c:485
 msgid ""
