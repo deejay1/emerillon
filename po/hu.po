@@ -1,0 +1,395 @@
+# Hungarian translation for emerillon.
+# Copyright (C) 2010. Free Software Foundation, Inc.
+# This file is distributed under the same license as the emerillon package.
+#
+#
+# György Balló <ballogy at freestart dot hu>, 2010.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: emerillon master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-11-14 10:18+0100\n"
+"PO-Revision-Date: 2010-11-14 10:17+0100\n"
+"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"Language-Team: Hungarian <gnome at fsf dot hu>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: ../data/emerillon.desktop.in.in.h:1
+msgid "Browse maps"
+msgstr "Térképek böngészése"
+
+#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:505
+msgid "Emerillon"
+msgstr "Emerillon"
+
+#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:147
+msgid "Emerillon Map Viewer"
+msgstr "Emerillon térkép-megjelenítő"
+
+#: ../data/emerillon.desktop.in.in.h:4
+msgid "Map Viewer"
+msgstr "Térkép-megjelenítő"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:1
+msgid "Active plugins"
+msgstr "Aktív bővítmények"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:2
+msgid "List of active plugins."
+msgstr "Az aktív bővítmények listája."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "Az ablak oldalsávjának megjelenítése/elrejtése."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "Az ablak állapotsorának megjelenítése/elrejtése."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "Az ablak eszköztárának megjelenítése/elrejtése."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:6
+msgid "Window height in pixels."
+msgstr "Az ablak magassága képpontban."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:7
+msgid "Window width in pixels."
+msgstr "Az ablak szélessége képpontban."
+
+#: ../emerillon/main.c:43
+#, c-format
+msgid "%s - Version %s\n"
+msgstr "%s - %s verzió\n"
+
+#: ../emerillon/main.c:55
+msgid "Show version information and exit"
+msgstr "Verzióinformációk megjelenítése, majd kilépés"
+
+#: ../emerillon/main.c:61
+msgid "Initial latitude"
+msgstr "Kezdeti földrajzi szélesség"
+
+#: ../emerillon/main.c:62
+msgid "Initial longitude"
+msgstr "Kezdeti földrajzi hosszúság"
+
+#: ../emerillon/main.c:75
+msgid "Incorrect or missing coordinates"
+msgstr "Hibás vagy hiányzó koordináták"
+
+#: ../emerillon/main.c:91
+msgid "- map viewer"
+msgstr "- térkép-megjelenítő"
+
+#: ../emerillon/main.c:96
+msgid "Specifies the default position"
+msgstr "Az alapértelmezett pozíció megadása"
+
+#: ../emerillon/main.c:97
+msgid "Show position options"
+msgstr "Pozíció beállításainak megjelenítése"
+
+#: ../emerillon/main.c:109
+#, c-format
+msgid "Run '%s --help' to see a list of available command line options.\n"
+msgstr ""
+"A parancssori kapcsolók teljes listájáért adja ki az „%s --help” parancsot.\n"
+
+#: ../emerillon/window.c:485
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version.\n"
+msgstr ""
+"Ez a program szabad szoftver, terjesztheti és/vagy módosíthatja a Free "
+"Software Foundation által kiadott GNU General Public License második (vagy "
+"bármely későbbi) változatában foglaltak alapján.\n"
+
+#: ../emerillon/window.c:489
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details.\n"
+msgstr ""
+"A programot abban a reményben terjesztjük, hogy hasznos lesz, de nem "
+"vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program "
+"alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE. További "
+"részletekért tanulmányozza a GNU GPL licencet.\n"
+
+#: ../emerillon/window.c:493
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr ""
+"A programhoz a GNU General Public License egy példánya is jár, ha nem kapta "
+"meg, írjon a Free Software Foundation Inc.-nek. Levélcímük: 51 Franklin St, "
+"Fifth Floor, Boston, MA 02110-1301, USA."
+
+#: ../emerillon/window.c:498
+msgid "translator-credits"
+msgstr "Balló György <ballogy at freestart dot hu>"
+
+#: ../emerillon/window.c:510
+msgid "A map viewer for the GNOME desktop"
+msgstr "Térkép-megjelenítő a GNOME asztali környezethez"
+
+#: ../emerillon/window.c:731
+msgid "_Map"
+msgstr "_Térkép"
+
+#: ../emerillon/window.c:732
+msgid "_Edit"
+msgstr "_Szerkesztés"
+
+#: ../emerillon/window.c:733
+msgid "_View"
+msgstr "_Nézet"
+
+#: ../emerillon/window.c:734
+msgid "_Tools"
+msgstr "_Eszközök"
+
+#: ../emerillon/window.c:735
+msgid "_Help"
+msgstr "_Súgó"
+
+#: ../emerillon/window.c:738
+msgid "Quit the program"
+msgstr "Kilépés a programból"
+
+#: ../emerillon/window.c:741
+msgid "Enlarge the image"
+msgstr "Kép nagyítása"
+
+#: ../emerillon/window.c:744
+msgid "Shrink the image"
+msgstr "Kép kicsinyítése"
+
+#: ../emerillon/window.c:747
+msgid "Edit the preferences"
+msgstr "Beállítások szerkesztése"
+
+#: ../emerillon/window.c:749
+msgid "_Contents"
+msgstr "_Tartalom"
+
+#: ../emerillon/window.c:750
+msgid "Help on this application"
+msgstr "Az alkalmazás súgója"
+
+#: ../emerillon/window.c:753
+msgid "About this application"
+msgstr "Az alkalmazás névjegye"
+
+#: ../emerillon/window.c:758
+msgid "_Toolbar"
+msgstr "_Eszköztár"
+
+#: ../emerillon/window.c:759
+msgid "Show or hide the toolbar in the current window"
+msgstr "Eszköztár megjelenítése vagy rejtése a jelenlegi ablakban"
+
+#: ../emerillon/window.c:761
+msgid "_Statusbar"
+msgstr "Á_llapotsor"
+
+#: ../emerillon/window.c:762
+msgid "Show or hide the statusbar in the current window"
+msgstr "Állapotsor megjelenítése vagy rejtése a jelenlegi ablakban"
+
+#: ../emerillon/window.c:764
+msgid "Side _Pane"
+msgstr "_Oldalsáv"
+
+#: ../emerillon/window.c:765
+msgid "Show or hide the side pane in the current window"
+msgstr "Oldalsó ablaktábla megjelenítése vagy rejtése a jelenlegi ablakban"
+
+#: ../emerillon/window.c:768
+msgid "Enable or disable full screen mode"
+msgstr "Teljes képernyős mód engedélyezése vagy letiltása"
+
+#: ../emerillon/window.c:773
+msgid "_Street"
+msgstr "_Utca"
+
+#: ../emerillon/window.c:774
+msgid "View the street map based on OpenStreetMap"
+msgstr "Az OpenStreetMapon alapuló utcatérkép megjelenítése"
+
+#: ../emerillon/window.c:775
+msgid "_Cycling"
+msgstr "Kerék_pár"
+
+#: ../emerillon/window.c:776
+msgid "View the cycling map based on OpenCycleMap"
+msgstr "Az OpenCycleMapon alapuló kerékpártérkép megjelenítése"
+
+#: ../emerillon/window.c:777
+msgid "_Public Transportation"
+msgstr "_Tömegközlekedés"
+
+#: ../emerillon/window.c:778
+msgid "View the public transportation map based on Öpnvkarte"
+msgstr "Az Öpnvkartén alapuló tömegközlekedési térkép megjelenítése"
+
+#: ../emerillon/window.c:779
+msgid "_Terrain"
+msgstr "_Domborzat"
+
+#: ../emerillon/window.c:780
+msgid "View the terrain map based on mapsforfree.com Relief"
+msgstr "A mapsforfree.com Reliefen alapuló domborzati térkép megjelenítése"
+
+#: ../emerillon/window.c:815
+msgid "In"
+msgstr "Be"
+
+#: ../emerillon/window.c:819
+msgid "Out"
+msgstr "Ki"
+
+#: ../emerillon/preferences.c:118
+msgid "Plugins"
+msgstr "Bővítmények"
+
+#: ../emerillon/preferences.c:137
+msgid "Emerillon Preferences"
+msgstr "Emerillon beállításai"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:1
+msgid "Copy link to Web"
+msgstr "Webre mutató hivatkozás másolása"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:2
+msgid "Provides a link for current view to major online maps"
+msgstr ""
+"A főbb online térképekre mutató hivatkozást biztosít az aktuális nézethez"
+
+#: ../plugins/copy-link/copy-link.c:110
+msgid "Copy to clipboard the link to this web service"
+msgstr "Ezen webes szolgáltatásra mutató hivatkozás vágólapra másolása"
+
+#: ../plugins/copy-link/copy-link.c:157
+msgid "OpenStreetMap"
+msgstr "OpenStreetMap"
+
+#: ../plugins/copy-link/copy-link.c:158
+msgid "Yahoo! Maps"
+msgstr "Yahoo! Maps"
+
+#: ../plugins/copy-link/copy-link.c:159
+msgid "Google Maps"
+msgstr "Google Térkép"
+
+#: ../plugins/copy-link/copy-link.c:175
+msgid "_Copy link to"
+msgstr "_Hivatkozás másolása"
+
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:1
+msgid "Display in the statusbar the coordinates at the center of the map"
+msgstr "Megjeleníti az állapotsoron a térkép közepének koordinátáit"
+
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:2
+msgid "Map Position"
+msgstr "Térkép pozíciója"
+
+#: ../plugins/placemarks/add-dialog.c:117
+msgid "New Placemark"
+msgstr "Új helyjelző"
+
+#: ../plugins/placemarks/add-dialog.c:130
+msgid "Name:"
+msgstr "Név:"
+
+#: ../plugins/placemarks/manage-dialog.c:169
+#, c-format
+msgid ""
+"You are about to remove the %s placemark!\n"
+"Are you sure you want to proceed?"
+msgstr ""
+"A(z) %s helyjelző eltávolítására készül!\n"
+"Biztosan folytatni akarja?"
+
+#: ../plugins/placemarks/manage-dialog.c:203
+msgid "Organize Placemarks"
+msgstr "Helyjelzők rendszerezése"
+
+#: ../plugins/placemarks/manage-dialog.c:235 ../plugins/search/search.c:506
+msgid "Name"
+msgstr "Név"
+
+#: ../plugins/placemarks/manage-dialog.c:254
+msgid "Latitude"
+msgstr "Szélesség"
+
+#: ../plugins/placemarks/manage-dialog.c:262
+msgid "Longitude"
+msgstr "Hosszúság"
+
+#: ../plugins/placemarks/manage-dialog.c:270
+msgid "Zoom"
+msgstr "Nagyítás"
+
+#: ../plugins/placemarks/placemarks.c:138
+msgid "Go to this placemark"
+msgstr "Ugrás erre a helyjelzőre"
+
+#: ../plugins/placemarks/placemarks.c:527
+msgid "_Placemarks"
+msgstr "_Helyjelzők"
+
+#: ../plugins/placemarks/placemarks.c:531
+msgid "Placemark this location"
+msgstr "Helyjelző felvétele ehhez a helyhez"
+
+#: ../plugins/placemarks/placemarks.c:533
+msgid "Add current location to your placemarks"
+msgstr "Jelenlegi hely felvétele a helyjelzők közé"
+
+#: ../plugins/placemarks/placemarks.c:537
+msgid "Organize placemarks..."
+msgstr "Helyjelzők rendezése…"
+
+#: ../plugins/placemarks/placemarks.c:539
+msgid "Edit and delete existing placemarks"
+msgstr "Meglévő helyjelzők szerkesztése és törlése"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
+msgid "Placemarks"
+msgstr "Helyjelzők"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:2
+msgid "Remembers your favorite view points"
+msgstr "Megjegyzi a kedvenc megtekintési pontjait"
+
+#: ../plugins/search/search.c:109 ../plugins/search/search.c:110
+msgid "No result found"
+msgstr "Nincs találat"
+
+#. Translators: In this case "No" means "number".
+#: ../plugins/search/search.c:497
+msgid "No"
+msgstr "Sorszám"
+
+#: ../plugins/search/search.c:516
+msgid "Search results"
+msgstr "Találatok"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:1
+msgid "Allows searching GeoNames database"
+msgstr "Lehetővé teszi a keresést a GeoNames adatbázisban"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:2
+msgid "Search"
+msgstr "Keresés"
