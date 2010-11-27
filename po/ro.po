@@ -1,0 +1,395 @@
+# Romanian translation for emerillon.
+# Copyright (C) 2010 emerillon's COPYRIGHT HOLDER
+# This file is distributed under the same license as the emerillon package.
+# Andu Morie <andu.qq@gmail.com>, 2010.
+# Morie Daniel Alexandru <andu.qq@gmail.com>, 2010.
+# Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: emerillon master\n"
+"Report-Msgid-Bugs-To: "
+"http://bugzilla.gnome.org/enter_bug.cgi?product=emerillon&component=General\n"
+"POT-Creation-Date: 2010-11-14 09:20+0000\n"
+"PO-Revision-Date: 2010-11-27 17:04+0300\n"
+"Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
+"Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2);;\n"
+"X-Generator: Virtaal 0.6.1\n"
+
+#: ../data/emerillon.desktop.in.in.h:1
+msgid "Browse maps"
+msgstr "Navigare hărți"
+
+#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:505
+msgid "Emerillon"
+msgstr "Emerillon"
+
+#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:147
+msgid "Emerillon Map Viewer"
+msgstr "Vizualizatorul de hărți Emerillon"
+
+#: ../data/emerillon.desktop.in.in.h:4
+msgid "Map Viewer"
+msgstr "Vizualizator de hărți"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:1
+msgid "Active plugins"
+msgstr "Module active"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:2
+msgid "List of active plugins."
+msgstr "Lista modulelor active."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "Arată/ascunde panoul lateral."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "Arată/ascunde bara de stare."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "Arată/ascunde bara de unelte."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:6
+msgid "Window height in pixels."
+msgstr "Înălțimea ferestrei în pixeli."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:7
+msgid "Window width in pixels."
+msgstr "Lățimea ferestrei în pixeli."
+
+#: ../emerillon/main.c:43
+#, c-format
+msgid "%s - Version %s\n"
+msgstr "%s - Versiunea %s\n"
+
+#: ../emerillon/main.c:55
+msgid "Show version information and exit"
+msgstr "Arată informații despre versiune și iese"
+
+#: ../emerillon/main.c:61
+msgid "Initial latitude"
+msgstr "Latitudine inițială"
+
+#: ../emerillon/main.c:62
+msgid "Initial longitude"
+msgstr "Longitudine inițială"
+
+#: ../emerillon/main.c:75
+msgid "Incorrect or missing coordinates"
+msgstr "Coordonate incorecte sau lipsă"
+
+#: ../emerillon/main.c:91
+msgid "- map viewer"
+msgstr "- vizualizator de hărți"
+
+#: ../emerillon/main.c:96
+msgid "Specifies the default position"
+msgstr "Specifică poziția implicită"
+
+#: ../emerillon/main.c:97
+msgid "Show position options"
+msgstr "Arată opțiunile pentru poziție"
+
+#: ../emerillon/main.c:109
+#, c-format
+msgid "Run '%s --help' to see a list of available command line options.\n"
+msgstr "Execută „%s --help” pentru a vizualiza o listă de opțiuni disponibile.\n"
+
+#: ../emerillon/window.c:485
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version.\n"
+msgstr "Acest program este software liber; îl puteți redistribui și/sau modifica în "
+"conformitate cu termenii GNU General Public License așa cum a fost publicată "
+"de către Free Software Foundation; fie versiunea 2 a Licenței, sau (la "
+"latitudinea dumneavoastră) orice versiune ulterioară.\n"
+
+#: ../emerillon/window.c:489
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details.\n"
+msgstr "Acest program este distribuit în speranța că va fi folositor, dar FĂRĂ NICI "
+"O GARANȚIE, chiar și fără garanția implicată de VANDABILITATE sau POTRIVIRE "
+"PENTRU UN SCOP PARTICULAR. Citiți GNU General Public License pentru mai "
+"multe detalii.\n"
+
+#: ../emerillon/window.c:493
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr ""
+"Trebuie să fi primit o copie a GNU General Public License împreună cu acest "
+"program; dacă nu, scrieți la Free Software Foundation, Inc., 59 Temple Place "
+"- Suite 330, Boston, MA 02111-1307, USA."
+
+#: ../emerillon/window.c:498
+msgid "translator-credits"
+msgstr "Morie Daniel Alexandru"
+
+#: ../emerillon/window.c:510
+msgid "A map viewer for the GNOME desktop"
+msgstr "Un vizualizator de hărți pentru desktopul GNOME"
+
+#: ../emerillon/window.c:731
+msgid "_Map"
+msgstr "_Hartă"
+
+#: ../emerillon/window.c:732
+msgid "_Edit"
+msgstr "_Editare"
+
+#: ../emerillon/window.c:733
+msgid "_View"
+msgstr "_Vizualizare"
+
+#: ../emerillon/window.c:734
+msgid "_Tools"
+msgstr "Unel_te"
+
+#: ../emerillon/window.c:735
+msgid "_Help"
+msgstr "_Ajutor"
+
+#: ../emerillon/window.c:738
+msgid "Quit the program"
+msgstr "Închide programul"
+
+#: ../emerillon/window.c:741
+msgid "Enlarge the image"
+msgstr "Mărește imaginea"
+
+#: ../emerillon/window.c:744
+msgid "Shrink the image"
+msgstr "Micșorează imaginea"
+
+#: ../emerillon/window.c:747
+msgid "Edit the preferences"
+msgstr "Editează preferințele"
+
+#: ../emerillon/window.c:749
+msgid "_Contents"
+msgstr "_Conținut"
+
+#: ../emerillon/window.c:750
+msgid "Help on this application"
+msgstr "Ajutor pentru această aplicație"
+
+#: ../emerillon/window.c:753
+msgid "About this application"
+msgstr "Despre această aplicație"
+
+#: ../emerillon/window.c:758
+msgid "_Toolbar"
+msgstr "Bară de unel_te"
+
+#: ../emerillon/window.c:759
+msgid "Show or hide the toolbar in the current window"
+msgstr "Arată sau ascunde bara de unelte în fereastra curentă"
+
+#: ../emerillon/window.c:761
+msgid "_Statusbar"
+msgstr "Bară de _stare"
+
+#: ../emerillon/window.c:762
+msgid "Show or hide the statusbar in the current window"
+msgstr "Arată sau ascunde bara de stare în fereastra curentă"
+
+#: ../emerillon/window.c:764
+msgid "Side _Pane"
+msgstr "_Panou Lateral"
+
+#: ../emerillon/window.c:765
+msgid "Show or hide the side pane in the current window"
+msgstr "Arată sau ascunde panoul lateral în fereastra curentă"
+
+#: ../emerillon/window.c:768
+msgid "Enable or disable full screen mode"
+msgstr "Activează sau dezactivează modul ecran complet"
+
+#: ../emerillon/window.c:773
+msgid "_Street"
+msgstr "_Stradă"
+
+#: ../emerillon/window.c:774
+msgid "View the street map based on OpenStreetMap"
+msgstr "Vizualizează harta străzii bazată pe OpenStreetMap"
+
+#: ../emerillon/window.c:775
+msgid "_Cycling"
+msgstr "_Ciclism"
+
+#: ../emerillon/window.c:776
+msgid "View the cycling map based on OpenCycleMap"
+msgstr "Vizualizează harta de ciclism bazată pe OpenCycleMap"
+
+#: ../emerillon/window.c:777
+msgid "_Public Transportation"
+msgstr "Trans_port în comun"
+
+#: ../emerillon/window.c:778
+msgid "View the public transportation map based on Öpnvkarte"
+msgstr "Vizualizează harta de transport în comun bazată pe Öpnvkarte"
+
+#: ../emerillon/window.c:779
+msgid "_Terrain"
+msgstr "_Relief"
+
+#: ../emerillon/window.c:780
+msgid "View the terrain map based on mapsforfree.com Relief"
+msgstr "Vizualizează harta fizică bazată pe relieful de la mapsforfree.com"
+
+#: ../emerillon/window.c:815
+msgid "In"
+msgstr "Mărește"
+
+#: ../emerillon/window.c:819
+msgid "Out"
+msgstr "Micșorează"
+
+#: ../emerillon/preferences.c:118
+msgid "Plugins"
+msgstr "Module"
+
+#: ../emerillon/preferences.c:137
+msgid "Emerillon Preferences"
+msgstr "Preferințe Emerillon"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:1
+msgid "Copy link to Web"
+msgstr "Copiază legătura pe Web"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:2
+msgid "Provides a link for current view to major online maps"
+msgstr ""
+"Furnizează o legătură la hărți online importante pentru vizualizarea curentă"
+
+#: ../plugins/copy-link/copy-link.c:110
+msgid "Copy to clipboard the link to this web service"
+msgstr "Copiază în clipboard legătura la acest serviciu web"
+
+#: ../plugins/copy-link/copy-link.c:157
+msgid "OpenStreetMap"
+msgstr "OpenStreetMap"
+
+#: ../plugins/copy-link/copy-link.c:158
+msgid "Yahoo! Maps"
+msgstr "Hărțile Yahoo!"
+
+#: ../plugins/copy-link/copy-link.c:159
+msgid "Google Maps"
+msgstr "Hărțile Google"
+
+#: ../plugins/copy-link/copy-link.c:175
+msgid "_Copy link to"
+msgstr "_Copiază legătura la"
+
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:1
+msgid "Display in the statusbar the coordinates at the center of the map"
+msgstr "Afișează în bara de stare coordonatele din centrul hărții"
+
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:2
+msgid "Map Position"
+msgstr "Poziția pe hartă"
+
+#: ../plugins/placemarks/add-dialog.c:117
+msgid "New Placemark"
+msgstr "Marcator de locație nou"
+
+#: ../plugins/placemarks/add-dialog.c:130
+msgid "Name:"
+msgstr "Nume:"
+
+#: ../plugins/placemarks/manage-dialog.c:169
+#, c-format
+msgid ""
+"You are about to remove the %s placemark!\n"
+"Are you sure you want to proceed?"
+msgstr ""
+"Sunteți pe cale să ștergeți marcatorul de locație %s!\n"
+"Sigur doriți să continuați?"
+
+#: ../plugins/placemarks/manage-dialog.c:203
+msgid "Organize Placemarks"
+msgstr "Organizează marcatorii de locație"
+
+#: ../plugins/placemarks/manage-dialog.c:235 ../plugins/search/search.c:506
+msgid "Name"
+msgstr "Nume"
+
+#: ../plugins/placemarks/manage-dialog.c:254
+msgid "Latitude"
+msgstr "Latitudine"
+
+#: ../plugins/placemarks/manage-dialog.c:262
+msgid "Longitude"
+msgstr "Longitudine"
+
+#: ../plugins/placemarks/manage-dialog.c:270
+msgid "Zoom"
+msgstr "Scalare"
+
+#: ../plugins/placemarks/placemarks.c:138
+msgid "Go to this placemark"
+msgstr "Navighează la acest marcator de locație"
+
+#: ../plugins/placemarks/placemarks.c:527
+msgid "_Placemarks"
+msgstr "_Marcatori de locație"
+
+#: ../plugins/placemarks/placemarks.c:531
+msgid "Placemark this location"
+msgstr "Marchează această locație"
+
+#: ../plugins/placemarks/placemarks.c:533
+msgid "Add current location to your placemarks"
+msgstr "Adaugă locația curentă la marcatorii de locație"
+
+#: ../plugins/placemarks/placemarks.c:537
+msgid "Organize placemarks..."
+msgstr "Organizează marcatorii de locație..."
+
+#: ../plugins/placemarks/placemarks.c:539
+msgid "Edit and delete existing placemarks"
+msgstr "Editează și șterge marcatorii de locație existenți"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
+msgid "Placemarks"
+msgstr "Marcatori de locație"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:2
+msgid "Remembers your favorite view points"
+msgstr "Reține punctele de vedere preferate"
+
+#: ../plugins/search/search.c:109 ../plugins/search/search.c:110
+msgid "No result found"
+msgstr "Niciun rezultat găsit"
+
+#. Translators: In this case "No" means "number".
+#: ../plugins/search/search.c:497
+msgid "No"
+msgstr "Nr"
+
+#: ../plugins/search/search.c:516
+msgid "Search results"
+msgstr "Rezultatele căutării"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:1
+msgid "Allows searching GeoNames database"
+msgstr "Permite căutarea în baza de date GeoNames"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:2
+msgid "Search"
+msgstr "Căutare"
