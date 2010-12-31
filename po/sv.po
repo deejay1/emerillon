@@ -1,16 +1,17 @@
 # Swedish translation for Emerillon.
-# Copyright (C) 2009 Free Software Foundation, Inc.
+# Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the emerillon package.
-# Daniel Nylander <po@danielnylander.se>, 2009.
+# Daniel Nylander <po@danielnylander.se>, 2009, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: emerillon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 00:13+0200\n"
-"PO-Revision-Date: 2009-11-05 07:43+0100\n"
+"POT-Creation-Date: 2010-12-31 11:52+0100\n"
+"PO-Revision-Date: 2010-12-31 11:54+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,11 +20,13 @@ msgstr ""
 msgid "Browse maps"
 msgstr "Bläddra i kartor"
 
-#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:505
+#: ../data/emerillon.desktop.in.in.h:2
+#: ../emerillon/window.c:505
 msgid "Emerillon"
 msgstr "Emerillon"
 
-#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:147
+#: ../data/emerillon.desktop.in.in.h:3
+#: ../emerillon/main.c:147
 msgid "Emerillon Map Viewer"
 msgstr "Kartvisaren Emerillon"
 
@@ -53,85 +56,61 @@ msgstr "Visa/dölj fönstrets verktygsrad."
 
 #: ../data/org.gnome.emerillon.gschema.xml.in.h:6
 msgid "Window height in pixels."
-msgstr ""
+msgstr "Fönsterhöjd i bildpunkter."
 
 #: ../data/org.gnome.emerillon.gschema.xml.in.h:7
 msgid "Window width in pixels."
-msgstr ""
+msgstr "Fönsterbredd i bildpunkter."
 
 #: ../emerillon/main.c:43
 #, c-format
 msgid "%s - Version %s\n"
-msgstr ""
+msgstr "%s - version %s\n"
 
 #: ../emerillon/main.c:55
 msgid "Show version information and exit"
-msgstr ""
+msgstr "Visa versionsinformation och avsluta"
 
 #: ../emerillon/main.c:61
 msgid "Initial latitude"
-msgstr ""
+msgstr "Initial latitud"
 
 #: ../emerillon/main.c:62
-#, fuzzy
 msgid "Initial longitude"
-msgstr "Longitud"
+msgstr "Initial longitud"
 
 #: ../emerillon/main.c:75
 msgid "Incorrect or missing coordinates"
-msgstr ""
+msgstr "Felaktiga eller saknade koordinationer"
 
 #: ../emerillon/main.c:91
-#, fuzzy
 msgid "- map viewer"
-msgstr "Kartvisare"
+msgstr "- kartvisare"
 
 #: ../emerillon/main.c:96
 msgid "Specifies the default position"
-msgstr ""
+msgstr "Anger standardpositionen"
 
 #: ../emerillon/main.c:97
 msgid "Show position options"
-msgstr ""
+msgstr "Visa positionsflaggor"
 
 #: ../emerillon/main.c:109
 #, c-format
 msgid "Run '%s --help' to see a list of available command line options.\n"
-msgstr ""
+msgstr "Kör \"%s --help\" för en komplett lista över tillgängliga kommandoradsflaggor.\n"
 
 #: ../emerillon/window.c:485
-msgid ""
-"This program is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) "
-"any later version.\n"
-msgstr ""
-"Detta program är fri programvara. Du kan distribuera det och/eller modifiera "
-"det under villkoren i GNU General Public License, publicerad av Free "
-"Software Foundation, antingen version 2 eller (om du så vill) någon senare "
-"version.\n"
+msgid "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.\n"
+msgstr "Detta program är fri programvara. Du kan distribuera det och/eller modifiera det under villkoren i GNU General Public License, publicerad av Free Software Foundation, antingen version 2 eller (om du så vill) någon senare version.\n"
 
 #: ../emerillon/window.c:489
-msgid ""
-"This program is distributed in the hope that it will be useful, but WITHOUT "
-"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
-"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
-"more details.\n"
-msgstr ""
-"Detta program distribueras i hopp om att det ska vara användbart, men UTAN "
-"NÅGON SOM HELST GARANTI, även utan underförstådd garanti om SÄLJBARHET eller "
-"LÄMPLIGHET FÖR NÅGOT SPECIELLT ÄNDAMÅL. Se GNU General Public License för "
-"ytterligare information.\n"
+msgid "This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n"
+msgstr "Detta program distribueras i hopp om att det ska vara användbart, men UTAN NÅGON SOM HELST GARANTI, även utan underförstådd garanti om SÄLJBARHET eller LÄMPLIGHET FÖR NÅGOT SPECIELLT ÄNDAMÅL. Se GNU General Public License för ytterligare information.\n"
 
 #: ../emerillon/window.c:493
-msgid ""
-"You should have received a copy of the GNU General Public License along with "
-"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
-"Place - Suite 330, Boston, MA 02111-1307, USA."
-msgstr ""
-"Du bör ha fått en kopia av GNU General Public License tillsammans med "
-"Brasero. Om inte, skriv till Free Software Foundation, Inc., 59 Temple Place "
-"- Suite 330, Boston, MA 02111-1307, USA."
+msgid "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr "Du bör ha fått en kopia av GNU General Public License tillsammans med Brasero. Om inte, skriv till Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
 
 #: ../emerillon/window.c:498
 msgid "translator-credits"
@@ -275,8 +254,7 @@ msgstr "Kopiera länk till webb"
 
 #: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:2
 msgid "Provides a link for current view to major online maps"
-msgstr ""
-"Tillhandahåller en länk för aktuell vy till större karttjänster på nätet"
+msgstr "Tillhandahåller en länk för aktuell vy till större karttjänster på nätet"
 
 #: ../plugins/copy-link/copy-link.c:110
 msgid "Copy to clipboard the link to this web service"
@@ -327,7 +305,8 @@ msgstr ""
 msgid "Organize Placemarks"
 msgstr "Organisera intressepunkter"
 
-#: ../plugins/placemarks/manage-dialog.c:235 ../plugins/search/search.c:506
+#: ../plugins/placemarks/manage-dialog.c:235
+#: ../plugins/search/search.c:506
 msgid "Name"
 msgstr "Namn"
 
@@ -375,7 +354,8 @@ msgstr "Intressepunkter"
 msgid "Remembers your favorite view points"
 msgstr "Kommer ihåg dina favoritpunkter"
 
-#: ../plugins/search/search.c:109 ../plugins/search/search.c:110
+#: ../plugins/search/search.c:109
+#: ../plugins/search/search.c:110
 msgid "No result found"
 msgstr "Inga resultat hittades"
 
@@ -398,15 +378,12 @@ msgstr "Sök"
 
 #~ msgid "_Quit"
 #~ msgstr "A_vsluta"
-
 #~ msgid "_Zoom In"
 #~ msgstr "_Zooma in"
-
 #~ msgid "Zoom _Out"
 #~ msgstr "Zooma _ut"
-
 #~ msgid "_Preferences"
 #~ msgstr "_Inställningar"
-
 #~ msgid "_About"
 #~ msgstr "_Om"
+
