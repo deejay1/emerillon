@@ -6,7 +6,17 @@
 
   <name xml:lang="en">Emerillon</name>
   <shortdesc xml:lang="en">A map browser</shortdesc>
+  <description>Emerillon is a map viewer. Aiming at simple user interface,
+Emerillon is a powerful, extensible application. It is pronounced Ey-may-ree-yon.
+It features OpenStreetMap based maps: the street map, the cycling map
+and the transportation map.
+Emerillon is named after the Émérillon, one of the three boats that visited
+New France under Jacques Cartier's command in 1535.
+Émérillon is also French for Merlin Falcons.</description>
+
   <homepage rdf:resource="http://projects.gnome.org/emerillon" />
+  <download-page rdf:resource="http://download.gnome.org/sources/emerillon/" />
+  <bug-database rdf:resource="https://bugzilla.gnome.org/browse.cgi?product=emerillon" />
 
   <maintainer>
     <foaf:Person>
