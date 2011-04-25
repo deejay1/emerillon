@@ -3,20 +3,22 @@
 # This file is distributed under the same license as the emerillon package.
 #
 # Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2009.
+# Rūdofls Mazurs <rudolfs.mazurs@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: emerillon master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-28 00:13+0200\n"
-"PO-Revision-Date: 2009-11-18 15:08+0200\n"
-"Last-Translator: \n"
-"Language-Team: American English <kde-i18n-doc@kde.org>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
+"cgi?product=emerillon&component=General\n"
+"POT-Creation-Date: 2010-07-27 22:19+0000\n"
+"PO-Revision-Date: 2011-04-19 00:00+0300\n"
+"Last-Translator: Rūdofls Mazurs <rudolfs.mazurs@gmail.com>\n"
+"Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 
 #: ../data/emerillon.desktop.in.in.h:1
 msgid "Browse maps"
@@ -56,51 +58,50 @@ msgstr "Rādīt/slēpt loga rīku joslu."
 
 #: ../data/org.gnome.emerillon.gschema.xml.in.h:6
 msgid "Window height in pixels."
-msgstr ""
+msgstr "Loga augstums pikseļos."
 
 #: ../data/org.gnome.emerillon.gschema.xml.in.h:7
 msgid "Window width in pixels."
-msgstr ""
+msgstr "Loga platums pikseļos."
 
 #: ../emerillon/main.c:43
 #, c-format
 msgid "%s - Version %s\n"
-msgstr ""
+msgstr "%s - versija %s\n"
 
 #: ../emerillon/main.c:55
 msgid "Show version information and exit"
-msgstr ""
+msgstr "Skatīt versijas informāciju un iziet"
 
 #: ../emerillon/main.c:61
 msgid "Initial latitude"
-msgstr ""
+msgstr "Sākotnējais platums"
 
 #: ../emerillon/main.c:62
-#, fuzzy
 msgid "Initial longitude"
-msgstr "Garums"
+msgstr "Sākotnējais garums"
 
 #: ../emerillon/main.c:75
 msgid "Incorrect or missing coordinates"
-msgstr ""
+msgstr "Nepareizas vai neesošas koordinātas"
 
 #: ../emerillon/main.c:91
-#, fuzzy
 msgid "- map viewer"
-msgstr "Karšu skatītājs"
+msgstr "- karšu skatītājs"
 
 #: ../emerillon/main.c:96
 msgid "Specifies the default position"
-msgstr ""
+msgstr "Norāda noklusēto pozīciju"
 
 #: ../emerillon/main.c:97
 msgid "Show position options"
-msgstr ""
+msgstr "Rādīt pozīcijas opcijas"
 
 #: ../emerillon/main.c:109
 #, c-format
 msgid "Run '%s --help' to see a list of available command line options.\n"
 msgstr ""
+"Palaidiet '%s --help' lai redzētu pieejamo komandrindas iespēju sarakstu.\n"
 
 #: ../emerillon/window.c:485
 msgid ""
@@ -109,6 +110,10 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version.\n"
 msgstr ""
+"Šī programma ir brīva programmatūra; jūs varat to izplatīt tālāk un/vai "
+"izmainīt saskaņā ar GNU vispārējās publiskās licences noteikumiem, ko "
+"publicējis Brīvas programmatūras fonds; vai nu pēc licences 2. versijas, vai "
+"arī (pēc jūsu izvēles) jebkuras vēlākās versijas.\n"
 
 #: ../emerillon/window.c:489
 msgid ""
@@ -117,6 +122,10 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
 "more details.\n"
 msgstr ""
+"Šī programma tiek izplatīta cerībā, ka tā būs noderīga, taču BEZ JEBKĀDĀM "
+"GARANTIJĀM; pat bez šķietamām KOMERCIĀLAS VĒRTĪBAS vai PIEMĒROTĪBAS "
+"KONKRĒTIEM NOLŪKIEM garantijām. Sīkāku informāciju meklējiet GNU  "
+"vispārējā publiskajā licencē.\n"
 
 #: ../emerillon/window.c:493
 msgid ""
@@ -124,10 +133,15 @@ msgid ""
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
 "Place - Suite 330, Boston, MA 02111-1307, USA."
 msgstr ""
+"GNU Vispārējās Publiskās Licence ir pieejama kopā ar šīs programmatūra "
+"instalāciju. Ja tā jums nav pieejama, jūs to varat iegūt no Free Software "
+"Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA."
 
 #: ../emerillon/window.c:498
 msgid "translator-credits"
-msgstr "Pēteris Krišjānis <pecisk@gmail.com>"
+msgstr ""
+"Pēteris Krišjānis <pecisk@gmail.com>\n"
+"Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>"
 
 #: ../emerillon/window.c:510
 msgid "A map viewer for the GNOME desktop"
@@ -382,3 +396,4 @@ msgstr "Atļaut meklēt GeoNames datubāzē"
 #: ../plugins/search/search.emerillon-plugin.in.h:2
 msgid "Search"
 msgstr "Meklēt"
+
