@@ -1,0 +1,280 @@
+# Ukrainian translation for emerillon.
+# Copyright (C) 2011 emerillon's COPYRIGHT HOLDER
+# This file is distributed under the same license as the emerillon package.
+# Sergiy Gavrylov <sergiovana@bigmir.net>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: emerillon master\n"
+"POT-Creation-Date: 2011-04-03 14:33+0000\n"
+"PO-Revision-Date: 2011-04-14 23:28+0300\n"
+"Last-Translator: Sergiy Gavrylov <sergiovana@bigmir.net>\n"
+"Language-Team: Ukrainian <uk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: C/usage.page:7(desc)
+msgid "How to use <app>Emerillon</app>."
+msgstr "Як користуватись <app>Emerillon</app>."
+
+#: C/usage.page:10(name) C/plugins-placemarks.page:10(name)
+#: C/plugins.page:10(name) C/plugins-mapposition.page:10(name)
+#: C/plugins-copylink.page:10(name) C/intro.page:10(name) C/index.page:9(name)
+#: C/about.page:13(name)
+msgid "Mario Blättermann"
+msgstr "Mario Blättermann"
+
+#: C/usage.page:11(email) C/plugins-placemarks.page:11(email)
+#: C/plugins.page:11(email) C/plugins-mapposition.page:11(email)
+#: C/plugins-copylink.page:11(email) C/intro.page:11(email)
+#: C/index.page:10(email) C/about.page:14(email)
+msgid "mariobl@gnome.org"
+msgstr "mariobl@gnome.org"
+
+#: C/usage.page:19(p) C/plugins-placemarks.page:19(p) C/plugins.page:19(p)
+#: C/plugins-mapposition.page:19(p) C/plugins-copylink.page:19(p)
+#: C/intro.page:19(p) C/index.page:18(p) C/about.page:17(p)
+msgid "Creative Commons Share Alike 3.0"
+msgstr "Creative Commons Share Alike 3.0"
+
+#: C/usage.page:24(title)
+msgid "Usage"
+msgstr "Використання"
+
+#: C/plugins-placemarks.page:7(desc)
+msgid "Save places and zoom levels."
+msgstr "Збереження місць та рівнів масштабування."
+
+#: C/plugins-placemarks.page:24(title)
+msgid "Placemarks"
+msgstr "Мітки"
+
+#: C/plugins.page:7(desc)
+msgid "Use plugins to extend the functionality."
+msgstr "Використання модулів для розширення функційних можливостей."
+
+#: C/plugins.page:24(title)
+msgid "Plugins"
+msgstr "Додатки"
+
+#: C/plugins.page:26(p)
+msgid ""
+"Plugins add some more features to <app>Emerillon</app> and can extend its "
+"functionality. Some plugins are already shipped with <app>Emerillon</app> by "
+"default, and some more you can get from the emerillon-plugins package of "
+"your distribution."
+msgstr ""
+"Додатки надають більше можливостей для <app>Emerillon</app> та розширюють її "
+"функціональність. Кілька додатків постачаються разом з <app>Emerillon</app> "
+"як типові, а інші ви можете знайти в пакунку emerillon-plugins вашого "
+"дистрибутива."
+
+#: C/plugins.page:34(title)
+msgid "Plugins shipped with <app>Emerillon</app>"
+msgstr "Додатки, що постачаються з <app>Emerillon</app>"
+
+#: C/plugins.page:38(title)
+msgid "External Plugins"
+msgstr "Зовнішні додатки"
+
+#: C/plugins-mapposition.page:7(desc)
+msgid "Displays the position at the middle of the map in the statusbar."
+msgstr "Показує в смужці стану координати середини поточної карти."
+
+#: C/plugins-mapposition.page:24(title)
+msgid "Map Position"
+msgstr "Місце на карті"
+
+#: C/plugins-copylink.page:7(desc)
+msgid "Copy a link to online map services to the current position."
+msgstr "Копіює посилання поточного місця до інтернет-карти."
+
+#: C/plugins-copylink.page:24(title)
+msgid "Copy Link"
+msgstr "Копіювання посилання"
+
+#: C/license.page:8(desc)
+msgid "Legal information."
+msgstr "Юридична інформація."
+
+#: C/license.page:11(title)
+msgid "License"
+msgstr "Ліцензія"
+
+#: C/license.page:12(p)
+msgid ""
+"This work is distributed under a CreativeCommons Attribution-Share Alike 3.0 "
+"Unported license."
+msgstr ""
+"Ця робота розповсюджується за умовами ліцензії «CreativeCommons Attribution-"
+"Share Alike 3.0 Unported»."
+
+#: C/license.page:20(p)
+msgid "You are free:"
+msgstr "Ви можете вільно:"
+
+#: C/license.page:25(em)
+msgid "To share"
+msgstr "Спільно використовувати"
+
+#: C/license.page:26(p)
+msgid "To copy, distribute and transmit the work."
+msgstr "Копіювати, розповсюджувати та передавати цю програму."
+
+#: C/license.page:29(em)
+msgid "To remix"
+msgstr "Вносити зміни"
+
+#: C/license.page:30(p)
+msgid "To adapt the work."
+msgstr "Адаптувати цю програму."
+
+#: C/license.page:33(p)
+msgid "Under the following conditions:"
+msgstr "За такими умовами:"
+
+#: C/license.page:38(em)
+msgid "Attribution"
+msgstr "Згадування автора"
+
+#: C/license.page:39(p)
+msgid ""
+"You must attribute the work in the manner specified by the author or "
+"licensor (but not in any way that suggests that they endorse you or your use "
+"of the work)."
+msgstr ""
+"Вам потрібно вказати автора програми у спосіб вказаний автором або "
+"ліцензіаром (але не в спосіб, який передбачає, що вони підтримують вас або "
+"ваше використання роботи)."
+
+#: C/license.page:46(em)
+msgid "Share Alike"
+msgstr "Share Alike"
+
+#: C/license.page:47(p)
+msgid ""
+"If you alter, transform, or build upon this work, you may distribute the "
+"resulting work only under the same, similar or a compatible license."
+msgstr ""
+"Якщо ви змінюєте, перетворюєте або надбудовуєте цю роботу, отриманий "
+"результат можете поширювати лише за цією самою, схожою або сумісною "
+"ліцензією."
+
+#: C/license.page:53(p)
+msgid ""
+"For the full text of the license, see the <link href=\"http://"
+"creativecommons.org/licenses/by-sa/3.0/legalcode\">CreativeCommons website</"
+"link>, or read the full <link href=\"http://creativecommons.org/licenses/by-"
+"sa/3.0/\">Commons Deed</link>."
+msgstr ""
+"Повний текст ліцензії можете побачити на сайті <link href=\"http://"
+"creativecommons.org/licenses/by-sa/3.0/legalcode\">CreativeCommons</link>, "
+"читайте повну ліцензію <link href=\"http://creativecommons.org/licenses/by-"
+"sa/3.0/\">Commons Deed</link>."
+
+#: C/intro.page:7(desc)
+msgid "A brief description of what <app>Emerillon</app> aims to be."
+msgstr "Стислий опис цілей <app>Emerillon</app>."
+
+#: C/intro.page:24(title)
+msgid "Introduction"
+msgstr "Передмова"
+
+#: C/intro.page:26(p)
+msgid ""
+"Emerillon is a map viewer. Aiming at simple user interface, Emerillon is a "
+"powerful, extensible application. It is pronounced <em>Ey-may-ree-yon</em>."
+msgstr ""
+"Emerillon — це переглядач мап. Повнофункціональна, розширювана програма, що "
+"надає вам простий інтерфейс користувача. Її назва вимовляється як <em>Е-ме-"
+"рі-йон</em>."
+
+#: C/intro.page:30(p)
+msgid ""
+"It features <link href=\"http://www.openstreetmap.org/\">OpenStreetMap</"
+"link> based maps: the street map, the cycling map and the transportation "
+"map. Use it to:"
+msgstr ""
+"Її можливості базуються на картах <link href=\"http://www.openstreetmap.org/"
+"\">OpenStreetMap</link>: картах вулиць, велодоріжок та схем громадського "
+"транспорту. Користуйтесь нею для:"
+
+#: C/intro.page:36(p)
+msgid "Browse maps,"
+msgstr "Перегляду карт;"
+
+#: C/intro.page:39(p)
+msgid "Search the map for places,"
+msgstr "Пошуку місць на мапі;"
+
+#: C/intro.page:42(p)
+msgid "Placemark places for later quick access."
+msgstr "Позначення місць для швидкого доступу згодом."
+
+#: C/intro.page:45(p)
+msgid ""
+"Emerillon is named after the Émérillon, one of the three boats that visited "
+"New France under <link href=\"http://en.wikipedia.org/wiki/Jacques_Cartier"
+"\">Jacques Cartier's</link> command in 1535. Émérillon is also French for "
+"<link href=\"http://en.wikipedia.org/wiki/Merlin_(bird)\">Merlin Falcons</"
+"link>."
+msgstr ""
+"Програма Emerillon названа в честь човна Émérillon, одного з трьох човнів, "
+"що відвідали Нову Францію під командуванням <link href=\"http://en.wikipedia."
+"org/wiki/Jacques_Cartier\">Жака Картьє</link> в 1535 році. Так само, "
+"французькою називається птах — <link href=\"http://en.wikipedia.org/wiki/"
+"Merlin_(bird)\">Підсоколик малий</link>."
+
+#: C/index.page:22(title)
+msgid "Emerillon"
+msgstr "Emerillon"
+
+#: C/about.page:9(desc)
+msgid "Information about this application."
+msgstr "Інформацію про цю програму."
+
+#: C/about.page:21(title)
+msgid "About <app>Emerillon</app>"
+msgstr "Про <app>Emerillon</app>"
+
+#: C/about.page:23(p)
+msgid ""
+"Currently, certain people have contributed to <app>Emerillon</app>. For a "
+"complete list, see the <link href=\"http://git.gnome.org/browse/emerillon/"
+"tree/AUTHORS\">authors list</link>."
+msgstr ""
+"На цей час, кілька людей беруть участь в розробленні <app>Emerillon</app>. "
+"Весь список можна побачити за адресою <link href=\"http://git.gnome.org/"
+"browse/emerillon/tree/AUTHORS\">список авторів</link>."
+
+#: C/about.page:27(p)
+msgid ""
+"To report a bug or make a suggestion regarding this application or this "
+"manual, write a bug report to <link href=\"https://bugzilla.gnome.org/browse."
+"cgi?product=emerillon\">GNOME Bugzilla</link>."
+msgstr ""
+"Повідомити про ваду або внести пропозицію щодо програми або цього "
+"посібника, можете за адресою <link href=\"https://bugzilla.gnome.org/browse."
+"cgi?product=emerillon\">GNOME Bugzilla</link>."
+
+#: C/about.page:33(p)
+msgid ""
+"This program is distributed under the terms of the GNU General Public "
+"license as published by the Free Software Foundation; either version 2 of "
+"the License, or (at your option) any later version. A copy of this license "
+"can be found at this <link href=\"ghelp:gpl\">link</link>, or in the file "
+"COPYING included with the source code of this program."
+msgstr ""
+"Ця програма розповсюджується за умовами ліцензії GNU General Public, як "
+"опубліковано Free Software Foundation; або версії 2 цієї ліцензії, або (на "
+"ваш розсуд) будь-якої пізнішої версії. Копію цієї ліцензії можна знайти за "
+"цим <link href=\"ghelp:gpl\">посиланням</link>, або у файлі COPYING, який "
+"включений в джерельний код програми."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: C/index.page:0(None)
+msgid "translator-credits"
+msgstr "Sergiy Gavrylov <sergiovana@bigmir.net>, 2011."
