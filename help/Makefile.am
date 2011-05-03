@@ -15,6 +15,6 @@ DOC_PAGES = about.page	\
 	plugins-placemarks.page	\
 	usage.page
 
-DOC_LINGUAS = da de es sl
+DOC_LINGUAS = da de es sl uk
 
 dist-hook: doc-dist-hook
