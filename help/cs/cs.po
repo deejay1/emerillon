@@ -1,0 +1,279 @@
+# Czech translation for emerillon.
+# Copyright (C) 2011 emerillon's COPYRIGHT HOLDER
+# This file is distributed under the same license as the emerillon package.
+#
+# Marek Černocký <marek@manet.cz>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: emerillon master\n"
+"POT-Creation-Date: 2011-01-24 22:35+0000\n"
+"PO-Revision-Date: 2011-05-09 11:42+0200\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
+"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"MIME-Version: 1.0\n"
+"Language: cs\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: C/usage.page:7(desc)
+msgid "How to use <app>Emerillon</app>."
+msgstr "Jak používat aplikaci <app>Emerillon</app>."
+
+#: C/usage.page:10(name) C/plugins-placemarks.page:10(name)
+#: C/plugins.page:10(name) C/plugins-mapposition.page:10(name)
+#: C/plugins-copylink.page:10(name) C/intro.page:10(name) C/index.page:9(name)
+#: C/about.page:13(name)
+msgid "Mario Blättermann"
+msgstr "Mario Blättermann"
+
+#: C/usage.page:11(email) C/plugins-placemarks.page:11(email)
+#: C/plugins.page:11(email) C/plugins-mapposition.page:11(email)
+#: C/plugins-copylink.page:11(email) C/intro.page:11(email)
+#: C/index.page:10(email) C/about.page:14(email)
+msgid "mariobl@gnome.org"
+msgstr "mariobl@gnome.org"
+
+#: C/usage.page:19(p) C/plugins-placemarks.page:19(p) C/plugins.page:19(p)
+#: C/plugins-mapposition.page:19(p) C/plugins-copylink.page:19(p)
+#: C/intro.page:19(p) C/index.page:18(p) C/about.page:17(p)
+msgid "Creative Commons Share Alike 3.0"
+msgstr "Creative Commons Share Alike 3.0"
+
+#: C/usage.page:24(title)
+msgid "Usage"
+msgstr "Použití"
+
+#: C/plugins-placemarks.page:7(desc)
+msgid "Save places and zoom levels."
+msgstr "Ukládá místa a úroveň přiblížení."
+
+#: C/plugins-placemarks.page:24(title)
+msgid "Placemarks"
+msgstr "Označení míst"
+
+#: C/plugins.page:7(desc)
+msgid "Use plugins to extend the functionality."
+msgstr "Použití zásuvných modulů k rozšíření funkcionality."
+
+#: C/plugins.page:24(title)
+msgid "Plugins"
+msgstr "Zásuvné moduly"
+
+#: C/plugins.page:26(p)
+msgid ""
+"Plugins add some more features to <app>Emerillon</app> and can extend its "
+"functionality. Some plugins are already shipped with <app>Emerillon</app> by "
+"default, and some more you can get from the emerillon-plugins package of "
+"your distribution."
+msgstr ""
+"Zásuvné moduly doplňují další funkce do aplikace <app>Emerillon</app> a "
+"rozšiřují její schopnosti. Některé zásuvné moduly jsou šířeny již přímo s "
+"aplikací a další můžete získat z balíčku emerillon-plugins ve své "
+"distribuci."
+
+#: C/plugins.page:34(title)
+msgid "Plugins shipped with <app>Emerillon</app>"
+msgstr "Zásuvné moduly dodávané spolu s aplikací <app>Emerillon</app>."
+
+#: C/plugins.page:38(title)
+msgid "External Plugins"
+msgstr "Externí zásuvné moduly"
+
+#: C/plugins-mapposition.page:7(desc)
+msgid "Displays the position at the middle of the map in the statusbar."
+msgstr "Zobrazuje ve stavové liště polohu středu mapy."
+
+#: C/plugins-mapposition.page:24(title)
+msgid "Map Position"
+msgstr "Poloha mapy"
+
+#: C/plugins-copylink.page:7(desc)
+msgid "Copy a link to online map services to the current position."
+msgstr "Kopíruje odkaz do služby on-line map na aktuální pozici."
+
+#: C/plugins-copylink.page:24(title)
+msgid "Copy Link"
+msgstr "Kopírování odkazu"
+
+#: C/license.page:8(desc)
+msgid "Legal information."
+msgstr "Právní informace."
+
+#: C/license.page:11(title)
+msgid "License"
+msgstr "Licence"
+
+#: C/license.page:12(p)
+msgid ""
+"This work is distributed under a CreativeCommons Attribution-Share Alike 3.0 "
+"Unported license."
+msgstr ""
+"Tato práce je šířena pod licencí CreativeCommons Attribution-Share Alike 3.0 "
+"Unported Licence."
+
+#: C/license.page:20(p)
+msgid "You are free:"
+msgstr "Můžete volně:"
+
+#: C/license.page:25(em)
+msgid "To share"
+msgstr "Sdílet"
+
+#: C/license.page:26(p)
+msgid "To copy, distribute and transmit the work."
+msgstr "Kopírovat, šířit a rozesílat dílo."
+
+#: C/license.page:29(em)
+msgid "To remix"
+msgstr "Měnit"
+
+#: C/license.page:30(p)
+msgid "To adapt the work."
+msgstr "Přizpůsobovat dílo."
+
+#: C/license.page:33(p)
+msgid "Under the following conditions:"
+msgstr "Za následujících podmínek:"
+
+#: C/license.page:38(em)
+msgid "Attribution"
+msgstr "Označení"
+
+#: C/license.page:39(p)
+msgid ""
+"You must attribute the work in the manner specified by the author or "
+"licensor (but not in any way that suggests that they endorse you or your use "
+"of the work)."
+msgstr ""
+"Musíte dílo označit v souladu s požadavky autora nebo licence (ale ne žádným "
+"způsobem, který předpokládá, že schvalují vás nebo vaše použití díla)."
+
+#: C/license.page:46(em)
+msgid "Share Alike"
+msgstr "Stejné sdílení"
+
+#: C/license.page:47(p)
+msgid ""
+"If you alter, transform, or build upon this work, you may distribute the "
+"resulting work only under the same, similar or a compatible license."
+msgstr ""
+"Pokud dílo změníte, převedete nebo na něm založíte jiné, můžete výsledek "
+"této práce šířit pouze pod stejnou, podobnou nebo kompatibilní licencí."
+
+#: C/license.page:53(p)
+msgid ""
+"For the full text of the license, see the <link href=\"http://"
+"creativecommons.org/licenses/by-sa/3.0/legalcode\">CreativeCommons website</"
+"link>, or read the full <link href=\"http://creativecommons.org/licenses/by-"
+"sa/3.0/\">Commons Deed</link>."
+msgstr ""
+"Text licence v plném znění najdete na <link href=\"http://creativecommons."
+"org/licenses/by-sa/3.0/legalcode\">webových stránkách CreativeCommons</link> "
+"nebo si přečtěte <link href=\"http://creativecommons.org/licenses/by-sa/3.0/"
+"\">výtah dokumentu pro neprávníky</link>."
+
+#: C/intro.page:7(desc)
+msgid "A brief description of what <app>Emerillon</app> aims to be."
+msgstr "Stručný popis zaměření aplikace <app>Emerillon</app>."
+
+#: C/intro.page:24(title)
+msgid "Introduction"
+msgstr "Úvod"
+
+#: C/intro.page:26(p)
+msgid ""
+"Emerillon is a map viewer. Aiming at simple user interface, Emerillon is a "
+"powerful, extensible application. It is pronounced <em>Ey-may-ree-yon</em>."
+msgstr ""
+"Emerillon je prohlížeč map. Přestože je aplikace zaměřena na jednoduché "
+"uživatelské rozhraní, je funkčně mocná a rozšiřitelná. Název se vyslovuje "
+"<em>Ej-mej-rí-jon</em>."
+
+#: C/intro.page:30(p)
+msgid ""
+"It features <link href=\"http://www.openstreetmap.org/\">OpenStreetMap</"
+"link> based maps: the street map, the cycling map and the transportation "
+"map. Use it to:"
+msgstr ""
+"Funkce je založena na mapách <link href=\"http://www.openstreetmap.org/"
+"\">OpenStreetMap</link>: mapách ulic, cyklostezek a dopravní sítě. Používá "
+"je k:"
+
+#: C/intro.page:36(p)
+msgid "Browse maps,"
+msgstr "procházení map"
+
+#: C/intro.page:39(p)
+msgid "Search the map for places,"
+msgstr "hledání míst na mapách"
+
+#: C/intro.page:42(p)
+msgid "Placemark places for later quick access."
+msgstr "umisťování značek pro rychlé pozdější nalezení"
+
+#: C/intro.page:45(p)
+msgid ""
+"Emerillon is named after the Émérillon, one of the three boats that visited "
+"New France under <link href=\"http://en.wikipedia.org/wiki/Jacques_Cartier"
+"\">Jacques Cartier's</link> command in 1535. Émérillon is also French for "
+"<link href=\"http://en.wikipedia.org/wiki/Merlin_(bird)\">Merlin Falcons</"
+"link>."
+msgstr ""
+"Emerillon je pojmenován po Émérillon, což byla jedna ze tří lodí, které "
+"navštívily Novou Francii pod vedením <link href=\"http://en.wikipedia.org/"
+"wiki/Jacques_Cartier\">Jacquese Cartiera</link> v roce 1535. Émérillon je "
+"rovněž francouzské pojmenování <link href=\"http://cs.wikipedia.org/wiki/D"
+"%C5%99eml%C3%ADk_tundrov%C3%BD\">Dřemlíka tundrového</link>."
+
+#: C/index.page:22(title)
+msgid "Emerillon"
+msgstr "Emerillon"
+
+#: C/about.page:9(desc)
+msgid "Information about this application."
+msgstr "Informace o této aplikaci."
+
+#: C/about.page:21(title)
+msgid "About <app>Emerillon</app>"
+msgstr "O aplikaci <app>Emerillon</app>"
+
+#: C/about.page:23(p)
+msgid ""
+"Currently, certain people have contributed to <app>Emerillon</app>. For a "
+"complete list, see the <link href=\"http://git.gnome.org/browse/emerillon/"
+"tree/AUTHORS\">authors list</link>."
+msgstr ""
+"Do dnešního dne přispěla do aplikace <app>Emerillon</app> řada lidí. Jejich "
+"úplný seznam najdete v <link href=\"http://git.gnome.org/browse/emerillon/"
+"tree/AUTHORS\">seznamu autorů</link>."
+
+#: C/about.page:27(p)
+msgid ""
+"To report a bug or make a suggestion regarding this application or this "
+"manual, write a bug report to <link href=\"https://bugzilla.gnome.org/browse."
+"cgi?product=emerillon\">GNOME Bugzilla</link>."
+msgstr ""
+"Pokud chcete oznámit chybu nebo navrhnout vylepšení vztahující se k této "
+"aplikaci nebo této příručce, napište hlášení chyby do <link href=\"https://"
+"bugzilla.gnome.org/browse.cgi?product=emerillon\">GNOME Bugzilla</link>."
+
+#: C/about.page:33(p)
+msgid ""
+"This program is distributed under the terms of the GNU General Public "
+"license as published by the Free Software Foundation; either version 2 of "
+"the License, or (at your option) any later version. A copy of this license "
+"can be found at this <link href=\"ghelp:gpl\">link</link>, or in the file "
+"COPYING included with the source code of this program."
+msgstr ""
+"Tento program je šířen podle ustanovení GNU General Public License, vydávané "
+"Free Software Foundation; a to buď verze 2 této licence anebo (podle "
+"vlastního uvážení) kterékoliv pozdější verze. Kopii této licence naleznete "
+"<link href=\"ghelp:gpl\">pod tímto odkazem</link> nebo v souboru COPYING "
+"přiloženém ke zdrojovým kódům tohoto programu. "
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: C/index.page:0(None)
+msgid "translator-credits"
+msgstr "Marek Černocký <marek@manet.cz>"
