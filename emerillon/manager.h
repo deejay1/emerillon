@@ -25,7 +25,7 @@
 #define __EMERILLON_MANAGER_H__
 
 #include <gtk/gtk.h>
-#include <ethos/ethos.h>
+#include <libpeas/peas.h>
 
 G_BEGIN_DECLS
 
@@ -44,18 +44,18 @@ typedef struct _EmerillonManagerPrivate EmerillonManagerPrivate;
 
 struct _EmerillonManager
 {
-  EthosManager parent;
+  PeasEngine parent;
   EmerillonManagerPrivate *priv;
 };
 
 struct _EmerillonManagerClass
 {
-  EthosManagerClass parent_class;
+  PeasEngineClass parent_class;
 };
 
 GType         emerillon_manager_get_type        (void) G_GNUC_CONST;
 
-EthosManager *   emerillon_manager_dup_default     (void);
+PeasEngine *   emerillon_manager_dup_default     (void);
 
 G_END_DECLS
 

@@ -26,7 +26,8 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <clutter-gtk/clutter-gtk.h>
-#include <ethos/ethos.h>
+#include <libpeas/peas.h>
+#include <libpeas-gtk/peas-gtk.h>
 
 #ifdef HAVE_INTROSPECTION
 #include <gobject-introspection-1.0/girepository.h>
@@ -116,7 +117,7 @@ int
 main (int argc,
       char **argv)
 {
-  EthosManager *manager;
+  PeasEngine *engine;
   GtkWidget *window;
   ChamplainView *map_view = NULL;
   GError *error = NULL;
@@ -125,6 +126,7 @@ main (int argc,
   gchar *plugin_dirs[3] = {EMERILLON_PLUGINDIR,
                            NULL,
                            NULL};
+  gchar **dir = NULL;
 
   user_data = g_build_path (G_DIR_SEPARATOR_S,
                             g_get_user_data_dir (),
@@ -174,11 +176,12 @@ main (int argc,
   g_object_unref (plugin_dir);
 
   /* Setup the plugin infrastructure */
-  manager = emerillon_manager_dup_default ();
-  ethos_manager_set_app_name (manager, "Emerillon");
-  ethos_manager_set_plugin_dirs (manager, (gchar **)plugin_dirs);
-
-  ethos_manager_initialize (manager);
+  engine = emerillon_manager_dup_default ();
+  peas_engine_enable_loader (engine, "python");
+  for (dir = plugin_dirs; *dir != NULL; dir++)
+  {
+    peas_engine_add_search_path (engine, *dir, NULL);
+  }
 
   gtk_main ();
 

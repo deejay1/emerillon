@@ -82,8 +82,7 @@ GCONF_REQUIRED=2.31.1
 CHAMPLAIN_REQUIRED=0.7.1
 CHAMPLAIN_GTK_REQUIRED=0.7.1
 GEOCLUE_REQUIRED=0.11.1
-ETHOS_REQUIRED=0.2
-ETHOS_UI_REQUIRED=0.2
+PEAS_REQUIRED=1.0
 
 PKG_CHECK_MODULES(EMERILLON, [
     glib-2.0 >= $GLIB_REQUIRED
@@ -93,8 +92,8 @@ PKG_CHECK_MODULES(EMERILLON, [
     champlain-0.10 >= $CHAMPLAIN_REQUIRED
     champlain-gtk-0.10 >= $CHAMPLAIN_GTK_REQUIRED
     geoclue >= $GEOCLUE_REQUIRED
-    ethos-1.0 >= $ETHOS_REQUIRED
-    ethos-ui-1.0 >= $ETHOS_UI_REQUIRED
+    libpeas-1.0 >= $PEAS_REQUIRED
+    libpeas-gtk-1.0 >= $PEAS_REQUIRED
 ])
 
 # -----------------------------------------------------------

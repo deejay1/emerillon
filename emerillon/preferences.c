@@ -25,7 +25,9 @@
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include <ethos/ethos-ui.h>
+
+#include <libpeas/peas.h>
+#include <libpeas-gtk/peas-gtk.h>
 
 #include "manager.h"
 
@@ -113,13 +115,11 @@ build_plugin_tab (GtkNotebook *notebook)
 {
   GtkWidget *tab;
   GtkWidget *label;
-  EthosManager *manager;
+  PeasEngine *manager;
 
   label = gtk_label_new (_("Plugins"));
   manager = emerillon_manager_dup_default ();
-  tab = ethos_ui_manager_widget_new ();
-  ethos_ui_manager_widget_set_manager (ETHOS_UI_MANAGER_WIDGET (tab),
-    manager);
+  tab = peas_gtk_plugin_manager_new (manager);
   gtk_widget_show (tab);
   gtk_container_set_border_width (GTK_CONTAINER (tab), 10);
 
