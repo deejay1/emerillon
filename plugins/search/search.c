@@ -52,7 +52,7 @@ struct _SearchPluginPrivate
   RestProxyCall *call;
 
   ChamplainView *map_view;
-  ChamplainLayer *layer;
+  ChamplainMarkerLayer *layer;
 };
 
 static void
@@ -86,6 +86,7 @@ result_cb (RestProxyCall *call,
   RestXmlNode *root, *n;
   gfloat min_lat, max_lat, min_lon, max_lon;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
+  ChamplainBoundingBox *bbox = champlain_bounding_box_new();
 
   answer = rest_proxy_call_get_payload (call);
   len = rest_proxy_call_get_payload_length (call);
@@ -128,7 +129,7 @@ result_cb (RestProxyCall *call,
     {
       RestXmlNode *name, *country, *lon, *lat;
       GtkTreeIter iter;
-      ChamplainMarker *marker;
+      ChamplainLabel *marker;
       gchar *symbol, *display_name, *escaped_name;
       gfloat flon, flat;
 
@@ -179,9 +180,9 @@ result_cb (RestProxyCall *call,
         min_lon = flon;
 
       /* Create the marker */
-      marker = CHAMPLAIN_MARKER (champlain_marker_new ());
-      champlain_marker_set_text (marker, symbol);
-      champlain_base_marker_set_position (CHAMPLAIN_BASE_MARKER (marker),
+      marker = champlain_label_new();
+      champlain_label_set_text (marker, symbol);
+      champlain_location_set_location (CHAMPLAIN_LOCATION(marker),
           flat,
           flon);
       clutter_container_add_actor (CLUTTER_CONTAINER (priv->layer),
@@ -208,9 +209,13 @@ result_cb (RestProxyCall *call,
       i++;
     }
 
+  bbox->left = min_lon;
+  bbox->right = max_lon;
+  bbox->bottom = min_lat;
+  bbox->top = max_lat;
+
   champlain_view_ensure_visible (priv->map_view,
-      min_lat, min_lon,
-      max_lat, max_lon,
+      bbox,
       FALSE);
 
   rest_xml_node_unref (root);
@@ -236,7 +241,7 @@ search_address (SearchPlugin *plugin)
   children = clutter_container_get_children (CLUTTER_CONTAINER (priv->layer));
   for (l = children; l != NULL; l = l->next)
     {
-      champlain_layer_remove_marker (priv->layer, CHAMPLAIN_BASE_MARKER (l->data));
+      champlain_marker_layer_remove_marker (priv->layer, CHAMPLAIN_MARKER (l->data));
     }
   g_list_free (children);
 
@@ -291,15 +296,15 @@ search_icon_activate_cb (GtkEntry *entry,
 
 #if CHAMPLAIN_CHECK_VERSION(0, 4, 1)
 static void
-marker_selected_cb (ChamplainSelectionLayer *layer,
+marker_selected_cb (ChamplainMarkerLayer *layer,
                     SearchPlugin *plugin)
 {
   GtkTreeIter iter;
-  ChamplainBaseMarker *selected;
+  ChamplainMarker *selected;
   GtkTreeSelection *selection;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
-  selected = champlain_selection_layer_get_selected (layer);
+  selected = champlain_marker_layer_get_selected (layer);
 
   if (!selected)
     return;
@@ -311,7 +316,7 @@ marker_selected_cb (ChamplainSelectionLayer *layer,
 
   do
     {
-      ChamplainBaseMarker *marker;
+      ChamplainMarker *marker;
       gtk_tree_model_get (priv->model, &iter, COL_MARKER, &marker, -1);
 
       if (!marker)
@@ -335,7 +340,7 @@ row_selected_cb (GtkTreeSelection *selection,
                  SearchPlugin *plugin)
 {
   GtkTreeIter iter;
-  ChamplainBaseMarker *marker;
+  ChamplainMarker *marker;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   if (!gtk_tree_selection_get_selected (selection, &priv->model, &iter))
@@ -346,8 +351,7 @@ row_selected_cb (GtkTreeSelection *selection,
   if (!marker)
     return;
 
-  champlain_selection_layer_select (CHAMPLAIN_SELECTION_LAYER (priv->layer),
-        marker);
+  champlain_marker_layer_add_marker (priv->layer, marker);
 
   g_object_unref (marker);
 }
@@ -389,7 +393,7 @@ select_function_cb (GtkTreeSelection *selection,
 {
   GtkTreeIter iter;
   GValue value = {0};
-  ChamplainBaseMarker *marker;
+  ChamplainMarker *marker;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   if (path_currently_selected)
@@ -517,9 +521,9 @@ activated (EthosPlugin *plugin)
   gtk_widget_show (priv->search_page);
 
   /* Setup result layer */
-  priv->layer = champlain_selection_layer_new();
+  priv->layer = champlain_marker_layer_new();
   champlain_view_add_layer (priv->map_view,
-      priv->layer);
+      CHAMPLAIN_LAYER(priv->layer));
 
 #if CHAMPLAIN_CHECK_VERSION(0, 4, 1)
   g_signal_connect (priv->layer,
@@ -564,7 +568,7 @@ deactivated (EthosPlugin *plugin)
   view = emerillon_window_get_map_view (EMERILLON_WINDOW (window));
 
 #if CHAMPLAIN_CHECK_VERSION(0, 4, 1)
-  champlain_view_remove_layer (view, priv->layer);
+  champlain_view_remove_layer (view, CHAMPLAIN_LAYER(priv->layer));
 #endif
 
   gtk_container_remove (GTK_CONTAINER (toolbar), GTK_WIDGET (priv->search_item));

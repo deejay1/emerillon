@@ -894,7 +894,7 @@ build_ui (EmerillonWindow *self)
   g_signal_connect (self->priv->view, "notify::state",
       G_CALLBACK (state_changed_cb), self);
   g_object_set (self->priv->view, "zoom-level", 1,
-      "scroll-mode", CHAMPLAIN_SCROLL_MODE_KINETIC,
+      "kinetic-mode", TRUE,
 #if CHAMPLAIN_CHECK_VERSION (0, 4, 3)
       "show-scale", TRUE,
 #endif

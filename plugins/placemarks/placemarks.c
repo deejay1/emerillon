@@ -48,7 +48,7 @@ struct _PlacemarksPluginPrivate
   GtkWidget *menu;
 
   /** Layer with placemark markers */
-  ChamplainLayer *markers_layer;
+  ChamplainMarkerLayer *markers_layer;
   guint deleted_cb_id;
 };
 
@@ -108,15 +108,14 @@ add_marker(PlacemarksPlugin *plugin, const gchar *name, gdouble lat, gdouble lon
   ChamplainMarker *marker;
 
   ClutterColor orange = { 0xf3, 0x94, 0x07, 0xbb };
-  marker = CHAMPLAIN_MARKER ( champlain_marker_new_with_text (name, "Serif 14",
+  marker = CHAMPLAIN_LABEL ( champlain_label_new_with_text (name, "Serif 14",
                                                               NULL, NULL));
-  champlain_marker_set_use_markup (CHAMPLAIN_MARKER (marker), TRUE);
-  champlain_marker_set_alignment (CHAMPLAIN_MARKER (marker), PANGO_ALIGN_RIGHT);
-  champlain_marker_set_color (CHAMPLAIN_MARKER (marker), &orange);
+  champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
+  champlain_label_set_alignment (CHAMPLAIN_LABEL (marker), PANGO_ALIGN_RIGHT);
+  champlain_label_set_color (CHAMPLAIN_LABEL (marker), &orange);
 
-  champlain_base_marker_set_position (CHAMPLAIN_BASE_MARKER (marker),
-                                      lat, lon);
-  champlain_layer_add_marker (priv->markers_layer, CHAMPLAIN_BASE_MARKER (marker));
+  champlain_location_set_location (CHAMPLAIN_LOCATION(marker), lat, lon);
+  champlain_marker_layer_add_marker (priv->markers_layer, CHAMPLAIN_MARKER (marker));
 
   return marker;
 }
@@ -561,8 +560,8 @@ activated (EthosPlugin *plugin)
   priv->window = EMERILLON_WINDOW (emerillon_window_dup_default ());
   priv->map_view = emerillon_window_get_map_view (priv->window);
 
-  priv->markers_layer = champlain_selection_layer_new ();
-  champlain_view_add_layer(priv->map_view, priv->markers_layer);
+  priv->markers_layer = champlain_marker_layer_new_full (CHAMPLAIN_SELECTION_NONE);
+  champlain_view_add_layer(priv->map_view, CHAMPLAIN_LAYER(priv->markers_layer));
 
   manager = emerillon_window_get_ui_manager (priv->window);
 

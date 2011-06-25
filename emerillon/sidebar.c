@@ -75,7 +75,7 @@ G_DEFINE_TYPE (EmerillonSidebar, emerillon_sidebar, GTK_TYPE_VBOX)
     (G_TYPE_INSTANCE_GET_PRIVATE ((object), EMERILLON_TYPE_SIDEBAR, EmerillonSidebarPrivate))
 
 static void
-emerillon_sidebar_destroy (GtkObject *object)
+emerillon_sidebar_dispose (GObject *object)
 {
   EmerillonSidebar *sidebar = EMERILLON_SIDEBAR (object);
 
@@ -91,7 +91,7 @@ emerillon_sidebar_destroy (GtkObject *object)
       sidebar->priv->page_model = NULL;
     }
 
-  (* GTK_OBJECT_CLASS (emerillon_sidebar_parent_class)->destroy) (object);
+  (* G_OBJECT_CLASS (emerillon_sidebar_parent_class)->dispose) (object);
 }
 
 static void
@@ -196,15 +196,13 @@ emerillon_sidebar_class_init (EmerillonSidebarClass *emerillon_sidebar_class)
 {
   GObjectClass *g_object_class;
   GtkWidgetClass *widget_class;
-  GtkObjectClass *gtk_object_klass;
 
   g_object_class = G_OBJECT_CLASS (emerillon_sidebar_class);
   widget_class = GTK_WIDGET_CLASS (emerillon_sidebar_class);
-  gtk_object_klass = GTK_OBJECT_CLASS (emerillon_sidebar_class);
 
   g_type_class_add_private (g_object_class, sizeof (EmerillonSidebarPrivate));
 
-  gtk_object_klass->destroy = emerillon_sidebar_destroy;
+  g_object_class->dispose = emerillon_sidebar_dispose;
   g_object_class->get_property = emerillon_sidebar_get_property;
   g_object_class->set_property = emerillon_sidebar_set_property;
 
@@ -270,7 +268,7 @@ emerillon_sidebar_select_button_press_cb (GtkWidget *widget,
       width = allocation.width;
 
       gtk_widget_set_size_request (sidebar->priv->menu, -1, -1);
-      gtk_widget_size_request (sidebar->priv->menu, &requisition);
+      gtk_widget_get_preferred_size(sidebar->priv->menu, NULL, &requisition);
       gtk_widget_set_size_request (sidebar->priv->menu,
           MAX (width, requisition.width), -1);
 
@@ -295,10 +293,10 @@ emerillon_sidebar_select_button_key_press_cb (GtkWidget *widget,
 {
   EmerillonSidebar *sidebar = EMERILLON_SIDEBAR (user_data);
 
-  if (event->keyval == GDK_space ||
-      event->keyval == GDK_KP_Space ||
-      event->keyval == GDK_Return ||
-      event->keyval == GDK_KP_Enter)
+  if (event->keyval == GDK_KEY_space ||
+      event->keyval == GDK_KEY_KP_Space ||
+      event->keyval == GDK_KEY_Return ||
+      event->keyval == GDK_KEY_KP_Enter)
     {
       gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (widget), TRUE);
 
