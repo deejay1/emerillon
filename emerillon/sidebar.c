@@ -260,7 +260,7 @@ emerillon_sidebar_select_button_press_cb (GtkWidget *widget,
 
   if (event->button == 1)
     {
-      GtkRequisition requisition;
+      gint preferred_width;
       gint width;
 
       GtkAllocation allocation;
@@ -268,9 +268,10 @@ emerillon_sidebar_select_button_press_cb (GtkWidget *widget,
       width = allocation.width;
 
       gtk_widget_set_size_request (sidebar->priv->menu, -1, -1);
-      gtk_widget_get_preferred_size(sidebar->priv->menu, NULL, &requisition);
+      gtk_widget_get_preferred_width(sidebar->priv->menu, NULL, 
+          &preferred_width);
       gtk_widget_set_size_request (sidebar->priv->menu,
-          MAX (width, requisition.width), -1);
+          MAX (width, preferred_width), -1);
 
       gtk_widget_grab_focus (widget);
 
