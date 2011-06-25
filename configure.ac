@@ -77,7 +77,7 @@ GNOME_DOC_INIT
 ################
 GLIB_REQUIRED=2.25.10
 GTHREAD_REQUIRED=2.12.0
-GTK_REQUIRED=2.20.0
+GTK_REQUIRED=3.0.0
 GCONF_REQUIRED=2.31.1
 CHAMPLAIN_REQUIRED=0.7.1
 CHAMPLAIN_GTK_REQUIRED=0.7.1
@@ -88,10 +88,10 @@ ETHOS_UI_REQUIRED=0.2
 PKG_CHECK_MODULES(EMERILLON, [
     glib-2.0 >= $GLIB_REQUIRED
     gthread-2.0 >= $GTHREAD_REQUIRED
-    gtk+-2.0 >= $GTK_REQUIRED
+    gtk+-3.0 >= $GTK_REQUIRED
     gconf-2.0 >= $GCONF_REQUIRED
-    champlain-0.8 >= $CHAMPLAIN_REQUIRED
-    champlain-gtk-0.8 >= $CHAMPLAIN_GTK_REQUIRED
+    champlain-0.10 >= $CHAMPLAIN_REQUIRED
+    champlain-gtk-0.10 >= $CHAMPLAIN_GTK_REQUIRED
     geoclue >= $GEOCLUE_REQUIRED
     ethos-1.0 >= $ETHOS_REQUIRED
     ethos-ui-1.0 >= $ETHOS_UI_REQUIRED
@@ -110,7 +110,7 @@ if test x$enable_search = xyes; then
   AC_SUBST(SEARCH_DEPS_LIBS)
   PKG_CHECK_MODULES(SEARCH_DEPS,
     [
-      rest-0.6 >= 0.6
+      rest-0.7 >= 0.6
     ]
   )
 
