@@ -118,14 +118,12 @@ build_plugin_tab (GtkNotebook *notebook)
   PeasEngine *manager;
 
   label = gtk_label_new (_("Plugins"));
-  manager = emerillon_manager_dup_default ();
+  manager = peas_engine_get_default();
   tab = peas_gtk_plugin_manager_new (manager);
   gtk_widget_show (tab);
   gtk_container_set_border_width (GTK_CONTAINER (tab), 10);
 
   gtk_notebook_append_page (notebook, tab, label);
-
-  g_object_unref (manager);
 }
 
 static void

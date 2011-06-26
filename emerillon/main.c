@@ -35,8 +35,8 @@
 
 #include <stdlib.h>
 
-#include "manager.h"
 #include "window.h"
+#include "config-keys.h"
 
 static void
 display_version ()
@@ -127,6 +127,7 @@ main (int argc,
                            NULL,
                            NULL};
   gchar **dir = NULL;
+  GSettings *settings;
 
   user_data = g_build_path (G_DIR_SEPARATOR_S,
                             g_get_user_data_dir (),
@@ -176,14 +177,21 @@ main (int argc,
   g_object_unref (plugin_dir);
 
   /* Setup the plugin infrastructure */
-  engine = emerillon_manager_dup_default ();
+  engine = peas_engine_get_default();
   peas_engine_enable_loader (engine, "python");
+  g_irepository_require (g_irepository_get_default (),
+                         "Peas", "1.0", 0, NULL);
+  
   for (dir = plugin_dirs; *dir != NULL; dir++)
   {
     peas_engine_add_search_path (engine, *dir, NULL);
   }
-  emerillon_manager_initialize(EMERILLON_MANAGER(engine));
-
+  settings = g_settings_new (EMERILLON_SCHEMA_PLUGINS);
+  g_settings_bind (settings,
+                   EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS,
+                   engine,
+                   "loaded-plugins",
+                   G_SETTINGS_BIND_DEFAULT);
   gtk_main ();
 
   g_free (user_data);

@@ -31,6 +31,7 @@
 #include <geoclue/geoclue-position.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
+#include <libpeas/peas.h>
 
 #include "config-keys.h"
 #include "sidebar.h"
@@ -48,6 +49,8 @@ struct _EmerillonWindowPrivate
 {
   GtkUIManager *ui_manager;
 
+  PeasExtensionSet* ext_set;
+  
   GtkWidget *toolbar;
   GtkWidget *statusbar;
   GtkWidget *sidebar;
@@ -193,6 +196,24 @@ position_changed_cb (GeocluePosition *position,
 }
 
 static void
+on_extension_added (PeasExtensionSet *set,
+                    PeasPluginInfo   *info,
+                    PeasExtension    *exten,
+                    EmerillonWindow  *self)
+{
+  peas_activatable_activate (PEAS_ACTIVATABLE (exten));
+}
+
+static void
+on_extension_removed (PeasExtensionSet *set,
+                      PeasPluginInfo   *info,
+                      PeasExtension    *exten,
+                      EmerillonWindow  *self)
+{
+  peas_activatable_deactivate (PEAS_ACTIVATABLE (exten));
+}
+
+static void
 emerillon_window_init (EmerillonWindow *self)
 {
   GdkGeometry geometry;
@@ -209,6 +230,16 @@ emerillon_window_init (EmerillonWindow *self)
   /* GSettings. */
   self->priv->settings_ui = g_settings_new (EMERILLON_SCHEMA_UI);
 
+  /* Extension setup */
+  self->priv->ext_set = peas_extension_set_new (peas_engine_get_default (),
+                                                PEAS_TYPE_ACTIVATABLE,
+                                                NULL);
+
+  peas_extension_set_call (self->priv->ext_set, "activate");
+
+  g_signal_connect (self->priv->ext_set, "extension-added", G_CALLBACK (on_extension_added), self);
+  g_signal_connect (self->priv->ext_set, "extension-removed", G_CALLBACK (on_extension_removed), self);
+  
   /* Window setup. */
   geometry.min_width = 400;
   geometry.min_height = 350;
@@ -291,7 +322,12 @@ emerillon_window_dispose (GObject *object)
        g_object_unref (self->priv->geoclue_position);
        self->priv->geoclue_client = NULL;
     }
-
+   if (self->priv->ext_set)
+    {
+       g_object_unref (self->priv->ext_set);
+       self->priv->ext_set = NULL;
+    }
+  
   G_OBJECT_CLASS (emerillon_window_parent_class)->dispose (object);
 }
 

@@ -21,8 +21,6 @@ noinst_LTLIBRARIES = libemerillon.la
 BUILT_SOURCES =
 
 libemerillon_la_SOURCES =	\
-	manager.h	\
-	manager.c	\
 	preferences.h	\
 	preferences.c	\
 	window.c	\
