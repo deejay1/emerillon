@@ -57,6 +57,8 @@ GType         emerillon_manager_get_type        (void) G_GNUC_CONST;
 
 PeasEngine *   emerillon_manager_dup_default     (void);
 
+void          emerillon_manager_initialize      (EmerillonManager *manager);
+
 G_END_DECLS
 
 #endif

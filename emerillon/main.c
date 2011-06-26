@@ -182,6 +182,7 @@ main (int argc,
   {
     peas_engine_add_search_path (engine, *dir, NULL);
   }
+  emerillon_manager_initialize(EMERILLON_MANAGER(engine));
 
   gtk_main ();
 

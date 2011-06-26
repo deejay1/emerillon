@@ -54,7 +54,7 @@ is_enabled (gchar ** conf, PeasPluginInfo *plugin)
   return FALSE;
 }
 
-static void
+void
 emerillon_manager_initialize (EmerillonManager *manager)
 {
   const GList  *list,
@@ -64,10 +64,21 @@ emerillon_manager_initialize (EmerillonManager *manager)
   manager->priv->settings_plugins = g_settings_new (EMERILLON_SCHEMA_PLUGINS);
   conf_list = g_settings_get_strv (manager->priv->settings_plugins,
                                    EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS);
-
+  
   list = peas_engine_get_plugin_list (PEAS_ENGINE(manager));
   for (iter = list; iter; iter = iter->next)
   {
+    GError *error = NULL;
+    
+    if (!peas_plugin_info_is_available (iter->data, &error))
+    {
+      g_warning ("%s: %s: %s",
+                 peas_plugin_info_get_module_name (iter->data),
+                 "Not available",
+                 error ? error->message : "Unknown error");
+      if (error)
+        g_error_free (error);
+	}
     if (peas_plugin_info_is_loaded (iter->data))
     {
       continue;
@@ -88,7 +99,6 @@ static void
 emerillon_manager_init (EmerillonManager *self)
 {
   self->priv = EMERILLON_MANAGER_GET_PRIVATE (self);
-  emerillon_manager_initialize(self);
 }
 
 static void
