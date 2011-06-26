@@ -27,7 +27,13 @@
 #include <rest/rest-proxy-call.h>
 #include <rest/rest-xml-parser.h>
 
-G_DEFINE_TYPE (SearchPlugin, search_plugin, ETHOS_TYPE_PLUGIN)
+static void
+peas_activatable_iface_init (PeasActivatableInterface *iface);
+
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (SearchPlugin, search_plugin, PEAS_TYPE_EXTENSION_BASE,
+                                0,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
+                                                               peas_activatable_iface_init));
 
 enum {
   COL_ORDER,
@@ -180,7 +186,7 @@ result_cb (RestProxyCall *call,
         min_lon = flon;
 
       /* Create the marker */
-      marker = champlain_label_new();
+      marker = CHAMPLAIN_LABEL(champlain_label_new());
       champlain_label_set_text (marker, symbol);
       champlain_location_set_location (CHAMPLAIN_LOCATION(marker),
           flat,
@@ -369,7 +375,7 @@ select_function_cb (GtkTreeSelection *selection,
 }
 
 static void
-activated (EthosPlugin *plugin)
+search_plugin_activate (PeasActivatable *plugin)
 {
   GtkWidget *window, *toolbar, *sidebar, *scrolled;
   gint count = 0;
@@ -490,7 +496,7 @@ activated (EthosPlugin *plugin)
 }
 
 static void
-deactivated (EthosPlugin *plugin)
+search_plugin_deactivate (PeasActivatable *plugin)
 {
   GtkWidget *window, *toolbar, *sidebar;
   ChamplainView *view;
@@ -531,13 +537,13 @@ deactivated (EthosPlugin *plugin)
 static void
 search_plugin_class_init (SearchPluginClass *klass)
 {
-  EthosPluginClass *plugin_class;
-
   g_type_class_add_private (klass, sizeof (SearchPluginPrivate));
+}
 
-  plugin_class = ETHOS_PLUGIN_CLASS (klass);
-  plugin_class->activated = activated;
-  plugin_class->deactivated = deactivated;
+static void
+search_plugin_class_finalize(SearchPluginClass *klass)
+{
+
 }
 
 static void
@@ -548,14 +554,19 @@ search_plugin_init (SearchPlugin *plugin)
                                               SearchPluginPrivate);
 }
 
-EthosPlugin*
-search_plugin_new (void)
+static void
+peas_activatable_iface_init (PeasActivatableInterface *iface)
 {
-  return g_object_new (SEARCH_TYPE_PLUGIN, NULL);
+  iface->activate = search_plugin_activate;
+  iface->deactivate = search_plugin_deactivate;
 }
 
-G_MODULE_EXPORT EthosPlugin*
-ethos_plugin_register (void)
+G_MODULE_EXPORT void
+peas_register_types (PeasObjectModule *module)
 {
-  return search_plugin_new ();
+  search_plugin_register_type (G_TYPE_MODULE (module));
+
+  peas_object_module_register_extension_type (module,
+                                              PEAS_TYPE_ACTIVATABLE,
+                                              SEARCH_TYPE_PLUGIN);
 }

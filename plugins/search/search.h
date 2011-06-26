@@ -21,8 +21,7 @@
 #define __SEARCH_PLUGIN_H__
 
 #include <glib-object.h>
-#include <ethos/ethos.h>
-#include <ethos/ethos-ui.h>
+#include <libpeas/peas.h>
 
 G_BEGIN_DECLS
 
@@ -39,7 +38,7 @@ typedef struct _SearchPluginPrivate SearchPluginPrivate;
 
 struct _SearchPlugin
 {
-  EthosPlugin parent;
+  PeasExtensionBase parent;
 
   /*< private >*/
   SearchPluginPrivate *priv;
@@ -47,12 +46,11 @@ struct _SearchPlugin
 
 struct _SearchPluginClass
 {
-  EthosPluginClass parent_class;
+  PeasExtensionBaseClass parent_class;
 };
 
-GType        search_plugin_get_type (void);
-EthosPlugin* search_plugin_new      (void);
-G_MODULE_EXPORT EthosPlugin* ethos_plugin_register (void);
+GType                 search_plugin_get_type (void);
+G_MODULE_EXPORT void  peas_register_types(PeasObjectModule *module);
 
 G_END_DECLS
 
