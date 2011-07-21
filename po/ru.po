@@ -1,0 +1,374 @@
+# Russian translation for emerillon.
+# Copyright (C) 2011 emerillon's COPYRIGHT HOLDER
+# This file is distributed under the same license as the emerillon package.
+# Yuri Myasoedov <omerta13@yandex.ru>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: emerillon master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=emerillon&keywords=I18N+L10N&component=General\n"
+"POT-Creation-Date: 2011-05-11 07:09+0000\n"
+"PO-Revision-Date: 2011-07-21 21:27+0300\n"
+"Last-Translator: Yuri Myasoedov <omerta13@yandex.ru>\n"
+"Language-Team: Russian <gnome-cyr@gnome.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../data/emerillon.desktop.in.in.h:1
+msgid "Browse maps"
+msgstr "Просмотр карт"
+
+#: ../data/emerillon.desktop.in.in.h:2
+#: ../emerillon/window.c:505
+msgid "Emerillon"
+msgstr "Emerillon"
+
+#: ../data/emerillon.desktop.in.in.h:3
+#: ../emerillon/main.c:147
+msgid "Emerillon Map Viewer"
+msgstr "Приложение просмотра карт Emerillon"
+
+#: ../data/emerillon.desktop.in.in.h:4
+msgid "Map Viewer"
+msgstr "Приложение просмотра карт"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:1
+msgid "Active plugins"
+msgstr "Включённые модули"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:2
+msgid "List of active plugins."
+msgstr "Список включённых модулей."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "Показывать или скрывать боковую панель."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "Показывать или скрывать панель состояния."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "Показывать или скрывать панель инструментов."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:6
+msgid "Window height in pixels."
+msgstr "Высота окна в пикселах."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:7
+msgid "Window width in pixels."
+msgstr "Ширина окна в пикселах."
+
+#: ../emerillon/main.c:43
+#, c-format
+msgid "%s - Version %s\n"
+msgstr "%s — версия %s\n"
+
+#: ../emerillon/main.c:55
+msgid "Show version information and exit"
+msgstr "Показать информацию о версии и выйти"
+
+#: ../emerillon/main.c:61
+msgid "Initial latitude"
+msgstr "Исходная широта"
+
+#: ../emerillon/main.c:62
+msgid "Initial longitude"
+msgstr "Исходная долгота"
+
+#: ../emerillon/main.c:75
+msgid "Incorrect or missing coordinates"
+msgstr "Неверные или отсутствующие координаты"
+
+#: ../emerillon/main.c:91
+msgid "- map viewer"
+msgstr "— приложение для просмотра карт"
+
+#: ../emerillon/main.c:96
+msgid "Specifies the default position"
+msgstr "Определяет исходное местоположение"
+
+#: ../emerillon/main.c:97
+msgid "Show position options"
+msgstr "Показать параметры местоположения"
+
+#: ../emerillon/main.c:109
+#, c-format
+msgid "Run '%s --help' to see a list of available command line options.\n"
+msgstr "Чтобы вывести список всех параметров командной строки, выполните «%s --help».\n"
+
+#: ../emerillon/window.c:485
+msgid "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.\n"
+msgstr "Это приложение является свободым программным обеспечением; вы можете распространять и/или изменять его на условиях лицензии GNU General Public License, опубликованной Фондом свободного программного обеспечения; либо версии 2 этой лицензии, либо (по вашему выбору) любой более поздней версии.\n"
+
+#: ../emerillon/window.c:489
+msgid "This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n"
+msgstr "Это приложение распространяется в надежде, что оно может быть полезным, но БЕЗ КАКОГО-ЛИБО ВИДА ГАРАНТИЙ, ВЫРАЖЕННЫХ ЯВНО ИЛИ ПОДРАЗУМЕВАЕМЫХ, ВКЛЮЧАЯ, НО НЕ ОГРАНИЧИВАЯСЬ, ПОДРАЗУМЕВАЕМЫМИ ГАРАНТИЯМИ КОММЕРЧЕСКОЙ ЦЕННОСТИ И ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ. Для получения дополнительных сведений обратитесь к лицензии GNU General Public License.\n"
+
+#: ../emerillon/window.c:493
+msgid "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr "Вы должны были получить копию лицензии GNU General Public License c этой программой. Если это не так, известите об этом Фонд свободного программного обеспечения по адресу Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+
+#: ../emerillon/window.c:498
+msgid "translator-credits"
+msgstr "Юрий Мясоедов <omerta13@yandex.ru>, 2011."
+
+#: ../emerillon/window.c:510
+msgid "A map viewer for the GNOME desktop"
+msgstr "Просмотр карт для GNOME"
+
+#: ../emerillon/window.c:731
+msgid "_Map"
+msgstr "_Карта"
+
+#: ../emerillon/window.c:732
+msgid "_Edit"
+msgstr "_Правка"
+
+#: ../emerillon/window.c:733
+msgid "_View"
+msgstr "_Вид"
+
+#: ../emerillon/window.c:734
+msgid "_Tools"
+msgstr "_Инструменты"
+
+#: ../emerillon/window.c:735
+msgid "_Help"
+msgstr "_Справка"
+
+#: ../emerillon/window.c:738
+msgid "Quit the program"
+msgstr "Выйти из программы"
+
+#: ../emerillon/window.c:741
+msgid "Enlarge the image"
+msgstr "Увеличить изображение"
+
+#: ../emerillon/window.c:744
+msgid "Shrink the image"
+msgstr "Уменьшить изображение"
+
+#: ../emerillon/window.c:747
+msgid "Edit the preferences"
+msgstr "Изменить настройки"
+
+#: ../emerillon/window.c:749
+msgid "_Contents"
+msgstr "_Содержание"
+
+#: ../emerillon/window.c:750
+msgid "Help on this application"
+msgstr "Справка по приложению"
+
+#: ../emerillon/window.c:753
+msgid "About this application"
+msgstr "О программе"
+
+#: ../emerillon/window.c:758
+msgid "_Toolbar"
+msgstr "Панель _управления"
+
+#: ../emerillon/window.c:759
+msgid "Show or hide the toolbar in the current window"
+msgstr "Показывать или скрывать панель управления в текущем окне"
+
+#: ../emerillon/window.c:761
+msgid "_Statusbar"
+msgstr "Панель _состояние"
+
+#: ../emerillon/window.c:762
+msgid "Show or hide the statusbar in the current window"
+msgstr "Показывать или скрывать панель состояния в текущем окне"
+
+#: ../emerillon/window.c:764
+msgid "Side _Pane"
+msgstr "_Боковая панель"
+
+#: ../emerillon/window.c:765
+msgid "Show or hide the side pane in the current window"
+msgstr "Показывать или скрывать боковую панель в текущем окне"
+
+#: ../emerillon/window.c:768
+msgid "Enable or disable full screen mode"
+msgstr "Включить или выключить полноэкранный режим"
+
+#: ../emerillon/window.c:773
+msgid "_Street"
+msgstr "_Улица"
+
+#: ../emerillon/window.c:774
+msgid "View the street map based on OpenStreetMap"
+msgstr "Показать карту улиц, основанную на OpenStreetMap"
+
+#: ../emerillon/window.c:775
+msgid "_Cycling"
+msgstr "_Велосипедные дорожки"
+
+#: ../emerillon/window.c:776
+msgid "View the cycling map based on OpenCycleMap"
+msgstr "Показать карту велосипедных дорожек, основанную на OpenCycleMap"
+
+#: ../emerillon/window.c:777
+msgid "_Public Transportation"
+msgstr "_Общественный транспорт"
+
+#: ../emerillon/window.c:778
+msgid "View the public transportation map based on Öpnvkarte"
+msgstr "Показать карты общественного транспорта, основанную на Öpnvkarte"
+
+#: ../emerillon/window.c:779
+msgid "_Terrain"
+msgstr "_Ландшафт"
+
+#: ../emerillon/window.c:780
+msgid "View the terrain map based on mapsforfree.com Relief"
+msgstr "Показать ландшафтную карту, основанную на mapsforfree.com"
+
+#: ../emerillon/window.c:815
+msgid "In"
+msgstr "Увеличить"
+
+#: ../emerillon/window.c:819
+msgid "Out"
+msgstr "Уменьшить"
+
+#: ../emerillon/preferences.c:118
+msgid "Plugins"
+msgstr "Модули"
+
+#: ../emerillon/preferences.c:137
+msgid "Emerillon Preferences"
+msgstr "Настройки Emerillon"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:1
+msgid "Copy link to Web"
+msgstr "Копия ссылки"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:2
+msgid "Provides a link for current view to major online maps"
+msgstr "Предоставляет ссылку для текущего обзора для основных онлайн-карт"
+
+#: ../plugins/copy-link/copy-link.c:110
+msgid "Copy to clipboard the link to this web service"
+msgstr "Скопировать ссылку на эту веб-службу в буфер обмена"
+
+#: ../plugins/copy-link/copy-link.c:157
+msgid "OpenStreetMap"
+msgstr "OpenStreetMap"
+
+#: ../plugins/copy-link/copy-link.c:158
+msgid "Yahoo! Maps"
+msgstr "Карты Yahoo!"
+
+#: ../plugins/copy-link/copy-link.c:159
+msgid "Google Maps"
+msgstr "Карты Google"
+
+#: ../plugins/copy-link/copy-link.c:175
+msgid "_Copy link to"
+msgstr "_Скопировать ссылку"
+
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:1
+msgid "Display in the statusbar the coordinates at the center of the map"
+msgstr "Показывать в панели состояния координаты центра карты"
+
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:2
+msgid "Map Position"
+msgstr "Положение карты"
+
+#: ../plugins/placemarks/add-dialog.c:117
+msgid "New Placemark"
+msgstr "Создать метку"
+
+#: ../plugins/placemarks/add-dialog.c:130
+msgid "Name:"
+msgstr "Имя:"
+
+#: ../plugins/placemarks/manage-dialog.c:169
+#, c-format
+msgid ""
+"You are about to remove the %s placemark!\n"
+"Are you sure you want to proceed?"
+msgstr ""
+"Вы собираетесь удалить метку %s!\n"
+"Хотите продолжить?"
+
+#: ../plugins/placemarks/manage-dialog.c:203
+msgid "Organize Placemarks"
+msgstr "Управление метками"
+
+#: ../plugins/placemarks/manage-dialog.c:235
+#: ../plugins/search/search.c:506
+msgid "Name"
+msgstr "Имя"
+
+#: ../plugins/placemarks/manage-dialog.c:254
+msgid "Latitude"
+msgstr "Широта"
+
+#: ../plugins/placemarks/manage-dialog.c:262
+msgid "Longitude"
+msgstr "Долгота"
+
+#: ../plugins/placemarks/manage-dialog.c:270
+msgid "Zoom"
+msgstr "Масштаб"
+
+#: ../plugins/placemarks/placemarks.c:138
+msgid "Go to this placemark"
+msgstr "Перейти к этой метке"
+
+#: ../plugins/placemarks/placemarks.c:527
+msgid "_Placemarks"
+msgstr "_Метки"
+
+#: ../plugins/placemarks/placemarks.c:531
+msgid "Placemark this location"
+msgstr "Отметить это местоположение"
+
+#: ../plugins/placemarks/placemarks.c:533
+msgid "Add current location to your placemarks"
+msgstr "Добавить текущее местоположение в метки"
+
+#: ../plugins/placemarks/placemarks.c:537
+msgid "Organize placemarks..."
+msgstr "Упорядочить метки…"
+
+#: ../plugins/placemarks/placemarks.c:539
+msgid "Edit and delete existing placemarks"
+msgstr "Изменить и удалить существующие метки"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
+msgid "Placemarks"
+msgstr "Метки"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:2
+msgid "Remembers your favorite view points"
+msgstr "Запоминает избранные точки обзора"
+
+#: ../plugins/search/search.c:109
+#: ../plugins/search/search.c:110
+msgid "No result found"
+msgstr "Результаты не найдены"
+
+#. Translators: In this case "No" means "number".
+#: ../plugins/search/search.c:497
+msgid "No"
+msgstr "№"
+
+#: ../plugins/search/search.c:516
+msgid "Search results"
+msgstr "Результаты поиска"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:1
+msgid "Allows searching GeoNames database"
+msgstr "Позволяет выполнять поиск по базе данных GeoNames"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:2
+msgid "Search"
+msgstr "Поиск"
+
