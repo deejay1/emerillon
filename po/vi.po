@@ -1,0 +1,377 @@
+# Vietnamese translation for emerillon.
+# Copyright (C) 2011 emerillon's COPYRIGHT HOLDER
+# This file is distributed under the same license as the emerillon package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: emerillon master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=emerillon&keywords=I18N+L10N&component=General\n"
+"POT-Creation-Date: 2011-04-03 14:33+0000\n"
+"PO-Revision-Date: 2011-07-26 15:09+0700\n"
+"Last-Translator: Lê Trường An <truongan@linuxmail.org>\n"
+"Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../data/emerillon.desktop.in.in.h:1
+msgid "Browse maps"
+msgstr "Duyệt bản đồ"
+
+# Tên chương trình, không dịch.
+#: ../data/emerillon.desktop.in.in.h:2
+#: ../emerillon/window.c:505
+msgid "Emerillon"
+msgstr "Emerillon"
+
+#: ../data/emerillon.desktop.in.in.h:3
+#: ../emerillon/main.c:147
+msgid "Emerillon Map Viewer"
+msgstr "Chương trình xem bản đồ Emerillon"
+
+#: ../data/emerillon.desktop.in.in.h:4
+msgid "Map Viewer"
+msgstr "Chương trình xem bản đồ"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:1
+msgid "Active plugins"
+msgstr "Trình cắm đã bật"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:2
+msgid "List of active plugins."
+msgstr "Danh sách các trình cắm được kích hoạt."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "Hiện/ẩn thanh bên cửa sổ."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "Hiện/ẩn thanh trạng thái cửa sổ."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "Hiện/ẩn thanh công cụ cửa sổ."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:6
+msgid "Window height in pixels."
+msgstr "Chiều cao cửa sổ theo điểm ảnh."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:7
+msgid "Window width in pixels."
+msgstr "Chiều rộng cửa sổ theo điểm ảnh."
+
+#: ../emerillon/main.c:43
+#, c-format
+msgid "%s - Version %s\n"
+msgstr "%s - Phiên bản %s\n"
+
+#: ../emerillon/main.c:55
+msgid "Show version information and exit"
+msgstr "Hiện thông tin phiên bản và thoát"
+
+#: ../emerillon/main.c:61
+msgid "Initial latitude"
+msgstr "Vĩ độ gốc"
+
+#: ../emerillon/main.c:62
+msgid "Initial longitude"
+msgstr "Kinh độ gốc"
+
+#: ../emerillon/main.c:75
+msgid "Incorrect or missing coordinates"
+msgstr "Thiếu hoặc sai tọa độ"
+
+#: ../emerillon/main.c:91
+msgid "- map viewer"
+msgstr "- trình xem bản đồ"
+
+#: ../emerillon/main.c:96
+msgid "Specifies the default position"
+msgstr "Chỉ định địa điểm mặc định"
+
+#: ../emerillon/main.c:97
+msgid "Show position options"
+msgstr "Hiện tùy chọn địa điểm"
+
+#: ../emerillon/main.c:109
+#, c-format
+msgid "Run '%s --help' to see a list of available command line options.\n"
+msgstr "Chạy lệnh '%s --help' để xem danh sách của các tùy chỉnh dòng lệnh.\n"
+
+#: ../emerillon/window.c:485
+msgid "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.\n"
+msgstr "Đây là phần mềm tự do; bạn có thể phân phối lại nó và/hoặc chỉnh sửa nó theo các điều khoản của Giấy phép Công cộng Chung GNU được phát hành bởi Tổ chức Phần mềm Tự do; phiên bản 2 của giấy phép hoặc mới hơn.\n"
+
+#: ../emerillon/window.c:489
+msgid "This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n"
+msgstr ""
+
+#: ../emerillon/window.c:493
+msgid "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr "Bạn phải nhận được một bản sao của Giấy phép Công cộng Chung GNU kèm theo chương trình này; nếu không, hãy liên lạc với Tổ chức Phần mềm Tự do, 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
+
+#: ../emerillon/window.c:498
+msgid "translator-credits"
+msgstr "Nhóm Việt hóa Gnome <gnomevi-list@lists.sourceforge.net>"
+
+#: ../emerillon/window.c:510
+msgid "A map viewer for the GNOME desktop"
+msgstr "Một chương trình xem bản đồ cho GNOME"
+
+#: ../emerillon/window.c:731
+msgid "_Map"
+msgstr "_Bản đồ"
+
+#: ../emerillon/window.c:732
+msgid "_Edit"
+msgstr "_Chỉnh sửa"
+
+#: ../emerillon/window.c:733
+msgid "_View"
+msgstr "_Hiển thị"
+
+#: ../emerillon/window.c:734
+msgid "_Tools"
+msgstr "Cô_ng cụ"
+
+#: ../emerillon/window.c:735
+msgid "_Help"
+msgstr "Trợ g_iúp"
+
+#: ../emerillon/window.c:738
+msgid "Quit the program"
+msgstr "Thoát chương trình"
+
+#: ../emerillon/window.c:741
+msgid "Enlarge the image"
+msgstr "Phóng to ảnh"
+
+#: ../emerillon/window.c:744
+msgid "Shrink the image"
+msgstr "Thu nhỏ ảnh"
+
+#: ../emerillon/window.c:747
+msgid "Edit the preferences"
+msgstr "Cập nhật tùy chỉnh"
+
+#: ../emerillon/window.c:749
+msgid "_Contents"
+msgstr "Nội _dung"
+
+#: ../emerillon/window.c:750
+msgid "Help on this application"
+msgstr "Trợ giúp trên ứng dụng này"
+
+#: ../emerillon/window.c:753
+msgid "About this application"
+msgstr "Giới thiệu về ứng dụng này"
+
+#: ../emerillon/window.c:758
+msgid "_Toolbar"
+msgstr "_Thanh công cụ"
+
+#: ../emerillon/window.c:759
+msgid "Show or hide the toolbar in the current window"
+msgstr "Hiện hoặc ẩn thanh công cụ trong cửa sổ hiện tại"
+
+#: ../emerillon/window.c:761
+msgid "_Statusbar"
+msgstr "Th_anh trạng thái"
+
+#: ../emerillon/window.c:762
+msgid "Show or hide the statusbar in the current window"
+msgstr "Hiện hay ẩn thanh trạng thái trong cửa sổ hiện thời"
+
+#: ../emerillon/window.c:764
+msgid "Side _Pane"
+msgstr "Thanh _bên"
+
+#: ../emerillon/window.c:765
+msgid "Show or hide the side pane in the current window"
+msgstr "Hiện hay ẩn thanh bên trong cửa sổ hiện thời"
+
+#: ../emerillon/window.c:768
+msgid "Enable or disable full screen mode"
+msgstr "Bật hoặc tắt chế độ toàn màn hình"
+
+#: ../emerillon/window.c:773
+msgid "_Street"
+msgstr "Đườn_g"
+
+#: ../emerillon/window.c:774
+msgid "View the street map based on OpenStreetMap"
+msgstr "Hiện bản đồ đường đi dựa trên OpenStreetMap"
+
+#: ../emerillon/window.c:775
+msgid "_Cycling"
+msgstr "_Xe đạp"
+
+#: ../emerillon/window.c:776
+msgid "View the cycling map based on OpenCycleMap"
+msgstr "Xem bản đồ xe đạp dựa trên OpenCycleMap"
+
+#: ../emerillon/window.c:777
+msgid "_Public Transportation"
+msgstr "_Phương tiện giao thông công cộng"
+
+#: ../emerillon/window.c:778
+msgid "View the public transportation map based on Öpnvkarte"
+msgstr "Bản đồ phương tiện giao thông công cộng dựa trên Öpnvkarte"
+
+#: ../emerillon/window.c:779
+msgid "_Terrain"
+msgstr "Địa _hình"
+
+#: ../emerillon/window.c:780
+msgid "View the terrain map based on mapsforfree.com Relief"
+msgstr "Xem bản đồ địa hình dựa trên mapsforfree.com"
+
+#: ../emerillon/window.c:815
+msgid "In"
+msgstr "Vào"
+
+#: ../emerillon/window.c:819
+msgid "Out"
+msgstr "Ra"
+
+#: ../emerillon/preferences.c:118
+msgid "Plugins"
+msgstr "Trình cắm"
+
+#: ../emerillon/preferences.c:137
+msgid "Emerillon Preferences"
+msgstr "Tùy chỉnh Emerillon"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:1
+msgid "Copy link to Web"
+msgstr "Chép liên kết đến Web"
+
+#: ../plugins/copy-link/copy-link.emerillon-plugin.in.h:2
+msgid "Provides a link for current view to major online maps"
+msgstr "Cung cấp liên kết của khung nhìn hiện tại đến bản đồ trực tuyến chính"
+
+#: ../plugins/copy-link/copy-link.c:110
+msgid "Copy to clipboard the link to this web service"
+msgstr "Chép vào bộ đệm liên kết đến dịch vụ web này"
+
+#: ../plugins/copy-link/copy-link.c:157
+msgid "OpenStreetMap"
+msgstr "OpenStreetMap"
+
+#: ../plugins/copy-link/copy-link.c:158
+msgid "Yahoo! Maps"
+msgstr "Yahoo! Maps"
+
+#: ../plugins/copy-link/copy-link.c:159
+msgid "Google Maps"
+msgstr "Google Maps"
+
+#: ../plugins/copy-link/copy-link.c:175
+msgid "_Copy link to"
+msgstr "_Chép liên kết đến"
+
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:1
+msgid "Display in the statusbar the coordinates at the center of the map"
+msgstr "Hiện thanh trạng thái ở trung tâm bản đồ"
+
+#: ../plugins/map-position/map-position.emerillon-plugin.in.h:2
+msgid "Map Position"
+msgstr "Vị trí bản đồ"
+
+#: ../plugins/placemarks/add-dialog.c:117
+msgid "New Placemark"
+msgstr "Đánh dấu mới"
+
+#: ../plugins/placemarks/add-dialog.c:130
+msgid "Name:"
+msgstr "Tên:"
+
+#: ../plugins/placemarks/manage-dialog.c:169
+#, c-format
+msgid ""
+"You are about to remove the %s placemark!\n"
+"Are you sure you want to proceed?"
+msgstr ""
+"Bạn muốn loại bỏ đánh dấu %s!\n"
+"Bạn có chắc không?"
+
+#: ../plugins/placemarks/manage-dialog.c:203
+msgid "Organize Placemarks"
+msgstr "Tổ chức các đánh dấu"
+
+#: ../plugins/placemarks/manage-dialog.c:235
+#: ../plugins/search/search.c:506
+msgid "Name"
+msgstr "Tên"
+
+#: ../plugins/placemarks/manage-dialog.c:254
+msgid "Latitude"
+msgstr "Vĩ độ"
+
+#: ../plugins/placemarks/manage-dialog.c:262
+msgid "Longitude"
+msgstr "Kinh độ"
+
+#: ../plugins/placemarks/manage-dialog.c:270
+msgid "Zoom"
+msgstr "Phóng"
+
+#: ../plugins/placemarks/placemarks.c:138
+msgid "Go to this placemark"
+msgstr "Đi đến đánh dấu"
+
+#: ../plugins/placemarks/placemarks.c:527
+msgid "_Placemarks"
+msgstr "Đánh dấ_u"
+
+#: ../plugins/placemarks/placemarks.c:531
+msgid "Placemark this location"
+msgstr "Đánh dấu vị trí này"
+
+#: ../plugins/placemarks/placemarks.c:533
+msgid "Add current location to your placemarks"
+msgstr "Thêm địa điểm hiện tại vào đánh dấu"
+
+#: ../plugins/placemarks/placemarks.c:537
+msgid "Organize placemarks..."
+msgstr "Tổ chức các đánh dấu..."
+
+#: ../plugins/placemarks/placemarks.c:539
+msgid "Edit and delete existing placemarks"
+msgstr "Chỉnh sửa và xóa các đánh dấu đã có"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:1
+msgid "Placemarks"
+msgstr "Đánh dấu"
+
+#: ../plugins/placemarks/placemarks.emerillon-plugin.in.h:2
+msgid "Remembers your favorite view points"
+msgstr "Ghi nhớ địa điểm ưa thích của bạn"
+
+#: ../plugins/search/search.c:109
+#: ../plugins/search/search.c:110
+msgid "No result found"
+msgstr "Không có kết quả"
+
+#. Translators: In this case "No" means "number".
+#: ../plugins/search/search.c:497
+msgid "No"
+msgstr "Không"
+
+#: ../plugins/search/search.c:516
+msgid "Search results"
+msgstr "Kết quả tìm kiếm"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:1
+msgid "Allows searching GeoNames database"
+msgstr "Cho phép tìm kiếm cơ sở dữ liệu GeoNames"
+
+#: ../plugins/search/search.emerillon-plugin.in.h:2
+msgid "Search"
+msgstr "Tìm kiếm"
+
+
+
