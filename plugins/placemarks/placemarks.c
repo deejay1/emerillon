@@ -114,7 +114,7 @@ add_marker(PlacemarksPlugin *plugin, const gchar *name, gdouble lat, gdouble lon
   ChamplainMarker *marker;
 
   ClutterColor orange = { 0xf3, 0x94, 0x07, 0xbb };
-  marker = CHAMPLAIN_LABEL ( champlain_label_new_with_text (name, "Serif 14",
+  marker = CHAMPLAIN_MARKER ( champlain_label_new_with_text (name, "Serif 14",
                                                               NULL, NULL));
   champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
   champlain_label_set_alignment (CHAMPLAIN_LABEL (marker), PANGO_ALIGN_RIGHT);
