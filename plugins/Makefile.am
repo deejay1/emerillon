@@ -18,7 +18,7 @@ plugins_LTLIBRARIES = \
 	placemarks/libplacemarks.la
 
 plugins_in_files = \
-	placemarks/placemarks.emerillon-plugin.in
+	placemarks/placemarks.plugin.in
 
 # Placemarks plugin
 placemarks_libplacemarks_la_SOURCES = \
@@ -39,7 +39,7 @@ plugins_LTLIBRARIES += \
 	copy-link/libcopy-link.la
 
 plugins_in_files += \
-	copy-link/copy-link.emerillon-plugin.in
+	copy-link/copy-link.plugin.in
 
 copy_link_libcopy_link_la_SOURCES = \
 	copy-link/copy-link.h  \
@@ -53,7 +53,7 @@ plugins_LTLIBRARIES += \
 	map-position/libmap-position.la
 
 plugins_in_files += \
-	map-position/map-position.emerillon-plugin.in
+	map-position/map-position.plugin.in
 
 map_position_libmap_position_la_SOURCES = \
 	map-position/map-position.h  \
