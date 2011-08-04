@@ -59,4 +59,4 @@ data/emerillon.desktop
 data/emerillon.desktop.in
 emerillon/emerillon
 
-*.emerillon-plugin
+plugins/*/*.plugin
