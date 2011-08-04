@@ -195,10 +195,8 @@ static void
 emerillon_sidebar_class_init (EmerillonSidebarClass *emerillon_sidebar_class)
 {
   GObjectClass *g_object_class;
-  GtkWidgetClass *widget_class;
 
   g_object_class = G_OBJECT_CLASS (emerillon_sidebar_class);
-  widget_class = GTK_WIDGET_CLASS (emerillon_sidebar_class);
 
   g_type_class_add_private (g_object_class, sizeof (EmerillonSidebarPrivate));
 
