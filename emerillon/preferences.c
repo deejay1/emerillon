@@ -29,8 +29,6 @@
 #include <libpeas/peas.h>
 #include <libpeas-gtk/peas-gtk.h>
 
-#include "manager.h"
-
 static GtkWidget *default_preferences = NULL;
 
 #define EMERILLON_PREFERENCES_GET_PRIVATE(object) \
