@@ -232,7 +232,6 @@ search_address (SearchPlugin *plugin)
   gchar *locale;
   gchar lang[2];
   GError *error = NULL;
-  GList *children, *l;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   query = gtk_entry_get_text (GTK_ENTRY (plugin->priv->search_entry));
@@ -242,12 +241,7 @@ search_address (SearchPlugin *plugin)
   gtk_list_store_clear (GTK_LIST_STORE (priv->model));
 
   /* Remove markers */
-  children = clutter_container_get_children (CLUTTER_CONTAINER (priv->layer));
-  for (l = children; l != NULL; l = l->next)
-    {
-      champlain_marker_layer_remove_marker (priv->layer, CHAMPLAIN_MARKER (l->data));
-    }
-  g_list_free (children);
+  champlain_marker_layer_remove_all (priv->layer);
 
   if (priv->proxy == NULL)
     priv->proxy = rest_proxy_new ("http://ws.geonames.org/", FALSE);
