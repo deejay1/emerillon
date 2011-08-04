@@ -32,7 +32,13 @@
 #include "manage-dialog.h"
 #include "placemarks-model.h"
 
-G_DEFINE_TYPE (PlacemarksPlugin, placemarks_plugin, ETHOS_TYPE_PLUGIN)
+static void
+peas_activatable_iface_init (PeasActivatableInterface *iface);
+
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlacemarksPlugin, placemarks_plugin, PEAS_TYPE_EXTENSION_BASE,
+                                0,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
+                                                               peas_activatable_iface_init));
 
 struct _PlacemarksPluginPrivate
 {
@@ -550,7 +556,7 @@ row_deleted_cb (GtkTreeModel *tree_model,
 }
 
 static void
-activated (EthosPlugin *plugin)
+placemarks_plugin_activate (PeasActivatable *plugin)
 {
   PlacemarksPluginPrivate *priv;
   GtkUIManager *manager;
@@ -603,7 +609,7 @@ activated (EthosPlugin *plugin)
 }
 
 static void
-deactivated (EthosPlugin *plugin)
+placemarks_plugin_deactivate (PeasActivatable *plugin)
 {
   GtkUIManager *manager;
   PlacemarksPluginPrivate *priv;
@@ -623,13 +629,12 @@ deactivated (EthosPlugin *plugin)
 static void
 placemarks_plugin_class_init (PlacemarksPluginClass *klass)
 {
-  EthosPluginClass *plugin_class;
-
   g_type_class_add_private (klass, sizeof (PlacemarksPluginPrivate));
+}
 
-  plugin_class = ETHOS_PLUGIN_CLASS (klass);
-  plugin_class->activated = activated;
-  plugin_class->deactivated = deactivated;
+static void
+placemarks_plugin_class_finalize(PlacemarksPluginClass *klass)
+{
 }
 
 static void
@@ -642,14 +647,19 @@ placemarks_plugin_init (PlacemarksPlugin *plugin)
   plugin->priv->deleted_cb_id = 0;
 }
 
-EthosPlugin*
-placemarks_plugin_new (void)
+static void
+peas_activatable_iface_init (PeasActivatableInterface *iface)
 {
-  return g_object_new (PLACEMARKS_TYPE_PLUGIN, NULL);
+  iface->activate = placemarks_plugin_activate;
+  iface->deactivate = placemarks_plugin_deactivate;
 }
 
-G_MODULE_EXPORT EthosPlugin*
-ethos_plugin_register (void)
+G_MODULE_EXPORT void
+peas_register_types (PeasObjectModule *module)
 {
-  return placemarks_plugin_new ();
+  placemarks_plugin_register_type (G_TYPE_MODULE (module));
+
+  peas_object_module_register_extension_type (module,
+                                              PEAS_TYPE_ACTIVATABLE,
+                                              PLACEMARKS_TYPE_PLUGIN);
 }

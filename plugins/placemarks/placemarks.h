@@ -21,8 +21,7 @@
 #define __PLACEMARKS_PLUGIN_H__
 
 #include <glib-object.h>
-#include <ethos/ethos.h>
-#include <ethos/ethos-ui.h>
+#include <libpeas/peas.h>
 
 G_BEGIN_DECLS
 
@@ -39,7 +38,7 @@ typedef struct _PlacemarksPluginPrivate PlacemarksPluginPrivate;
 
 struct _PlacemarksPlugin
 {
-  EthosPlugin parent;
+  PeasExtensionBase parent;
 
   /*< private >*/
   PlacemarksPluginPrivate *priv;
@@ -47,12 +46,11 @@ struct _PlacemarksPlugin
 
 struct _PlacemarksPluginClass
 {
-  EthosPluginClass parent_class;
+  PeasExtensionBaseClass parent_class;
 };
 
-GType        placemarks_plugin_get_type (void);
-EthosPlugin* placemarks_plugin_new      (void);
-G_MODULE_EXPORT EthosPlugin* ethos_plugin_register (void);
+GType                placemarks_plugin_get_type (void);
+G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module);
 
 G_END_DECLS
 
