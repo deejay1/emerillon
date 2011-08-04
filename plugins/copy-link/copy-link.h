@@ -21,8 +21,7 @@
 #define __COPY_LINK_PLUGIN_H__
 
 #include <glib-object.h>
-#include <ethos/ethos.h>
-#include <ethos/ethos-ui.h>
+#include <libpeas/peas.h>
 
 G_BEGIN_DECLS
 
@@ -39,7 +38,7 @@ typedef struct _CopyLinkPluginPrivate CopyLinkPluginPrivate;
 
 struct _CopyLinkPlugin
 {
-  EthosPlugin parent;
+  PeasExtensionBase parent;
 
   /*< private >*/
   CopyLinkPluginPrivate *priv;
@@ -47,12 +46,11 @@ struct _CopyLinkPlugin
 
 struct _CopyLinkPluginClass
 {
-  EthosPluginClass parent_class;
+  PeasExtensionBaseClass parent_class;
 };
 
-GType        copy_link_plugin_get_type (void);
-EthosPlugin* copy_link_plugin_new      (void);
-G_MODULE_EXPORT EthosPlugin* ethos_plugin_register (void);
+GType                copy_link_plugin_get_type (void);
+G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module);
 
 G_END_DECLS
 

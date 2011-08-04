@@ -28,7 +28,13 @@
 
 #include "emerillon/emerillon.h"
 
-G_DEFINE_TYPE (CopyLinkPlugin, copy_link_plugin, ETHOS_TYPE_PLUGIN)
+static void
+peas_activatable_iface_init (PeasActivatableInterface *iface);
+
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (CopyLinkPlugin, copy_link_plugin, PEAS_TYPE_EXTENSION_BASE,
+                                0,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
+                                                               peas_activatable_iface_init));
 
 #define OSM_ID "copy_link_osm"
 #define GOOGLE_ID "copy_link_google"
@@ -177,7 +183,7 @@ static const GtkActionEntry action_entries[] =
 };
 
 static void
-activated (EthosPlugin *plugin)
+copy_link_plugin_activate (PeasActivatable *plugin)
 {
   CopyLinkPluginPrivate *priv;
   GtkUIManager *manager;
@@ -213,7 +219,7 @@ activated (EthosPlugin *plugin)
 }
 
 static void
-deactivated (EthosPlugin *plugin)
+copy_link_plugin_deactivate (PeasActivatable *plugin)
 {
   GtkUIManager *manager;
   CopyLinkPluginPrivate *priv;
@@ -231,13 +237,12 @@ deactivated (EthosPlugin *plugin)
 static void
 copy_link_plugin_class_init (CopyLinkPluginClass *klass)
 {
-  EthosPluginClass *plugin_class;
-
   g_type_class_add_private (klass, sizeof (CopyLinkPluginPrivate));
+}
 
-  plugin_class = ETHOS_PLUGIN_CLASS (klass);
-  plugin_class->activated = activated;
-  plugin_class->deactivated = deactivated;
+static void
+copy_link_plugin_class_finalize(CopyLinkPluginClass *klass)
+{
 }
 
 static void
@@ -248,14 +253,19 @@ copy_link_plugin_init (CopyLinkPlugin *plugin)
                                               CopyLinkPluginPrivate);
 }
 
-EthosPlugin*
-copy_link_plugin_new (void)
+static void
+peas_activatable_iface_init (PeasActivatableInterface *iface)
 {
-  return g_object_new (COPY_LINK_TYPE_PLUGIN, NULL);
+  iface->activate = copy_link_plugin_activate;
+  iface->deactivate = copy_link_plugin_deactivate;
 }
 
-G_MODULE_EXPORT EthosPlugin*
-ethos_plugin_register (void)
+G_MODULE_EXPORT void
+peas_register_types (PeasObjectModule *module)
 {
-  return copy_link_plugin_new ();
+  copy_link_plugin_register_type (G_TYPE_MODULE (module));
+
+  peas_object_module_register_extension_type (module,
+                                              PEAS_TYPE_ACTIVATABLE,
+                                              COPY_LINK_TYPE_PLUGIN);
 }
