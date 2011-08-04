@@ -191,9 +191,7 @@ result_cb (RestProxyCall *call,
       champlain_location_set_location (CHAMPLAIN_LOCATION(marker),
           flat,
           flon);
-      clutter_container_add_actor (CLUTTER_CONTAINER (priv->layer),
-          CLUTTER_ACTOR (marker));
-      clutter_actor_show (CLUTTER_ACTOR (marker));
+      champlain_marker_layer_add_marker (priv->layer, CHAMPLAIN_MARKER(marker));
 
       /* Create the row item */
       gtk_list_store_append (GTK_LIST_STORE (priv->model), &iter);
@@ -316,7 +314,8 @@ row_selected_cb (GtkTreeSelection *selection,
   if (!marker)
     return;
 
-  champlain_marker_layer_add_marker (priv->layer, marker);
+  champlain_marker_layer_unselect_all_markers (priv->layer);
+  champlain_marker_set_selected (marker, TRUE);
 
   g_object_unref (marker);
 }
