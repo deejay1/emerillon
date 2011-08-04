@@ -21,38 +21,36 @@
 #define __MOUSE_POSITION_PLUGIN_H__
 
 #include <glib-object.h>
-#include <ethos/ethos.h>
-#include <ethos/ethos-ui.h>
+#include <libpeas/peas.h>
 
 G_BEGIN_DECLS
 
-#define MOUSE_POSITION_TYPE_PLUGIN            (map_position_plugin_get_type())
-#define MOUSE_POSITION_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), MOUSE_POSITION_TYPE_PLUGIN, MousePositionPlugin))
-#define MOUSE_POSITION_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  MOUSE_POSITION_TYPE_PLUGIN, MousePositionPluginClass))
-#define MOUSE_POSITION_IS_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MOUSE_POSITION_TYPE_PLUGIN))
-#define MOUSE_POSITION_IS_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  MOUSE_POSITION_TYPE_PLUGIN))
-#define MOUSE_POSITION_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  MOUSE_POSITION_TYPE_PLUGIN, MousePositionPluginClass))
+#define MAP_POSITION_TYPE_PLUGIN            (map_position_plugin_get_type())
+#define MAP_POSITION_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), MAP_POSITION_TYPE_PLUGIN, MapPositionPlugin))
+#define MAP_POSITION_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  MAP_POSITION_TYPE_PLUGIN, MapPositionPluginClass))
+#define MAP_POSITION_IS_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MAP_POSITION_TYPE_PLUGIN))
+#define MAP_POSITION_IS_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  MAP_POSITION_TYPE_PLUGIN))
+#define MAP_POSITION_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  MAP_POSITION_TYPE_PLUGIN, MapPositionPluginClass))
 
-typedef struct _MousePositionPlugin        MousePositionPlugin;
-typedef struct _MousePositionPluginClass   MousePositionPluginClass;
-typedef struct _MousePositionPluginPrivate MousePositionPluginPrivate;
+typedef struct _MapPositionPlugin        MapPositionPlugin;
+typedef struct _MapPositionPluginClass   MapPositionPluginClass;
+typedef struct _MapPositionPluginPrivate MapPositionPluginPrivate;
 
-struct _MousePositionPlugin
+struct _MapPositionPlugin
 {
-  EthosPlugin parent;
+  PeasExtensionBase parent;
 
   /*< private >*/
-  MousePositionPluginPrivate *priv;
+  MapPositionPluginPrivate *priv;
 };
 
-struct _MousePositionPluginClass
+struct _MapPositionPluginClass
 {
-  EthosPluginClass parent_class;
+  PeasExtensionBaseClass parent_class;
 };
 
-GType        map_position_plugin_get_type (void);
-EthosPlugin* map_position_plugin_new      (void);
-G_MODULE_EXPORT EthosPlugin* ethos_plugin_register (void);
+GType                map_position_plugin_get_type (void);
+G_MODULE_EXPORT void peas_register_types(PeasObjectModule *module);
 
 G_END_DECLS
 

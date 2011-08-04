@@ -28,9 +28,15 @@
 
 #include "emerillon/emerillon.h"
 
-G_DEFINE_TYPE (MousePositionPlugin, map_position_plugin, ETHOS_TYPE_PLUGIN)
+static void
+peas_activatable_iface_init (PeasActivatableInterface *iface);
 
-struct _MousePositionPluginPrivate
+G_DEFINE_DYNAMIC_TYPE_EXTENDED (MapPositionPlugin, map_position_plugin, PEAS_TYPE_EXTENSION_BASE,
+                                0,
+                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
+                                                               peas_activatable_iface_init));
+
+struct _MapPositionPluginPrivate
 {
   EmerillonWindow *window;
   ChamplainView *map_view;
@@ -42,13 +48,13 @@ struct _MousePositionPluginPrivate
 static void
 moved_cb (GObject *gobject,
           GParamSpec *pspec,
-          MousePositionPlugin *plugin)
+          MapPositionPlugin *plugin)
 {
   gdouble lat, lon;
   gchar *position;
-  MousePositionPluginPrivate *priv;
+  MapPositionPluginPrivate *priv;
 
-  priv = MOUSE_POSITION_PLUGIN (plugin)->priv;
+  priv = MAP_POSITION_PLUGIN (plugin)->priv;
   g_object_get (priv->map_view,
                 "latitude", &lat,
                 "longitude", &lon,
@@ -63,11 +69,11 @@ moved_cb (GObject *gobject,
 }
 
 static void
-activated (EthosPlugin *plugin)
+map_position_plugin_activate (PeasActivatable *plugin)
 {
-  MousePositionPluginPrivate *priv;
+  MapPositionPluginPrivate *priv;
 
-  priv = MOUSE_POSITION_PLUGIN (plugin)->priv;
+  priv = MAP_POSITION_PLUGIN (plugin)->priv;
   priv->window = EMERILLON_WINDOW (emerillon_window_dup_default ());
   priv->map_view = emerillon_window_get_map_view (priv->window);
 
@@ -78,48 +84,52 @@ activated (EthosPlugin *plugin)
                                       G_CALLBACK (moved_cb),
                                       plugin);
 
-  moved_cb (NULL, NULL, MOUSE_POSITION_PLUGIN (plugin));
+  moved_cb (NULL, NULL, MAP_POSITION_PLUGIN (plugin));
 }
 
 static void
-deactivated (EthosPlugin *plugin)
+map_position_plugin_deactivate (PeasActivatable *plugin)
 {
-  MousePositionPluginPrivate *priv;
+  MapPositionPluginPrivate *priv;
 
-  priv = MOUSE_POSITION_PLUGIN (plugin)->priv;
+  priv = MAP_POSITION_PLUGIN (plugin)->priv;
   g_signal_handler_disconnect (priv->map_view, priv->signal_id);
 
   gtk_statusbar_pop (priv->statusbar, 0);
 }
 
 static void
-map_position_plugin_class_init (MousePositionPluginClass *klass)
+map_position_plugin_class_init (MapPositionPluginClass *klass)
 {
-  EthosPluginClass *plugin_class;
-
-  g_type_class_add_private (klass, sizeof (MousePositionPluginPrivate));
-
-  plugin_class = ETHOS_PLUGIN_CLASS (klass);
-  plugin_class->activated = activated;
-  plugin_class->deactivated = deactivated;
+  g_type_class_add_private (klass, sizeof (MapPositionPluginPrivate));
 }
 
 static void
-map_position_plugin_init (MousePositionPlugin *plugin)
+map_position_plugin_class_finalize(MapPositionPluginClass *klass)
+{
+}
+
+static void
+map_position_plugin_init (MapPositionPlugin *plugin)
 {
   plugin->priv = G_TYPE_INSTANCE_GET_PRIVATE (plugin,
-                                              MOUSE_POSITION_TYPE_PLUGIN,
-                                              MousePositionPluginPrivate);
+                                              MAP_POSITION_TYPE_PLUGIN,
+                                              MapPositionPluginPrivate);
 }
 
-EthosPlugin*
-map_position_plugin_new (void)
+static void
+peas_activatable_iface_init (PeasActivatableInterface *iface)
 {
-  return g_object_new (MOUSE_POSITION_TYPE_PLUGIN, NULL);
+  iface->activate = map_position_plugin_activate;
+  iface->deactivate = map_position_plugin_deactivate;
 }
 
-G_MODULE_EXPORT EthosPlugin*
-ethos_plugin_register (void)
+G_MODULE_EXPORT void
+peas_register_types (PeasObjectModule *module)
 {
-  return map_position_plugin_new ();
+  map_position_plugin_register_type (G_TYPE_MODULE (module));
+
+  peas_object_module_register_extension_type (module,
+                                              PEAS_TYPE_ACTIVATABLE,
+                                              MAP_POSITION_TYPE_PLUGIN);
 }
