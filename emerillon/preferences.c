@@ -140,7 +140,8 @@ build_ui (EmerillonPreferences *self)
   area = gtk_dialog_get_content_area (dialog);
 
   notebook = gtk_notebook_new ();
-  gtk_container_add (GTK_CONTAINER (area), notebook);
+  gtk_container_add_with_properties (GTK_CONTAINER (area), notebook,
+                                     "expand", TRUE, NULL);
   gtk_container_set_border_width (GTK_CONTAINER (notebook), 5);
 
   build_plugin_tab (GTK_NOTEBOOK (notebook));
