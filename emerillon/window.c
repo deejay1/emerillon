@@ -826,6 +826,7 @@ build_ui (EmerillonWindow *self)
   GtkWidget *viewport;
   GtkWidget *hpaned;
   GtkWidget *embed_view;
+  ClutterActor *scale;
   GError *error = NULL;
 
   /* Action entries. */
@@ -933,6 +934,13 @@ build_ui (EmerillonWindow *self)
       "kinetic-mode", TRUE,
       NULL);
   champlain_view_center_on (self->priv->view, 40, 0);
+
+  scale = champlain_scale_new ();
+  champlain_scale_connect_view (CHAMPLAIN_SCALE (scale), self->priv->view);
+
+  /* align to the bottom left */
+  champlain_view_bin_layout_add (self->priv->view, scale,
+      CLUTTER_BIN_ALIGNMENT_START, CLUTTER_BIN_ALIGNMENT_END);
 
   /* Sidebar. */
   self->priv->sidebar = emerillon_sidebar_new ();
