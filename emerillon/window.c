@@ -947,7 +947,7 @@ build_ui (EmerillonWindow *self)
   gtk_widget_set_size_request (self->priv->sidebar, 200, -1);
 
   /* Horizontal pane. */
-  hpaned = gtk_hpaned_new ();
+  hpaned = gtk_paned_new (GTK_ORIENTATION_HORIZONTAL);
   gtk_paned_pack1 (GTK_PANED (hpaned), self->priv->sidebar, FALSE, FALSE);
   gtk_paned_pack2 (GTK_PANED (hpaned), viewport, TRUE, FALSE);
   gtk_widget_show (self->priv->sidebar);
