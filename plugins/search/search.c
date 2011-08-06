@@ -412,7 +412,7 @@ search_plugin_activate (PeasActivatable *plugin)
   gtk_label_set_line_wrap (GTK_LABEL (priv->search_page), TRUE);
   gtk_label_set_single_line_mode (GTK_LABEL (priv->search_page), FALSE);
   */
-  priv->search_page = gtk_vbox_new (FALSE, 10);
+  priv->search_page = gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
 
   /* FIXME: set this based on the sidebar size. */
   gtk_widget_set_size_request (priv->search_page, 200, -1);

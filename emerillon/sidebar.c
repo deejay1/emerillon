@@ -69,7 +69,7 @@ struct _EmerillonSidebarPrivate
     GtkTreeModel *page_model;
 };
 
-G_DEFINE_TYPE (EmerillonSidebar, emerillon_sidebar, GTK_TYPE_VBOX)
+G_DEFINE_TYPE (EmerillonSidebar, emerillon_sidebar, GTK_TYPE_BOX)
 
 #define EMERILLON_SIDEBAR_GET_PRIVATE(object) \
     (G_TYPE_INSTANCE_GET_PRIVATE ((object), EMERILLON_TYPE_SIDEBAR, EmerillonSidebarPrivate))
@@ -383,6 +383,9 @@ emerillon_sidebar_init (EmerillonSidebar *sidebar)
 
   sidebar->priv = EMERILLON_SIDEBAR_GET_PRIVATE (sidebar);
 
+  gtk_orientable_set_orientation (GTK_ORIENTABLE (sidebar),
+      GTK_ORIENTATION_VERTICAL);
+
   /* data model */
   sidebar->priv->page_model = (GtkTreeModel *) gtk_list_store_new (
       PAGE_COLUMN_NUM_COLS,
@@ -392,7 +395,7 @@ emerillon_sidebar_init (EmerillonSidebar *sidebar)
       G_TYPE_INT);
 
   /* top option menu */
-  hbox = gtk_hbox_new (FALSE, 0);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
   sidebar->priv->hbox = hbox;
   gtk_box_pack_start (GTK_BOX (sidebar), hbox, FALSE, FALSE, 0);
   gtk_widget_show (hbox);
@@ -410,7 +413,7 @@ emerillon_sidebar_init (EmerillonSidebar *sidebar)
       G_CALLBACK (emerillon_sidebar_select_button_key_press_cb),
       sidebar);
 
-  select_hbox = gtk_hbox_new (FALSE, 0);
+  select_hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 
   sidebar->priv->label = gtk_label_new ("");
   gtk_label_set_ellipsize (GTK_LABEL (sidebar->priv->label),

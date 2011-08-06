@@ -877,7 +877,7 @@ build_ui (EmerillonWindow *self)
       gtk_ui_manager_get_accel_group (self->priv->ui_manager));
 
   /* Main box. */
-  vbox = gtk_vbox_new (FALSE, 0);
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
   gtk_container_add (GTK_CONTAINER (self), vbox);
   gtk_widget_show (vbox);
 

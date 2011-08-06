@@ -48,14 +48,14 @@ typedef struct _EmerillonSidebarPrivate EmerillonSidebarPrivate;
 
 struct _EmerillonSidebar
 {
-  GtkVBox base_instance;
+  GtkBox base_instance;
 
   EmerillonSidebarPrivate *priv;
 };
 
 struct _EmerillonSidebarClass
 {
-  GtkVBoxClass base_class;
+  GtkBoxClass base_class;
 
   void (* page_added)   (EmerillonSidebar *sidebar,
                          GtkWidget *main_widget);

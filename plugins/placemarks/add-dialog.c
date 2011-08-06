@@ -124,7 +124,7 @@ build_ui (AddDialog *self)
   gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
   area = gtk_dialog_get_content_area (dialog);
-  hbox = gtk_hbox_new (FALSE, 10);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
 
   label = gtk_label_new (_("Name:"));
