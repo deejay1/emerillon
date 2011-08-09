@@ -27,7 +27,6 @@ placemarks_libplacemarks_la_SOURCES = \
 	placemarks/manage-dialog.h  \
 	placemarks/manage-dialog.c  \
 	placemarks/placemarks-model.h  \
-	placemarks/placemarks.h  \
 	placemarks/placemarks.c
 
 placemarks_libplacemarks_la_LIBADD = \

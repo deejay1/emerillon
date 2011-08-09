@@ -21,7 +21,7 @@
 #include "config.h"
 #endif
 
-#include "placemarks.h"
+#include "cut-paste/totem-plugin.h"
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
@@ -32,15 +32,14 @@
 #include "manage-dialog.h"
 #include "placemarks-model.h"
 
-static void
-peas_activatable_iface_init (PeasActivatableInterface *iface);
+#define PLACEMARKS_TYPE_PLUGIN            (placemarks_plugin_get_type())
+#define PLACEMARKS_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), PLACEMARKS_TYPE_PLUGIN, PlacemarksPlugin))
+#define PLACEMARKS_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  PLACEMARKS_TYPE_PLUGIN, PlacemarksPluginClass))
+#define PLACEMARKS_IS_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLACEMARKS_TYPE_PLUGIN))
+#define PLACEMARKS_IS_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  PLACEMARKS_TYPE_PLUGIN))
+#define PLACEMARKS_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  PLACEMARKS_TYPE_PLUGIN, PlacemarksPluginClass))
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (PlacemarksPlugin, placemarks_plugin, PEAS_TYPE_EXTENSION_BASE,
-                                0,
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init));
-
-struct _PlacemarksPluginPrivate
+typedef struct
 {
   EmerillonWindow *window;
   ChamplainView *map_view;
@@ -56,7 +55,9 @@ struct _PlacemarksPluginPrivate
   /** Layer with placemark markers */
   ChamplainMarkerLayer *markers_layer;
   guint deleted_cb_id;
-};
+} PlacemarksPluginPrivate;
+
+TOTEM_PLUGIN_REGISTER (PLACEMARKS_TYPE_PLUGIN, PlacemarksPlugin, placemarks_plugin);
 
 /**
  * Go to the specified placemark
@@ -556,7 +557,7 @@ row_deleted_cb (GtkTreeModel *tree_model,
 }
 
 static void
-placemarks_plugin_activate (PeasActivatable *plugin)
+impl_activate (PeasActivatable *plugin)
 {
   PlacemarksPluginPrivate *priv;
   GtkUIManager *manager;
@@ -609,7 +610,7 @@ placemarks_plugin_activate (PeasActivatable *plugin)
 }
 
 static void
-placemarks_plugin_deactivate (PeasActivatable *plugin)
+impl_deactivate (PeasActivatable *plugin)
 {
   GtkUIManager *manager;
   PlacemarksPluginPrivate *priv;
@@ -624,42 +625,4 @@ placemarks_plugin_deactivate (PeasActivatable *plugin)
                                       priv->action_group);
 
   g_object_unref (priv->model);
-}
-
-static void
-placemarks_plugin_class_init (PlacemarksPluginClass *klass)
-{
-  g_type_class_add_private (klass, sizeof (PlacemarksPluginPrivate));
-}
-
-static void
-placemarks_plugin_class_finalize(PlacemarksPluginClass *klass)
-{
-}
-
-static void
-placemarks_plugin_init (PlacemarksPlugin *plugin)
-{
-  plugin->priv = G_TYPE_INSTANCE_GET_PRIVATE (plugin,
-                                              PLACEMARKS_TYPE_PLUGIN,
-                                              PlacemarksPluginPrivate);
-  plugin->priv->placemark_count = 0;
-  plugin->priv->deleted_cb_id = 0;
-}
-
-static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
-{
-  iface->activate = placemarks_plugin_activate;
-  iface->deactivate = placemarks_plugin_deactivate;
-}
-
-G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
-{
-  placemarks_plugin_register_type (G_TYPE_MODULE (module));
-
-  peas_object_module_register_extension_type (module,
-                                              PEAS_TYPE_ACTIVATABLE,
-                                              PLACEMARKS_TYPE_PLUGIN);
 }

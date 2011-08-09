@@ -23,6 +23,16 @@
 #include <gtk/gtk.h>
 #include <champlain/champlain.h>
 
+#define TYPE_ADD_DIALOG            (add_dialog_get_type ())
+#define ADD_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TYPE_ADD_DIALOG, AddDialog))
+#define ADD_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  TYPE_ADD_DIALOG, AddDialogClass))
+#define IS_ADD_DIALOG(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TYPE_ADD_DIALOG))
+#define IS_ADD_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  TYPE_ADD_DIALOG))
+#define ADD_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  TYPE_ADD_DIALOG, AddDialogClass))
+
+#define ADD_DIALOG_ERROR           (add_dialog_error_quark ())
+
+
 G_BEGIN_DECLS
 
 typedef struct _ManageDialog ManageDialog;
