@@ -1,10 +1,14 @@
 Remaining Gtk+ 3 porting work:
-- Figure out why dragging the map around doesn't work.
 - Re-add possibility to click on a marker in the map and
   get the search hit in the sidebar selected.
   (Was dropped in commit 
    "Removed no longer existing champlain properties/signals"
    because of api changes.)
+- Figure out how to re-add lat/lon command line options
+  for startup position without breaking clutter.
+  (Was dropped in commit
+  "Drop lat/lon options and init gtk_clutter first!"
+  because of problems with dragging the map around)
 
 Plugins:
 - placemarks:
