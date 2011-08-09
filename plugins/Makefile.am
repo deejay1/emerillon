@@ -42,7 +42,6 @@ plugins_in_files += \
 	copy-link/copy-link.plugin.in
 
 copy_link_libcopy_link_la_SOURCES = \
-	copy-link/copy-link.h  \
 	copy-link/copy-link.c
 
 copy_link_libcopy_link_la_LIBADD = \

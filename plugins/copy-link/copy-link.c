@@ -21,26 +21,25 @@
 #include "config.h"
 #endif
 
-#include "copy-link.h"
+#include "cut-paste/totem-plugin.h"
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
 #include "emerillon/emerillon.h"
 
-static void
-peas_activatable_iface_init (PeasActivatableInterface *iface);
-
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (CopyLinkPlugin, copy_link_plugin, PEAS_TYPE_EXTENSION_BASE,
-                                0,
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init));
+#define COPY_LINK_TYPE_PLUGIN            (copy_link_plugin_get_type())
+#define COPY_LINK_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), COPY_LINK_TYPE_PLUGIN, CopyLinkPlugin))
+#define COPY_LINK_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  COPY_LINK_TYPE_PLUGIN, CopyLinkPluginClass))
+#define COPY_LINK_IS_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), COPY_LINK_TYPE_PLUGIN))
+#define COPY_LINK_IS_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  COPY_LINK_TYPE_PLUGIN))
+#define COPY_LINK_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  COPY_LINK_TYPE_PLUGIN, CopyLinkPluginClass))
 
 #define OSM_ID "copy_link_osm"
 #define GOOGLE_ID "copy_link_google"
 #define YAHOO_ID "copy_link_yahoo"
 
-struct _CopyLinkPluginPrivate
+typedef struct
 {
   EmerillonWindow *window;
   ChamplainView *map_view;
@@ -50,7 +49,9 @@ struct _CopyLinkPluginPrivate
   guint osm_ui_id;
   guint google_ui_id;
   guint yahoo_ui_id;
-};
+} CopyLinkPluginPrivate;
+
+TOTEM_PLUGIN_REGISTER (COPY_LINK_TYPE_PLUGIN, CopyLinkPlugin, copy_link_plugin);
 
 #define LEN 255
 
@@ -183,7 +184,7 @@ static const GtkActionEntry action_entries[] =
 };
 
 static void
-copy_link_plugin_activate (PeasActivatable *plugin)
+impl_activate (PeasActivatable *plugin)
 {
   CopyLinkPluginPrivate *priv;
   GtkUIManager *manager;
@@ -219,7 +220,7 @@ copy_link_plugin_activate (PeasActivatable *plugin)
 }
 
 static void
-copy_link_plugin_deactivate (PeasActivatable *plugin)
+impl_deactivate (PeasActivatable *plugin)
 {
   GtkUIManager *manager;
   CopyLinkPluginPrivate *priv;
@@ -232,40 +233,4 @@ copy_link_plugin_deactivate (PeasActivatable *plugin)
   gtk_ui_manager_remove_ui (manager, priv->yahoo_ui_id);
 
   gtk_ui_manager_remove_ui (manager, priv->ui_id);
-}
-
-static void
-copy_link_plugin_class_init (CopyLinkPluginClass *klass)
-{
-  g_type_class_add_private (klass, sizeof (CopyLinkPluginPrivate));
-}
-
-static void
-copy_link_plugin_class_finalize(CopyLinkPluginClass *klass)
-{
-}
-
-static void
-copy_link_plugin_init (CopyLinkPlugin *plugin)
-{
-  plugin->priv = G_TYPE_INSTANCE_GET_PRIVATE (plugin,
-                                              COPY_LINK_TYPE_PLUGIN,
-                                              CopyLinkPluginPrivate);
-}
-
-static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
-{
-  iface->activate = copy_link_plugin_activate;
-  iface->deactivate = copy_link_plugin_deactivate;
-}
-
-G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
-{
-  copy_link_plugin_register_type (G_TYPE_MODULE (module));
-
-  peas_object_module_register_extension_type (module,
-                                              PEAS_TYPE_ACTIVATABLE,
-                                              COPY_LINK_TYPE_PLUGIN);
 }
