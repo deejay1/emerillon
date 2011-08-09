@@ -57,62 +57,6 @@ static GOptionEntry entries[]  =
   {NULL}
 };
 
-static GOptionEntry position_entries[] =
-{
-  { "lat", 0, 0, G_OPTION_ARG_DOUBLE, &lat, N_("Initial latitude"), "latitude" },
-  { "lon", 0, 0, G_OPTION_ARG_DOUBLE, &lon, N_("Initial longitude"), "longitude" },
-  {NULL}
-};
-
-static gboolean
-parse_position_options (GOptionContext *context, GOptionGroup *group, gpointer data,
-                        GError **error)
-{
-  // No commandline lat/lon parameters are set, so we can stop parsing
-  if (lat == 2555 && lon == 2555)
-    return TRUE;
-  if (lat > 90.0 || lat < -90.0 || lon > 180.0 || lon < -180.0) {
-    g_set_error_literal (error, G_OPTION_ERROR, G_OPTION_ERROR_BAD_VALUE,
-                         _("Incorrect or missing coordinates"));
-    return FALSE;
-  } else {
-    coords_set = TRUE;
-    return TRUE;
-  }
-}
-
-static void
-parse_options (int *argc,
-      char ***argv)
-{
-  GError *error = NULL;
-  GOptionContext *context;
-  GOptionGroup *position_group;
-
-  context = g_option_context_new (_("- map viewer"));
-  g_option_context_set_translation_domain (context, GETTEXT_PACKAGE);
-  g_option_context_add_group (context, gtk_get_option_group (TRUE));
-  g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
-
-  position_group = g_option_group_new ("position", _("Specifies the default position"),
-                                       _("Show position options"), NULL, NULL);
-  g_option_group_set_translation_domain (position_group, GETTEXT_PACKAGE);
-  g_option_group_add_entries (position_group, position_entries);
-  g_option_group_set_parse_hooks (position_group, NULL, parse_position_options);
-  g_option_context_add_group (context, position_group);
-#ifdef HAVE_INTROSPECTION
-  g_option_context_add_group (context, g_irepository_get_option_group ());
-#endif
-
-  if (!g_option_context_parse (context, argc, argv, &error))
-    {
-      g_print ("%s\n", error->message);
-      g_print (_("Run '%s --help' to see a list of available command line options.\n"), *argv[0]);
-      g_error_free(error);
-      exit (1);
-    }
-}
-
 int
 main (int argc,
       char **argv)
@@ -142,10 +86,9 @@ main (int argc,
 
   g_thread_init (NULL);
 
-  parse_options(&argc, &argv);
-
-  gtk_init (&argc, &argv);
-  gtk_clutter_init (&argc, &argv);
+  gtk_clutter_init_with_args (&argc, &argv,
+      _("- map viewer"), entries, GETTEXT_PACKAGE, &error);
+  //gtk_init (&argc, &argv);
 
   g_set_application_name (_("Emerillon Map Viewer"));
 
