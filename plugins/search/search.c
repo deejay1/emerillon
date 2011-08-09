@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "search.h"
+#include "cut-paste/totem-plugin.h"
 #include "emerillon/emerillon.h"
 
 #include <locale.h>
@@ -27,13 +27,12 @@
 #include <rest/rest-proxy-call.h>
 #include <rest/rest-xml-parser.h>
 
-static void
-peas_activatable_iface_init (PeasActivatableInterface *iface);
-
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (SearchPlugin, search_plugin, PEAS_TYPE_EXTENSION_BASE,
-                                0,
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init));
+#define SEARCH_TYPE_PLUGIN            (search_plugin_get_type())
+#define SEARCH_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), SEARCH_TYPE_PLUGIN, SearchPlugin))
+#define SEARCH_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  SEARCH_TYPE_PLUGIN, SearchPluginClass))
+#define SEARCH_IS_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), SEARCH_TYPE_PLUGIN))
+#define SEARCH_IS_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  SEARCH_TYPE_PLUGIN))
+#define SEARCH_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  SEARCH_TYPE_PLUGIN, SearchPluginClass))
 
 enum {
   COL_ORDER,
@@ -46,7 +45,7 @@ enum {
   COL_COUNT
 };
 
-struct _SearchPluginPrivate
+typedef struct
 {
   GtkWidget *search_entry;
   GtkWidget *search_page;
@@ -59,7 +58,9 @@ struct _SearchPluginPrivate
 
   ChamplainView *map_view;
   ChamplainMarkerLayer *layer;
-};
+} SearchPluginPrivate;
+
+TOTEM_PLUGIN_REGISTER (SEARCH_TYPE_PLUGIN, SearchPlugin, search_plugin);
 
 static void
 present_sidebar (SearchPlugin *plugin)
@@ -368,7 +369,7 @@ select_function_cb (GtkTreeSelection *selection,
 }
 
 static void
-search_plugin_activate (PeasActivatable *plugin)
+impl_activate (PeasActivatable *plugin)
 {
   GtkWidget *window, *toolbar, *sidebar, *scrolled;
   gint count = 0;
@@ -489,7 +490,7 @@ search_plugin_activate (PeasActivatable *plugin)
 }
 
 static void
-search_plugin_deactivate (PeasActivatable *plugin)
+impl_deactivate (PeasActivatable *plugin)
 {
   GtkWidget *window, *toolbar, *sidebar;
   ChamplainView *view;
@@ -527,39 +528,3 @@ search_plugin_deactivate (PeasActivatable *plugin)
   g_object_unref (window);
 }
 
-static void
-search_plugin_class_init (SearchPluginClass *klass)
-{
-  g_type_class_add_private (klass, sizeof (SearchPluginPrivate));
-}
-
-static void
-search_plugin_class_finalize(SearchPluginClass *klass)
-{
-
-}
-
-static void
-search_plugin_init (SearchPlugin *plugin)
-{
-  plugin->priv = G_TYPE_INSTANCE_GET_PRIVATE (plugin,
-                                              SEARCH_TYPE_PLUGIN,
-                                              SearchPluginPrivate);
-}
-
-static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
-{
-  iface->activate = search_plugin_activate;
-  iface->deactivate = search_plugin_deactivate;
-}
-
-G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
-{
-  search_plugin_register_type (G_TYPE_MODULE (module));
-
-  peas_object_module_register_extension_type (module,
-                                              PEAS_TYPE_ACTIVATABLE,
-                                              SEARCH_TYPE_PLUGIN);
-}

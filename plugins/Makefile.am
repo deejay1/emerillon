@@ -71,7 +71,6 @@ plugins_in_files += \
 	search/search.plugin.in
 
 search_libsearch_la_SOURCES = \
-	search/search.h  \
 	search/search.c
 
 search_libsearch_la_LIBADD = \
