@@ -55,7 +55,6 @@ plugins_in_files += \
 	map-position/map-position.plugin.in
 
 map_position_libmap_position_la_SOURCES = \
-	map-position/map-position.h  \
 	map-position/map-position.c
 
 map_position_libmap_position_la_LIBADD = \

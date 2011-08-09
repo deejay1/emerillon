@@ -21,29 +21,31 @@
 #include "config.h"
 #endif
 
-#include "map-position.h"
+#include "cut-paste/totem-plugin.h"
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
 #include "emerillon/emerillon.h"
 
-static void
-peas_activatable_iface_init (PeasActivatableInterface *iface);
+#define MAP_POSITION_TYPE_PLUGIN            (map_position_plugin_get_type())
+#define MAP_POSITION_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), MAP_POSITION_TYPE_PLUGIN, MapPositionPlugin))
+#define MAP_POSITION_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  MAP_POSITION_TYPE_PLUGIN, MapPositionPluginClass))
+#define MAP_POSITION_IS_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MAP_POSITION_TYPE_PLUGIN))
+#define MAP_POSITION_IS_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  MAP_POSITION_TYPE_PLUGIN))
+#define MAP_POSITION_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  MAP_POSITION_TYPE_PLUGIN, MapPositionPluginClass))
 
-G_DEFINE_DYNAMIC_TYPE_EXTENDED (MapPositionPlugin, map_position_plugin, PEAS_TYPE_EXTENSION_BASE,
-                                0,
-                                G_IMPLEMENT_INTERFACE_DYNAMIC (PEAS_TYPE_ACTIVATABLE,
-                                                               peas_activatable_iface_init));
 
-struct _MapPositionPluginPrivate
+typedef struct
 {
   EmerillonWindow *window;
   ChamplainView *map_view;
 
   GtkStatusbar *statusbar;
   guint signal_id;
-};
+} MapPositionPluginPrivate;
+
+TOTEM_PLUGIN_REGISTER (MAP_POSITION_TYPE_PLUGIN, MapPositionPlugin, map_position_plugin);
 
 static void
 moved_cb (GObject *gobject,
@@ -69,7 +71,7 @@ moved_cb (GObject *gobject,
 }
 
 static void
-map_position_plugin_activate (PeasActivatable *plugin)
+impl_activate (PeasActivatable *plugin)
 {
   MapPositionPluginPrivate *priv;
 
@@ -88,7 +90,7 @@ map_position_plugin_activate (PeasActivatable *plugin)
 }
 
 static void
-map_position_plugin_deactivate (PeasActivatable *plugin)
+impl_deactivate (PeasActivatable *plugin)
 {
   MapPositionPluginPrivate *priv;
 
@@ -96,40 +98,4 @@ map_position_plugin_deactivate (PeasActivatable *plugin)
   g_signal_handler_disconnect (priv->map_view, priv->signal_id);
 
   gtk_statusbar_pop (priv->statusbar, 0);
-}
-
-static void
-map_position_plugin_class_init (MapPositionPluginClass *klass)
-{
-  g_type_class_add_private (klass, sizeof (MapPositionPluginPrivate));
-}
-
-static void
-map_position_plugin_class_finalize(MapPositionPluginClass *klass)
-{
-}
-
-static void
-map_position_plugin_init (MapPositionPlugin *plugin)
-{
-  plugin->priv = G_TYPE_INSTANCE_GET_PRIVATE (plugin,
-                                              MAP_POSITION_TYPE_PLUGIN,
-                                              MapPositionPluginPrivate);
-}
-
-static void
-peas_activatable_iface_init (PeasActivatableInterface *iface)
-{
-  iface->activate = map_position_plugin_activate;
-  iface->deactivate = map_position_plugin_deactivate;
-}
-
-G_MODULE_EXPORT void
-peas_register_types (PeasObjectModule *module)
-{
-  map_position_plugin_register_type (G_TYPE_MODULE (module));
-
-  peas_object_module_register_extension_type (module,
-                                              PEAS_TYPE_ACTIVATABLE,
-                                              MAP_POSITION_TYPE_PLUGIN);
 }
