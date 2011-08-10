@@ -6,6 +6,6 @@ pluginsdir=@libdir@/emerillon/plugins
 
 Name: Emerillon
 Description: A map viewer for the GNOME desktop
-Requires: gtk+-2.0, gconf-2.0, clutter-1.0, champlain-0.8
+Requires: gtk+-3.0, gconf-2.0, clutter-1.0, champlain-0.10
 Version: @VERSION@
 Cflags: -I${includedir}
