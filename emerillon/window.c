@@ -391,6 +391,13 @@ emerillon_window_class_init (EmerillonWindowClass *klass)
   g_type_class_add_private (object_class, sizeof (EmerillonWindowPrivate));
 }
 
+/**
+ * emerillon_window_dup_default:
+ *
+ * Retrieves Emerillon's main window
+ *
+ * Return value: (transfer none): A #GtkWidget
+ */
 GtkWidget *
 emerillon_window_dup_default (void)
 {
@@ -964,6 +971,14 @@ build_ui (EmerillonWindow *self)
   update_ui_visibility (self);
 }
 
+/**
+ * emerillon_window_get_map_view:
+ * @window: (in): An #EmerillonWindow instance
+ *
+ * Retrieves Emerillon's map view
+ *
+ * Return value: (transfer none): A #ChamplainView
+ */
 ChamplainView *
 emerillon_window_get_map_view  (EmerillonWindow *window)
 {
@@ -972,6 +987,14 @@ emerillon_window_get_map_view  (EmerillonWindow *window)
   return window->priv->view;
 }
 
+/**
+ * emerillon_window_get_ui_manager:
+ * @window: (in): An #EmerillonWindow instance
+ *
+ * Retrieves Emerillon's UI manager
+ *
+ * Return value: (transfer none): A #GtkUIManager
+ */
 GtkUIManager *
 emerillon_window_get_ui_manager (EmerillonWindow *window)
 {
@@ -986,7 +1009,7 @@ emerillon_window_get_ui_manager (EmerillonWindow *window)
  *
  * Retrieves Emerillon's toolbar
  *
- * Return value: A #GtkWidget containig Emerillon's toolbar
+ * Return value: (transfer none): A #GtkWidget containig Emerillon's toolbar
  */
 GtkWidget *
 emerillon_window_get_toolbar (EmerillonWindow *window)
@@ -1002,7 +1025,7 @@ emerillon_window_get_toolbar (EmerillonWindow *window)
  *
  * Retrieves Emerillon's sidebar
  *
- * Return value: A #GtkWidget containig the current sidebar
+ * Return value: (transfer none): A #GtkWidget containig the current sidebar
  */
 GtkWidget *
 emerillon_window_get_sidebar (EmerillonWindow *window)
@@ -1012,6 +1035,14 @@ emerillon_window_get_sidebar (EmerillonWindow *window)
   return window->priv->sidebar;
 }
 
+/**
+ * emerillon_window_get_statusbar:
+ * @window: (in): An #EmerillonWindow instance
+ *
+ * Retrieves Emerillon's statusbar
+ *
+ * Return value: (transfer none): A #GtkWidget containig the current statusbar
+ */
 GtkWidget *
 emerillon_window_get_statusbar (EmerillonWindow *window)
 {
