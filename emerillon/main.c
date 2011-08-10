@@ -145,6 +145,9 @@ main (int argc,
 
   g_thread_init (NULL);
 
+  /* Call gdk_disable_multidevice() before initializing gtk and gtk_clutter */
+  gdk_disable_multidevice ();
+
   parse_options(&argc, &argv);
 
   g_set_application_name (_("Emerillon Map Viewer"));
