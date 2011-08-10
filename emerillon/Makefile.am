@@ -37,42 +37,41 @@ emerillon_LDFLAGS = -export-dynamic
 
 emerillon_LDADD = libemerillon.la $(EMERILLON_LIBS)
 
-if HAVE_INTROSPECTION
-EMERILLON_CFLAGS += $(INTROSPECTION_CFLAGS)
-emerillon_LDADD += $(INTROSPECTION_LIBS)
-endif
-
 CLEANFILES = $(BUILT_SOURCES)
+
+API_H_FILES =           \
+	emerillon.h     \
+	window.h        \
+	sidebar.h
 
 headerdir = $(prefix)/include/emerillon-@EMERILLON_API_VERSION@/emerillon
 header_DATA = $(API_H_FILES)
 
-API_H_FILES =			\
-	emerillon.h			\
-	window.h			\
-	sidebar.h
+# introspection support
+-include $(INTROSPECTION_MAKEFILE)
+INTROSPECTION_GIRS =
+INTROSPECTION_SCANNER_ARGS = --add-include-path=$(srcdir) --warn-all
+INTROSPECTION_COMPILER_ARGS = --includedir=$(srcdir)
 
 if HAVE_INTROSPECTION
--include $(INTROSPECTION_MAKEFILE)
-INTROSPECTION_GIRS = Emerillon-0.1.gir
+introspection_sources = $(filter %.c,$(libemerillon_la_SOURCES)) $(API_H_FILES)
 
-  introspection_sources = $(libemerillon_la_SOURCES)
+Emerillon-0.1.gir: emerillon
+Emerillon_0_1_gir_NAMESPACE = Emerillon
+Emerillon_0_1_gir_VERSION = 0.1
+Emerillon_0_1_gir_PROGRAM = emerillon
+Emerillon_0_1_gir_FILES = $(introspection_sources)
+Emerillon_0_1_gir_INCLUDES = GObject-2.0 Gtk-3.0 Champlain-0.10
+Emerillon_0_1_gir_CFLAGS = -DEMERILLON_COMPILATION -I$(top_srcdir)
+INTROSPECTION_GIRS += Emerillon-0.1.gir
 
-  Emerillon-0.1.gir: $(libemerillon_la_SOURCES) $(bin_PROGRAMS)
-  Emerillon_0_1_gir_INCLUDES = GObject-2.0 Gtk-3.0 Clutter-1.0 Champlain-0.10 GtkChamplain-0.10
-  Emerillon_0_1_gir_CFLAGS =  -I$(top_srcdir) $(EMERILLON_CFLAGS) -DEMERILLON_COMPILATION
-  Emerillon_0_1_gir_PROGRAM = ./$(bin_PROGRAMS)
-  Emerillon_0_1_gir_FILES = $(top_srcdir)/emerillon/emerillon.h $(top_srcdir)/emerillon/window.h $(top_srcdir)/emerillon/sidebar.h
+girdir = $(datadir)/gir-1.0
+dist_gir_DATA = $(INTROSPECTION_GIRS)
 
-  girdir = $(datadir)/gir-1.0
-  dist_gir_DATA = $(INTROSPECTION_GIRS)
+typelibdir = $(libdir)/girepository-1.0
+typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 
-  typelibdir = $(libdir)/girepository-1.0
-  typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
-
-CLEANFILES += \
-	$(dist_gir_DATA)		\
-	$(typelib_DATA)
+CLEANFILES += $(dist_gir_DATA) $(typelib_DATA)
 endif
 
 dist-hook:
