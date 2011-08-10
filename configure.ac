@@ -88,7 +88,6 @@ PKG_CHECK_MODULES(EMERILLON, [
     glib-2.0 >= $GLIB_REQUIRED
     gthread-2.0 >= $GTHREAD_REQUIRED
     gtk+-3.0 >= $GTK_REQUIRED
-    gconf-2.0 >= $GCONF_REQUIRED
     champlain-0.10 >= $CHAMPLAIN_REQUIRED
     champlain-gtk-0.10 >= $CHAMPLAIN_GTK_REQUIRED
     geoclue >= $GEOCLUE_REQUIRED
