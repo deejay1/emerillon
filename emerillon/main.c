@@ -93,6 +93,9 @@ parse_options (int *argc,
   g_option_context_set_translation_domain (context, GETTEXT_PACKAGE);
   g_option_context_add_group (context, gtk_get_option_group (TRUE));
   g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
+  g_option_context_add_group (context, cogl_get_option_group ());
+  g_option_context_add_group (context, clutter_get_option_group_without_init ());
+  g_option_context_add_group (context, gtk_clutter_get_option_group ());
 
   position_group = g_option_group_new ("position", _("Specifies the default position"),
                                        _("Show position options"), NULL, NULL);
@@ -143,9 +146,6 @@ main (int argc,
   g_thread_init (NULL);
 
   parse_options(&argc, &argv);
-
-  gtk_init (&argc, &argv);
-  gtk_clutter_init (&argc, &argv);
 
   g_set_application_name (_("Emerillon Map Viewer"));
 
