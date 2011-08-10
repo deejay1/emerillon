@@ -114,6 +114,7 @@ parse_options (int *argc,
       g_error_free(error);
       exit (1);
     }
+  g_option_context_free (context);
 }
 
 int
