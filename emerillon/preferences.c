@@ -107,7 +107,7 @@ emerillon_preferences_class_init (EmerillonPreferencesClass *klass)
  *
  * Retrieves Emerillon's preferences
  *
- * Return value: (transfer none): A #GtkWidget containig the preferences
+ * Return value: (transfer none): A #GtkWidget containing the preferences
  */
 GtkWidget *
 emerillon_preferences_dup_default (void)

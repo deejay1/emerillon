@@ -1009,7 +1009,7 @@ emerillon_window_get_ui_manager (EmerillonWindow *window)
  *
  * Retrieves Emerillon's toolbar
  *
- * Return value: (transfer none): A #GtkWidget containig Emerillon's toolbar
+ * Return value: (transfer none): A #GtkWidget containing Emerillon's toolbar
  */
 GtkWidget *
 emerillon_window_get_toolbar (EmerillonWindow *window)
@@ -1025,7 +1025,7 @@ emerillon_window_get_toolbar (EmerillonWindow *window)
  *
  * Retrieves Emerillon's sidebar
  *
- * Return value: (transfer none): A #GtkWidget containig the current sidebar
+ * Return value: (transfer none): A #GtkWidget containing the current sidebar
  */
 GtkWidget *
 emerillon_window_get_sidebar (EmerillonWindow *window)
@@ -1041,7 +1041,7 @@ emerillon_window_get_sidebar (EmerillonWindow *window)
  *
  * Retrieves Emerillon's statusbar
  *
- * Return value: (transfer none): A #GtkWidget containig the current statusbar
+ * Return value: (transfer none): A #GtkWidget containing the current statusbar
  */
 GtkWidget *
 emerillon_window_get_statusbar (EmerillonWindow *window)
