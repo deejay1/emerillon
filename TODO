@@ -1,5 +1,4 @@
 Remaining Gtk+ 3 porting work:
-- Figure out why dragging the map around doesn't work.
 - Re-add possibility to click on a marker in the map and
   get the search hit in the sidebar selected.
   (Was dropped in commit 
