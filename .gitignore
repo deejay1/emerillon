@@ -29,6 +29,7 @@ config.sub
 configure
 depcomp
 gtk-doc.make
+gnome-doc-utils.make
 install-sh
 intltool-extract.in
 intltool-merge.in
@@ -45,6 +46,12 @@ ChangeLog
 
 docs/reference/html
 docs/reference/xml
+docs/reference/emerillon-decl-list.txt
+docs/reference/emerillon-decl.txt
+docs/reference/version.xml
+docs/reference/emerillon-overrides.txt
+docs/reference/emerillon-sections.txt
+docs/reference/emerillon.types
 *.stamp
 
 po/.intltool-merge-cache
@@ -54,7 +61,7 @@ po/Makefile.in.in
 *.pot
 *.gmo
 
-data/emerillon.schemas
+data/org.gnome.emerillon.gschema.xml
 data/emerillon.desktop
 data/emerillon.desktop.in
 emerillon/emerillon

@@ -7,12 +7,12 @@ emerillon/main.c
 emerillon/sidebar.c
 emerillon/window.c
 emerillon/preferences.c
-[type: gettext/ini]plugins/copy-link/copy-link.emerillon-plugin.in
+[type: gettext/ini]plugins/copy-link/copy-link.plugin.in
 plugins/copy-link/copy-link.c
-[type: gettext/ini]plugins/map-position/map-position.emerillon-plugin.in
+[type: gettext/ini]plugins/map-position/map-position.plugin.in
 plugins/placemarks/add-dialog.c
 plugins/placemarks/manage-dialog.c
 plugins/placemarks/placemarks.c
-[type: gettext/ini]plugins/placemarks/placemarks.emerillon-plugin.in
+[type: gettext/ini]plugins/placemarks/placemarks.plugin.in
 plugins/search/search.c
-[type: gettext/ini]plugins/search/search.emerillon-plugin.in
+[type: gettext/ini]plugins/search/search.plugin.in

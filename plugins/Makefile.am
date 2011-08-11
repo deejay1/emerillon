@@ -22,6 +22,7 @@ plugins_in_files = \
 
 # Placemarks plugin
 placemarks_libplacemarks_la_SOURCES = \
+	../cut-paste/totem-plugin.h \
 	placemarks/add-dialog.h  \
 	placemarks/add-dialog.c  \
 	placemarks/manage-dialog.h  \
@@ -41,6 +42,7 @@ plugins_in_files += \
 	copy-link/copy-link.plugin.in
 
 copy_link_libcopy_link_la_SOURCES = \
+	../cut-paste/totem-plugin.h \
 	copy-link/copy-link.c
 
 copy_link_libcopy_link_la_LIBADD = \
@@ -54,6 +56,7 @@ plugins_in_files += \
 	map-position/map-position.plugin.in
 
 map_position_libmap_position_la_SOURCES = \
+	../cut-paste/totem-plugin.h \
 	map-position/map-position.c
 
 map_position_libmap_position_la_LIBADD = \
@@ -68,6 +71,7 @@ plugins_in_files += \
 	search/search.plugin.in
 
 search_libsearch_la_SOURCES = \
+	../cut-paste/totem-plugin.h \
 	search/search.c
 
 search_libsearch_la_LIBADD = \

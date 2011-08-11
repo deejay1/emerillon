@@ -4,12 +4,10 @@ EXTRA_DIST = 			\
 	autogen.sh		\
 	ChangeLog		\
 	README			\
-	AUTHORS			\
-	gnome-doc-utils.make
+	AUTHORS
 
 DISTCLEANFILES = 		\
-	ChangeLog		\
-	gnome-doc-utils.make
+	ChangeLog
 
 DISTCHECK_CONFIGURE_FLAGS =		\
 	--disable-scrollkeeper		\
