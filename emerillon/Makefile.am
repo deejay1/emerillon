@@ -61,7 +61,7 @@ Emerillon_0_1_gir_NAMESPACE = Emerillon
 Emerillon_0_1_gir_VERSION = 0.1
 Emerillon_0_1_gir_PROGRAM = ./emerillon
 Emerillon_0_1_gir_FILES = $(introspection_sources)
-Emerillon_0_1_gir_INCLUDES = GObject-2.0 Gtk-3.0 Champlain-0.10
+Emerillon_0_1_gir_INCLUDES = GObject-2.0 Gtk-3.0 Champlain-0.12
 Emerillon_0_1_gir_CFLAGS = -DEMERILLON_COMPILATION -I$(top_srcdir)
 INTROSPECTION_GIRS += Emerillon-0.1.gir
 
