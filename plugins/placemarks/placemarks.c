@@ -21,7 +21,7 @@
 #include "config.h"
 #endif
 
-#include "placemarks.h"
+#include "cut-paste/totem-plugin.h"
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
@@ -32,9 +32,14 @@
 #include "manage-dialog.h"
 #include "placemarks-model.h"
 
-G_DEFINE_TYPE (PlacemarksPlugin, placemarks_plugin, ETHOS_TYPE_PLUGIN)
+#define PLACEMARKS_TYPE_PLUGIN            (placemarks_plugin_get_type())
+#define PLACEMARKS_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), PLACEMARKS_TYPE_PLUGIN, PlacemarksPlugin))
+#define PLACEMARKS_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  PLACEMARKS_TYPE_PLUGIN, PlacemarksPluginClass))
+#define PLACEMARKS_IS_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), PLACEMARKS_TYPE_PLUGIN))
+#define PLACEMARKS_IS_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  PLACEMARKS_TYPE_PLUGIN))
+#define PLACEMARKS_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  PLACEMARKS_TYPE_PLUGIN, PlacemarksPluginClass))
 
-struct _PlacemarksPluginPrivate
+typedef struct
 {
   EmerillonWindow *window;
   ChamplainView *map_view;
@@ -48,9 +53,11 @@ struct _PlacemarksPluginPrivate
   GtkWidget *menu;
 
   /** Layer with placemark markers */
-  ChamplainLayer *markers_layer;
+  ChamplainMarkerLayer *markers_layer;
   guint deleted_cb_id;
-};
+} PlacemarksPluginPrivate;
+
+TOTEM_PLUGIN_REGISTER (PLACEMARKS_TYPE_PLUGIN, PlacemarksPlugin, placemarks_plugin);
 
 /**
  * Go to the specified placemark
@@ -108,15 +115,14 @@ add_marker(PlacemarksPlugin *plugin, const gchar *name, gdouble lat, gdouble lon
   ChamplainMarker *marker;
 
   ClutterColor orange = { 0xf3, 0x94, 0x07, 0xbb };
-  marker = CHAMPLAIN_MARKER ( champlain_marker_new_with_text (name, "Serif 14",
+  marker = CHAMPLAIN_MARKER ( champlain_label_new_with_text (name, "Serif 14",
                                                               NULL, NULL));
-  champlain_marker_set_use_markup (CHAMPLAIN_MARKER (marker), TRUE);
-  champlain_marker_set_alignment (CHAMPLAIN_MARKER (marker), PANGO_ALIGN_RIGHT);
-  champlain_marker_set_color (CHAMPLAIN_MARKER (marker), &orange);
+  champlain_label_set_use_markup (CHAMPLAIN_LABEL (marker), TRUE);
+  champlain_label_set_alignment (CHAMPLAIN_LABEL (marker), PANGO_ALIGN_RIGHT);
+  champlain_label_set_color (CHAMPLAIN_LABEL (marker), &orange);
 
-  champlain_base_marker_set_position (CHAMPLAIN_BASE_MARKER (marker),
-                                      lat, lon);
-  champlain_layer_add_marker (priv->markers_layer, CHAMPLAIN_BASE_MARKER (marker));
+  champlain_location_set_location (CHAMPLAIN_LOCATION(marker), lat, lon);
+  champlain_marker_layer_add_marker (priv->markers_layer, CHAMPLAIN_MARKER (marker));
 
   return marker;
 }
@@ -551,7 +557,7 @@ row_deleted_cb (GtkTreeModel *tree_model,
 }
 
 static void
-activated (EthosPlugin *plugin)
+impl_activate (PeasActivatable *plugin)
 {
   PlacemarksPluginPrivate *priv;
   GtkUIManager *manager;
@@ -561,8 +567,8 @@ activated (EthosPlugin *plugin)
   priv->window = EMERILLON_WINDOW (emerillon_window_dup_default ());
   priv->map_view = emerillon_window_get_map_view (priv->window);
 
-  priv->markers_layer = champlain_selection_layer_new ();
-  champlain_view_add_layer(priv->map_view, priv->markers_layer);
+  priv->markers_layer = champlain_marker_layer_new_full (CHAMPLAIN_SELECTION_NONE);
+  champlain_view_add_layer(priv->map_view, CHAMPLAIN_LAYER(priv->markers_layer));
 
   manager = emerillon_window_get_ui_manager (priv->window);
 
@@ -604,7 +610,7 @@ activated (EthosPlugin *plugin)
 }
 
 static void
-deactivated (EthosPlugin *plugin)
+impl_deactivate (PeasActivatable *plugin)
 {
   GtkUIManager *manager;
   PlacemarksPluginPrivate *priv;
@@ -619,38 +625,4 @@ deactivated (EthosPlugin *plugin)
                                       priv->action_group);
 
   g_object_unref (priv->model);
-}
-
-static void
-placemarks_plugin_class_init (PlacemarksPluginClass *klass)
-{
-  EthosPluginClass *plugin_class;
-
-  g_type_class_add_private (klass, sizeof (PlacemarksPluginPrivate));
-
-  plugin_class = ETHOS_PLUGIN_CLASS (klass);
-  plugin_class->activated = activated;
-  plugin_class->deactivated = deactivated;
-}
-
-static void
-placemarks_plugin_init (PlacemarksPlugin *plugin)
-{
-  plugin->priv = G_TYPE_INSTANCE_GET_PRIVATE (plugin,
-                                              PLACEMARKS_TYPE_PLUGIN,
-                                              PlacemarksPluginPrivate);
-  plugin->priv->placemark_count = 0;
-  plugin->priv->deleted_cb_id = 0;
-}
-
-EthosPlugin*
-placemarks_plugin_new (void)
-{
-  return g_object_new (PLACEMARKS_TYPE_PLUGIN, NULL);
-}
-
-G_MODULE_EXPORT EthosPlugin*
-ethos_plugin_register (void)
-{
-  return placemarks_plugin_new ();
 }

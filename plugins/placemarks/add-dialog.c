@@ -116,7 +116,7 @@ build_ui (AddDialog *self)
 
   gtk_window_set_title (GTK_WINDOW (self), _("New Placemark"));
 
-  gtk_dialog_set_has_separator (dialog, FALSE);
+  /* gtk_dialog_set_has_separator (dialog, FALSE); */
   gtk_dialog_add_button (dialog, GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
   gtk_dialog_add_button (dialog, GTK_STOCK_ADD, GTK_RESPONSE_OK);
   gtk_dialog_set_default_response (dialog, GTK_RESPONSE_OK);
@@ -124,7 +124,7 @@ build_ui (AddDialog *self)
   gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
 
   area = gtk_dialog_get_content_area (dialog);
-  hbox = gtk_hbox_new (FALSE, 10);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
 
   label = gtk_label_new (_("Name:"));

@@ -21,20 +21,25 @@
 #include "config.h"
 #endif
 
-#include "copy-link.h"
+#include "cut-paste/totem-plugin.h"
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
 
 #include "emerillon/emerillon.h"
 
-G_DEFINE_TYPE (CopyLinkPlugin, copy_link_plugin, ETHOS_TYPE_PLUGIN)
+#define COPY_LINK_TYPE_PLUGIN            (copy_link_plugin_get_type())
+#define COPY_LINK_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), COPY_LINK_TYPE_PLUGIN, CopyLinkPlugin))
+#define COPY_LINK_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  COPY_LINK_TYPE_PLUGIN, CopyLinkPluginClass))
+#define COPY_LINK_IS_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), COPY_LINK_TYPE_PLUGIN))
+#define COPY_LINK_IS_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  COPY_LINK_TYPE_PLUGIN))
+#define COPY_LINK_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  COPY_LINK_TYPE_PLUGIN, CopyLinkPluginClass))
 
 #define OSM_ID "copy_link_osm"
 #define GOOGLE_ID "copy_link_google"
 #define YAHOO_ID "copy_link_yahoo"
 
-struct _CopyLinkPluginPrivate
+typedef struct
 {
   EmerillonWindow *window;
   ChamplainView *map_view;
@@ -44,7 +49,9 @@ struct _CopyLinkPluginPrivate
   guint osm_ui_id;
   guint google_ui_id;
   guint yahoo_ui_id;
-};
+} CopyLinkPluginPrivate;
+
+TOTEM_PLUGIN_REGISTER (COPY_LINK_TYPE_PLUGIN, CopyLinkPlugin, copy_link_plugin);
 
 #define LEN 255
 
@@ -177,7 +184,7 @@ static const GtkActionEntry action_entries[] =
 };
 
 static void
-activated (EthosPlugin *plugin)
+impl_activate (PeasActivatable *plugin)
 {
   CopyLinkPluginPrivate *priv;
   GtkUIManager *manager;
@@ -213,7 +220,7 @@ activated (EthosPlugin *plugin)
 }
 
 static void
-deactivated (EthosPlugin *plugin)
+impl_deactivate (PeasActivatable *plugin)
 {
   GtkUIManager *manager;
   CopyLinkPluginPrivate *priv;
@@ -226,36 +233,4 @@ deactivated (EthosPlugin *plugin)
   gtk_ui_manager_remove_ui (manager, priv->yahoo_ui_id);
 
   gtk_ui_manager_remove_ui (manager, priv->ui_id);
-}
-
-static void
-copy_link_plugin_class_init (CopyLinkPluginClass *klass)
-{
-  EthosPluginClass *plugin_class;
-
-  g_type_class_add_private (klass, sizeof (CopyLinkPluginPrivate));
-
-  plugin_class = ETHOS_PLUGIN_CLASS (klass);
-  plugin_class->activated = activated;
-  plugin_class->deactivated = deactivated;
-}
-
-static void
-copy_link_plugin_init (CopyLinkPlugin *plugin)
-{
-  plugin->priv = G_TYPE_INSTANCE_GET_PRIVATE (plugin,
-                                              COPY_LINK_TYPE_PLUGIN,
-                                              CopyLinkPluginPrivate);
-}
-
-EthosPlugin*
-copy_link_plugin_new (void)
-{
-  return g_object_new (COPY_LINK_TYPE_PLUGIN, NULL);
-}
-
-G_MODULE_EXPORT EthosPlugin*
-ethos_plugin_register (void)
-{
-  return copy_link_plugin_new ();
 }

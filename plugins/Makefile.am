@@ -18,16 +18,16 @@ plugins_LTLIBRARIES = \
 	placemarks/libplacemarks.la
 
 plugins_in_files = \
-	placemarks/placemarks.emerillon-plugin.in
+	placemarks/placemarks.plugin.in
 
 # Placemarks plugin
 placemarks_libplacemarks_la_SOURCES = \
+	../cut-paste/totem-plugin.h \
 	placemarks/add-dialog.h  \
 	placemarks/add-dialog.c  \
 	placemarks/manage-dialog.h  \
 	placemarks/manage-dialog.c  \
 	placemarks/placemarks-model.h  \
-	placemarks/placemarks.h  \
 	placemarks/placemarks.c
 
 placemarks_libplacemarks_la_LIBADD = \
@@ -39,10 +39,10 @@ plugins_LTLIBRARIES += \
 	copy-link/libcopy-link.la
 
 plugins_in_files += \
-	copy-link/copy-link.emerillon-plugin.in
+	copy-link/copy-link.plugin.in
 
 copy_link_libcopy_link_la_SOURCES = \
-	copy-link/copy-link.h  \
+	../cut-paste/totem-plugin.h \
 	copy-link/copy-link.c
 
 copy_link_libcopy_link_la_LIBADD = \
@@ -53,10 +53,10 @@ plugins_LTLIBRARIES += \
 	map-position/libmap-position.la
 
 plugins_in_files += \
-	map-position/map-position.emerillon-plugin.in
+	map-position/map-position.plugin.in
 
 map_position_libmap_position_la_SOURCES = \
-	map-position/map-position.h  \
+	../cut-paste/totem-plugin.h \
 	map-position/map-position.c
 
 map_position_libmap_position_la_LIBADD = \
@@ -68,10 +68,10 @@ plugins_LTLIBRARIES += \
 	search/libsearch.la
 
 plugins_in_files += \
-	search/search.emerillon-plugin.in
+	search/search.plugin.in
 
 search_libsearch_la_SOURCES = \
-	search/search.h  \
+	../cut-paste/totem-plugin.h \
 	search/search.c
 
 search_libsearch_la_LIBADD = \
@@ -81,9 +81,9 @@ endif
 
 # Generate plugin info files
 
-%.emerillon-plugin: %.emerillon-plugin.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(AM_V_GEN)$(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
+%.plugin: %.plugin.in $(INTLTOOL_MERGE) $(wildcard $(top_srcdir)/po/*po) ; $(AM_V_GEN)$(INTLTOOL_MERGE) $(top_srcdir)/po $< $@ -d -u -c $(top_builddir)/po/.intltool-merge-cache
 
-plugins_DATA = $(plugins_in_files:.emerillon-plugin.in=.emerillon-plugin)
+plugins_DATA = $(plugins_in_files:.plugin.in=.plugin)
 
 DISTCLEANFILES = $(plugins_DATA)
 CLEANFILES = $(plugins_DATA)

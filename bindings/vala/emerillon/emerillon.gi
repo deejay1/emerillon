@@ -39,11 +39,11 @@
 					<parameter name="main_widget" type="GtkWidget*"/>
 				</parameters>
 			</method>
-			<field name="base_instance" type="GtkVBox"/>
+			<field name="base_instance" type="GtkBox"/>
 			<field name="priv" type="EmerillonSidebarPrivate*"/>
 		</struct>
 		<struct name="EmerillonSidebarClass">
-			<field name="base_class" type="GtkVBoxClass"/>
+			<field name="base_class" type="GtkBoxClass"/>
 			<field name="page_added" type="GCallback"/>
 			<field name="page_removed" type="GCallback"/>
 		</struct>

@@ -1,3 +1,10 @@
+Remaining Gtk+ 3 porting work:
+- Re-add possibility to click on a marker in the map and
+  get the search hit in the sidebar selected.
+  (Was dropped in commit 
+   "Removed no longer existing champlain properties/signals"
+   because of api changes.)
+
 Plugins:
 - placemarks:
   - ability to specify placemark color in the manager dialog

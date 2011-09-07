@@ -31,6 +31,7 @@
 #include <geoclue/geoclue-position.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
+#include <libpeas/peas.h>
 
 #include "config-keys.h"
 #include "sidebar.h"
@@ -48,6 +49,8 @@ struct _EmerillonWindowPrivate
 {
   GtkUIManager *ui_manager;
 
+  PeasExtensionSet* ext_set;
+  
   GtkWidget *toolbar;
   GtkWidget *statusbar;
   GtkWidget *sidebar;
@@ -193,6 +196,24 @@ position_changed_cb (GeocluePosition *position,
 }
 
 static void
+on_extension_added (PeasExtensionSet *set,
+                    PeasPluginInfo   *info,
+                    PeasExtension    *exten,
+                    EmerillonWindow  *self)
+{
+  peas_activatable_activate (PEAS_ACTIVATABLE (exten));
+}
+
+static void
+on_extension_removed (PeasExtensionSet *set,
+                      PeasPluginInfo   *info,
+                      PeasExtension    *exten,
+                      EmerillonWindow  *self)
+{
+  peas_activatable_deactivate (PEAS_ACTIVATABLE (exten));
+}
+
+static void
 emerillon_window_init (EmerillonWindow *self)
 {
   GdkGeometry geometry;
@@ -209,6 +230,16 @@ emerillon_window_init (EmerillonWindow *self)
   /* GSettings. */
   self->priv->settings_ui = g_settings_new (EMERILLON_SCHEMA_UI);
 
+  /* Extension setup */
+  self->priv->ext_set = peas_extension_set_new (peas_engine_get_default (),
+                                                PEAS_TYPE_ACTIVATABLE,
+                                                NULL);
+
+  peas_extension_set_call (self->priv->ext_set, "activate");
+
+  g_signal_connect (self->priv->ext_set, "extension-added", G_CALLBACK (on_extension_added), self);
+  g_signal_connect (self->priv->ext_set, "extension-removed", G_CALLBACK (on_extension_removed), self);
+  
   /* Window setup. */
   geometry.min_width = 400;
   geometry.min_height = 350;
@@ -291,7 +322,12 @@ emerillon_window_dispose (GObject *object)
        g_object_unref (self->priv->geoclue_position);
        self->priv->geoclue_client = NULL;
     }
-
+   if (self->priv->ext_set)
+    {
+       g_object_unref (self->priv->ext_set);
+       self->priv->ext_set = NULL;
+    }
+  
   G_OBJECT_CLASS (emerillon_window_parent_class)->dispose (object);
 }
 
@@ -355,6 +391,13 @@ emerillon_window_class_init (EmerillonWindowClass *klass)
   g_type_class_add_private (object_class, sizeof (EmerillonWindowPrivate));
 }
 
+/**
+ * emerillon_window_dup_default:
+ *
+ * Retrieves Emerillon's main window
+ *
+ * Return value: (transfer none): A #GtkWidget
+ */
 GtkWidget *
 emerillon_window_dup_default (void)
 {
@@ -790,6 +833,7 @@ build_ui (EmerillonWindow *self)
   GtkWidget *viewport;
   GtkWidget *hpaned;
   GtkWidget *embed_view;
+  ClutterActor *scale;
   GError *error = NULL;
 
   /* Action entries. */
@@ -840,7 +884,7 @@ build_ui (EmerillonWindow *self)
       gtk_ui_manager_get_accel_group (self->priv->ui_manager));
 
   /* Main box. */
-  vbox = gtk_vbox_new (FALSE, 0);
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
   gtk_container_add (GTK_CONTAINER (self), vbox);
   gtk_widget_show (vbox);
 
@@ -894,19 +938,23 @@ build_ui (EmerillonWindow *self)
   g_signal_connect (self->priv->view, "notify::state",
       G_CALLBACK (state_changed_cb), self);
   g_object_set (self->priv->view, "zoom-level", 1,
-      "scroll-mode", CHAMPLAIN_SCROLL_MODE_KINETIC,
-#if CHAMPLAIN_CHECK_VERSION (0, 4, 3)
-      "show-scale", TRUE,
-#endif
+      "kinetic-mode", TRUE,
       NULL);
   champlain_view_center_on (self->priv->view, 40, 0);
+
+  scale = champlain_scale_new ();
+  champlain_scale_connect_view (CHAMPLAIN_SCALE (scale), self->priv->view);
+
+  /* align to the bottom left */
+  champlain_view_bin_layout_add (self->priv->view, scale,
+      CLUTTER_BIN_ALIGNMENT_START, CLUTTER_BIN_ALIGNMENT_END);
 
   /* Sidebar. */
   self->priv->sidebar = emerillon_sidebar_new ();
   gtk_widget_set_size_request (self->priv->sidebar, 200, -1);
 
   /* Horizontal pane. */
-  hpaned = gtk_hpaned_new ();
+  hpaned = gtk_paned_new (GTK_ORIENTATION_HORIZONTAL);
   gtk_paned_pack1 (GTK_PANED (hpaned), self->priv->sidebar, FALSE, FALSE);
   gtk_paned_pack2 (GTK_PANED (hpaned), viewport, TRUE, FALSE);
   gtk_widget_show (self->priv->sidebar);
@@ -923,6 +971,14 @@ build_ui (EmerillonWindow *self)
   update_ui_visibility (self);
 }
 
+/**
+ * emerillon_window_get_map_view:
+ * @window: (in): An #EmerillonWindow instance
+ *
+ * Retrieves Emerillon's map view
+ *
+ * Return value: (transfer none): A #ChamplainView
+ */
 ChamplainView *
 emerillon_window_get_map_view  (EmerillonWindow *window)
 {
@@ -931,6 +987,14 @@ emerillon_window_get_map_view  (EmerillonWindow *window)
   return window->priv->view;
 }
 
+/**
+ * emerillon_window_get_ui_manager:
+ * @window: (in): An #EmerillonWindow instance
+ *
+ * Retrieves Emerillon's UI manager
+ *
+ * Return value: (transfer none): A #GtkUIManager
+ */
 GtkUIManager *
 emerillon_window_get_ui_manager (EmerillonWindow *window)
 {
@@ -945,7 +1009,7 @@ emerillon_window_get_ui_manager (EmerillonWindow *window)
  *
  * Retrieves Emerillon's toolbar
  *
- * Return value: A #GtkWidget containig Emerillon's toolbar
+ * Return value: (transfer none): A #GtkWidget containing Emerillon's toolbar
  */
 GtkWidget *
 emerillon_window_get_toolbar (EmerillonWindow *window)
@@ -961,7 +1025,7 @@ emerillon_window_get_toolbar (EmerillonWindow *window)
  *
  * Retrieves Emerillon's sidebar
  *
- * Return value: A #GtkWidget containig the current sidebar
+ * Return value: (transfer none): A #GtkWidget containing the current sidebar
  */
 GtkWidget *
 emerillon_window_get_sidebar (EmerillonWindow *window)
@@ -971,6 +1035,14 @@ emerillon_window_get_sidebar (EmerillonWindow *window)
   return window->priv->sidebar;
 }
 
+/**
+ * emerillon_window_get_statusbar:
+ * @window: (in): An #EmerillonWindow instance
+ *
+ * Retrieves Emerillon's statusbar
+ *
+ * Return value: (transfer none): A #GtkWidget containing the current statusbar
+ */
 GtkWidget *
 emerillon_window_get_statusbar (EmerillonWindow *window)
 {

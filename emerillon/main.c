@@ -26,7 +26,8 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <clutter-gtk/clutter-gtk.h>
-#include <ethos/ethos.h>
+#include <libpeas/peas.h>
+#include <libpeas-gtk/peas-gtk.h>
 
 #ifdef HAVE_INTROSPECTION
 #include <gobject-introspection-1.0/girepository.h>
@@ -34,8 +35,8 @@
 
 #include <stdlib.h>
 
-#include "manager.h"
 #include "window.h"
+#include "config-keys.h"
 
 static void
 display_version ()
@@ -92,6 +93,9 @@ parse_options (int *argc,
   g_option_context_set_translation_domain (context, GETTEXT_PACKAGE);
   g_option_context_add_group (context, gtk_get_option_group (TRUE));
   g_option_context_add_main_entries (context, entries, GETTEXT_PACKAGE);
+  g_option_context_add_group (context, cogl_get_option_group ());
+  g_option_context_add_group (context, clutter_get_option_group_without_init ());
+  g_option_context_add_group (context, gtk_clutter_get_option_group ());
 
   position_group = g_option_group_new ("position", _("Specifies the default position"),
                                        _("Show position options"), NULL, NULL);
@@ -110,13 +114,14 @@ parse_options (int *argc,
       g_error_free(error);
       exit (1);
     }
+  g_option_context_free (context);
 }
 
 int
 main (int argc,
       char **argv)
 {
-  EthosManager *manager;
+  PeasEngine *engine;
   GtkWidget *window;
   ChamplainView *map_view = NULL;
   GError *error = NULL;
@@ -125,6 +130,8 @@ main (int argc,
   gchar *plugin_dirs[3] = {EMERILLON_PLUGINDIR,
                            NULL,
                            NULL};
+  gchar **dir = NULL;
+  GSettings *settings;
 
   user_data = g_build_path (G_DIR_SEPARATOR_S,
                             g_get_user_data_dir (),
@@ -139,10 +146,10 @@ main (int argc,
 
   g_thread_init (NULL);
 
-  parse_options(&argc, &argv);
+  /* Call gdk_disable_multidevice() before initializing gtk and gtk_clutter */
+  gdk_disable_multidevice ();
 
-  gtk_init (&argc, &argv);
-  gtk_clutter_init (&argc, &argv);
+  parse_options(&argc, &argv);
 
   g_set_application_name (_("Emerillon Map Viewer"));
 
@@ -174,12 +181,21 @@ main (int argc,
   g_object_unref (plugin_dir);
 
   /* Setup the plugin infrastructure */
-  manager = emerillon_manager_dup_default ();
-  ethos_manager_set_app_name (manager, "Emerillon");
-  ethos_manager_set_plugin_dirs (manager, (gchar **)plugin_dirs);
-
-  ethos_manager_initialize (manager);
-
+  engine = peas_engine_get_default();
+  peas_engine_enable_loader (engine, "python");
+  g_irepository_require (g_irepository_get_default (),
+                         "Peas", "1.0", 0, NULL);
+  
+  for (dir = plugin_dirs; *dir != NULL; dir++)
+  {
+    peas_engine_add_search_path (engine, *dir, NULL);
+  }
+  settings = g_settings_new (EMERILLON_SCHEMA_PLUGINS);
+  g_settings_bind (settings,
+                   EMERILLON_CONF_PLUGINS_ACTIVE_PLUGINS,
+                   engine,
+                   "loaded-plugins",
+                   G_SETTINGS_BIND_DEFAULT);
   gtk_main ();
 
   g_free (user_data);

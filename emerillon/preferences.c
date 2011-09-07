@@ -25,9 +25,9 @@
 
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include <ethos/ethos-ui.h>
 
-#include "manager.h"
+#include <libpeas/peas.h>
+#include <libpeas-gtk/peas-gtk.h>
 
 static GtkWidget *default_preferences = NULL;
 
@@ -102,6 +102,13 @@ emerillon_preferences_class_init (EmerillonPreferencesClass *klass)
   g_type_class_add_private (object_class, sizeof (EmerillonPreferencesPrivate));
 }
 
+/**
+ * emerillon_preferences_dup_default:
+ *
+ * Retrieves Emerillon's preferences
+ *
+ * Return value: (transfer none): A #GtkWidget containing the preferences
+ */
 GtkWidget *
 emerillon_preferences_dup_default (void)
 {
@@ -113,19 +120,15 @@ build_plugin_tab (GtkNotebook *notebook)
 {
   GtkWidget *tab;
   GtkWidget *label;
-  EthosManager *manager;
+  PeasEngine *manager;
 
   label = gtk_label_new (_("Plugins"));
-  manager = emerillon_manager_dup_default ();
-  tab = ethos_ui_manager_widget_new ();
-  ethos_ui_manager_widget_set_manager (ETHOS_UI_MANAGER_WIDGET (tab),
-    manager);
+  manager = peas_engine_get_default();
+  tab = peas_gtk_plugin_manager_new (manager);
   gtk_widget_show (tab);
   gtk_container_set_border_width (GTK_CONTAINER (tab), 10);
 
   gtk_notebook_append_page (notebook, tab, label);
-
-  g_object_unref (manager);
 }
 
 static void
@@ -136,7 +139,7 @@ build_ui (EmerillonPreferences *self)
 
   gtk_window_set_title (GTK_WINDOW (self), _("Emerillon Preferences"));
 
-  gtk_dialog_set_has_separator (dialog, FALSE);
+  /* gtk_dialog_set_has_separator (dialog, FALSE); */
   gtk_dialog_add_button (dialog, GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
   gtk_widget_set_size_request (GTK_WIDGET (dialog), 400, 400);
   gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
@@ -144,7 +147,8 @@ build_ui (EmerillonPreferences *self)
   area = gtk_dialog_get_content_area (dialog);
 
   notebook = gtk_notebook_new ();
-  gtk_container_add (GTK_CONTAINER (area), notebook);
+  gtk_container_add_with_properties (GTK_CONTAINER (area), notebook,
+                                     "expand", TRUE, NULL);
   gtk_container_set_border_width (GTK_CONTAINER (notebook), 5);
 
   build_plugin_tab (GTK_NOTEBOOK (notebook));

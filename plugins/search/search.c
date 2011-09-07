@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-#include "search.h"
+#include "cut-paste/totem-plugin.h"
 #include "emerillon/emerillon.h"
 
 #include <locale.h>
@@ -27,7 +27,12 @@
 #include <rest/rest-proxy-call.h>
 #include <rest/rest-xml-parser.h>
 
-G_DEFINE_TYPE (SearchPlugin, search_plugin, ETHOS_TYPE_PLUGIN)
+#define SEARCH_TYPE_PLUGIN            (search_plugin_get_type())
+#define SEARCH_PLUGIN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), SEARCH_TYPE_PLUGIN, SearchPlugin))
+#define SEARCH_PLUGIN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass),  SEARCH_TYPE_PLUGIN, SearchPluginClass))
+#define SEARCH_IS_PLUGIN(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), SEARCH_TYPE_PLUGIN))
+#define SEARCH_IS_PLUGIN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  SEARCH_TYPE_PLUGIN))
+#define SEARCH_PLUGIN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  SEARCH_TYPE_PLUGIN, SearchPluginClass))
 
 enum {
   COL_ORDER,
@@ -40,7 +45,7 @@ enum {
   COL_COUNT
 };
 
-struct _SearchPluginPrivate
+typedef struct
 {
   GtkWidget *search_entry;
   GtkWidget *search_page;
@@ -52,8 +57,10 @@ struct _SearchPluginPrivate
   RestProxyCall *call;
 
   ChamplainView *map_view;
-  ChamplainLayer *layer;
-};
+  ChamplainMarkerLayer *layer;
+} SearchPluginPrivate;
+
+TOTEM_PLUGIN_REGISTER (SEARCH_TYPE_PLUGIN, SearchPlugin, search_plugin);
 
 static void
 present_sidebar (SearchPlugin *plugin)
@@ -86,6 +93,7 @@ result_cb (RestProxyCall *call,
   RestXmlNode *root, *n;
   gfloat min_lat, max_lat, min_lon, max_lon;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
+  ChamplainBoundingBox *bbox = champlain_bounding_box_new();
 
   answer = rest_proxy_call_get_payload (call);
   len = rest_proxy_call_get_payload_length (call);
@@ -128,7 +136,7 @@ result_cb (RestProxyCall *call,
     {
       RestXmlNode *name, *country, *lon, *lat;
       GtkTreeIter iter;
-      ChamplainMarker *marker;
+      ChamplainLabel *marker;
       gchar *symbol, *display_name, *escaped_name;
       gfloat flon, flat;
 
@@ -179,14 +187,12 @@ result_cb (RestProxyCall *call,
         min_lon = flon;
 
       /* Create the marker */
-      marker = CHAMPLAIN_MARKER (champlain_marker_new ());
-      champlain_marker_set_text (marker, symbol);
-      champlain_base_marker_set_position (CHAMPLAIN_BASE_MARKER (marker),
+      marker = CHAMPLAIN_LABEL(champlain_label_new());
+      champlain_label_set_text (marker, symbol);
+      champlain_location_set_location (CHAMPLAIN_LOCATION(marker),
           flat,
           flon);
-      clutter_container_add_actor (CLUTTER_CONTAINER (priv->layer),
-          CLUTTER_ACTOR (marker));
-      clutter_actor_show (CLUTTER_ACTOR (marker));
+      champlain_marker_layer_add_marker (priv->layer, CHAMPLAIN_MARKER(marker));
 
       /* Create the row item */
       gtk_list_store_append (GTK_LIST_STORE (priv->model), &iter);
@@ -208,9 +214,13 @@ result_cb (RestProxyCall *call,
       i++;
     }
 
+  bbox->left = min_lon;
+  bbox->right = max_lon;
+  bbox->bottom = min_lat;
+  bbox->top = max_lat;
+
   champlain_view_ensure_visible (priv->map_view,
-      min_lat, min_lon,
-      max_lat, max_lon,
+      bbox,
       FALSE);
 
   rest_xml_node_unref (root);
@@ -223,7 +233,6 @@ search_address (SearchPlugin *plugin)
   gchar *locale;
   gchar lang[2];
   GError *error = NULL;
-  GList *children, *l;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   query = gtk_entry_get_text (GTK_ENTRY (plugin->priv->search_entry));
@@ -233,12 +242,7 @@ search_address (SearchPlugin *plugin)
   gtk_list_store_clear (GTK_LIST_STORE (priv->model));
 
   /* Remove markers */
-  children = clutter_container_get_children (CLUTTER_CONTAINER (priv->layer));
-  for (l = children; l != NULL; l = l->next)
-    {
-      champlain_layer_remove_marker (priv->layer, CHAMPLAIN_BASE_MARKER (l->data));
-    }
-  g_list_free (children);
+  champlain_marker_layer_remove_all (priv->layer);
 
   if (priv->proxy == NULL)
     priv->proxy = rest_proxy_new ("http://ws.geonames.org/", FALSE);
@@ -289,53 +293,12 @@ search_icon_activate_cb (GtkEntry *entry,
   search_address (plugin);
 }
 
-#if CHAMPLAIN_CHECK_VERSION(0, 4, 1)
-static void
-marker_selected_cb (ChamplainSelectionLayer *layer,
-                    SearchPlugin *plugin)
-{
-  GtkTreeIter iter;
-  ChamplainBaseMarker *selected;
-  GtkTreeSelection *selection;
-  SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
-
-  selected = champlain_selection_layer_get_selected (layer);
-
-  if (!selected)
-    return;
-
-  if (!gtk_tree_model_get_iter_first (priv->model, &iter))
-    return;
-
-  selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (priv->treeview));
-
-  do
-    {
-      ChamplainBaseMarker *marker;
-      gtk_tree_model_get (priv->model, &iter, COL_MARKER, &marker, -1);
-
-      if (!marker)
-        continue;
-
-      if (marker == selected)
-        {
-          gtk_tree_selection_select_iter (selection, &iter);
-          g_object_unref (marker);
-          return;
-        }
-
-      g_object_unref (marker);
-    }
-  while (gtk_tree_model_iter_next (priv->model, &iter));
-}
-#endif
-
 static void
 row_selected_cb (GtkTreeSelection *selection,
                  SearchPlugin *plugin)
 {
   GtkTreeIter iter;
-  ChamplainBaseMarker *marker;
+  ChamplainMarker *marker;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   if (!gtk_tree_selection_get_selected (selection, &priv->model, &iter))
@@ -346,8 +309,8 @@ row_selected_cb (GtkTreeSelection *selection,
   if (!marker)
     return;
 
-  champlain_selection_layer_select (CHAMPLAIN_SELECTION_LAYER (priv->layer),
-        marker);
+  champlain_marker_layer_unselect_all_markers (priv->layer);
+  champlain_marker_set_selected (marker, TRUE);
 
   g_object_unref (marker);
 }
@@ -389,7 +352,7 @@ select_function_cb (GtkTreeSelection *selection,
 {
   GtkTreeIter iter;
   GValue value = {0};
-  ChamplainBaseMarker *marker;
+  ChamplainMarker *marker;
   SearchPluginPrivate *priv = SEARCH_PLUGIN (plugin)->priv;
 
   if (path_currently_selected)
@@ -406,7 +369,7 @@ select_function_cb (GtkTreeSelection *selection,
 }
 
 static void
-activated (EthosPlugin *plugin)
+impl_activate (PeasActivatable *plugin)
 {
   GtkWidget *window, *toolbar, *sidebar, *scrolled;
   gint count = 0;
@@ -450,7 +413,7 @@ activated (EthosPlugin *plugin)
   gtk_label_set_line_wrap (GTK_LABEL (priv->search_page), TRUE);
   gtk_label_set_single_line_mode (GTK_LABEL (priv->search_page), FALSE);
   */
-  priv->search_page = gtk_vbox_new (FALSE, 10);
+  priv->search_page = gtk_box_new (GTK_ORIENTATION_VERTICAL, 10);
 
   /* FIXME: set this based on the sidebar size. */
   gtk_widget_set_size_request (priv->search_page, 200, -1);
@@ -517,16 +480,9 @@ activated (EthosPlugin *plugin)
   gtk_widget_show (priv->search_page);
 
   /* Setup result layer */
-  priv->layer = champlain_selection_layer_new();
+  priv->layer = champlain_marker_layer_new();
   champlain_view_add_layer (priv->map_view,
-      priv->layer);
-
-#if CHAMPLAIN_CHECK_VERSION(0, 4, 1)
-  g_signal_connect (priv->layer,
-                    "changed",
-                    G_CALLBACK (marker_selected_cb),
-                    plugin);
-#endif
+      CHAMPLAIN_LAYER(priv->layer));
 
   clutter_actor_show (CLUTTER_ACTOR (priv->layer));
 
@@ -534,7 +490,7 @@ activated (EthosPlugin *plugin)
 }
 
 static void
-deactivated (EthosPlugin *plugin)
+impl_deactivate (PeasActivatable *plugin)
 {
   GtkWidget *window, *toolbar, *sidebar;
   ChamplainView *view;
@@ -564,7 +520,7 @@ deactivated (EthosPlugin *plugin)
   view = emerillon_window_get_map_view (EMERILLON_WINDOW (window));
 
 #if CHAMPLAIN_CHECK_VERSION(0, 4, 1)
-  champlain_view_remove_layer (view, priv->layer);
+  champlain_view_remove_layer (view, CHAMPLAIN_LAYER(priv->layer));
 #endif
 
   gtk_container_remove (GTK_CONTAINER (toolbar), GTK_WIDGET (priv->search_item));
@@ -572,34 +528,3 @@ deactivated (EthosPlugin *plugin)
   g_object_unref (window);
 }
 
-static void
-search_plugin_class_init (SearchPluginClass *klass)
-{
-  EthosPluginClass *plugin_class;
-
-  g_type_class_add_private (klass, sizeof (SearchPluginPrivate));
-
-  plugin_class = ETHOS_PLUGIN_CLASS (klass);
-  plugin_class->activated = activated;
-  plugin_class->deactivated = deactivated;
-}
-
-static void
-search_plugin_init (SearchPlugin *plugin)
-{
-  plugin->priv = G_TYPE_INSTANCE_GET_PRIVATE (plugin,
-                                              SEARCH_TYPE_PLUGIN,
-                                              SearchPluginPrivate);
-}
-
-EthosPlugin*
-search_plugin_new (void)
-{
-  return g_object_new (SEARCH_TYPE_PLUGIN, NULL);
-}
-
-G_MODULE_EXPORT EthosPlugin*
-ethos_plugin_register (void)
-{
-  return search_plugin_new ();
-}
