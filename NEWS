@@ -1,3 +1,47 @@
+Emerillon 0.1.90 (2011-09-07)
+===============================
+
+This release brings some major changes, like port to GSettings,
+GTK+ 3.0, libchamplain 0.12 and libpeas.
+
+New:
+  #618851, Port to GSettings (Łukasz Jernaś)
+  #626247, Migrate from PyGTK to PyGObject introspection-based bindings
+  #628080, Use libchamplain 0.7.1 or newer for the map plugin
+  #631879, Update librest to version 0.7
+  #642786, Use libchamplain 0.10
+  #649403, Support gtk3
+  #656315, make distcheck fails (Laurent Bigonville)
+  #658354, Please support libchamplain 0.12 (Laurent Bigonville)
+
+Other changes:
+  * Update DOAP info according to recent guidelines (Łukasz Jernaś)
+  * Port main application to libpeas (Johannes Schmid)
+  * search-plugin: Port to libpeas (Johannes Schmid)
+  * placemarks-plugin: Port to libpeas (Andreas Henriksson)
+  * copy-link-plugin: Port to libpeas (Andreas Henriksson)
+  * map-position-plugin: Port to libpeas (Andreas Henriksson)
+  * Use GtkBox instead of deprecated GtkVBox/GtkHBox (Andreas Henriksson)
+  * Use cogl, clutter and gtk_clutter option groups (Laurent Bigonville)
+  * Update version for instrospection files (Łukasz Jernaś)
+  * Remove dropped manager section from reference docs Łukasz Jernaś)
+
+Added/updated translations:
+  * ar, courtesy of Khaled Hosny
+  * ca, courtesy of Gil Forcada
+  * el, courtesy of Evangelos Vafeiadis
+  * he, courtesy of Yaron Shahrabani
+  * hu, courtesy of Gabor Kelemen
+  * it, courtesy of Claudio Arseni
+  * lv, courtesy of Rudolfs Mazurs
+  * nb, courtesy of Kjartan Maraas
+  * ro, courtesy of Lucian Adrian Grijincu
+  * ru, courtesy of Yuri Myasoedov
+  * sv, courtesy of Daniel Nylander
+  * uk, courtesy of Daniel Korostil
+  * vi, courtesy of Lê Trường An
+  * zh_CN, courtesy of YunQiang Su
+
 Emerillon 0.1.2 (2010-06-25)
 ===============================
 
