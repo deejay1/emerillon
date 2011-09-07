@@ -20,7 +20,7 @@ AC_SUBST(EMERILLON_MICRO_VERSION, emerillon_micro_version)
 EMERILLON_API_VERSION=emerillon_api_version
 AC_SUBST(EMERILLON_API_VERSION)
 
-AM_INIT_AUTOMAKE([1.11 dist-bzip2 no-dist-gzip -Wno-portability])
+AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz tar-ustar])
 
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
