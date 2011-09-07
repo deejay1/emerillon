@@ -16,7 +16,6 @@
   <chapter>
     <title>emerillon</title>
         <xi:include href="xml/sidebar.xml"/>
-    <xi:include href="xml/manager.xml"/>
     <xi:include href="xml/window.xml"/>
     <xi:include href="xml/preferences.xml"/>
     <xi:include href="xml/config-keys.xml"/>
