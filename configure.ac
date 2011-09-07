@@ -1,8 +1,8 @@
 AC_PREREQ(2.63)
 
 m4_define(emerillon_major_version, 0)
-m4_define(emerillon_minor_version, 1)
-m4_define(emerillon_micro_version, 90)
+m4_define(emerillon_minor_version, 2)
+m4_define(emerillon_micro_version, 0)
 m4_define(emerillon_version, emerillon_major_version.emerillon_minor_version.emerillon_micro_version)
 
 m4_define([emerillon_api_version],
