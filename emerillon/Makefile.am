@@ -56,14 +56,14 @@ INTROSPECTION_COMPILER_ARGS = --includedir=$(srcdir)
 if HAVE_INTROSPECTION
 introspection_sources = $(filter %.c,$(libemerillon_la_SOURCES)) $(API_H_FILES)
 
-Emerillon-0.1.gir: emerillon
-Emerillon_0_1_gir_NAMESPACE = Emerillon
-Emerillon_0_1_gir_VERSION = 0.1
-Emerillon_0_1_gir_PROGRAM = ./emerillon
-Emerillon_0_1_gir_FILES = $(introspection_sources)
-Emerillon_0_1_gir_INCLUDES = GObject-2.0 Gtk-3.0 Champlain-0.12
-Emerillon_0_1_gir_CFLAGS = -DEMERILLON_COMPILATION -I$(top_srcdir)
-INTROSPECTION_GIRS += Emerillon-0.1.gir
+Emerillon-0.2.gir: emerillon
+Emerillon_0_2_gir_NAMESPACE = Emerillon
+Emerillon_0_2_gir_VERSION = 0.2
+Emerillon_0_2_gir_PROGRAM = ./emerillon
+Emerillon_0_2_gir_FILES = $(introspection_sources)
+Emerillon_0_2_gir_INCLUDES = GObject-2.0 Gtk-3.0 Champlain-0.12
+Emerillon_0_2_gir_CFLAGS = -DEMERILLON_COMPILATION -I$(top_srcdir)
+INTROSPECTION_GIRS += Emerillon-0.2.gir
 
 girdir = $(datadir)/gir-1.0
 dist_gir_DATA = $(INTROSPECTION_GIRS)
