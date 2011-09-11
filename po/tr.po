@@ -1,0 +1,400 @@
+# Turkish translation for emerillon.
+# Copyright (C) 2011 emerillon's COPYRIGHT HOLDER
+# This file is distributed under the same license as the emerillon package.
+#
+# Volkan Yalçın <vlyalcin@gmail.com>, 2011.
+# Muhammet Kara <muhammet.k@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: emerillon master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=emerillon&keywords=I18N+L10N&component=General\n"
+"POT-Creation-Date: 2011-09-07 10:37+0000\n"
+"PO-Revision-Date: 2011-09-11 23:40+0300\n"
+"Last-Translator: Muhammet Kara <muhammet.k@gmail.com>\n"
+"Language-Team: Turkish <gnome-turk@gnome.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: tr\n"
+"X-Generator: Lokalize 1.2\n"
+
+#: ../data/emerillon.desktop.in.in.h:1
+msgid "Browse maps"
+msgstr "Haritalara göz at"
+
+#: ../data/emerillon.desktop.in.in.h:2 ../emerillon/window.c:548
+msgid "Emerillon"
+msgstr "Emerillon"
+
+#: ../data/emerillon.desktop.in.in.h:3 ../emerillon/main.c:154
+msgid "Emerillon Map Viewer"
+msgstr "Emerillon Harita Görüntüleyicisi"
+
+#: ../data/emerillon.desktop.in.in.h:4
+msgid "Map Viewer"
+msgstr "Harita Görüntüleyicisi"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:1
+msgid "Active plugins"
+msgstr "Aktif eklentiler"
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:2
+msgid "List of active plugins."
+msgstr "Aktif eklentilerin listesi."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:3
+msgid "Show/hide the window side pane."
+msgstr "Pencere kenar panelini göster/gizle."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:4
+msgid "Show/hide the window statusbar."
+msgstr "Pencere durum çubuğunu göster/gizle."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:5
+msgid "Show/hide the window toolbar."
+msgstr "Pencere araç çubuğunu göster/gizle."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:6
+msgid "Window height in pixels."
+msgstr "Piksel türünden pencere yüksekliği."
+
+#: ../data/org.gnome.emerillon.gschema.xml.in.h:7
+msgid "Window width in pixels."
+msgstr "Piksel türünden pencere genişliği."
+
+#: ../emerillon/main.c:44
+#, c-format
+msgid "%s - Version %s\n"
+msgstr "%s - Sürüm %s\n"
+
+#: ../emerillon/main.c:56
+msgid "Show version information and exit"
+msgstr "Sürüm bilgisini göster ve çık"
+
+#: ../emerillon/main.c:62
+msgid "Initial latitude"
+msgstr "İlk enlem"
+
+#: ../emerillon/main.c:63
+msgid "Initial longitude"
+msgstr "İlk boylam"
+
+#: ../emerillon/main.c:76
+msgid "Incorrect or missing coordinates"
+msgstr "Yanlış veya eksik koordinatlar"
+
+#: ../emerillon/main.c:92
+msgid "- map viewer"
+msgstr "- harita görüntüleyicisi"
+
+#: ../emerillon/main.c:100
+msgid "Specifies the default position"
+msgstr "Öntanımlı konumu belirtir"
+
+#: ../emerillon/main.c:101
+msgid "Show position options"
+msgstr "Konum seçeneklerini göster"
+
+#: ../emerillon/main.c:113
+#, c-format
+msgid "Run '%s --help' to see a list of available command line options.\n"
+msgstr ""
+"Kullanılabilir komut satırı seçeneklerinin listesini görmek için '%s --help' "
+"yazın.\n"
+
+#: ../emerillon/window.c:528
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version.\n"
+msgstr ""
+"Bu program özgür bir yazılımdır; Özgür Yazılım Vakfı tarafından "
+"yayınlanan GNU Genel Kamu Lisansı'nın 2 veya (seçiminize göre) daha "
+"sonraki sürümlerinin belirttiği şartlar altında yeniden dağıtabilir ve/veya "
+"değiştirebilirsiniz.\n"
+
+#: ../emerillon/window.c:532
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for "
+"more details.\n"
+msgstr ""
+"Bu program, faydalı olacağı umut edilerek dağıtılmaktadır, fakat "
+"HİÇBİR GARANTİSİ YOKTUR; hatta ÜRÜN DEĞERİ ya da BİR AMACA UYGUNLUK gibi "
+"garantiler de vermez.  Ayrıntılar için lütfen GNU Genel Kamu Lisansı'nı "
+"inceleyiniz.\n"
+
+#: ../emerillon/window.c:536
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place - Suite 330, Boston, MA 02111-1307, USA."
+msgstr ""
+"Bu programla beraber GNU Genel Kamu Lisansını da almış olmalısınız; "
+"eğer almadıysanız, Free Software Foundation, Inc., 59 Temple Place - Suite "
+"330,Boston, MA 02110-1302, USA adresine yazınız."
+
+#: ../emerillon/window.c:541
+msgid "translator-credits"
+msgstr ""
+"Volkan Yalçın <vlyalcin@gmail.com>\n"
+"Muhammet Kara <muhammet.k@gmail.com>"
+
+#: ../emerillon/window.c:553
+msgid "A map viewer for the GNOME desktop"
+msgstr "GNOME masaüstü için bir harita görüntüleyicisi"
+
+#: ../emerillon/window.c:774
+msgid "_Map"
+msgstr "_Harita"
+
+#: ../emerillon/window.c:775
+msgid "_Edit"
+msgstr "_Düzen"
+
+#: ../emerillon/window.c:776
+msgid "_View"
+msgstr "_Görünüm"
+
+#: ../emerillon/window.c:777
+msgid "_Tools"
+msgstr "_Araçlar"
+
+#: ../emerillon/window.c:778
+msgid "_Help"
+msgstr "_Yardım"
+
+#: ../emerillon/window.c:781
+msgid "Quit the program"
+msgstr "Programı kapat"
+
+#: ../emerillon/window.c:784
+msgid "Enlarge the image"
+msgstr "Görüntüyü büyüt"
+
+#: ../emerillon/window.c:787
+msgid "Shrink the image"
+msgstr "Görüntüyü küçült"
+
+#: ../emerillon/window.c:790
+msgid "Edit the preferences"
+msgstr "Tercihleri düzenle"
+
+#: ../emerillon/window.c:792
+msgid "_Contents"
+msgstr "_İçindekiler"
+
+#: ../emerillon/window.c:793
+msgid "Help on this application"
+msgstr "Bu uygulama hakkında yardım"
+
+#: ../emerillon/window.c:796
+msgid "About this application"
+msgstr "Bu uygulama hakkında"
+
+#: ../emerillon/window.c:801
+msgid "_Toolbar"
+msgstr "_Araç Çubuğu"
+
+#: ../emerillon/window.c:802
+msgid "Show or hide the toolbar in the current window"
+msgstr "Geçerli pencerede araç çubuğunu gizle ya da göster"
+
+#: ../emerillon/window.c:804
+msgid "_Statusbar"
+msgstr "_Durum Çubuğu"
+
+#: ../emerillon/window.c:805
+msgid "Show or hide the statusbar in the current window"
+msgstr "Geçerli pencerede durum çubuğunu göster ya da gizle"
+
+#: ../emerillon/window.c:807
+msgid "Side _Pane"
+msgstr "Yan _Panel"
+
+#: ../emerillon/window.c:808
+msgid "Show or hide the side pane in the current window"
+msgstr "Geçerli pencerede yan paneli göster ya da gizle"
+
+#: ../emerillon/window.c:811
+msgid "Enable or disable full screen mode"
+msgstr "Tam ekran kipini etkinleştir veya kapat"
+
+#: ../emerillon/window.c:816
+msgid "_Street"
+msgstr "_Sokak"
+
+#: ../emerillon/window.c:817
+msgid "View the street map based on OpenStreetMap"
+msgstr "OpenStreetMap tabanlı sokak haritalarını görüntüle"
+
+#: ../emerillon/window.c:818
+msgid "_Cycling"
+msgstr "_Bisiklet"
+
+#: ../emerillon/window.c:819
+msgid "View the cycling map based on OpenCycleMap"
+msgstr "OpenCycleMap tabanlı bisiklet haritalarını görüntüle"
+
+#: ../emerillon/window.c:820
+msgid "_Public Transportation"
+msgstr "_Toplu Taşıma"
+
+#: ../emerillon/window.c:821
+msgid "View the public transportation map based on Öpnvkarte"
+msgstr "Öpnvkarte tabanlı toplu taşıma haritasını görüntüle"
+
+#: ../emerillon/window.c:822
+msgid "_Terrain"
+msgstr "_Arazi"
+
+#: ../emerillon/window.c:823
+msgid "View the terrain map based on mapsforfree.com Relief"
+msgstr "mapsforfree.com Kabartmaları tabanlı arazi haritasını görüntüle"
+
+#: ../emerillon/window.c:859
+msgid "In"
+msgstr "Yakınlaş"
+
+#: ../emerillon/window.c:863
+msgid "Out"
+msgstr "Uzaklaş"
+
+#: ../emerillon/preferences.c:125
+msgid "Plugins"
+msgstr "Eklentiler"
+
+#: ../emerillon/preferences.c:140
+msgid "Emerillon Preferences"
+msgstr "Emerillon Tercihleri"
+
+#: ../plugins/copy-link/copy-link.plugin.in.h:1
+msgid "Copy link to Web"
+msgstr "Bağlantıyı Web'e Kopyala"
+
+#: ../plugins/copy-link/copy-link.plugin.in.h:2
+msgid "Provides a link for current view to major online maps"
+msgstr ""
+
+#: ../plugins/copy-link/copy-link.c:117
+msgid "Copy to clipboard the link to this web service"
+msgstr ""
+
+#: ../plugins/copy-link/copy-link.c:164
+msgid "OpenStreetMap"
+msgstr "OpenStreetMap"
+
+#: ../plugins/copy-link/copy-link.c:165
+msgid "Yahoo! Maps"
+msgstr "Yahoo! Haritaları"
+
+#: ../plugins/copy-link/copy-link.c:166
+msgid "Google Maps"
+msgstr "Google Haritaları"
+
+#: ../plugins/copy-link/copy-link.c:182
+msgid "_Copy link to"
+msgstr ""
+
+#: ../plugins/map-position/map-position.plugin.in.h:1
+msgid "Display in the statusbar the coordinates at the center of the map"
+msgstr "Haritanın merkezindeki koordinatları durum çubuğunda göster"
+
+#: ../plugins/map-position/map-position.plugin.in.h:2
+msgid "Map Position"
+msgstr "Harita Konumu"
+
+#: ../plugins/placemarks/add-dialog.c:117
+msgid "New Placemark"
+msgstr "Yeni Yer İşareti"
+
+#: ../plugins/placemarks/add-dialog.c:130
+msgid "Name:"
+msgstr "İsim:"
+
+#: ../plugins/placemarks/manage-dialog.c:169
+#, c-format
+msgid ""
+"You are about to remove the %s placemark!\n"
+"Are you sure you want to proceed?"
+msgstr ""
+"%s yer işaretini kaldırmaktasınız. Devam etmek\n"
+"istediğinizden emin misiniz?"
+
+#: ../plugins/placemarks/manage-dialog.c:203
+msgid "Organize Placemarks"
+msgstr "Yer İşaretlerini Düzenle"
+
+#: ../plugins/placemarks/manage-dialog.c:235 ../plugins/search/search.c:469
+msgid "Name"
+msgstr "İsim"
+
+#: ../plugins/placemarks/manage-dialog.c:254
+msgid "Latitude"
+msgstr "Enlem"
+
+#: ../plugins/placemarks/manage-dialog.c:262
+msgid "Longitude"
+msgstr "Boylam"
+
+#: ../plugins/placemarks/manage-dialog.c:270
+msgid "Zoom"
+msgstr "Yakınlaştır"
+
+#: ../plugins/placemarks/placemarks.c:144
+msgid "Go to this placemark"
+msgstr "Bu yer işaretine git"
+
+#: ../plugins/placemarks/placemarks.c:533
+msgid "_Placemarks"
+msgstr "_Yer İşaretleri"
+
+#: ../plugins/placemarks/placemarks.c:537
+msgid "Placemark this location"
+msgstr "Bu konumu işaretle"
+
+#: ../plugins/placemarks/placemarks.c:539
+msgid "Add current location to your placemarks"
+msgstr "Geçerli konumu yer işaretlerine ekle"
+
+#: ../plugins/placemarks/placemarks.c:543
+msgid "Organize placemarks..."
+msgstr "Yer işaretlerini düzenle..."
+
+#: ../plugins/placemarks/placemarks.c:545
+msgid "Edit and delete existing placemarks"
+msgstr "Mevcut yer işaretlerini düzenle ve sil"
+
+#: ../plugins/placemarks/placemarks.plugin.in.h:1
+msgid "Placemarks"
+msgstr "Yer İşaretleri"
+
+#: ../plugins/placemarks/placemarks.plugin.in.h:2
+msgid "Remembers your favorite view points"
+msgstr "Sevdiğiniz görüntüleme noktalarını hatırlar"
+
+#: ../plugins/search/search.c:117 ../plugins/search/search.c:118
+msgid "No result found"
+msgstr "Sonuç bulunamadı"
+
+#. Translators: In this case "No" means "number".
+#: ../plugins/search/search.c:460
+msgid "No"
+msgstr "No"
+
+#: ../plugins/search/search.c:479
+msgid "Search results"
+msgstr "Arama sonuçları"
+
+#: ../plugins/search/search.plugin.in.h:1
+msgid "Allows searching GeoNames database"
+msgstr "GeoNames veritabanında arama yapmayı sağlar"
+
+#: ../plugins/search/search.plugin.in.h:2
+msgid "Search"
+msgstr "Ara"
+
