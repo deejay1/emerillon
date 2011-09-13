@@ -1,0 +1,288 @@
+# French translation for emerillon.
+# Copyright (C) 2010 emerillon's COPYRIGHT HOLDER
+# This file is distributed under the same license as the emerillon package.
+# Laurent Coudeur <laurentc@iol.ie>, 2010.
+# Laurent Bigonville <bigon@bigon.be>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: emerillon master\n"
+"POT-Creation-Date: 2011-09-07 11:46+0000\n"
+"PO-Revision-Date: 2011-09-07 17:22+0200\n"
+"Last-Translator: Laurent Bigonville <bigon@bigon.be>\n"
+"Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+
+#: C/usage.page:7(desc)
+msgid "How to use <app>Emerillon</app>."
+msgstr "Comment utiliser <app>Emerillon</app>."
+
+#: C/usage.page:10(name) C/plugins-placemarks.page:10(name)
+#: C/plugins.page:10(name) C/plugins-mapposition.page:10(name)
+#: C/plugins-copylink.page:10(name) C/intro.page:10(name) C/index.page:9(name)
+#: C/about.page:13(name)
+msgid "Mario Blättermann"
+msgstr "Mario Blättermann"
+
+#: C/usage.page:11(email) C/plugins-placemarks.page:11(email)
+#: C/plugins.page:11(email) C/plugins-mapposition.page:11(email)
+#: C/plugins-copylink.page:11(email) C/intro.page:11(email)
+#: C/index.page:10(email) C/about.page:14(email)
+msgid "mariobl@gnome.org"
+msgstr "mariobl@gnome.org"
+
+#: C/usage.page:19(p) C/plugins-placemarks.page:19(p) C/plugins.page:19(p)
+#: C/plugins-mapposition.page:19(p) C/plugins-copylink.page:19(p)
+#: C/intro.page:19(p) C/index.page:18(p) C/about.page:17(p)
+msgid "Creative Commons Share Alike 3.0"
+msgstr "Creative Commons Partage des Conditions Initiales à l'Identique 3.0"
+
+#: C/usage.page:24(title)
+msgid "Usage"
+msgstr "Utilisation"
+
+#: C/plugins-placemarks.page:7(desc)
+msgid "Save places and zoom levels."
+msgstr "Enregistrer les emplacements et les niveaux de zoom."
+
+#: C/plugins-placemarks.page:24(title)
+msgid "Placemarks"
+msgstr "Repères"
+
+#: C/plugins.page:7(desc)
+msgid "Use plugins to extend the functionality."
+msgstr "Utiliser les greffons pour étendre les fonctionnalités."
+
+#: C/plugins.page:24(title)
+msgid "Plugins"
+msgstr "Greffons"
+
+#: C/plugins.page:26(p)
+msgid ""
+"Plugins add some more features to <app>Emerillon</app> and can extend its "
+"functionality. Some plugins are already shipped with <app>Emerillon</app> by "
+"default, and some more you can get from the emerillon-plugins package of "
+"your distribution."
+msgstr ""
+"Les greffons ajoutent des fonctions supplémentaires à <app>Emerillon</app> "
+"et peuvent améliorer ses fonctionnalités. Certains greffons sont fournis par "
+"défaut avec <app>Emerillon</app>, d'autres sont disponibles dans le paquet "
+"emerillon-plugins de votre distribution."
+
+#: C/plugins.page:34(title)
+msgid "Plugins shipped with <app>Emerillon</app>"
+msgstr "Greffons fournis avec <app>Emerillon</app>"
+
+#: C/plugins.page:38(title)
+msgid "External Plugins"
+msgstr "Greffons externes"
+
+#: C/plugins-mapposition.page:7(desc)
+msgid "Displays the position at the middle of the map in the statusbar."
+msgstr ""
+"Affiche la position par rapport au milieu de la carte dans la barre d'état."
+
+#: C/plugins-mapposition.page:24(title)
+msgid "Map Position"
+msgstr "Position de la carte"
+
+#: C/plugins-copylink.page:7(desc)
+msgid "Copy a link to online map services to the current position."
+msgstr ""
+"Copie un lien vers les services de cartographie en ligne à la position "
+"actuelle."
+
+#: C/plugins-copylink.page:24(title)
+msgid "Copy Link"
+msgstr "Copier le lien"
+
+#: C/license.page:8(desc)
+msgid "Legal information."
+msgstr "Information légale."
+
+#: C/license.page:11(title)
+msgid "License"
+msgstr "Licence"
+
+#: C/license.page:12(p)
+msgid ""
+"This work is distributed under a CreativeCommons Attribution-Share Alike 3.0 "
+"Unported license."
+msgstr ""
+"Cette œuvre est distribuée sous licence Creative Commons Paternité-Partage "
+"des Conditions Initiales à l'Identique 3.0 Unported."
+
+#: C/license.page:20(p)
+msgid "You are free:"
+msgstr "Vous êtes libres :"
+
+#: C/license.page:25(em)
+msgid "To share"
+msgstr "de partager"
+
+#: C/license.page:26(p)
+msgid "To copy, distribute and transmit the work."
+msgstr "de reproduire, distribuer et communiquer cette création."
+
+#: C/license.page:29(em)
+msgid "To remix"
+msgstr "de modifier"
+
+#: C/license.page:30(p)
+msgid "To adapt the work."
+msgstr "d'adapter cette création,"
+
+#: C/license.page:33(p)
+msgid "Under the following conditions:"
+msgstr "selon les conditions suivantes :"
+
+#: C/license.page:38(em)
+msgid "Attribution"
+msgstr "Paternité"
+
+#: C/license.page:39(p)
+msgid ""
+"You must attribute the work in the manner specified by the author or "
+"licensor (but not in any way that suggests that they endorse you or your use "
+"of the work)."
+msgstr ""
+"Vous devez citer le nom de l'auteur original de la manière indiquée par "
+"l'auteur de l'œuvre ou le titulaire des droits qui vous confère cette "
+"autorisation (mais pas d'une manière qui suggérerait qu'ils vous soutiennent "
+"ou approuvent votre utilisation de l'œuvre)."
+
+#: C/license.page:46(em)
+msgid "Share Alike"
+msgstr "Partage des conditions initiales à l'identique"
+
+#: C/license.page:47(p)
+msgid ""
+"If you alter, transform, or build upon this work, you may distribute the "
+"resulting work only under the same, similar or a compatible license."
+msgstr ""
+"Si vous modifiez, transformez ou adaptez cette création, vous n'avez le "
+"droit de distribuer la création qui en résulte que sous un contrat identique "
+"à celui-ci."
+
+#: C/license.page:53(p)
+msgid ""
+"For the full text of the license, see the <link href=\"http://"
+"creativecommons.org/licenses/by-sa/3.0/legalcode\">CreativeCommons website</"
+"link>, or read the full <link href=\"http://creativecommons.org/licenses/by-"
+"sa/3.0/\">Commons Deed</link>."
+msgstr ""
+"Pour prendre connaissance du texte complet de la licence, consultez le <link "
+"href=\\\"http://creativecommons.org/licenses/by-sa/3.0/legalcode\\\">site "
+"Web CreativeCommons</link> ou lisez in extenso le <link href=\\\"http://"
+"creativecommons.org/licenses/by-sa/3.0/\\\">contrat Commons</link>."
+
+#: C/intro.page:7(desc)
+msgid "A brief description of what <app>Emerillon</app> aims to be."
+msgstr "Une brève description de l'objectif d'<app>Emerillon</app>."
+
+#: C/intro.page:24(title)
+msgid "Introduction"
+msgstr "Introduction"
+
+#: C/intro.page:26(p)
+msgid ""
+"Emerillon is a map viewer. Aiming at simple user interface, Emerillon is a "
+"powerful, extensible application. It is pronounced <em>Ey-may-ree-yon</em>."
+msgstr ""
+"Emerillon est un visualiseur de carte. Avec une interface utilisateur "
+"simple, Emerillon est une application puissante et extensible. il se "
+"prononce <em>émérillon</em>."
+
+#: C/intro.page:30(p)
+msgid ""
+"It features <link href=\"http://www.openstreetmap.org/\">OpenStreetMap</"
+"link> based maps: the street map, the cycling map and the transportation "
+"map. Use it to:"
+msgstr ""
+"Il comprend des cartes basées sur <link href=\"http://www.openstreetmap.org/"
+"\">OpenStreetMap</link> : carte des rues, des pistes cyclables et du système "
+"de transport. Utilisez le pour :"
+
+#: C/intro.page:36(p)
+msgid "Browse maps,"
+msgstr "Parcourir les cartes,"
+
+#: C/intro.page:39(p)
+msgid "Search the map for places,"
+msgstr "Rechercher des endroits sur la carte,"
+
+#: C/intro.page:42(p)
+msgid "Placemark places for later quick access."
+msgstr "Placer des repères pour accéder rapidement à des endroits plus tard."
+
+#: C/intro.page:45(p)
+msgid ""
+"Emerillon is named after the Émérillon, one of the three boats that visited "
+"New France under <link href=\"http://en.wikipedia.org/wiki/Jacques_Cartier"
+"\">Jacques Cartier's</link> command in 1535. Émérillon is also French for "
+"<link href=\"http://en.wikipedia.org/wiki/Merlin_(bird)\">Merlin Falcons</"
+"link>."
+msgstr ""
+"Emerillon tient son nom de l'Émérillon, l'un des trois vaisseaux qui "
+"découvrit la Nouvelle France sous le commandement de <link href=\"http://fr."
+"wikipedia.org/wiki/Jacques_Cartier\">Jacques Cartier</link> en 1535. "
+"L'émerillon est aussi une espèce de <link href=\"http://fr.wikipedia.org/"
+"wiki/Faucon_émerillon\">faucon</link>."
+
+#: C/index.page:22(title)
+msgid "Emerillon"
+msgstr "Emerillon"
+
+#: C/about.page:9(desc)
+msgid "Information about this application."
+msgstr "Informations à propos de cette application."
+
+#: C/about.page:21(title)
+msgid "About <app>Emerillon</app>"
+msgstr "À propos d'<app>Emerillon</app>"
+
+#: C/about.page:23(p)
+msgid ""
+"Currently, certain people have contributed to <app>Emerillon</app>. For a "
+"complete list, see the <link href=\"http://git.gnome.org/browse/emerillon/"
+"tree/AUTHORS\">authors list</link>."
+msgstr ""
+"Plusieurs personnes ont contribué à <app>Emerillon</app>. Pour la liste "
+"complète, voyez la <link href=\"http://git.gnome.org/browse/emerillon/tree/"
+"AUTHORS\">liste des auteurs</link>."
+
+#: C/about.page:27(p)
+msgid ""
+"To report a bug or make a suggestion regarding this application or this "
+"manual, write a bug report to <link href=\"https://bugzilla.gnome.org/browse."
+"cgi?product=emerillon\">GNOME Bugzilla</link>."
+msgstr ""
+"Pour signaler une anomalie ou émettre une suggestion concernant cette "
+"application ou ce manuel, écrivez un rapport de bogue dans <link href="
+"\"https://bugzilla.gnome.org/browse.cgi?product=emerillon\">le Bugzilla de "
+"GNOME</link>."
+
+#: C/about.page:33(p)
+msgid ""
+"This program is distributed under the terms of the GNU General Public "
+"license as published by the Free Software Foundation; either version 2 of "
+"the License, or (at your option) any later version. A copy of this license "
+"can be found at this <link href=\"ghelp:gpl\">link</link>, or in the file "
+"COPYING included with the source code of this program."
+msgstr ""
+"Ce logiciel est distribué selon les termes de la Licence Publique Générale "
+"GNU telle que publiée par la Free Software Foundation ; soit la version 2 de "
+"cette licence, soit (à votre convenance) une quelconque version ultérieure. "
+"Une copie de cette licence est disponible à <link href=\"ghelp:gpl\">ce "
+"lien</link> ou dans le fichier COPYING inclus dans le code source de ce "
+"logiciel."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: C/index.page:0(None)
+msgid "translator-credits"
+msgstr ""
+"Laurent Coudeur <laurentc@iol.ie>, 2010.\n"
+"Laurent Bigonville <bigon@bigon.be>, 2011."
