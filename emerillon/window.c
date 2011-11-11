@@ -898,6 +898,9 @@ build_ui (EmerillonWindow *self)
   self->priv->toolbar = gtk_ui_manager_get_widget (self->priv->ui_manager,
       "/Toolbar");
 
+  gtk_style_context_add_class (gtk_widget_get_style_context (self->priv->toolbar),
+      "primary-toolbar");
+
   self->priv->throbber = gtk_spinner_new ();
 
   throbber = gtk_tool_item_new ();
